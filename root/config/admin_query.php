@@ -1,10 +1,5 @@
 <?php
 include ('config.php');
-/* 
-$sql = "SELECT * FROM admins";
-$sql = mysqli_query($db_link, $sql) OR die(mysqli_error(""));
-
-$row = mysqli_fetch_assoc($sql); */
 
 $pdo;
 
@@ -18,7 +13,7 @@ echo "<div class=\"card-deck \">";
     echo "    <h6 class=\"card-subtitle mb-2 text-muted\">ID: ".$row['id_a']."</h6>\n";
 
     // Blockierung aus Query abfragen und Wert in String umwandeln
-    if ($row['a_blocked'] !=0) {
+    if ($row['a_blocked'] == 0) {
       $blocked = "aktiv";
     }
     else{

@@ -23,9 +23,9 @@ if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
 
     <div class="container">
       <div class="alert alert-primary mt-3" role="alert">
-        Alle Admins
+        Alle H&auml;ndler
       </div>
-      <?php include ('../../config/admin_query.php'); ?>
+      <?php include ('../../config/retailer_query.php'); ?>
     </div>
 
     <!-- Optional JavaScript -->

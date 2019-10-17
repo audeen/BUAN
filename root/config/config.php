@@ -29,4 +29,11 @@ header('content-type:text/html; charset=ISO-8859-1');
 // Default CSS
 echo "<link rel=\"stylesheet\" href=\"../css/default.css\" type=\"text/css\">";
 
+/* function refresh(){
+
+    if (isset($_SESSION['cancel'])){
+        header("Refresh:0");
+    }
+}
+ */
 ?>

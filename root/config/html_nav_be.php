@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="../../sites/index.php">BUAN</a>
   <button
@@ -45,11 +47,15 @@
           aria-haspopup="true"
           aria-expanded="false"
         >
-          Händler
+          H&auml;ndler
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Händler anzeigen</a>
-          <a class="dropdown-item" href="#">Händler bearbeiten</a>
+          <a class="dropdown-item" href="retailer_show.php"
+            >H&auml;ndler anzeigen</a
+          >
+          <a class="dropdown-item" href="retailer_edit.php"
+            >H&auml;ndler bearbeiten</a
+          >
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -71,9 +77,11 @@
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="#"
-          >Logout <span class="sr-only">(current)</span></a
-        >
+        <form action="#">
+          <a class="nav-link" href="logout.php"
+            >Logout <span class="sr-only">(current)</span></a
+          >
+        </form>
       </li>
     </ul>
   </div>

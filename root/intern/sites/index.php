@@ -21,7 +21,7 @@ if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
   <body>
 
     <!-- backend-navigation einbinden -->
-    <?php include ('../../config/html_nav_be.html'); ?>
+    <?php include ('../../config/html_nav_be.php'); ?>
 
 
     <div class="container-fluid">
