@@ -1,7 +1,7 @@
-<?php include ('php_login_a.php'); ?>
+<?php include ('php_login_be.php'); ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#">BUAN</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -41,17 +41,15 @@
           <div class="dropdown-item">
             <form action="#" method="post">
               Name<br />
-              <input type="text" name="name" />
+              <input type="text" id="username" name="username" />
               Passwort<br />
-              <input type="password" name="password" />
-              <input type="submit" />
+              <input type="password" id="password" name="password" />
+              <input type="submit" name="login" />
             </form>
           </div>
         </div>
       </li>
-      <li class="nav-item">
-        <?php if(isset($errorMessage)) { echo $errorMessage; }?>
-      </li>
+      <li class="nav-item"></li>
       <li class="nav-item active">
         <a class="nav-link" href="#"
           >Logout <span class="sr-only">(current)</span></a

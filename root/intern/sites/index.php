@@ -1,4 +1,20 @@
-<!DOCTYPE html>
+<?php
+
+session_start();
+ 
+ 
+/**
+ * Check if the user is logged in.
+ */
+if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
+    //User not logged in. Redirect them back to the login.php page.
+
+    header('Location: ../../sites/index.php');
+    exit;
+}
+?>
+
+
 <html lang="de">
   <!-- html-head einbinden -->
   <?php include ('../../config/html_head.html'); ?>
@@ -20,3 +36,4 @@
     <div class="container"><?php include ("../control/control.php");?></div>
   </body>
 </html>
+

@@ -2,11 +2,9 @@
 
 include ('config.php');
 
-/* $sql = "SELECT * FROM admins"; */
-/* $sql = mysqli_query($db_link, $sql) OR die(mysqli_error("")); */
+$pdo;
 
-/* $row = mysqli_fetch_assoc($sql); */
-
+$sql = "SELECT * FROM admins";
 
 // Fehlervariable füllen bei fehlenden Eingaben
 if(empty($_POST['name'])&& empty($_POST['password'])) {
