@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <!-- html-head einbinden -->
-  <?php include ('../config/html_head.html'); ?>
+  <?php include ('../../config/html_head.html'); ?>
   <body>
 
-    <!-- frontend-navigation einbinden -->
-    <?php include ('../config/html_nav_fe.html'); ?>
+    <!-- backend-navigation einbinden -->
+    <?php include ('../../config/html_nav_be.html'); ?>
+
+
+    <div class="container-fluid">
+        Wilkommen im Backend, bitte wählen Sie eine Funktion
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -13,6 +18,5 @@
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <div class="container"><?php include ("../control/control.php");?></div>
-    
   </body>
 </html>
