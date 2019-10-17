@@ -1,0 +1,91 @@
+/*             DEBUGGING CSS              */
+/*              default.css               */
+
+@font-face{
+   font-family:               'Hack-Regular';
+   src:                       local(Hack-Regular),
+                              url('../../fonts/hack-regular.ttf') format('truetype');
+}
+
+/* Control Container Defaults */
+.control{
+   display:                   flex;
+   justify-content:           flex-start;
+   flex-direction:            column;
+   position:                  absolute;
+   width:                     10vw;
+   height:                    100vh;
+   padding:                   0.5vw;
+   overflow-y:                scroll;
+   background-color:          #000;
+   color:                     rgba(0, 255, 0, 0.7);
+   font-family:               hack-regular, lucida console, sans-serif;
+   z-index:                   5000;
+}
+
+/* Hidden Container to display Debug via hover */
+.activate_control{
+   display:                   flex;
+   position:                  absolute;
+   left:                      0;
+   background-color:          rgba(0,0,0,0);
+   width:                     0;
+   height:                    auto;
+}
+
+/* Control Headline */
+.control_h{
+   text-align:                center;
+   font-size:                 1vw;
+   margin:                    0 auto;
+}
+
+.control_h2{
+   display:                   none;
+   text-align:                left;
+   font-size:                 0.7vw;
+   line-height:               0.7vw;
+   margin:                    1vw;
+   margin-left:               0;
+}
+
+/* Control Body */
+.control_b{
+   font-size:                 0.7vw;
+}
+
+/* Control Data */
+.control_data{
+   display:                   flex;
+   flex-flow:                 column;
+   justify-content:           space-around;
+   font-size:                 0.6vw;
+}
+
+.control_defined_constants_show{
+   display:                   flex;
+   flex-flow:                 column;
+   margin-top:                1vw;
+}
+
+.control_defined_constants_hide{
+   display:                   none;
+}
+
+/* Control Outputs Hidden */
+.control_values_h{
+   display:                   flex;
+   font-size:                 1vw;
+   margin-top:                1vw;
+   margin-bottom:             0.5vw;
+}
+
+.control_values_open{
+   display:                   flex;
+   flex-flow:                 column;
+   margin:                    0.5vw 0.1vw;
+}
+
+.control_values_close{
+   display:                   none;
+}

@@ -1,0 +1,118 @@
+/*             DEBUGGING CSS              */
+/*               hover.css                */
+
+/* Control Container Defaults */
+.control{
+   left:                      -115%;
+   transition:                1s;
+   opacity:                   0;
+}
+
+/* Control sichtbar machen */
+.activate_control:hover .control{
+   transition:                0.3s;
+   left:                      0%;
+   background-color:          rgba(0,0,0,1);
+   opacity:                   1;
+}
+
+/* Control Body */
+.control_b{
+   font-size:                 0.7vw;
+}
+
+/* CSS Button Switch Container */
+.control_css_switch{
+   display:                   flex;
+   justify-content:           space-between;
+   width:                     100%;
+}
+
+/* Fancy Animation hover'RTZ' Button */
+.button_destroy:hover{
+   background-color:          rgba(0, 255, 0, 0.8);
+   box-shadow:                0 0 0 0 rgba(0, 255, 0, 0.7);
+   animation:                 pulse 0.7s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+/*
+@keyframes pulse 
+{
+   to 
+   {
+      background-color:       rgba(0, 255, 0, 0.3);
+      transform:              scale(0.7);
+      box-shadow:             0 0 20px 40px rgba(0, 255, 0, 0.3);
+   }
+}
+*/
+
+@keyframes pulse{
+   100%
+   {
+      background-color:       rgba(0, 255, 0, 0.9);
+      transform:              scale(1);
+      box-shadow:             0 0 40px 35px rgba(0, 255, 0, 0.1);
+   }
+   90%
+   {
+      background-color:       rgba(0, 255, 0, 0.7);
+      transform:              scale(0.90);
+      box-shadow:             0 0 40px 30px rgba(0, 255, 0, 0.2);
+   }
+   80%
+   {
+      background-color:       rgba(0, 255, 0, 0.5);
+      transform:              scale(0.80);
+      box-shadow:             0 0 20px 25px rgba(0, 255, 0, 0.3);
+   }
+   70%
+   {
+      background-color:       rgba(0, 255, 0, 0.3);
+      transform:              scale(0.70);
+      box-shadow:             0 0 10px 20px rgba(0, 255, 0, 0.4);
+   }
+   60%
+   {
+      background-color:       rgba(0, 255, 0, 0.2);
+      transform:              scale(0.60);
+      box-shadow:             0 0 10px 15px rgba(0, 255, 0, 0.5);
+   }
+   50% 
+   {
+      background-color:       rgba(0, 255, 0, 0.1);
+      color:                  rgba(0, 255, 0, 0.7);
+      transform:              scale(0.50);
+      box-shadow:             0 0 5px 10px rgba(0, 255, 0, 0.6);
+   }
+   40%
+   {
+      background-color:       rgba(0, 255, 0, 0.2);
+      transform:              scale(0.60);
+      box-shadow:             0 0 10px 15px rgba(0, 255, 0, 0.5);
+   }
+   30%
+   {
+      background-color:       rgba(0, 255, 0, 0.3);
+      transform:              scale(0.70);
+      box-shadow:             0 0 10px 20px rgba(0, 255, 0, 0.4);
+   }
+   20%
+   {
+      background-color:       rgba(0, 255, 0, 0.5);
+      transform:              scale(0.80);
+      box-shadow:             0 0 20px 25px rgba(0, 255, 0, 0.3);
+   }
+   10%
+   {
+      background-color:       rgba(0, 255, 0, 0.7);
+      transform:              scale(0.90);
+      box-shadow:             0 0 40px 30px rgba(0, 255, 0, 0.2);
+   }
+   0% 
+   {
+      background-color:       rgba(0, 255, 0, 0.9);
+      transform:              scale(1);
+      box-shadow:             0 0 50px 35px rgba(0, 255, 0, 0.1);
+   }
+}
