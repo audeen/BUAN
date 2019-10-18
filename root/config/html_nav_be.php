@@ -1,4 +1,16 @@
+<?php
 
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   html_nav_be.php                //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Backend-Navbar               //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        :                              //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
+
+?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="../../sites/index.php">BUAN</a>

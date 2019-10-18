@@ -1,5 +1,15 @@
 <?php
 
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   security.php                   //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Login/Blocked-Abfrage        //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        :                              //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
+
 session_start();
  
 //Prüfen, ob der User eingeloggt ist

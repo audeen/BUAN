@@ -1,4 +1,17 @@
 <?php
+
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   admin_query.php                //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : stellt Admins auf Cards dar  //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        :                              //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
+
+
+// Verbindung mit der Datenbank herstellen
 include ('config.php');
 
 $pdo;

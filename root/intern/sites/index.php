@@ -1,10 +1,25 @@
+<?php
+
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   index.php                      //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Startseite Backend           //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        :                              //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
+
+?>
+
+
 <!-- Include Security-File -->
 <?php include ('../../config/security.php'); ?>
 
 
 <html lang="de">
   <!-- html-head einbinden -->
-  <?php include ('../../config/html_head.html'); ?>
+  <?php include ('../../config/html_head.php'); ?>
   <body>
 
     <!-- backend-navigation einbinden -->

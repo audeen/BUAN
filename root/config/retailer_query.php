@@ -1,4 +1,15 @@
 <?php
+
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   retailer_query.php             //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : stellt retailer auf cards dar//
+//  Ersteller    : Jannik Sievert               //
+//  Stand        :                              //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
+
 include ('config.php');
 
 $pdo;

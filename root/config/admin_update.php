@@ -1,4 +1,17 @@
 <?php
+
+
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   admin_update.php               //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Update admins zum Blockieren //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        :                              //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
+
+
 include ('config.php');
 // php update data in mysql database using PDO
 

@@ -1,5 +1,14 @@
 <?php
 
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   retailer_insert.php            //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : php-skript für INSERT retailer//
+//  Ersteller    : Jannik Sievert               //
+//  Stand        :                              //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
 
  
 include ('../../config/config.php');

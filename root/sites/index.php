@@ -1,11 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<?php
+
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   index.php                      //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Startseite                   //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        :                              //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
+
+?>
+
+
+
   <!-- html-head einbinden -->
-  <?php include ('../config/html_head.html'); ?>
+  <?php include ('../config/html_head.php'); ?>
   <body>
 
     <!-- frontend-navigation einbinden -->
-    <?php include ('../config/html_nav_fe.html'); ?>
+    <?php include ('../config/html_nav_fe.php'); ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

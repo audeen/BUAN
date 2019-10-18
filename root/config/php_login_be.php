@@ -1,4 +1,16 @@
 <?php
+
+
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   php_login_be.php               //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : php-funktionen für BE-Login  //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        :                              //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
+
 session_start();
 
 include ('config.php');
