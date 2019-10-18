@@ -15,7 +15,7 @@ if(isset($_POST['login'])){
     $passwordAttempt = !empty($_POST['password']) ? trim($_POST['password']) : null;
     
     //Retrieve the user account information for the given username.
-    $sql = "SELECT id_a, a_name, a_pw FROM admins WHERE a_name = :username";
+    $sql = "SELECT id_a, a_name, a_pw, a_blocked FROM admins WHERE a_name = :username";
     $stmt = $pdo->prepare($sql);
     
     //Bind value.
@@ -46,6 +46,13 @@ if(isset($_POST['login'])){
             //Provide the user with a login session.
             $_SESSION['user_id'] = $user['id_a'];
             $_SESSION['logged_in'] = time();
+
+            //Set Blocked-State
+            
+            if ($user['a_blocked']!=0){
+                $_SESSION['blocked']="BLOCKIERT"; 
+            };
+            
             
             //Redirect to our protected page, which we called home.php
             header('Location: ..\intern\sites\index.php');
@@ -58,57 +65,5 @@ if(isset($_POST['login'])){
     }
     
 }
-       /*  echo "<meta http-equiv=\"refresh\" content=\"0;url=../intern/sites/index.php\">"; */
-/* 
-$sql = "SELECT * FROM admins";
-
-// Fehlervariable füllen bei fehlenden Eingaben
-if(empty($_POST['name'])&& empty($_POST['password'])) {
-    $errorMessage = "<div class=\"alert alert-dark\" role=\"alert\">
-                        Bitte einloggen!
-                    </div>";
-}
-elseif(empty($_POST['name'])) {
-    $errorMessage = "<div class=\"alert alert-danger\" role=\"alert\">
-                        Name fehlt!
-                    </div>";
-}
-elseif(empty($_POST['password'])) {
-    $errorMessage = "<div class=\"alert alert-danger\" role=\"alert\">
-                        Passwort fehlt!
-                    </div>";
-}
-// Datenabgleich mit Datenbank
-else {
-    
-    md5($_POST['password']);
-    $_POST['password'] = md5($_POST['password']);
-
-    do {
-        if(($_POST['name'] === $row['a_name']) && ($_POST['password'] === $row['a_pw'])) {
-            echo "<meta http-equiv=\"refresh\" content=\"0;url=../intern/sites/index.php\">";
-            break;
-
-        }
-        elseif (($_POST['name'] !== $row['a_name']) && ($_POST['password'] !== $row['a_pw'])) {
-                $errorMessage = "<div class=\"alert alert-danger\" role=\"alert\">
-                                    Name & Passwort falsch!
-                                </div>";
-        }
-        elseif($_POST['name'] !== $row['a_name']) {
-            $errorMessage = "<div class=\"alert alert-danger\" role=\"alert\">
-                                Name falsch!
-                            </div>";  
-        } 
-        else($_POST['password'] !== $row['a_pw']) {
-            $errorMessage = "<div class=\"alert alert-danger\" role=\"alert\">
-                                Passwort falsch!
-                            </div>"
-        };
-        }
-    while ($row = mysqli_fetch_assoc($sql));
-
-
-}
- */
+     
 ?>

@@ -1,18 +1,5 @@
-<?php
-
-session_start();
- 
- 
-/**
- * Check if the user is logged in.
- */
-if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
-    //User not logged in. Redirect them back to the login.php page.
-
-    header('Location: ../../sites/index.php');
-    exit;
-}
-?>
+<!-- Include Security-File -->
+<?php include ('../../config/security.php'); ?>
 
 <!-- html-head einbinden -->
 <?php include ('../../config/html_head.html'); ?>
@@ -63,28 +50,29 @@ echo "<div class=\"card-deck\">";
     echo "    <p class=\"card-text\">\n";
 
 // Radio-Button-Belegung abfragen
-    if ($row['r_blocked'] =0) {
-      $blocked_0 ="checked";
-      $blocked_1 ="";
-    }
-    else{
-      $blocked_1 ="checked";
-      $blocked_0 ="";
-    }
+      if ($row['r_blocked'] == 0) {
+        $blocked = "";
+        $active ="checked";
+      }
+      else{
+        $blocked = "checked";
+        $active ="";
+      }
+
     
     echo "<div class=\"alert alert-secondary\" role=\"alert\">";
     echo "Status";
     echo "</div>";
  
     echo "<div class=\"form-check mb-2\">\n";
-    echo "  <input class=\"form-check-input\" type=\"radio\" name=\"r_blocked\" id=\"exampleRadios1\" value=\"1\"".$blocked_1."\n";
+    echo "  <input class=\"form-check-input\" type=\"radio\" name=\"r_blocked\" id=\"exampleRadios1\" value=\"0\"".$active."\n";
     echo "  <label class=\"form-check-label\" for=\"exampleRadios1\">\n";
     echo "  Aktiv\n";
     echo "  </label>\n";
     echo "</div>";
 
     echo "<div class=\"form-check mb-2\">\n";
-    echo "  <input class=\"form-check-input\" type=\"radio\" name=\"r_blocked\" id=\"exampleRadios1\" value=\"0\"".$blocked_0."\n";
+    echo "  <input class=\"form-check-input\" type=\"radio\" name=\"r_blocked\" id=\"exampleRadios1\" value=\"1\"".$blocked."\n";
     echo "  <label class=\"form-check-label\" for=\"exampleRadios1\">\n";
     echo "  Blockiert\n";
     echo "  </label>\n";

@@ -56,6 +56,9 @@
           <a class="dropdown-item" href="retailer_edit.php"
             >H&auml;ndler bearbeiten</a
           >
+          <a class="dropdown-item" href="retailer_create.php"
+            >H&auml;ndler anlegen</a
+          >
         </div>
       </li>
       <li class="nav-item dropdown">

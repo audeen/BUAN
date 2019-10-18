@@ -1,7 +1,6 @@
 <?php
 
 
-session_start();
  
 include ('../../config/config.php');
  
@@ -11,8 +10,12 @@ include ('../../config/config.php');
 if(isset($_POST['register'])){
     
     //Retrieve the field values from our registration form.
-    $username = !empty($_POST['username']) ? trim($_POST['username']) : null;
-    $pass = !empty($_POST['password']) ? trim($_POST['password']) : null;
+    $username = !empty($_POST['r_name']) ? trim($_POST['r_name']) : null;
+    $pass = !empty($_POST['r_pw']) ? trim($_POST['r_pw']) : null;
+    $mail = !empty($_POST['r_mail']) ? trim($_POST['r_mail']) : null;
+    $street = !empty($_POST['r_street']) ? trim($_POST['r_street']) : null;
+    $postal = !empty($_POST['r_postal']) ? trim($_POST['r_postal']) : null;
+    $city = !empty($_POST['r_city']) ? trim($_POST['r_city']) : null;
     
     //TO ADD: Error checking (username characters, password length, etc).
     //Basically, you will need to add your own error checking BEFORE
@@ -21,11 +24,16 @@ if(isset($_POST['register'])){
     //Now, we need to check if the supplied username already exists.
     
     //Construct the SQL statement and prepare it.
-    $sql = "SELECT COUNT(username) AS num FROM users WHERE username = :username";
+    $sql = "SELECT COUNT(r_name) AS num FROM retailer WHERE r_name = :r_name";
     $stmt = $pdo->prepare($sql);
     
     //Bind the provided username to our prepared statement.
-    $stmt->bindValue(':username', $username);
+    $stmt->bindValue(':r_name', $username);
+    $stmt->bindValue(':r_pw', $pass);
+    $stmt->bindValue(':r_mail', $mail);
+    $stmt->bindValue(':r_street', $street);
+    $stmt->bindValue(':r_postal', $postal);
+    $stmt->bindValue(':r_city', $city);
     
     //Execute.
     $stmt->execute();
@@ -46,12 +54,17 @@ if(isset($_POST['register'])){
     
     //Prepare our INSERT statement.
     //Remember: We are inserting a new row into our users table.
-    $sql = "INSERT INTO admins (a_name, a_pw) VALUES (:username, :password)";
+    $sql = "INSERT INTO retailer (r_name, r_pw, r_mail, r_street, r_postal, r_city) VALUES (:r_name, :r_pw, :r_mail, :r_street, :r_postal, :r_city)";
     $stmt = $pdo->prepare($sql);
     
     //Bind our variables.
-    $stmt->bindValue(':username', $username);
-    $stmt->bindValue(':password', $passwordHash);
+    $stmt->bindValue(':r_name', $username);
+    $stmt->bindValue(':r_pw', $passwordHash);
+    $stmt->bindValue(':r_mail', $mail);
+    $stmt->bindValue(':r_street', $street);
+    $stmt->bindValue(':r_postal', $postal);
+    $stmt->bindValue(':r_city', $city);
+
  
     //Execute the statement and insert the new account.
     $result = $stmt->execute();
@@ -63,22 +76,5 @@ if(isset($_POST['register'])){
     }
     
 }
- 
+
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Register</title>
-    </head>
-    <body>
-        <h1>Register</h1>
-        <form action="#" method="post">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username"><br>
-            <label for="password">Password</label>
-            <input type="text" id="password" name="password"><br>
-            <input type="submit" name="register" value="Register"></button>
-        </form>
-    </body>
-</html>

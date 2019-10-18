@@ -41,10 +41,10 @@ if(isset($_POST['update']))
     if($pdoExec)
     {
         echo 'Data Updated';
-        echo "<meta http-equiv=\"refresh\" content=\"2;url=../intern/sites/retailer_show.php\">";
+        header("Refresh:1");
     }else{
         echo 'ERROR Data Not Updated';
-        echo "<meta http-equiv=\"refresh\" content=\"2;url=/intern/sites/retailer_show.php\">";
+        header("Refresh:1");
     }
 
 }
