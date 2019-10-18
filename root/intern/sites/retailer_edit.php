@@ -17,7 +17,7 @@
 <?php include ('../../config/security.php'); ?>
 
 <!-- html-head einbinden -->
-<?php include ('../../config/html_head.html'); ?>
+<?php include ('../../config/html_head.php'); ?>
 <body>
     <!-- backend-navigation einbinden -->
   <?php include ('../../config/html_nav_be.php'); ?>
