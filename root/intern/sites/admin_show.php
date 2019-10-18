@@ -17,8 +17,7 @@
 <?php include ('../../config/security.php'); ?>
 
 
-<!DOCTYPE html>
-<html lang="de">
+
   <!-- html-head einbinden -->
   <?php include ('../../config/html_head.php'); ?>
   <body>

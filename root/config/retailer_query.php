@@ -24,7 +24,7 @@ echo "<div class=\"card-deck \">";
     echo "    <h6 class=\"card-subtitle mb-2 text-muted\">ID: ".$row['id_r']."</h6>\n";
 
     // Blockierung aus Query abfragen und Wert in String umwandeln
-    if ($row['r_blocked'] !=0) {
+    if ($row['r_blocked'] ==0) {
       $blocked = "aktiv";
     }
     else{
