@@ -1,0 +1,41 @@
+[data-theme="dark"] {
+  background-color: #222 !important;
+  color: #eee;
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: #333 !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: #000 !important;
+}
+
+[data-theme="dark"] .bg-black {
+  background-color: #eee !important;
+}
+
+[data-theme="dark"] .card {
+  background-color: #303030;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+[data-theme="dark"] .card-deck {
+  background-color: #202020;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+[data-theme="dark"] .card-header {
+  background-color: #444;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+[data-theme="dark"] .card-body {
+  background-color: #303030;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="dark"] .list-group-item {
+  background-color: #303030;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}

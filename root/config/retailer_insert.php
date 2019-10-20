@@ -25,6 +25,8 @@ if(isset($_POST['register'])){
     $street = !empty($_POST['r_street']) ? trim($_POST['r_street']) : null;
     $postal = !empty($_POST['r_postal']) ? trim($_POST['r_postal']) : null;
     $city = !empty($_POST['r_city']) ? trim($_POST['r_city']) : null;
+    $country = !empty($_POST['r_country']) ? trim($_POST['r_country']) : null;
+    $saved = !empty($_POST['r_saved']) ? trim($_POST['r_saved']) : null;
     
     //TO ADD: Error checking (username characters, password length, etc).
     //Basically, you will need to add your own error checking BEFORE
@@ -43,7 +45,9 @@ if(isset($_POST['register'])){
     $stmt->bindValue(':r_street', $street);
     $stmt->bindValue(':r_postal', $postal);
     $stmt->bindValue(':r_city', $city);
-    
+    $stmt->bindValue(':r_country', $country);
+    $stmt->bindValue(':r_saved', $saved);
+    var_dump($stmt);
     //Execute.
     $stmt->execute();
     
@@ -63,7 +67,7 @@ if(isset($_POST['register'])){
     
     //Prepare our INSERT statement.
     //Remember: We are inserting a new row into our users table.
-    $sql = "INSERT INTO retailer (r_name, r_pw, r_mail, r_street, r_postal, r_city) VALUES (:r_name, :r_pw, :r_mail, :r_street, :r_postal, :r_city)";
+    $sql = "INSERT INTO retailer (r_name, r_pw, r_mail, r_street, r_postal, r_city, r_country, r_saved) VALUES (:r_name, :r_pw, :r_mail, :r_street, :r_postal, :r_city, :r_country, :r_saved)";
     $stmt = $pdo->prepare($sql);
     
     //Bind our variables.
@@ -73,6 +77,8 @@ if(isset($_POST['register'])){
     $stmt->bindValue(':r_street', $street);
     $stmt->bindValue(':r_postal', $postal);
     $stmt->bindValue(':r_city', $city);
+    $stmt->bindValue(':r_country', $country);
+    $stmt->bindValue(':r_saved', $saved);
 
  
     //Execute the statement and insert the new account.
