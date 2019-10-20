@@ -131,13 +131,18 @@ if ($products_in_cart) {
                 </tr>
             </tbody>
         </table>
-
+<?php 
+    //Zum Kaufabschluss deaktivieren, wenn Warenkorb leer
+    if (!isset($_SESSION['cart'])) {
+        $switch = "disabled";
+    }
+    else {
+        $switch = "";
+    }
+?>
         <div class="buttons">
-            <input type="submit" class="btn btn-warning mr-2" value="<?php echo $lang_cart[$_SESSION['language']][6];?>" name="update">
-                
-            
-                <input type="submit" class="btn btn-success mr-2 float-right" formaction="../sites/checkout.php">
-            
+            <input type="submit" class="btn btn-warning mr-2 float-right" value="<?php echo $lang_cart[$_SESSION['language']][6];?>" name="update">
+            <input type="submit" class="btn btn-success mr-2 float-left" value="<?php echo $lang_cart[$_SESSION['language']][14];?>" <?php echo $switch;?> formaction="../sites/checkout.php" >          
             </form>
         </div>
     

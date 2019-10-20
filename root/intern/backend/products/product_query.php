@@ -63,7 +63,7 @@ echo "<div class=\"row\">\n";
               echo "<input type=\"hidden\" name=\"product\" value=".$row['id_p'].">";
             echo "</li>";
             echo "<li class=\"list-group-item\">";
-              echo "<input type=\"submit\" class=\"btn btn-success\"value=\"Add To Cart\">";
+              echo "<input type=\"submit\" class=\"btn btn-success\"value=\"".$lang_productshow[$_SESSION['language']][11]."\">";
             echo "</li>";
             echo "</form>";
           }

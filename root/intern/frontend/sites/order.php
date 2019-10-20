@@ -27,7 +27,7 @@ include($lang_index_be);
   <div class="container">
 
   <div class="alert alert-primary mt-3" role="alert">
-    <?php echo $lang[$_SESSION['language']][1]?>
+    <?php echo $lang[$_SESSION['language']][2]?>
   </div>
     </div>
     <!-- Optional JavaScript -->
