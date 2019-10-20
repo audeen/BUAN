@@ -87,7 +87,7 @@ include ('../../backend/functions/authentification.php');
               <?php
 
                 // Ist ein Händler und ein Monat gewählt, erscheint ein Button zur Abrechnung mit hidden-inputs zur Weitergabe über POST + Rechnungen in der Zukunft nicht möglich
-                if(isset($_POST['year']) and ($_POST['month']) != "all" and ($_POST['retailer']) != "all" and strtotime($datum) < time()){
+                if(isset($_POST['year']) and ($_POST['month']) != "all" and ($_POST['retailer']) != "all" /* and strtotime($datum) < time() */){
                     $retailer = $_POST['retailer'];
                     $year = $_POST['year'];
                     $month1 = $_POST['month'];

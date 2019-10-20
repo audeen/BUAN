@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include ('../../../config/config.php');
 include($lang_cart);
 
@@ -51,7 +51,7 @@ if (isset($_POST['order'])) {
     //Insert erfolgreich?
     if($result){
 
-        echo "<meta http-equiv=\"refresh\" content=\"1;url=../../frontend/sites/order.php\">";
+        echo "<meta http-equiv=\"refresh\" content=\"0;url=../../frontend/sites/order.php\">";
         unset($_POST['order']);
         unset($_SESSION['cart']);
     }
@@ -87,7 +87,9 @@ if ($products_in_cart) {
 ?>
 
 <div class="cart content-wrapper">
-    <h1><?php echo $lang_cart[$_SESSION['language']][12];?></h1>
+    <div class="alert alert-primary mt-3" role="alert">
+        <?php echo $lang_cart[$_SESSION['language']][12];?>
+    </div>
     <form action="#" method="post">
         <table class="table">
             <thead>
@@ -118,11 +120,14 @@ if ($products_in_cart) {
                 <?php endforeach; ?>
                 <?php endif; ?>
                 <tr class="subtotal">
-                    <td class="text-right" colspan="4"><?php echo $lang_cart[$_SESSION['language']][9];?> <?=$subtotal?> &euro;</td>
+                    <td></td>
+                    <td></td>
+                    <td><?php echo $lang_cart[$_SESSION['language']][9];?></td>
+                    <td> <?=$subtotal?> &euro;</td>
                 </tr>
             </tbody>
         </table>
-        </form>
+    </form>
 </div>
 <?php 
 
@@ -131,21 +136,23 @@ $sql = $pdo->query("SELECT * FROM retailer WHERE `id_r` = $id")->fetch(PDO::FETC
 
 ?>
 
-<h1><?php echo $lang_cart[$_SESSION['language']][13];?></h2>
-
-
-<p><?php echo $sql['r_prename']." ".$sql['r_surname']?></p>
-<p><?php echo $sql['r_street'] ?></p>
-<p><?php echo $sql['r_postal']?></p>
-<p><?php echo $sql['r_city']?></p>
-<p><?php echo $sql['r_country']?></p>
-
+<div class="alert alert-primary mt-3" role="alert">
+    <?php echo $lang_cart[$_SESSION['language']][13];?>
+</div>
+<div class="m">
+    <p>
+        <?php echo $sql['r_prename']." ".$sql['r_surname']?><br>
+        <?php echo $sql['r_street'] ?><br>
+        <?php echo $sql['r_postal']?><br>
+        <?php echo $sql['r_city']?><br>
+        <?php echo $sql['r_country']?>
+    </p>
+</div>
 </form>
-<div class="buttons">
+<div>
     <form action="#" method="post">
-        <input type="submit" name="order" >
+        <input type="submit" name="order" value="<?php echo $lang_cart[$_SESSION['language']][8]?>" class="btn btn-success mr-2 float-left" >
     </form>
-    <a href="../sites/product_show.php"><?php echo $lang_cart[$_SESSION['language']][7];?></a>
+    <a href="../sites/product_show.php" class="btn btn-danger mr-2 float-right"><?php echo $lang_cart[$_SESSION['language']][7];?></a>
 </div>
 
-<?php include ("../../control/control.php");?>

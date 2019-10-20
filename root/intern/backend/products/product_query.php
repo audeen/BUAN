@@ -54,15 +54,24 @@ echo "<div class=\"row\">\n";
           echo "<li class=\"list-group-item\">".$lang_productshow[$_SESSION['language']][5]."<br>".$row['p_amount'].$lang_productshow[$_SESSION['language']][8]."</li>\n";
           //Nur für Händler anzeigen
           if (isset($_SESSION['user_id_r'])){
+            // Wenn Artikel auf Lager
             if ($row['p_amount'] > 0){
-          echo "<form action=\"#\" method=\"post\">";
-            echo "<input type=\"number\" name=\"quantity\" value=\"1\" min=\"1\" max=".$row['p_amount']." placeholder\"=Quantity\" required>";
-            echo "<input type=\"hidden\" name=\"product\" value=".$row['id_p'].">";
-            echo "<input type=\"submit\" value=\"Add To Cart\">";
-          echo "</form>";
+          
+            echo "<form action=\"#\" method=\"post\">";
+            echo "<li class=\"list-group-item\">";
+              echo "<input type=\"number\" name=\"quantity\" value=\"1\" min=\"1\" max=".$row['p_amount']." placeholder\"=Quantity\" required>";
+              echo "<input type=\"hidden\" name=\"product\" value=".$row['id_p'].">";
+            echo "</li>";
+            echo "<li class=\"list-group-item\">";
+              echo "<input type=\"submit\" class=\"btn btn-success\"value=\"Add To Cart\">";
+            echo "</li>";
+            echo "</form>";
           }
+          // Ausverkauft?
           else {
-            echo "SOLD OUT";
+            echo "<div class=\"btn btn-danger\">";
+              echo $lang_productshow[$_SESSION['language']][12];
+            echo "</div>";
           };
         }
         echo "</ul>";

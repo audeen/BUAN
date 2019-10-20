@@ -12,8 +12,8 @@ $lang_productshow[0][7] = "Zuletzt bearbeitet: ";
 $lang_productshow[0][8] = " St&uuml;ck";
 $lang_productshow[0][9] = "Alle Produkte";
 $lang_productshow[0][10] = "Produkt hinzuf&uuml;gen";
-
-
+$lang_productshow[0][11] = "In den Warenkorb";
+$lang_productshow[0][12] = "Ausverkauft";
 
 $lang_productshow[1][0] = "Active";
 $lang_productshow[1][1] = "Inactive";
@@ -26,6 +26,6 @@ $lang_productshow[1][7] = "Last edited: ";
 $lang_productshow[1][8] = " Pieces";
 $lang_productshow[1][9] = "All Products";
 $lang_productshow[1][10] = "Add Product";
-
-
+$lang_productshow[1][11] = "Add to Cart";
+$lang_productshow[1][12] = "Sold Out!"
 ?>

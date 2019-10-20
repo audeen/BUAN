@@ -41,7 +41,7 @@ if(isset($_POST['login_fe'])){
     $passwordAttempt = !empty($_POST['password']) ? trim($_POST['password']) : null;
     
     //Nutzerdaten beziehen
-    $sql = "SELECT id_r, r_alias, r_pw, r_blocked FROM retailer WHERE r_alias = :username";
+    $sql = "SELECT id_r, r_alias, r_pw, r_blocked, r_prename, r_surname FROM retailer WHERE r_alias = :username";
     $stmt = $pdo->prepare($sql);
     
     //Werte an Parameter binden
@@ -72,6 +72,7 @@ if(isset($_POST['login_fe'])){
             //Session-Variablen setzen
             $_SESSION['user_id_r'] = $user['id_r'];
             $_SESSION['logged_in'] = time();
+            $_SESSION['user_name'] = $user['r_prename']." ".$user['r_surname'];
             
             //Weiterleiten zur Backend-Startseite
             echo "<meta http-equiv=\"refresh\" content=\"0;url=../../root/intern/frontend/sites/index.php\">";

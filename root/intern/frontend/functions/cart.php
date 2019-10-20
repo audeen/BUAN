@@ -17,7 +17,6 @@ if (isset($_POST['product'], $_POST['quantity']) && is_numeric($_POST['product']
     $stmt->execute([$_POST['product']]);
     // Fetch the product from the database and return the result as an Array
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
-    print_r($product);
     // Check if the product exists (array is not empty)
     if ($product && $quantity > 0)  {
         // Product exists in database, now we can create/update the session variable for the cart
@@ -90,7 +89,9 @@ if ($products_in_cart) {
 ?>
 
 <div class="cart content-wrapper">
-    <h1><?php echo $lang_cart[$_SESSION['language']][0];?></h1>
+<button class="btn btn-secondary btn-lg btn-block no-hover" disabled>
+    <?php echo $lang_cart[$_SESSION['language']][0];?>
+</button>
     <form action="#" method="post">
         <table class="table">
             <thead>
@@ -123,16 +124,19 @@ if ($products_in_cart) {
                 <?php endforeach; ?>
                 <?php endif; ?>
                 <tr class="subtotal">
-                    <td class="text-right" colspan="4"><?php echo $lang_cart[$_SESSION['language']][9];?> <?=$subtotal?> &euro;</td>
+                    <td></td>
+                    <td></td>
+                    <td><?php echo $lang_cart[$_SESSION['language']][9];?></td>
+                    <td> <?=$subtotal?> &euro;</td>
                 </tr>
             </tbody>
         </table>
 
         <div class="buttons">
-            <input type="submit" value="<?php echo $lang_cart[$_SESSION['language']][6];?>" name="update">
+            <input type="submit" class="btn btn-warning mr-2" value="<?php echo $lang_cart[$_SESSION['language']][6];?>" name="update">
                 
             
-                <input type="submit" formaction="../functions/checkout.php">
+                <input type="submit" class="btn btn-success mr-2 float-right" formaction="../sites/checkout.php">
             
             </form>
         </div>

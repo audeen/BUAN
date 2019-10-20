@@ -16,7 +16,7 @@ include($lang_nav_fe);
 ?>
 
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-  <a class="navbar-brand" href="../../backend/sites/index.php">BUAN</a>
+  <a class="navbar-brand" href="../../frontend/sites/index.php">BUAN</a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

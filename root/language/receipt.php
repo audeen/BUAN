@@ -3,8 +3,8 @@
 
 $lang_receipt = array();
 $lang_receipt[0][0] = "Gehaltsabrechnung";
-$lang_receipt[0][1] = "Rechnungnsummer";
-$lang_receipt[0][2] = "Rechnungsdatum";
+$lang_receipt[0][1] = "Rechnungnsummer: ";
+$lang_receipt[0][2] = "Rechnungsdatum: ";
 $lang_receipt[0][3] = "Position";
 $lang_receipt[0][4] = "Produkt";
 $lang_receipt[0][5] = "Menge";

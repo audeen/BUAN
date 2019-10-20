@@ -70,8 +70,9 @@ if(isset($_POST['login_be'])){
         if($validPassword === $user['a_pw']){
             
             //Session-Variablen setzen
-            $_SESSION['user_id_a'] = "Admin ID: ".$user['id_a'];
+            $_SESSION['user_id_a'] = $user['id_a'];
             $_SESSION['logged_in'] = time();
+            $_SESSION['user_name'] = $user['a_name'];
             
             //Weiterleiten zur Backend-Startseite
             echo "<meta http-equiv=\"refresh\" content=\"0;url=../../root/intern/backend/sites/index.php\">";
