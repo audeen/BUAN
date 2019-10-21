@@ -23,6 +23,8 @@ $con = mysqli_select_db($db_link, $dbase);
  */
 
 $pdo = new PDO('mysql:host=localhost;dbname=sievert', 'root', '');
+/* $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); */
 // Frontend Zeichensatz festlegen
 header('content-type:text/html; charset=ISO-8859-1');
 

@@ -61,7 +61,24 @@ if(isset($_POST['register'])){
     
     //Prepare our INSERT statement.
     //Remember: We are inserting a new row into our users table.
-    $sql = "INSERT INTO retailer (r_name, r_pw, r_mail, r_street, r_postal, r_city, r_country, r_saved) VALUES (:r_name, :r_pw, :r_mail, :r_street, :r_postal, :r_city, :r_country, :r_saved)";
+    $sql = "INSERT INTO retailer (
+                                r_name,
+                                r_pw,
+                                r_mail, 
+                                r_street, 
+                                r_postal, 
+                                r_city, 
+                                r_country, 
+                                r_saved)
+                                VALUES (
+                                    :r_name,
+                                    :r_pw, 
+                                    :r_mail, 
+                                    :r_street, 
+                                    :r_postal, 
+                                    :r_city, 
+                                    :r_country, 
+                                    :r_saved)";
     $stmt = $pdo->prepare($sql);
     
     //Bind our variables.

@@ -45,8 +45,9 @@
           Produkte
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Produkte anzeigen</a>
-          <a class="dropdown-item" href="#">Produkte bearbeiten</a>
+          <a class="dropdown-item" href="product_show.php">Produkte anzeigen</a>
+          <a class="dropdown-item" href="product_edit.php">Produkte bearbeiten</a>
+          <a class="dropdown-item" href="product_create.php">Produkt hinzuf&uuml;gen</a>
         </div>
       </li>
       <li class="nav-item dropdown">
