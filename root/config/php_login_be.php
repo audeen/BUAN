@@ -44,7 +44,16 @@ if(isset($_POST['login'])){
         //Could not find a user with that username!
         //PS: You might want to handle this error in a more user-friendly manner!
         die('Incorrect username / password combination!');
-    } else{
+    } 
+               //Set Blocked-State
+            
+    elseif ($user['a_blocked']!=0){
+        
+        //Redirect to our protected page, which we called home.php
+        die('User Blocked');
+        exit; 
+    }
+    else{
         //User account found. Check to see if the given password matches the
         //password hash that we stored in our users table.
         
@@ -59,11 +68,7 @@ if(isset($_POST['login'])){
             $_SESSION['user_id'] = $user['id_a'];
             $_SESSION['logged_in'] = time();
 
-            //Set Blocked-State
-            
-            if ($user['a_blocked']!=0){
-                $_SESSION['blocked']="BLOCKIERT"; 
-            };
+
             
             
             //Redirect to our protected page, which we called home.php

@@ -178,11 +178,11 @@ echo "<div class=\"activate_control\">";
          }
          
          // OUTPUT MYSQLI QUERY ACTUAL RELATION TABLE ///////////
-         if(!empty($zeile))
+         if(!empty($row))
          {
             OC_Button($open_close, 1, "open_mysqli", "close_mysqli", "MYSQLI QUERY");
             echo "<div class=\"".$open_close[1][0]."\">";
-            CheckPrintArray($zeile, key($sql));
+            CheckPrintArray($row, key($pdo));
             echo "</div>";
          }
          

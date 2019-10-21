@@ -21,10 +21,4 @@ if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
   exit;
 }
 
-// Prüfen, ob der User blockiert ist
-
-if(isset($_SESSION['blocked'])){
-  header('Location: ../../sites/index.php');
-  exit;
-}
 ?>

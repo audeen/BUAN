@@ -40,14 +40,8 @@ if(isset($_POST['register'])){
     
     //Bind the provided username to our prepared statement.
     $stmt->bindValue(':r_name', $username);
-    $stmt->bindValue(':r_pw', $pass);
-    $stmt->bindValue(':r_mail', $mail);
-    $stmt->bindValue(':r_street', $street);
-    $stmt->bindValue(':r_postal', $postal);
-    $stmt->bindValue(':r_city', $city);
-    $stmt->bindValue(':r_country', $country);
-    $stmt->bindValue(':r_saved', $saved);
-    var_dump($stmt);
+
+ 
     //Execute.
     $stmt->execute();
     
