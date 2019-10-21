@@ -24,8 +24,8 @@
 
 <div class="container">
 
-  <div class="alert alert-danger mt-3" role="alert">
-    H&auml;ndler-Bearbeitung
+  <div class="alert alert-primary mt-3" role="alert">
+    H&auml;ndler anlegen
   </div>
 
 <?php

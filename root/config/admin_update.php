@@ -30,12 +30,13 @@ if(isset($_POST['update']))
     $a_name = $_POST['a_name'];
     $a_blocked = $_POST['a_blocked'];
     $a_saved = $_POST['a_saved'];
+    $a_mail = $_POST['a_mail'];
     
-    $query = "UPDATE `admins` SET `a_name`=:a_name,`a_blocked`=:a_blocked, `a_saved`=:a_saved WHERE `id_a` =:id_a";
+    $query = "UPDATE `admins` SET `a_name`=:a_name,`a_blocked`=:a_blocked,`a_mail`=:a_mail, `a_saved`=:a_saved WHERE `id_a` =:id_a";
     
     $pdoResult = $pdo->prepare($query);
     
-    $pdoExec = $pdoResult->execute(array(":a_name"=>$a_name,":a_blocked"=>$a_blocked,":a_saved"=>$a_saved,":id_a"=>$id_a));
+    $pdoExec = $pdoResult->execute(array(":a_name"=>$a_name,":a_blocked"=>$a_blocked,":a_saved"=>$a_saved,":a_mail"=>$a_mail, ":id_a"=>$id_a));
     
     if($pdoExec)
     {

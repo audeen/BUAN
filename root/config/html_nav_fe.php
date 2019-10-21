@@ -72,10 +72,12 @@
         >
       </li>
     </ul>
-    <div class="custom-control custom-switch">
-      <input type="checkbox" class="custom-control-input" id="darkSwitch" />
-      <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
-    </div>
-    <script src="../js/dark-mode-switch.min.js"></script>
+    <?php
+      // SWITCHER LINK
+        while(list($key, $val) = each($styleSheets)){
+          echo "<button type=\"button\" class=\"btn btn-primary m-2 \"><a href='../config/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a></button>";
+        }
+    ?> 
+
   </div>
 </nav>
