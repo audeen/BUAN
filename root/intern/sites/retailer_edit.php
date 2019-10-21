@@ -41,8 +41,10 @@ $pdo;
 if (isset($_SESSION['cancel'])){
   header("Refresh:0");
 }
+// Wenn keine ID übermittelt, zeige alle an
+$where = !empty($_POST['id_r']) ? "WHERE id_r=\"".$_POST['id_r']."\"" : "";
 
-  $sql = "SELECT * FROM retailer";
+  $sql = "SELECT * FROM retailer $where";
   echo "<div class=\"row\">\n";
   foreach ($pdo->query($sql) as $row) {
   echo "<div class=\"col-md-4\">\n";

@@ -46,7 +46,10 @@ echo "<div class=\"row\">\n";
 /*     echo "        <li class=\"list-group-item\">Stadt: ".$row['r_country']."</li>\n"; */
     echo "       </ul>";
     echo "  <div class=\"card-body\">\n";
-    echo "    <a href=\"retailer_edit.php\" class=\"card-link\">Bearbeiten</a>\n";
+    echo "    <form action=\"retailer_edit.php\" method=\"post\">";
+    echo "    <button type=\"submit\" class=\"btn btn-outline-success\">Bearbeiten</button>";
+    echo "    <input type=\"hidden\" name=\"id_r\" value=\"".$row['id_r']."\">";
+    echo "    </form>";
     echo "  </div>\n";
     echo "  <div class=\"card-footer text-muted\">\n";
     echo" Zuletzt bearbeitet: ".(date("d.m.Y, G:m:s",$row['r_saved']));
