@@ -43,7 +43,7 @@ echo "<div class=\"row\">\n";
     echo "        <li class=\"list-group-item\">Adresse: ".htmlentities($row['r_street'])."</li>\n";
     echo "        <li class=\"list-group-item\">PLZ: ".$row['r_postal']."</li>\n";
     echo "        <li class=\"list-group-item\">Stadt: ".$row['r_city']."</li>\n";
-/*     echo "        <li class=\"list-group-item\">Stadt: ".$row['r_country']."</li>\n"; */
+    echo "        <li class=\"list-group-item\">Stadt: ".$row['r_country']."</li>\n";
     echo "       </ul>";
     echo "  <div class=\"card-body\">\n";
     echo "    <form action=\"retailer_edit.php\" method=\"post\">";
