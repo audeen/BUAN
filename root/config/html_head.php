@@ -15,7 +15,10 @@
 <head>
 
 <?php include('styledefinitions.php'); ?> 
-
+<?php 
+  // Frontend Zeichensatz festlegen
+  header('content-type:text/html; charset=ISO-8859-1');
+?>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta
@@ -23,7 +26,7 @@
     content="width=device-width, initial-scale=1, shrink-to-fit=no"
   />
 
-  <!-- Bootstrap CSS -->
+
 
 
 

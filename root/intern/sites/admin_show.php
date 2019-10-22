@@ -25,11 +25,13 @@
     <?php include ('../../config/html_nav_be.php'); ?>
 
     <div class="container">
-      <div class="alert alert-primary mt-3" role="alert">
-        Alle Admins
+      <div class="container-fluid">
+        <div class="row">
+          <div class="alert alert-primary mt-3 col-12" role="alert"><h2 class="text-center">Alle Admins</h2><br><br>
+          </div>
+        </div>
+        <?php include ('../../config/admin_query.php'); ?>
       </div>
-      <?php include ('../../config/admin_query.php'); ?>
-    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

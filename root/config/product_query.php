@@ -42,9 +42,12 @@ echo "<div class=\"row\">\n";
     echo "        <li class=\"list-group-item\">Preis:<br> ".$row['p_price']."</li>\n";
     echo "        <li class=\"list-group-item\">Anzahl verf&uuml;gbar:<br> ".$row['p_count']."</li>\n";
     /*     echo "        <li class=\"list-group-item\">Stadt: ".$row['r_country']."</li>\n"; */
-    echo "       </ul>";
+    echo "  </ul>";
     echo "  <div class=\"card-body\">\n";
-    echo "    <a href=\"product_edit.php\" class=\"card-link\">Bearbeiten</a>\n";
+    echo "    <form action=\"product_edit.php\" method=\"post\">";
+    echo "      <button type=\"submit\" class=\"btn btn-outline-success\">Bearbeiten</button>";
+    echo "      <input type=\"hidden\" name=\"id_p\" value=\"".$row['id_p']."\">";
+    echo "    </form>";
     echo "  </div>\n";
     echo "  <div class=\"card-footer text-muted\">\n";
     echo" Zuletzt bearbeitet: ".(date("d.m.Y, G:m:s",$row['p_saved']));

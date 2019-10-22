@@ -53,7 +53,9 @@ if(isset($_POST['register'])){
     //I'm just going to kill the script completely, as error handling is outside
     //the scope of this tutorial.
     if($row['num'] > 0){
-        die('That product already exists!');
+
+        die("This product already exists!<script type='text/javascript'>window.location='product_create.php'; </script>");
+        
     } 
 
         //Construct the SQL statement and prepare it.
@@ -74,7 +76,9 @@ if(isset($_POST['register'])){
     //I'm just going to kill the script completely, as error handling is outside
     //the scope of this tutorial.
     if($row['num'] > 0){
-        die('That product already exists!');
+
+        die("This product already exists!<script type='text/javascript'>window.location='product_create.php'; </script>");
+        
     } 
     
     //Prepare our INSERT statement.
@@ -122,11 +126,11 @@ if(isset($_POST['register'])){
     //If the signup process is successful.
     if($result){
         //What you do here is up to you!
-        echo 'Thank you for registering with our website.';
+        echo 'Product added.';
         unset($_POST['register']);
     }
     else {
-        echo "cbvcbvc";
+        echo "Error, data not saved.";
 
     }
     

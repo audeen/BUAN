@@ -25,9 +25,15 @@
     <?php include ('../../config/html_nav_be.php'); ?>
 
     <div class="container">
-      <div class="alert alert-primary mt-3" role="alert">
-        Alle H&auml;ndler
+      <div class="container-fluid">
+        <div class="row">
+          <div class="alert alert-primary mt-3 col-12" role="alert"><h2 class="text-center">Alle H&auml;ndler</h2>
+            <a href="retailer_create.php"><button class="btn btn-success btn-lg float-right"  role="alert">H&auml;ndler hinzuf&uuml;gen</a></button></a>
+          </div>
+        </div>
       </div>
+
+
       <?php include ('../../config/retailer_query.php'); ?>
     </div>
 

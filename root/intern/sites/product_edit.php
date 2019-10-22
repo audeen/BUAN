@@ -42,10 +42,13 @@ $pdo;
 if (isset($_SESSION['cancel'])){
   header("Refresh:0");
 }
-  $sql = "SELECT * FROM products";
-  echo "<div class=\"row\">\n";
+
+// Wenn keine ID übermittelt, zeige alle an
+$where = !empty($_POST['id_p']) ? "WHERE id_p=\"".$_POST['id_p']."\"" : "";
+  $sql = "SELECT * FROM products $where";
+  echo "<div class=\"ld-center\">\n";
   foreach ($pdo->query($sql) as $row) {
-  echo "<div class=\"col-md-4\">\n";
+  echo "<div class=\"col-md\">\n";
   echo "<div class=\"card mb-3\">\n";
 
   echo "<form action=\"#\" method=\"POST\">";

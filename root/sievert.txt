@@ -105,4 +105,18 @@ INSERT INTO `products` VALUES
       '',
       250,
       12,
+      1546300801),
+
+   (2,
+      0,
+      1,
+      'XLR-Female-Female-Adapter',
+      'XLR-female-female-adapter',
+      'Liechtenstein',
+      'Liechtenstein',
+      '20cm XLR-Leitung mit 2 XLR-Female-Steckern',
+      '20cm XLR-Cable with 2 XLR-Female-plugs',
+      '',
+      500,
+      25,
       1546300801)

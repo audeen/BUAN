@@ -42,8 +42,11 @@ if (isset($_SESSION['cancel'])){
   header("Refresh:0");
 }
 
+// Wenn keine ID übermittelt, zeige alle an
+$where = !empty($_POST['id_a']) ? "WHERE id_a=\"".$_POST['id_a']."\"" : "";
+
 // Ausgabe von Cards je admin
-$sql = "SELECT * FROM admins";
+$sql = "SELECT * FROM admins $where";
 echo "<div class=\"row\">\n";
   foreach ($pdo->query($sql) as $row) {
 

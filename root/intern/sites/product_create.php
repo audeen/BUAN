@@ -39,7 +39,7 @@ $pdo;
 // Refresh für Abbrechen-Button
 
 if (isset($_SESSION['cancel'])){
-  header("Refresh:0");
+  echo "<script type='text/javascript'>window.location='product_create.php'; </script>";
 }
 
   echo "  <div class=\"ld-center\">\n";
@@ -50,19 +50,19 @@ if (isset($_SESSION['cancel'])){
     echo "      <h6 class=\"card-subtitle text-muted\">ID wird automatisch vergeben</h6>\n";
     echo "    </div>\n";
     echo "    <div class=\"card-body\">\n";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name_0\" placeholder=\"Name deutsch\">";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name_1\" placeholder=\"Name english\">";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin_0\" placeholder=\"Herkunftsland\">";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin_1\" placeholder=\"Country of Origin\">";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_txt_0\" placeholder=\"Beschreibungsdext\">";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_txt_1\" placeholder=\"Description\">";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_price\" placeholder=\"Preis/Price\">";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_count\" placeholder=\"Anzahl/Count\">";
+    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name_0\" placeholder=\"Name deutsch\" required>";
+    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name_1\" placeholder=\"Name english\" required>";
+    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin_0\" placeholder=\"Herkunftsland\" required>";
+    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin_1\" placeholder=\"Country of Origin\" required>";
+    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_txt_0\" placeholder=\"Beschreibungsdext\" required>";
+    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_txt_1\" placeholder=\"Description\" required>";
+    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_price\" placeholder=\"Preis/Price\" required>";
+    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_count\" placeholder=\"Anzahl/Count\" required>";
     echo "    </div>\n";
     echo "    <div class=\"card-body\">\n";
     echo "      <input type=\"hidden\" name=\"p_saved\" value=\"".time()."\">";
     echo "      <button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"register\">Anlegen</button>";
-    echo "      <button type=\"submit\" class=\"btn btn-outline-danger\" name=\"cancel\">Abbrechen</button>";
+    echo "      <button class=\"btn btn-outline-danger\" name=\"cancel\" formnovalidate>Abbrechen</button>";
 
     echo "    </form>";
     echo "    </div>\n";

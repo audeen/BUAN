@@ -39,7 +39,7 @@ $pdo;
 // Refresh für Abbrechen-Button
 
 if (isset($_SESSION['cancel'])){
-  header("Refresh:0");
+  echo "<script type='text/javascript'>window.location='product_create.php'; </script>";
 }
 
   echo "  <div class=\"ld-center\">\n";
@@ -50,18 +50,18 @@ if (isset($_SESSION['cancel'])){
     echo "      <h6 class=\"card-subtitle text-muted\">ID wird automatisch vergeben</h6>\n";
     echo "    </div>\n";
     echo "    <div class=\"card-body\">\n";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_name\" placeholder=\"Name\">";
-    echo "      <input type=\"password\"class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_pw\" placeholder=\"Password\">";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_mail\" placeholder=\"E-Mail\">";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_street\" placeholder=\"Stra&szlig;e, Nummer\">";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_postal\" placeholder=\"PLZ\">";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_city\" placeholder=\"Stadt\">";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_country\" placeholder=\"Land\">";
+    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_name\" placeholder=\"Name\" required>";
+    echo "      <input type=\"password\"class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_pw\" placeholder=\"Password\" required>";
+    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_mail\" placeholder=\"E-Mail\" required>";
+    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_street\" placeholder=\"Stra&szlig;e, Nummer\" required>";
+    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_postal\" placeholder=\"PLZ\" required>";
+    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_city\" placeholder=\"Stadt\" required>";
+    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_country\" placeholder=\"Land\" required>";
     echo "    </div>\n";
     echo "    <div class=\"card-body\">\n";
     echo "      <input type=\"hidden\" name=\"r_saved\" value=\"".time()."\">";
     echo "      <button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"register\">Anlegen</button>";
-    echo "      <button type=\"submit\" class=\"btn btn-outline-danger\" name=\"cancel\">Abbrechen</button>";
+    echo "      <button class=\"btn btn-outline-danger\" name=\"cancel\" formnovalidate>Abbrechen</button>";
 
     echo "    </form>";
     echo "    </div>\n";

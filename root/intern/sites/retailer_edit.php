@@ -45,9 +45,9 @@ if (isset($_SESSION['cancel'])){
 $where = !empty($_POST['id_r']) ? "WHERE id_r=\"".$_POST['id_r']."\"" : "";
 
   $sql = "SELECT * FROM retailer $where";
-  echo "<div class=\"row\">\n";
+  echo "<div class=\"ld-center\">\n";
   foreach ($pdo->query($sql) as $row) {
-  echo "<div class=\"col-md-4\">\n";
+  echo "<div class=\"col-md\">\n";
   echo "<div class=\"card mb-3\">\n";
 
   echo "<form action=\"#\" method=\"POST\">";

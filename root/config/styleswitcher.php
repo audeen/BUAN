@@ -9,5 +9,5 @@ $_SESSION["STYLE"]=$_REQUEST["SETSTYLE"];
 }
 
 // RETURN TO CURRENT PAGE
-header("Location: ".$_SERVER["HTTP_REFERER"]);
+echo "<script type='text/javascript'>window.location='admin_show.php'; </script>";
 ?> 

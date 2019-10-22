@@ -56,13 +56,14 @@ if(isset($_POST['update']))
     
     if($pdoExec)
     {
+/*         header("Refresh:1"); */
         echo 'Data Updated';
-        header("Refresh:1");
+        echo "<script type='text/javascript'>window.location='retailer_show.php'; </script>";
+
     }else{
         echo 'ERROR Data Not Updated';
-        header("Refresh:1");
+        echo "<script type='text/javascript'>window.location='retailer_show.php'; </script>";
     }
 
 }
-
 ?>

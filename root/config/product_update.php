@@ -73,10 +73,10 @@ if(isset($_POST['update']))
     if($pdoExec)
     {
         echo 'Data Updated';
-        header("Refresh:1");
+        echo "<script type='text/javascript'>window.location='product_show.php'; </script>";
     }else{
         echo 'ERROR Data Not Updated';
-        header("Refresh:1");
+        echo "<script type='text/javascript'>window.location='product_show.php'; </script>";
     }
 
 }

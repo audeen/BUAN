@@ -25,11 +25,22 @@
     <?php include ('../../config/html_nav_be.php'); ?>
 
     <div class="container">
-      <div class="alert alert-primary mt-3" role="alert">
-        Alle Produkte
+      <div class="container-fluid">
+        <div class="row">
+          <div class="alert alert-primary mt-3 col-12" role="alert"><h2 class="text-center">Alle Produkte</h2>
+            <a href="product_create.php"><button class="btn btn-success btn-lg float-right"  role="alert">Produkt hinzuf&uuml;gen</a></button></a>
+          </div>
+        </div>
       </div>
       <?php include ('../../config/product_query.php'); ?>
     </div>
+
+<!--     <div class="container">
+      <div class="alert alert-primary mt-3" role="alert">
+        Alle Produkte
+      </div>
+
+    </div> -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
