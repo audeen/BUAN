@@ -50,14 +50,11 @@ if (isset($_SESSION['cancel'])){
     echo "      <h6 class=\"card-subtitle text-muted\">ID wird automatisch vergeben</h6>\n";
     echo "    </div>\n";
     echo "    <div class=\"card-body\">\n";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name_0\" placeholder=\"Name deutsch\" required>";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name_1\" placeholder=\"Name english\" required>";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin_0\" placeholder=\"Herkunftsland\" required>";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin_1\" placeholder=\"Country of Origin\" required>";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_txt_0\" placeholder=\"Beschreibungsdext\" required>";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_txt_1\" placeholder=\"Description\" required>";
+    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name\" placeholder=\"Name deutsch\" required>";
+    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin\" placeholder=\"Herkunftsland\" required>";
+    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_desc\" placeholder=\"Beschreibungsdext\" required>";
     echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_price\" placeholder=\"Preis/Price\" required>";
-    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_count\" placeholder=\"Anzahl/Count\" required>";
+    echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_amount\" placeholder=\"Anzahl/Count\" required>";
     echo "    </div>\n";
     echo "    <div class=\"card-body\">\n";
     echo "      <input type=\"hidden\" name=\"p_saved\" value=\"".time()."\">";

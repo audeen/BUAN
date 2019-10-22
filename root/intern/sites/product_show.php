@@ -28,7 +28,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="alert alert-primary mt-3 col-12" role="alert"><h2 class="text-center">Alle Produkte</h2>
-            <a href="product_create.php"><button class="btn btn-success btn-lg float-right"  role="alert">Produkt hinzuf&uuml;gen</a></button></a>
+             <a href="product_create.php" class="btn btn-success btn-link btn-lg float-right" role="button">Produkt hinzuf&uuml;gen</a>
           </div>
         </div>
       </div>

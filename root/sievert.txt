@@ -1,3 +1,9 @@
+#Tabelle für Admins
+#Lösche Tabelle Admins, falls existent
+################################################################
+
+DROP TABLE IF EXISTS products;
+
 DROP TABLE IF EXISTS admins;
 
 CREATE TABLE `admins`
@@ -10,7 +16,10 @@ CREATE TABLE `admins`
       `a_saved`     int(12)        NOT NULL     default 0
    );
 
+################################################################
 # Daten in Tabelle schreiben - admins 
+################################################################
+
 INSERT INTO `admins` VALUES 
    (1,
       1,
@@ -24,99 +33,190 @@ INSERT INTO `admins` VALUES
       'mail@mail.mail',
       '5f4dcc3b5aa765d61d8327deb882cf99',
       1570450112);
-# --------------------------------------------------------------------
-# Ende Tabelle admins ################################################
+
+################################################################
+#Ende Tabelle admins 
+#Tabelle für Händler
+#Lösche Tabelle Retailer, falls existent
+################################################################
 
 DROP TABLE IF EXISTS retailer;
 
 CREATE TABLE `retailer`
    (
-      `id_r`   int(10)  PRIMARY KEY    auto_increment,
+      `id_r`        int(10)        PRIMARY KEY  auto_increment,
       `r_blocked`   int(1)         NOT NULL     default 0,
-      `r_name`      varchar(20)    NOT NULL     default '',
+      `r_prename`   varchar(20)    NOT NULL     default '',
+      `r_surname`   varchar(20)    NOT NULL     default '',
+      `r_alias`     varchar(20)    NOT NULL     default '',
       `r_mail`      varchar(50)    NOT NULL     default '',
       `r_pw`        varchar(32)    NOT NULL     default '',      
       `r_street`    varchar(20)    NOT NULL     default '',
-      `r_city`      varchar(20)    NOT NULL     default '',
       `r_postal`    int(10)        NOT NULL     default 0,
+      `r_city`      varchar(20)    NOT NULL     default '',
       `r_country`   varchar(20)    NOT NULL     default '',
       `r_saved`     int(12)        NOT NULL     default 0
 
    );
 
+################################################################
 # Daten in Tabelle schreiben - retailer 
+################################################################
+
 INSERT INTO `retailer` VALUES 
    (1,
       0,
-      'Mustermann, Max',
-      'max@mustermann.de',      
-      'bdca866007fb255201297d2a15a49513',
-      'Musterstraße 1',
-      'Musterstadt',
-      '12345',
-      'Deutschland',
+      'Mette M.',
+      'Jensen',
+      'MJ',
+      'MetteMJensen@dayrep.com',      
+      '5f4dcc3b5aa765d61d8327deb882cf99',
+      'Skibbroen 46',
+      '5560',
+      'Aarup',
+      'Denmark',
       1570450112),
    (2,
       0,
-      'Musterfrau, Marianne',
-      'marianne@musterfrau.de',      
-      'bdca866007fb255201297d2a15a49513',
-      'Musterstraße 2',
-      'Musterstadt',
-      '12345',
-      'Deutschland',
-      1570450112);
+      'Jarkko',
+      'Rahnasto',
+      'JR',
+      'JarkkoRahnasto@dayrep.com',      
+      '5f4dcc3b5aa765d61d8327deb882cf99',
+      'Lukkarinmäentie 28',
+      '06400',
+      'PORVOO',
+      'Finland',
+      1570450112),
+   (3,
+      0,
+      'Thomas',
+      'Strauss',
+      'TS',
+      'ThomasStrauss@dayrep.com',      
+      '5f4dcc3b5aa765d61d8327deb882cf99',
+      'Fasanenstrasse 30',
+      '22587',
+      'Hamburg Nienstedten ',
+      'Germany',
+      1570450112),
+   (4,
+      0,
+      'Razmus',
+      'Martinsson',
+      'RM',
+      'RazmusMartinsson@dayrep.com',      
+      '5f4dcc3b5aa765d61d8327deb882cf99',
+      'Östra Förstadsgatan 62',
+      '740 12',
+      'KNUTBY',
+      'Sweden',
+      1570450112),
+   (5,
+      0,
+      'Mina',
+      'Hauger',
+      'MH',
+      'MinaHauger@dayrep.com',      
+      '5f4dcc3b5aa765d61d8327deb882cf99',
+      'Morianstredet 183',
+      '1767',
+      'HALDEN',
+      'Norway',
+      1570450112);             
 
-######################################################################
-# Tabelle products
-# --------------------------------------------------------------------
-# loeschen einer existierenden Tabelle - products
+################################################################
+#Ende Tabelle retailer
+#Tabelle für Produkte
+#Lösche Tabelle products, falls existent
+################################################################
+
 DROP TABLE IF EXISTS products;
 
 # erstellen der Tabelle - products
 CREATE TABLE `products`
    (
       `id_p`        int(10)        PRIMARY KEY  auto_increment,
-      `p_activ`     int(1)         NOT NULL     default 0,
       `p_blocked`   int(1)         NOT NULL     default 1,
-      `p_name_0`    varchar(50)    NOT NULL     default '',
-      `p_name_1`    varchar(50)    NOT NULL     default '',
-      `p_origin_0`  varchar(30)    NOT NULL     default '',
-      `p_origin_1`  varchar(30)    NOT NULL     default '',
-      `p_txt_0`     varchar(256)   NOT NULL     default '',
-      `p_txt_1`     varchar(256)   NOT NULL     default '',
+      `p_name`    varchar(50)    NOT NULL     default '',
+      `p_origin`  varchar(30)    NOT NULL     default '',
+      `p_desc`     varchar(256)   NOT NULL     default '',
       `p_img`       varchar(100)   NOT NULL     default '',
       `p_price`     int(10)        NOT NULL     default 50,
-      `p_count`     int(10)        NOT NULL     default 0,
+      `p_amount`     int(10)        NOT NULL     default 0,
       `p_saved`     int(12)        NOT NULL     default 0
    );
 
+################################################################
 # Daten in Tabelle schreiben - products
+################################################################
+
 INSERT INTO `products` VALUES
    (1,
       0,
-      1,
-      'XLR-Male-Male-Adapter',
-      'XLR-male-male-adapter',
+      'Neutrik NA3 MM',
       'Liechtenstein',
-      'Liechtenstein',
-      '20cm XLR-Leitung mit 2 XLR-Male-Steckern',
-      '20cm XLR-Cable with 2 XLR-male-plugs',
+      'XLR (male) => XLR (male)',
       '',
-      250,
-      12,
+      50,
+      100,
       1546300801),
 
    (2,
       0,
-      1,
-      'XLR-Female-Female-Adapter',
-      'XLR-female-female-adapter',
+      'Neutrik NA3 FF',
       'Liechtenstein',
-      'Liechtenstein',
-      '20cm XLR-Leitung mit 2 XLR-Female-Steckern',
-      '20cm XLR-Cable with 2 XLR-Female-plugs',
+      'XLR (female) => XLR (female)',
       '',
-      500,
-      25,
-      1546300801)
+      100,
+      100,
+      1546300801),
+
+   (3,
+      0,
+      'Neutrik NA3 M5F',
+      'Liechtenstein',
+      'XLR (female 5p) => XLR (male 3p)',
+      '',
+      150,
+      100,
+      1546300801),
+
+   (4,
+      0,
+      'Neutrik NA3 F5M',
+      'Liechtenstein',
+      'XLR (male 5p) => XLR (female 3p)',
+      '',
+      200,
+      100,
+      1546300801),
+
+   (5,
+      0,
+      'Neutrik NA2 MPMF',
+      'Liechtenstein',
+      'XLR (male) => Cinch (RCA)',
+      '',
+      250,
+      100,
+      1546300801);
+
+################################################################
+#Ende Tabelle products
+#Tabelle für Bilder
+#Lösche Tabelle products, falls existent
+################################################################
+DROP TABLE IF EXISTS images;
+
+# erstellen der Tabelle - images
+CREATE TABLE `images` (
+   `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `name` varchar(80) NOT NULL,
+   `image` varchar(80) NOT NULL
+   );
+
+################################################################
+#Ende Tabelle Bilder
+#Tabelle für Bilder
+################################################################
