@@ -40,7 +40,7 @@ echo "<div class=\"row\">\n";
     echo "  </div>\n";
     echo "  <ul class=\"list-group list-group-flush\">\n";
     echo "        <li class=\"list-group-item\">Mail: ".$row['r_mail']."</li>\n";
-    echo "        <li class=\"list-group-item\">Adresse: ".$row['r_street']."</li>\n";
+    echo "        <li class=\"list-group-item\">Adresse: ".htmlentities($row['r_street'])."</li>\n";
     echo "        <li class=\"list-group-item\">PLZ: ".$row['r_postal']."</li>\n";
     echo "        <li class=\"list-group-item\">Stadt: ".$row['r_city']."</li>\n";
 /*     echo "        <li class=\"list-group-item\">Stadt: ".$row['r_country']."</li>\n"; */

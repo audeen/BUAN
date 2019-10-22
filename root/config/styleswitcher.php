@@ -1,4 +1,5 @@
 <?php
+// http://dev.eyedea.eu/samples/styleswitch-php/
 // SET COOKIE FOR 1 YEAR
 if(isset($_REQUEST["SETSTYLE"])){
 if(setcookie("testcookie",true)){
@@ -9,5 +10,5 @@ $_SESSION["STYLE"]=$_REQUEST["SETSTYLE"];
 }
 
 // RETURN TO CURRENT PAGE
-echo "<script type='text/javascript'>window.location='admin_show.php'; </script>";
+header("Location: ".$_SERVER["HTTP_REFERER"]);
 ?> 
