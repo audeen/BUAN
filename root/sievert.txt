@@ -211,9 +211,10 @@ DROP TABLE IF EXISTS images;
 
 # erstellen der Tabelle - images
 CREATE TABLE `images` (
-   `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   `name` varchar(80) NOT NULL,
-   `image` varchar(80) NOT NULL
+   `id_i` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `i_name` varchar(80) NOT NULL default '',
+   `image` varchar(80) NOT NULL default '',
+   `id_p` int(10) NOT NULL default 0
    );
 
 ################################################################

@@ -23,8 +23,8 @@ $con = mysqli_select_db($db_link, $dbase);
  */
 
 $pdo = new PDO('mysql:host=localhost;dbname=sievert', 'root', '');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); 
+/* $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);  */
 
 
 
