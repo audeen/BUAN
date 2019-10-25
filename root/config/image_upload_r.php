@@ -7,7 +7,7 @@ include ('config.php');
   $imgFile = $_FILES['image']['name'];
   $tmp_dir = $_FILES['image']['tmp_name'];
   $imgSize = $_FILES['image']['size'];
-  $id_p = $_POST['id_p'];
+  $id_r = $_POST['id_r'];
   
   
    $upload_dir = '../../images/'; // upload directory
@@ -39,15 +39,15 @@ include ('config.php');
   // if no error occured, continue ....
   if(!isset($errMSG))
   {
-   $stmt = $pdo->prepare('INSERT INTO images(i_name, image, id_p) VALUES(:i_name, :image, :id_p)');
-   $stmt->bindParam(':i_name',$imgFile);
+   $stmt = $pdo->prepare('INSERT INTO r_images(ri_name, image, id_ri) VALUES(:ri_name, :image, :id_ri)');
+   $stmt->bindParam(':ri_name',$imgFile);
    $stmt->bindParam(':image',$image);
-   $stmt->bindParam(':id_p',$id_p);
+   $stmt->bindParam(':id_ri',$id_ri);
    
    if($stmt->execute())
    {
     $successMSG = "new record succesfully inserted ...";
-    header("refresh:5;index.php"); // redirects image view page after 5 seconds.
+    /* echo "<script type='text/javascript'>window.location='retailer_show.php'; </script>";; // redirects image view page after 5 seconds. */
    }
    else
    {

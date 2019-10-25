@@ -16,7 +16,7 @@ include ('../../config/config.php');
  
 //If the POST var "register" exists (our submit button), then we can
 //assume that the user has submitted the registration form.
-if(isset($_POST['register'])){
+if(isset($_POST['update'])){
     
     //Retrieve the field values from our registration form.
     $name = !empty($_POST['p_name']) ? trim($_POST['p_name']) : null;

@@ -50,7 +50,9 @@ if (isset($_SESSION['cancel'])){
     echo "      <h6 class=\"card-subtitle text-muted\">ID wird automatisch vergeben</h6>\n";
     echo "    </div>\n";
     echo "    <div class=\"card-body\">\n";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_name\" placeholder=\"Name\" required>";
+    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_prename\" placeholder=\"Prename\" required>";
+    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_surname\" placeholder=\"Surname\" required>";
+    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_alias\" placeholder=\"Alias\" required>";
     echo "      <input type=\"password\"class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_pw\" placeholder=\"Password\" required>";
     echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_mail\" placeholder=\"E-Mail\" required>";
     echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_street\" placeholder=\"Stra&szlig;e, Nummer\" required>";
@@ -58,6 +60,10 @@ if (isset($_SESSION['cancel'])){
     echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_city\" placeholder=\"Stadt\" required>";
     echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_country\" placeholder=\"Land\" required>";
     echo "    </div>\n";
+    echo "    <div class=\"card-body\">";
+    echo "      <label class=\"control-label\"><h5>H&auml;ndlerbild festlegen</h5></label>";
+    echo "      <input class=\"input-group\" type=\"file\" name=\"image\" accept=\"image/*\" />";
+    echo "    </div>";
     echo "    <div class=\"card-body\">\n";
     echo "      <input type=\"hidden\" name=\"r_saved\" value=\"".time()."\">";
     echo "      <button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"register\">Anlegen</button>";

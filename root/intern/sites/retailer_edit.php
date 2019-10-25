@@ -32,6 +32,7 @@
 
 include ('../../config/config.php');
 include ('../../config/retailer_update.php');
+include ('../../config/image_upload_r.php');
 
 // Datenbankverbindung herstellen
 $pdo;
@@ -39,7 +40,7 @@ $pdo;
 // Refresh für Abbrechen-Button
 
 if (isset($_SESSION['cancel'])){
-  header("Refresh:0");
+  echo "<script type='text/javascript'>window.location='retailer_show.php'; </script>";
 }
 // Wenn keine ID übermittelt, zeige alle an
 $where = !empty($_POST['id_r']) ? "WHERE id_r=\"".$_POST['id_r']."\"" : "";
@@ -50,13 +51,15 @@ $where = !empty($_POST['id_r']) ? "WHERE id_r=\"".$_POST['id_r']."\"" : "";
   echo "<div class=\"col-md\">\n";
   echo "<div class=\"card mb-3\">\n";
 
-  echo "<form action=\"#\" method=\"POST\">";
-  echo "  <h3 class=\"card-header\">".$row['r_name']."</h3>\n";
+  echo "<form action=\"#\" method=\"POST\" enctype=\"multipart/form-data\">";
+  echo "  <h3 class=\"card-header\">".$row['r_surname'].", ".$row['r_prename']."</h3>\n";
   echo "  <div class=\"card-body\">\n";
   echo "    <h6 class=\"card-subtitle text-muted\">ID: ".$row['id_r']."</h6>\n";
   echo "  </div>\n";
   echo "  <div class=\"card-body\">\n";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_name\" value=\"".$row['r_name']."\">";
+  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_prename\" value=\"".$row['r_prename']."\">";
+  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_surname\" value=\"".$row['r_surname']."\">";
+  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_alias\" value=\"".$row['r_alias']."\">";
   echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_mail\" value=\"".$row['r_mail']."\">";
   echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_street\" value=\"".$row['r_street']."\">";
   echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_postal\" value=\"".$row['r_postal']."\">";
@@ -67,7 +70,10 @@ $where = !empty($_POST['id_r']) ? "WHERE id_r=\"".$_POST['id_r']."\"" : "";
 /*     echo "  <div class=\"card-body\">\n";
   echo "  </div>\n"; */
 
-
+  echo "    <div class=\"card-body\">";
+  echo "      <label class=\"control-label\"><h5>H&auml;ndlerbild festlegen</h5></label>";
+  echo "      <input class=\"input-group\" type=\"file\" name=\"image\" accept=\"image/*\" />";
+  echo "    </div>";
   echo "  <ul class=\"list-group list-group-flush\">\n";
   echo "    <li class=\"list-group-item\">Status:<br></li>\n";
   echo "  </ul>\n";

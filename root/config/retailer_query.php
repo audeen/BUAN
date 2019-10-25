@@ -53,7 +53,7 @@ echo "<div class=\"row\">\n";
     echo "    </form>";
     echo "  </div>\n";
     echo "  <div class=\"card-footer text-muted\">\n";
-    echo" Zuletzt bearbeitet: ".(date("d.m.Y, G:m:s",$row['r_saved']));
+    echo" Zuletzt bearbeitet: ".(date("d.m.Y, H:i:s",$row['r_saved']));
     echo "  </div>\n";
     echo "</div>\n";
     echo "</div>\n";

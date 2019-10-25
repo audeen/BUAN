@@ -204,20 +204,33 @@ INSERT INTO `products` VALUES
 
 ################################################################
 #Ende Tabelle products
-#Tabelle für Bilder
-#Lösche Tabelle products, falls existent
+#Tabelle für Bilder - Händler
+#Lösche Tabelle r_images, falls existent
 ################################################################
-DROP TABLE IF EXISTS images;
+DROP TABLE IF EXISTS r_images;
 
 # erstellen der Tabelle - images
-CREATE TABLE `images` (
-   `id_i` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   `i_name` varchar(80) NOT NULL default '',
+CREATE TABLE `r_images` (
+   `id_ri` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `ri_name` varchar(80) NOT NULL default  '',
    `image` varchar(80) NOT NULL default '',
-   `id_p` int(10) NOT NULL default 0
+   `id_r` int(10) default 0
    );
+################################################################
+#Ende Tabelle r_images
+#Tabelle für Bilder - Produkte
+#Lösche Tabelle p_images, falls existent
+################################################################
+DROP TABLE IF EXISTS p_images;
 
-################################################################
-#Ende Tabelle Bilder
-#Tabelle für Bilder
-################################################################
+# erstellen der Tabelle - p_images
+CREATE TABLE `p_images` (
+   `id_pi` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `pi_name` varchar(80) default '',
+   `image` varchar(80) default '',
+   `id_p` int(10) default 0
+   );
+#################################################################
+#Ende Tabelle p_images
+#
+#################################################################

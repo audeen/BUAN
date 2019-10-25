@@ -24,20 +24,25 @@ if(isset($_POST['update']))
     
     // get values form input text and number
     
+    $r_prename = !empty($_POST['r_prename']) ? trim($_POST['r_prename']) : null;
+    $r_surname = !empty($_POST['r_surname']) ? trim($_POST['r_surname']) : null;
+    $r_alias = !empty($_POST['r_alias']) ? trim($_POST['r_alias']) : null;
+    $r_mail = !empty($_POST['r_mail']) ? trim($_POST['r_mail']) : null;
+    $r_street = !empty($_POST['r_street']) ? trim($_POST['r_street']) : null;
+    $r_postal = !empty($_POST['r_postal']) ? trim($_POST['r_postal']) : null;
+    $r_city = !empty($_POST['r_city']) ? trim($_POST['r_city']) : null;
+    $r_country = !empty($_POST['r_country']) ? trim($_POST['r_country']) : null;
+    
     $id_r = $_POST['id_r'];
-    $r_name = $_POST['r_name'];
-    $r_blocked = $_POST['r_blocked'];
-    $r_mail = $_POST['r_mail'];
-    $r_street = $_POST['r_street'];
-    $r_postal = $_POST['r_postal'];
-    $r_city = $_POST['r_city'];
-    $r_country = $_POST['r_country'];
     $r_saved = $_POST['r_saved'];
+    $r_blocked = $_POST['r_blocked'];
     
     
     $query =    "UPDATE `retailer` 
                 SET 
-                `r_name`=:r_name,
+                `r_prename`=:r_prename,
+                `r_surname`=:r_surname,
+                `r_alias`=:r_alias,
                 `r_blocked`=:r_blocked,
                 `r_mail`=:r_mail,
                 `r_street`=:r_street,
@@ -50,13 +55,20 @@ if(isset($_POST['update']))
     
     $pdoResult = $pdo->prepare($query);
     
-    $pdoExec = $pdoResult->execute(array(":r_name"=>$r_name,":r_mail"=>$r_mail,":r_street"=>$r_street,":r_postal"=>$r_postal,":r_city"=>$r_city,":r_blocked"=>$r_blocked,":r_country"=>$r_country, ":r_saved"=>$r_saved, ":id_r"=>$id_r,));
-   /*  $pdoExec = $pdoResult->execute(array(":a_name"=>$a_name,":a_blocked"=>$a_blocked,":id_a"=>$id_a)); */
-    
-    
+    $pdoExec = $pdoResult->execute(array(
+                                        ":r_surname"=>$r_surname,
+                                        ":r_prename"=>$r_prename,
+                                        ":r_alias"=>$r_alias,
+                                        ":r_mail"=>$r_mail,
+                                        ":r_street"=>$r_street,
+                                        ":r_postal"=>$r_postal,
+                                        ":r_city"=>$r_city,
+                                        ":r_blocked"=>$r_blocked,
+                                        ":r_country"=>$r_country,
+                                        ":r_saved"=>$r_saved,
+                                        ":id_r"=>$id_r,));
     if($pdoExec)
     {
-/*         header("Refresh:1"); */
         echo 'Data Updated';
         echo "<script type='text/javascript'>window.location='retailer_show.php'; </script>";
 

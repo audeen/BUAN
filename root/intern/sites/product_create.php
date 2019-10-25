@@ -56,9 +56,13 @@ if (isset($_SESSION['cancel'])){
     echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_price\" placeholder=\"Preis/Price\" required>";
     echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_amount\" placeholder=\"Anzahl/Count\" required>";
     echo "    </div>\n";
+    echo "    <div class=\"card-body\">";
+    echo "      <label class=\"control-label\"><h5>Produtbild festlegen</h5></label>";
+    echo "      <input class=\"input-group\" type=\"file\" name=\"image\" accept=\"image/*\" />";
+    echo "    </div>";
     echo "    <div class=\"card-body\">\n";
     echo "      <input type=\"hidden\" name=\"p_saved\" value=\"".time()."\">";
-    echo "      <button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"register\">Anlegen</button>";
+    echo "      <button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">Anlegen</button>";
     echo "      <button class=\"btn btn-outline-danger\" name=\"cancel\" formnovalidate>Abbrechen</button>";
 
     echo "    </form>";

@@ -19,7 +19,9 @@ include ('../../config/config.php');
 if(isset($_POST['register'])){
     
     //Retrieve the field values from our registration form.
-    $username = !empty($_POST['r_name']) ? trim($_POST['r_name']) : null;
+    $prename = !empty($_POST['r_prename']) ? trim($_POST['r_prename']) : null;
+    $surname = !empty($_POST['r_surname']) ? trim($_POST['r_surname']) : null;
+    $alias = !empty($_POST['r_alias']) ? trim($_POST['r_alias']) : null;
     $pass = !empty($_POST['r_pw']) ? trim($_POST['r_pw']) : null;
     $mail = !empty($_POST['r_mail']) ? trim($_POST['r_mail']) : null;
     $street = !empty($_POST['r_street']) ? trim($_POST['r_street']) : null;
@@ -32,7 +34,7 @@ if(isset($_POST['register'])){
     //Basically, you will need to add your own error checking BEFORE
     //the prepared statement is built and executed.
     
-    //Now, we need to check if the supplied username already exists.
+/*     //Now, we need to check if the supplied username already exists.
     
     //Construct the SQL statement and prepare it.
     $sql = "SELECT COUNT(r_name) AS num FROM retailer WHERE r_name = :r_name";
@@ -55,14 +57,16 @@ if(isset($_POST['register'])){
     if($row['num'] > 0){
         die('That username already exists!');
     }
-    
+     */
     //Hash the password as we do NOT want to store our passwords in plain text.
     $passwordHash = md5($pass);
     
     //Prepare our INSERT statement.
     //Remember: We are inserting a new row into our users table.
     $sql = "INSERT INTO retailer (
-                                r_name,
+                                r_prename,
+                                r_surname,
+                                r_alias,
                                 r_pw,
                                 r_mail, 
                                 r_street, 
@@ -71,7 +75,9 @@ if(isset($_POST['register'])){
                                 r_country, 
                                 r_saved)
                                 VALUES (
-                                    :r_name,
+                                    :r_prename,
+                                    :r_surname,
+                                    :r_alias,
                                     :r_pw, 
                                     :r_mail, 
                                     :r_street, 
@@ -82,7 +88,10 @@ if(isset($_POST['register'])){
     $stmt = $pdo->prepare($sql);
     
     //Bind our variables.
-    $stmt->bindValue(':r_name', $username);
+    
+    $stmt->bindValue(':r_prename', $prename);
+    $stmt->bindValue(':r_surname', $surname);
+    $stmt->bindValue(':r_alias', $alias);
     $stmt->bindValue(':r_pw', $passwordHash);
     $stmt->bindValue(':r_mail', $mail);
     $stmt->bindValue(':r_street', $street);

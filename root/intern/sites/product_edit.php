@@ -34,14 +34,14 @@ include ('../../config/config.php');
 
 include ('../../config/product_update.php');
 
-include ('../../config/image_upload.php');
+include ('../../config/image_upload_p.php');
 // Datenbankverbindung herstellen
 $pdo;
 
 // Refresh für Abbrechen-Button
 
 if (isset($_SESSION['cancel'])){
-  header("Refresh:0");
+  echo "<script type='text/javascript'>window.location='product_show.php'; </script>";
 }
 
 // Wenn keine ID übermittelt, zeige alle an
