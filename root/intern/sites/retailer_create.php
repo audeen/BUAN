@@ -22,6 +22,7 @@
     <!-- backend-navigation einbinden -->
   <?php include ('../../config/html_nav_be.php'); ?>
 
+
 <div class="container">
 
   <div class="alert alert-primary mt-3" role="alert">
@@ -60,10 +61,6 @@ if (isset($_SESSION['cancel'])){
     echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_city\" placeholder=\"Stadt\" required>";
     echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_country\" placeholder=\"Land\" required>";
     echo "    </div>\n";
-    echo "    <div class=\"card-body\">";
-    echo "      <label class=\"control-label\"><h5>H&auml;ndlerbild festlegen</h5></label>";
-    echo "      <input class=\"input-group\" type=\"file\" name=\"image\" accept=\"image/*\" />";
-    echo "    </div>";
     echo "    <div class=\"card-body\">\n";
     echo "      <input type=\"hidden\" name=\"r_saved\" value=\"".time()."\">";
     echo "      <button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"register\">Anlegen</button>";

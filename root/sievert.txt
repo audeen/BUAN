@@ -22,13 +22,13 @@ CREATE TABLE `admins`
 
 INSERT INTO `admins` VALUES 
    (1,
-      1,
+      0,
       'Sievert, Jannik',
       'mail@mail.mail',
       '21232f297a57a5a743894a0e4a801fc3',
       1570450112),
    (2,
-      1,
+      0,
       'admin',
       'mail@mail.mail',
       '5f4dcc3b5aa765d61d8327deb882cf99',
@@ -55,7 +55,8 @@ CREATE TABLE `retailer`
       `r_postal`    int(10)        NOT NULL     default 0,
       `r_city`      varchar(20)    NOT NULL     default '',
       `r_country`   varchar(20)    NOT NULL     default '',
-      `r_saved`     int(12)        NOT NULL     default 0
+      `r_saved`     int(12)        NOT NULL     default 0,
+      `r_img`       varchar(80)    NOT NULL     
 
    );
 
@@ -75,7 +76,8 @@ INSERT INTO `retailer` VALUES
       '5560',
       'Aarup',
       'Denmark',
-      1570450112),
+      1570450112,
+      '13438.jpg'),
    (2,
       0,
       'Jarkko',
@@ -87,7 +89,8 @@ INSERT INTO `retailer` VALUES
       '06400',
       'PORVOO',
       'Finland',
-      1570450112),
+      1570450112,
+      '686622.jpg'),
    (3,
       0,
       'Thomas',
@@ -99,7 +102,8 @@ INSERT INTO `retailer` VALUES
       '22587',
       'Hamburg Nienstedten ',
       'Germany',
-      1570450112),
+      1570450112,
+      '437155.jpg'),
    (4,
       0,
       'Razmus',
@@ -111,7 +115,8 @@ INSERT INTO `retailer` VALUES
       '740 12',
       'KNUTBY',
       'Sweden',
-      1570450112),
+      1570450112,
+      '792789.jpg'),
    (5,
       0,
       'Mina',
@@ -123,7 +128,8 @@ INSERT INTO `retailer` VALUES
       '1767',
       'HALDEN',
       'Norway',
-      1570450112);             
+      1570450112,
+      '345260.jpg');             
 
 ################################################################
 #Ende Tabelle retailer
@@ -157,80 +163,56 @@ INSERT INTO `products` VALUES
       'Neutrik NA3 MM',
       'Liechtenstein',
       'XLR (male) => XLR (male)',
-      '',
+      '966008.jpg',
       50,
       100,
-      1546300801),
+      1546300801
+      ),
 
    (2,
       0,
       'Neutrik NA3 FF',
       'Liechtenstein',
       'XLR (female) => XLR (female)',
-      '',
+      '684783.jpg',
       100,
       100,
-      1546300801),
+      1546300801
+      ),
 
    (3,
       0,
       'Neutrik NA3 M5F',
       'Liechtenstein',
       'XLR (female 5p) => XLR (male 3p)',
-      '',
+      '92513.jpg',
       150,
       100,
-      1546300801),
+      1546300801
+      ),
 
    (4,
       0,
       'Neutrik NA3 F5M',
       'Liechtenstein',
       'XLR (male 5p) => XLR (female 3p)',
-      '',
+      '818510.jpg',
       200,
       100,
-      1546300801),
+      1546300801
+      ),
 
    (5,
       0,
       'Neutrik NA2 MPMF',
       'Liechtenstein',
       'XLR (male) => Cinch (RCA)',
-      '',
+      '939825.jpg',
       250,
       100,
-      1546300801);
+      1546300801
+      );
 
 ################################################################
 #Ende Tabelle products
-#Tabelle für Bilder - Händler
-#Lösche Tabelle r_images, falls existent
 ################################################################
-DROP TABLE IF EXISTS r_images;
-
-# erstellen der Tabelle - images
-CREATE TABLE `r_images` (
-   `id_ri` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   `ri_name` varchar(80) NOT NULL default  '',
-   `image` varchar(80) NOT NULL default '',
-   `id_r` int(10) default 0
-   );
-################################################################
-#Ende Tabelle r_images
-#Tabelle für Bilder - Produkte
-#Lösche Tabelle p_images, falls existent
-################################################################
-DROP TABLE IF EXISTS p_images;
-
-# erstellen der Tabelle - p_images
-CREATE TABLE `p_images` (
-   `id_pi` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   `pi_name` varchar(80) default '',
-   `image` varchar(80) default '',
-   `id_p` int(10) default 0
-   );
-#################################################################
-#Ende Tabelle p_images
-#
-#################################################################

@@ -1,16 +1,21 @@
 <?php
-include ('config.php');
- 
+//https://www.codingcage.com/2014/12/file-upload-and-view-with-php-and-mysql.html
+
+
+
+$id_p = $_POST['id_p'];
+
  if(isset($_POST['update']))
  {
+
   $pdo; 
   $imgFile = $_FILES['image']['name'];
   $tmp_dir = $_FILES['image']['tmp_name'];
   $imgSize = $_FILES['image']['size'];
-  $id_p = $_POST['id_p'];
+
   
   
-   $upload_dir = '../../images/'; // upload directory
+   $upload_dir = '../../images/products/'; // upload directory
  
    $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
   
@@ -33,24 +38,25 @@ include ('config.php');
    else{
     $errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";  
    }
-  }
+  
   
   
   // if no error occured, continue ....
   if(!isset($errMSG))
   {
-   $stmt = $pdo->prepare('INSERT INTO p_images(pi_name, image, id_pi) VALUES(:i_name, :image, :id_pi)');
-   $stmt->bindParam(':i_name',$imgFile);
-   $stmt->bindParam(':image',$image);
-   $stmt->bindParam(':id_pi',$id_pi);
+   $query = "UPDATE `products`
+          SET 
+          `p_img` = :p_img
+
+          WHERE 
+
+          `id_p` =:id_p";
    
-   if($stmt->execute())
-   {
-    $successMSG = "new record succesfully inserted ...";
-    header("refresh:5;index.php"); // redirects image view page after 5 seconds.
-   }
-   else
-   {
-    $errMSG = "error while inserting....";
-   }
+   $pdoResult = $pdo->prepare($query);
+
+   $pdoExec = $pdoResult->execute(array(
+      ":p_img"=>$image,
+      ":id_p"=>$id_p));
+
   }
+}
