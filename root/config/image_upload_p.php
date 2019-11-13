@@ -44,19 +44,19 @@ $id_p = $_POST['id_p'];
   // if no error occured, continue ....
   if(!isset($errMSG))
   {
-   $query = "UPDATE `products`
-          SET 
-          `p_img` = :p_img
+   $query =   "UPDATE
+                     `products`
+              SET 
+                     `p_img` = :p_img
 
-          WHERE 
+              WHERE 
 
-          `id_p` =:id_p";
+                     `id_p` =:id_p";
    
    $pdoResult = $pdo->prepare($query);
 
    $pdoExec = $pdoResult->execute(array(
       ":p_img"=>$image,
       ":id_p"=>$id_p));
-
   }
 }

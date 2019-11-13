@@ -13,9 +13,6 @@ $id_r =  $_POST['id_r'];
   $tmp_dir = $_FILES['image']['tmp_name'];
   $imgSize = $_FILES['image']['size'];
   
-  
-  
-  
    $upload_dir = '../../images/retailer/'; // upload directory
  
    $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
@@ -39,19 +36,16 @@ $id_r =  $_POST['id_r'];
    else{
     $errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";  
    }
-  
-
-  
-  // if no error occured, continue ....
-  if(!isset($errMSG))
-  {
-   $query = "UPDATE `retailer`
-          SET 
-          `r_img` = :r_img
-
-          WHERE 
-
-          `id_r` =:id_r";
+    
+   // if no error occured, continue ....
+   if(!isset($errMSG))
+   {
+       $query = "UPDATE 
+                     `retailer`
+                 SET 
+                     `r_img` = :r_img
+                 WHERE 
+                     `id_r` =:id_r";
    
    $pdoResult = $pdo->prepare($query);
 

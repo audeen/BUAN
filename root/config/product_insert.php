@@ -19,12 +19,12 @@ include ('../../config/config.php');
 if(isset($_POST['update'])){
     
     //Retrieve the field values from our registration form.
-    $name = !empty($_POST['p_name']) ? trim($_POST['p_name']) : null;
+    $name =   !empty($_POST['p_name']) ? trim($_POST['p_name']) : null;
     $origin = !empty($_POST['p_origin']) ? trim($_POST['p_origin']) : null;
-    $desc = !empty($_POST['p_desc']) ? trim($_POST['p_desc']) : null;
+    $desc =   !empty($_POST['p_desc']) ? trim($_POST['p_desc']) : null;
     $amount = !empty($_POST['p_amount']) ? trim($_POST['p_amount']) : null;
-    $price = !empty($_POST['p_price']) ? trim($_POST['p_price']) : null;
-    $saved = !empty($_POST['p_saved']) ? trim($_POST['p_saved']) : null;
+    $price =  !empty($_POST['p_price']) ? trim($_POST['p_price']) : null;
+    $saved =  !empty($_POST['p_saved']) ? trim($_POST['p_saved']) : null;
     
     //TO ADD: Error checking (username characters, password length, etc).
     //Basically, you will need to add your own error checking BEFORE
@@ -84,8 +84,6 @@ if(isset($_POST['update'])){
     $stmt->bindValue(':p_price', $price);
     $stmt->bindValue(':p_saved', $saved);
 
-
- 
     //Execute the statement and insert the new account.
     $result = $stmt->execute();
     
