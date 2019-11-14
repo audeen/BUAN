@@ -9,7 +9,8 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
-
+include('config.php');
+include($lang_nav_be);
 ?>
 
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
@@ -21,16 +22,16 @@
   <div class="navbar-collapse collapse justify-content-center" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.php"><?php echo $lang_navbe[$_SESSION['language']][0]?> <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="product_show.php">Produkte</a>
+        <a class="nav-link" href="product_show.php"><?php echo $lang_navbe[$_SESSION['language']][1]?></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="retailer_show.php">H&auml;ndler</a>
+        <a class="nav-link" href="retailer_show.php"><?php echo $lang_navbe[$_SESSION['language']][2]?></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="admin_show.php">Admins</a>
+        <a class="nav-link" href="admin_show.php"><?php echo $lang_navbe[$_SESSION['language']][3]?></a>
       </li>
       <li>
       <?php
@@ -39,6 +40,18 @@
           echo "<button type=\"button\" class=\"btn btn-primary m-2 \"><a href='../../config/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a></button>";
         }
       ?>
+      </li>
+      <li>
+        <?php
+          echo "<form action=\"#\" method=\"post\">";
+          echo "<button type=\"submit\" name=\"language\" value=\"0\">";
+            echo "deutsch";
+          echo "</button>";
+          echo "<form action=\"#\" method=\"post\">";
+          echo "<button type=\"submit\" name=\"language\" value=\"1\">";
+            echo "english";
+          echo "</button>";
+        ?>
       </li>
       <li class="nav-item active">
         <form action="#">

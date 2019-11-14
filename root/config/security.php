@@ -10,7 +10,6 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 
-session_start();
  
 //Prüfen, ob der User eingeloggt ist
 

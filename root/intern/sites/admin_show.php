@@ -9,8 +9,9 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
-
+session_start();
 ?>
+
 
 
 <!-- Include Security-File -->

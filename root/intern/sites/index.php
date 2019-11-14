@@ -9,9 +9,11 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
+session_start();
+include('../../config/config.php');
+include($lang_index_be);
 
 ?>
-
 
 <!-- Include Security-File -->
 <?php include ('../../config/security.php'); ?>
@@ -27,7 +29,7 @@
   <div class="container">
 
   <div class="alert alert-primary mt-3" role="alert">
-        Wilkommen im Backend, wählen Sie eine Funktion
+    <?php echo $lang[$_SESSION['language']][0]?>
   </div>
     </div>
     <!-- Optional JavaScript -->

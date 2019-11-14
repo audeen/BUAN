@@ -9,7 +9,7 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
-
+session_start();
 ?>
 
 
@@ -68,10 +68,9 @@ echo "<div class=\"row\">\n";
     echo "  </div>\n"; */
 
 
+
     echo "  <ul class=\"list-group list-group-flush\">\n";
-    echo "    <li class=\"list-group-item\">Status:<br></li>\n";
-    echo "  </ul>\n";
-    echo "  <ul class=\"list-group list-group-flush\">\n";
+
     echo "    <li class=\"list-group-item\">";
     
 
@@ -86,6 +85,7 @@ echo "<div class=\"row\">\n";
           }
 
     echo "<div class=\"form-check mb-2\">\n";
+    echo "<h5>Status:</h5>";
     echo "  <input class=\"form-check-input\" type=\"radio\" name=\"a_blocked\" id=\"exampleRadios1\" value=\"0\"".$active."\n";
     echo "  <label class=\"form-check-label\" for=\"exampleRadios1\">\n";
     echo "  Aktiv\n";
@@ -98,16 +98,24 @@ echo "<div class=\"row\">\n";
     echo "  </label>\n";
     echo "</div>";
 
-    echo "    </li>\n";
-    echo "  </ul>\n";
+    echo "</li>\n";
+    echo "</ul>\n";
+
+
+    echo "<ul class=\"list-group list-group-flush\">\n";
+    echo "<li class=\"list-group-item\">";
+    echo "<button type=\"submit\" class=\"btn btn-outline-danger mr-2\" name=\"pw\">Passwort reset</button>";
+    echo "</li>\n";
+    echo "</ul>\n";
    
-    echo "  <div class=\"card-body\">\n";
+    echo "<div class=\"card-body\">\n";
     echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">Aktualisieren</button>";
     echo "<button type=\"submit\" class=\"btn btn-outline-danger\" name=\"cancel\">Abbrechen</button>";
     echo "<input type=\"hidden\" name=\"id_a\" value=\"".$row['id_a']."\">";
     echo "<input type=\"hidden\" name=\"a_saved\" value=\"".time()."\">";
+    echo "</div>\n";
     echo "</form>";
-    echo "  </div>\n";
+
     echo "  <div class=\"card-footer text-muted\">\n";
     echo" Zuletzt bearbeitet: ".(date("d.m.Y, H:i:s",$row['a_saved']));
     echo "  </div>\n";
