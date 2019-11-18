@@ -32,6 +32,7 @@ session_start();
 
 include ('../../config/config.php');
 include ('../../config/admin_update.php');
+include ('../../config/admin_pw_reset.php');
 
 // Datenbankverbindung herstellen
 $pdo;
@@ -101,10 +102,19 @@ echo "<div class=\"row\">\n";
     echo "</li>\n";
     echo "</ul>\n";
 
-
+  
     echo "<ul class=\"list-group list-group-flush\">\n";
     echo "<li class=\"list-group-item\">";
-    echo "<button type=\"submit\" class=\"btn btn-outline-danger mr-2\" name=\"pw\">Passwort reset</button>";
+      if($_SESSION['user_id'] == $_POST['id_a']) {
+      echo "Du kannst dein eigenes Passwort nicht ver&auml;ndern!";
+      }
+      else {
+        echo "<button type=\"submit\" class=\"btn btn-outline-danger mr-2\" name=\"pw\">Passwort reset</button>";
+      }
+      if (isset($_POST['pw'])) {
+        $body = urlencode($linkToSend);
+        echo "<a class=\"btn btn-outline-danger mr-2\" href=\"mailto:".$_POST['a_mail']."?subject=Passwort zurücksetzen&body=".$body."\">Link verschicken</a>";
+      }
     echo "</li>\n";
     echo "</ul>\n";
    
