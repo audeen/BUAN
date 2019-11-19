@@ -11,7 +11,7 @@ $token = isset($_GET['t']) ? trim($_GET['t']) : '';
 //The id for the request, which should be present in the GET variable "id"
 $passwordRequestId = isset($_GET['id']) ? trim($_GET['id']) : '';
 
-$_SESSION['id_a'] = $userId;
+/* $_SESSION['id_a'] = $userId; */
  
 //Now, we need to query our password_reset_request table and
 //make sure that the GET variables we received belong to

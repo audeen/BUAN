@@ -11,6 +11,7 @@
 //////////////////////////////////////////////////
 
 include ('config.php');
+include($lang_product_show);
 $pdo;
 $sql = "SELECT * FROM products";
 
@@ -19,10 +20,10 @@ echo "<div class=\"row\">\n";
 
         // Blockierung aus Query abfragen und Wert in String umwandeln
         if ($row['p_blocked'] == 0) {
-          $blocked = "aktiv";
+          $blocked = $lang_productshow[$_SESSION['language']][0];
         }
         else{
-          $blocked = "blockiert";
+          $blocked = $lang_productshow[$_SESSION['language']][1];
         }
 
 
@@ -40,21 +41,21 @@ echo "<div class=\"row\">\n";
 
     
     echo "  <div class=\"card-body\">\n";
-    echo "    <h5 class=\"card-text\">Beschreibung: <br>".$row['p_desc']." </h5>\n";
+    echo "    <h5 class=\"card-text\">".$lang_productshow[$_SESSION['language']][2]."<br>".$row['p_desc']." </h5>\n";
     echo "  </div>\n";
     echo "  <ul class=\"list-group list-group-flush\">\n";
-    echo "        <li class=\"list-group-item\">Herkunft: ".$row['p_origin']."</li>\n";
-    echo "        <li class=\"list-group-item\">Preis:<br> ".$row['p_price']."</li>\n";
-    echo "        <li class=\"list-group-item\">Anzahl verf&uuml;gbar:<br> ".$row['p_amount']."</li>\n";
+    echo "        <li class=\"list-group-item\">".$lang_productshow[$_SESSION['language']][3].$row['p_origin']."</li>\n";
+    echo "        <li class=\"list-group-item\">".$lang_productshow[$_SESSION['language']][4]."<br>".htmlentities($row['p_price'])." &euro;</li>\n";
+    echo "        <li class=\"list-group-item\">".$lang_productshow[$_SESSION['language']][5]."<br>".$row['p_amount'].$lang_productshow[$_SESSION['language']][8]."</li>\n";
     echo "  </ul>";
     echo "  <div class=\"card-body\">\n";
     echo "    <form action=\"product_edit.php\" method=\"post\">";
-    echo "      <button type=\"submit\" class=\"btn btn-outline-success\">Bearbeiten</button>";
+    echo "      <button type=\"submit\" class=\"btn btn-outline-warning\">".$lang_productshow[$_SESSION['language']][6]."</button>";
     echo "      <input type=\"hidden\" name=\"id_p\" value=\"".$row['id_p']."\">";
     echo "    </form>";
     echo "  </div>\n";
     echo "  <div class=\"card-footer text-muted\">\n";
-    echo" Zuletzt bearbeitet: ".(date("d.m.Y, H:i:s",$row['p_saved']));
+    echo $lang_productshow[$_SESSION['language']][7].(date("d.m.Y, H:i:s",$row['p_saved']));
     echo "  </div>\n";
     echo "</div>\n";
     echo "</div>\n";
