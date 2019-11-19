@@ -70,7 +70,5 @@ $verifyScript = 'https://localhost/BUAN/root/config/admin_pw_auth.php';
 //The link that we will send the user via email.
 $linkToSend = $verifyScript . '?uid=' . $userId . '&id=' . $passwordRequestId . '&t=' . $token;
  
-//Print out the email for the sake of this tutorial.
-echo $linkToSend;
 }
 ?>

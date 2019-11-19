@@ -11,7 +11,10 @@
 //////////////////////////////////////////////////
 
 include ('config.php');
+include($lang_retailer_query);
+
 $pdo;
+
 $sql = "SELECT * FROM retailer";
 
 echo "<div class=\"row\">\n";
@@ -19,10 +22,10 @@ echo "<div class=\"row\">\n";
 
         // Blockierung aus Query abfragen und Wert in String umwandeln
         if ($row['r_blocked'] == 0) {
-          $blocked = "aktiv";
+          $blocked = $lang_retailerquery[$_SESSION['language']][0];
         }
         else{
-          $blocked = "blockiert";
+          $blocked = $lang_retailerquery[$_SESSION['language']][01];
         }
 
 
@@ -46,19 +49,19 @@ echo "<div class=\"row\">\n";
   
     echo "  <ul class=\"list-group list-group-flush\">\n";
     echo "        <li class=\"list-group-item\">Mail: ".$row['r_mail']."</li>\n";
-    echo "        <li class=\"list-group-item\">Stra&szlig;e: ".htmlentities($row['r_street'])."</li>\n";
-    echo "        <li class=\"list-group-item\">PLZ: ".$row['r_postal']."</li>\n";
-    echo "        <li class=\"list-group-item\">Stadt: ".$row['r_city']."</li>\n";
-    echo "        <li class=\"list-group-item\">Stadt: ".$row['r_country']."</li>\n";
+    echo "        <li class=\"list-group-item\">".$lang_retailerquery[$_SESSION['language']][2].htmlentities($row['r_street'])."</li>\n";
+    echo "        <li class=\"list-group-item\">".$lang_retailerquery[$_SESSION['language']][3].$row['r_postal']."</li>\n";
+    echo "        <li class=\"list-group-item\">".$lang_retailerquery[$_SESSION['language']][4].$row['r_city']."</li>\n";
+    echo "        <li class=\"list-group-item\">".$lang_retailerquery[$_SESSION['language']][5].$row['r_country']."</li>\n";
     echo "       </ul>";
     echo "  <div class=\"card-body\">\n";
     echo "    <form action=\"retailer_edit.php\" method=\"post\">";
-    echo "    <button type=\"submit\" class=\"btn btn-outline-success\">Bearbeiten</button>";
+    echo "    <button type=\"submit\" class=\"btn btn-outline-warning\">".$lang_retailerquery[$_SESSION['language']][6]."</button>";
     echo "    <input type=\"hidden\" name=\"id_r\" value=\"".$row['id_r']."\">";
     echo "    </form>";
     echo "  </div>\n";
     echo "  <div class=\"card-footer text-muted\">\n";
-    echo" Zuletzt bearbeitet: ".(date("d.m.Y, H:i:s",$row['r_saved']));
+    echo $lang_retailerquery[$_SESSION['language']][7].(date("d.m.Y, H:i:s",$row['r_saved']));
     echo "  </div>\n";
     echo "</div>\n";
     echo "</div>\n";

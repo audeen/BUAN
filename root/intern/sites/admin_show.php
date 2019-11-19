@@ -10,6 +10,7 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
+
 ?>
 
 
@@ -28,7 +29,7 @@ session_start();
     <div class="container">
       <div class="container-fluid">
         <div class="row">
-          <div class="alert alert-primary mt-3 col-12" role="alert"><h2 class="text-center">Alle Admins</h2><br><br>
+          <div class="alert alert-primary mt-3 col-12" role="alert"><h2 class="text-center">Admins</h2><br><br>
           </div>
         </div>
         <?php include ('../../config/admin_query.php'); ?>
