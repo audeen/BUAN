@@ -10,6 +10,8 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
+include('../../config/config.php');
+include($lang_retailer_edit);
 ?>
 
 
@@ -42,43 +44,35 @@ $pdo;
 if (isset($_SESSION['cancel'])){
   echo "<script type='text/javascript'>window.location='retailer_show.php'; </script>";
 }
-// Wenn keine ID übermittelt, zeige alle an
-$where = !empty($_POST['id_r']) ? "WHERE id_r=\"".$_POST['id_r']."\"" : "";
 
-  $sql = "SELECT * FROM retailer $where";
+// Wenn keine ID übermittelt, gehe auf Übersicht
+if (empty($_POST['id_r'])) {
+  echo "<script type='text/javascript'>window.location='retailer_show.php'; </script>";
+}
+  $sql = "SELECT * FROM retailer WHERE id_r=\"".$_POST['id_r']."\"";
   echo "<div class=\"ld-center\">\n";
   foreach ($pdo->query($sql) as $row) {
   echo "<div class=\"col-md\">\n";
-  echo "<div class=\"card mb-3\">\n";
-
-  echo "<form action=\"#\" method=\"POST\" enctype=\"multipart/form-data\">";
-  echo "  <h3 class=\"card-header\">".$row['r_surname'].", ".$row['r_prename']."</h3>\n";
-  echo "  <div class=\"card-body\">\n";
-  echo "    <h6 class=\"card-subtitle text-muted\">ID: ".$row['id_r']."</h6>\n";
-  echo "  </div>\n";
-  echo "  <div class=\"card-body\">\n";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_prename\" value=\"".$row['r_prename']."\">";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_surname\" value=\"".$row['r_surname']."\">";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_alias\" value=\"".$row['r_alias']."\">";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_mail\" value=\"".$row['r_mail']."\">";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_street\" value=\"".$row['r_street']."\">";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_postal\" value=\"".$row['r_postal']."\">";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_city\" value=\"".$row['r_city']."\">";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_country\" value=\"".$row['r_country']."\">";
-  echo "  </div>\n";
-
-
-  
-  echo "    <div class=\"card-body\">";
-  echo "      <label class=\"control-label\"><h5>H&auml;ndlerbild festlegen</h5></label>";
-  echo "      <input class=\"input-group\" type=\"file\" name=\"image\" value=\"".$row['r_img']."\" accept=\"image/*\" />";
-  echo "    </div>";
-  echo "  <ul class=\"list-group list-group-flush\">\n";
-  echo "    <li class=\"list-group-item\">Status:<br></li>\n";
-  echo "  </ul>\n";
-  echo "  <ul class=\"list-group list-group-flush\">\n";
-  echo "    <li class=\"list-group-item\">";
-  
+    echo "<div class=\"card mb-3\">\n";
+      echo "<form action=\"#\" method=\"POST\" enctype=\"multipart/form-data\">";
+        echo "<h3 class=\"card-header\">".$row['r_surname'].", ".$row['r_prename']."</h3>\n";
+        echo "<div class=\"card-body\">\n";
+          echo "<h6 class=\"card-subtitle text-muted\">ID: ".$row['id_r']."</h6>\n";
+        echo "</div>\n";
+        echo "<div class=\"card-body\">\n";
+          echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_prename\" value=\"".$row['r_prename']."\">";
+          echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_surname\" value=\"".$row['r_surname']."\">";
+          echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_alias\" value=\"".$row['r_alias']."\">";
+          echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_mail\" value=\"".$row['r_mail']."\">";
+          echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_street\" value=\"".$row['r_street']."\">";
+          echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_postal\" value=\"".$row['r_postal']."\">";
+          echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_city\" value=\"".$row['r_city']."\">";
+          echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_country\" value=\"".$row['r_country']."\">";
+        echo "</div>\n";        
+        echo "<div class=\"card-body\">";
+          echo "<label class=\"control-label\"><h5>H&auml;ndlerbild festlegen</h5></label>";
+          echo "<input class=\"input-group\" type=\"file\" name=\"image\" value=\"".$row['r_img']."\" accept=\"image/*\" />";
+        echo "</div>";
 
         // Radio-Button-Belegung abfragen
         if ($row['r_blocked'] == 0) {
@@ -89,35 +83,36 @@ $where = !empty($_POST['id_r']) ? "WHERE id_r=\"".$_POST['id_r']."\"" : "";
           $blocked = "checked";
           $active ="";
         }
-
-  echo "<div class=\"form-check mb-2\">\n";
-  echo "  <input class=\"form-check-input\" type=\"radio\" name=\"r_blocked\" id=\"exampleRadios1\" value=\"0\"".$active."\n";
-  echo "  <label class=\"form-check-label\" for=\"exampleRadios1\">\n";
-  echo "  Aktiv\n";
-  echo "  </label>\n";
-  echo "</div>";
-  echo "<div class=\"form-check mb-2\">\n";
-  echo "  <input class=\"form-check-input\" type=\"radio\" name=\"r_blocked\" id=\"exampleRadios1\" value=\"1\"".$blocked."\n";
-  echo "  <label class=\"form-check-label\" for=\"exampleRadios1\">\n";
-  echo "  Blockiert\n";
-  echo "  </label>\n";
-  echo "</div>";
-
-  echo "    </li>\n";
-  echo "  </ul>\n";
- 
-  echo "  <div class=\"card-body\">\n";
-  echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">Aktualisieren</button>";
-  echo "<button type=\"submit\" class=\"btn btn-outline-danger\" name=\"cancel\">Abbrechen</button>";
-  echo "<input type=\"hidden\" name=\"id_r\" value=\"".$row['id_r']."\">";
-  echo "<input type=\"hidden\" name=\"r_saved\" value=\"".time()."\">";
-  echo "</form>";
-  echo "  </div>\n";
-  echo "  <div class=\"card-footer text-muted\">\n";
-  echo" Zuletzt bearbeitet: ".(date("d.m.Y, H:i:s",$row['r_saved']));
-  echo "  </div>\n";
-  echo "</form>";
-  echo "</div>\n";
+        echo "<ul class=\"list-group list-group-flush\">\n";
+          echo "<li class=\"list-group-item\">";  
+          echo "<div class=\"form-check mb-2\">\n";
+            echo "<h5>Status:</h5>";
+            echo "<input class=\"form-check-input\" type=\"radio\" name=\"r_blocked\" id=\"exampleRadios1\" value=\"0\"".$active."\n";
+            echo "<label class=\"form-check-label\" for=\"exampleRadios1\">\n";
+              echo $lang_retaileredit[$_SESSION['language']][1];
+            echo "</label>\n";
+          echo "</div>";
+        echo "<div class=\"form-check mb-2\">\n";
+          echo "<input class=\"form-check-input\" type=\"radio\" name=\"r_blocked\" id=\"exampleRadios1\" value=\"1\"".$blocked."\n";
+          echo "<label class=\"form-check-label\" for=\"exampleRadios1\">\n";
+          echo $lang_retaileredit[$_SESSION['language']][2];
+          echo "</label>\n";
+          echo "</div>";
+          echo "</li>\n";
+        echo "</ul>\n";
+      
+        echo "<div class=\"card-body\">\n";
+          echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">".$lang_retaileredit[$_SESSION['language']][3]."</button>";
+          echo "<button type=\"submit\" class=\"btn btn-outline-danger\" name=\"cancel\">".$lang_retaileredit[$_SESSION['language']][4]."</button>";
+          echo "<input type=\"hidden\" name=\"id_r\" value=\"".$row['id_r']."\">";
+          echo "<input type=\"hidden\" name=\"r_saved\" value=\"".time()."\">";
+        echo "</div>\n";
+      echo "</form>";
+        echo "<div class=\"card-footer text-muted\">\n";
+        echo $lang_retaileredit[$_SESSION['language']][5].(date("d.m.Y, H:i:s",$row['r_saved']));
+        echo "</div>\n";
+      echo "</form>";
+    echo "</div>\n";
   echo "</div>\n";
 }
 echo "</div>";

@@ -10,26 +10,14 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
-
-// Sprachwahl
-if(!isset($_SESSION['language'])) {
-   //Standard
-   $_SESSION['language'] = 0;
-}
-else {
-   $_SESSION['language'] = $_SESSION['language'];
-}
-//Änderung
-if(isset($_POST['language'])){
-   $_SESSION['language'] = $_POST['language'];
-}
+include ('../../config/config.php');
 
 // Spracharrays lokal verwendet, um Dateien zu sparen
 $lang_retailershow = array();
 $lang_retailershow[0][0] = "Alle H&auml;ndler";
 $lang_retailershow[0][1] = "H&auml;ndler hinzuf&uuml;gen";
 
-$lang_retailershow[1][0] = "All Retailer";
+$lang_retailershow[1][0] = "All Retailers";
 $lang_retailershow[1][1] = "Add Retailer";
 ?>
 <!-- Include Security-File -->

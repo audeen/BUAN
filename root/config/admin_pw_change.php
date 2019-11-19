@@ -15,7 +15,7 @@
 include('config.php');
 // php update data in mysql database using PDO
 
-if (isset($_POST['save'])) {
+if (isset($_POST['save']) && ($_POST['a_pw'] == $_POST['a_pw_verify'])) {
     try {
         $pdo;
     }
@@ -48,5 +48,10 @@ if (isset($_POST['save'])) {
         /* echo "<script type='text/javascript'>window.location='admin_show.php'; </script>"; */
     }
    }
-
+else {
+    echo "<div class=\"alert alert-danger mt-3\" role=\"alert\">";
+        /* echo $lang_adminedit[$_SESSION['language']][0]; */
+        echo "Passwörter stimmen nicht überein!";
+    echo "</div>";
+}
 ?> 

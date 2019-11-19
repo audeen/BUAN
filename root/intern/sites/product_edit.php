@@ -44,9 +44,11 @@ if (isset($_SESSION['cancel'])){
   echo "<script type='text/javascript'>window.location='product_show.php'; </script>";
 }
 
-// Wenn keine ID übermittelt, zeige alle an
-$where = !empty($_POST['id_p']) ? "WHERE id_p=\"".$_POST['id_p']."\"" : "";
-  $sql = "SELECT * FROM products $where";
+// Wenn keine ID übermittelt, gehe auf Übersicht
+if (empty($_POST['id_p'])) {
+  echo "<script type='text/javascript'>window.location='product_show.php'; </script>";
+}
+  $sql = "SELECT * FROM products WHERE id_p=\"".$_POST['id_p']."\"";
   echo "<div class=\"ld-center\">\n";
   foreach ($pdo->query($sql) as $row) {
   echo "<div class=\"col-md\">\n";

@@ -46,15 +46,15 @@ if (isset($_SESSION['cancel'])){
 }
 
 // Wenn keine ID übermittelt, zeige alle an
-$where = !empty($_POST['id_a']) ? "WHERE id_a=\"".$_POST['id_a']."\"" : "";
+if (empty($_POST['id_a'])) {
+  echo "<script type='text/javascript'>window.location='admin_show.php'; </script>";
+}
 
 // Ausgabe von Cards je admin
-$sql = "SELECT * FROM admins $where";
+$sql = "SELECT * FROM admins WHERE id_a=\"".$_POST['id_a']."\"";
 echo "<div class=\"row\">\n";
   foreach ($pdo->query($sql) as $row) {
 
-
- 
     echo "<div class=\"col-md-4\">\n";
       echo "<div class=\"card mb-3\">\n";
         echo "<form action=\"#\" method=\"POST\">";
@@ -63,8 +63,7 @@ echo "<div class=\"row\">\n";
           echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"a_name\" value=\"".$row['a_name']."\">";
           echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"a_mail\" value=\"".$row['a_mail']."\">";
         echo "</div>\n";
-
-          echo "<ul class=\"list-group list-group-flush\">\n";
+        echo "<ul class=\"list-group list-group-flush\">\n";
           echo "<li class=\"list-group-item\">";            
             // Radio-Button-Belegung abfragen
             if ($row['a_blocked'] == 0) {
@@ -81,23 +80,21 @@ echo "<div class=\"row\">\n";
             }
             else {
               echo "<div class=\"form-check mb-2\">\n";
-              echo "<h5>Status:</h5>";
-              echo "<input class=\"form-check-input\" type=\"radio\" name=\"a_blocked\" id=\"exampleRadios1\" value=\"0\"".$active."\n";
-              echo "<label class=\"form-check-label\" for=\"exampleRadios1\">\n";
-                echo $lang_adminedit[$_SESSION['language']][1];
-              echo "</label>\n";
-            echo "</div>";
-            echo "<div class=\"form-check mb-2\">\n";
-              echo "  <input class=\"form-check-input\" type=\"radio\" name=\"a_blocked\" id=\"exampleRadios1\" value=\"1\"".$blocked."\n";
-              echo "  <label class=\"form-check-label\" for=\"exampleRadios1\">\n";
-                echo $lang_adminedit[$_SESSION['language']][2];
-              echo "  </label>\n";
-            echo "</div>";
+                echo "<h5>Status:</h5>";
+                echo "<input class=\"form-check-input\" type=\"radio\" name=\"a_blocked\" id=\"exampleRadios1\" value=\"0\"".$active."\n";
+                echo "<label class=\"form-check-label\" for=\"exampleRadios1\">\n";
+                  echo $lang_adminedit[$_SESSION['language']][1];
+                echo "</label>\n";
+              echo "</div>";
+              echo "<div class=\"form-check mb-2\">\n";
+                echo "<input class=\"form-check-input\" type=\"radio\" name=\"a_blocked\" id=\"exampleRadios1\" value=\"1\"".$blocked."\n";
+                echo "<label class=\"form-check-label\" for=\"exampleRadios1\">\n";
+                  echo $lang_adminedit[$_SESSION['language']][2];
+                echo "</label>\n";
+              echo "</div>";
             }
-          echo "</li>\n";
-          echo "</ul>\n";
-
-  
+            echo "</li>\n";
+          echo "</ul>\n";  
           echo "<ul class=\"list-group list-group-flush\">\n";
           echo "<li class=\"list-group-item\">";
             // Abfrage, ob angemeldeter Admin sein Passwort zurücksetzen möchte
@@ -110,7 +107,7 @@ echo "<div class=\"row\">\n";
             // Ist der Vorgang gestartet, schalte Button für E-Mail-Versand frei
             if (isset($_POST['pw'])) {
               $linkToSend = urlencode($linkToSend);
-              echo "<a class=\"btn btn-outline-success mr-2\" href=\"mailto:".$_POST['a_mail']."?subject=".$lang_adminedit[$_SESSION['language']][3]."&body=".$linkToSend."\">Link verschicken</a>";
+              echo "<a class=\"btn btn-outline-success mr-2\" href=\"mailto:".$_POST['a_mail']."?subject=".$lang_adminedit[$_SESSION['language']][3]."&body=".$linkToSend."\">".$lang_adminedit[$_SESSION['language']][10]."</a>";
             }
           echo "</li>\n";
           echo "</ul>\n";
