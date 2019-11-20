@@ -220,7 +220,7 @@ INSERT INTO `products` VALUES
 DROP TABLE IF EXISTS `password_reset_request`;
 CREATE TABLE `password_reset_request` (
    `id_pr`            int(10)        PRIMARY KEY    NOT NULL    AUTO_INCREMENT,
-   `u_id`             int(10)        NOT NULL,
+   `r_id`             int(10)        NOT NULL,
    `a_id`             int(10)        NOT NULL,
    `date_requested`   datetime       NOT NULL,
    `token`            varchar(255)   NOT NULL

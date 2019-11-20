@@ -27,7 +27,7 @@ include($lang_retailer_edit);
 <div class="container">
 
   <div class="alert alert-danger mt-3" role="alert">
-    H&auml;ndler-Bearbeitung
+    <?php echo $lang_retaileredit[$_SESSION['language']][0]; ?>
   </div>
 
 <?php
@@ -35,6 +35,7 @@ include($lang_retailer_edit);
 include ('../../config/config.php');
 include ('../../config/retailer_update.php');
 include ('../../config/image_upload_r.php');
+include ('../../config/retailer_pw_reset.php');
 
 // Datenbankverbindung herstellen
 $pdo;
@@ -99,6 +100,19 @@ if (empty($_POST['id_r'])) {
           echo "</label>\n";
           echo "</div>";
           echo "</li>\n";
+        echo "</ul>\n";
+
+        echo "<ul class=\"list-group list-group-flush\">\n";
+        echo "<li class=\"list-group-item\">";
+            echo "<button type=\"submit\" class=\"btn btn-outline-warning mb-2 mr-2\" name=\"pw\">".$lang_retaileredit[$_SESSION['language']][6]."</button>";
+
+          // Ist der Vorgang gestartet, schalte Button für E-Mail-Versand frei
+          if (isset($_POST['pw'])) {
+            $linkToSend = urlencode($linkToSend);
+            echo "<br>";
+            echo "<a class=\"btn btn-outline-success\" href=\"mailto:".$_POST['r_mail']."?subject=".$lang_retaileredit[$_SESSION['language']][6]."&body=".$linkToSend."\">".$lang_retaileredit[$_SESSION['language']][7]."</a>";
+          }
+        echo "</li>\n";
         echo "</ul>\n";
       
         echo "<div class=\"card-body\">\n";
