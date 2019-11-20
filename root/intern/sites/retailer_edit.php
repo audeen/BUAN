@@ -42,12 +42,12 @@ $pdo;
 // Refresh für Abbrechen-Button
 
 if (isset($_SESSION['cancel'])){
-  echo "<script type='text/javascript'>window.location='retailer_show.php'; </script>";
+  echo "<meta http-equiv=\"refresh\" content=\"0;url=retailer_show.php\">";
 }
 
 // Wenn keine ID übermittelt, gehe auf Übersicht
 if (empty($_POST['id_r'])) {
-  echo "<script type='text/javascript'>window.location='retailer_show.php'; </script>";
+  echo "<meta http-equiv=\"refresh\" content=\"0;url=retailer_show.php\">";
 }
   $sql = "SELECT * FROM retailer WHERE id_r=\"".$_POST['id_r']."\"";
   echo "<div class=\"ld-center\">\n";

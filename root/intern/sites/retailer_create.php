@@ -40,7 +40,7 @@ $pdo;
 // Refresh für Abbrechen-Button
 
 if (isset($_SESSION['cancel'])){
-  echo "<script type='text/javascript'>window.location='product_create.php'; </script>";
+  echo "<meta http-equiv=\"refresh\" content=\"0;url=product_create.php\">";
 }
 
   echo "  <div class=\"ld-center\">\n";

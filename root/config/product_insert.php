@@ -51,7 +51,7 @@ if(isset($_POST['update'])){
     //the scope of this tutorial.
     if($row['num'] > 0){
 
-        die("This product already exists!<script type='text/javascript'>window.location='product_create.php'; </script>");
+        die("This product already exists!<meta http-equiv=\"refresh\" content=\"1;url=product_create.php\">");
         
     } 
 

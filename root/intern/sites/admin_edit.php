@@ -42,12 +42,12 @@ $pdo;
 // Refresh für Abbrechen-Button
 
 if (isset($_SESSION['cancel'])){
-  header("Refresh:0");
+  echo "<meta http-equiv=\"refresh\" content=\"0;url=admin_show.php\">";
 }
 
 // Wenn keine ID übermittelt, zeige alle an
 if (empty($_POST['id_a'])) {
-  echo "<script type='text/javascript'>window.location='admin_show.php'; </script>";
+  echo "<meta http-equiv=\"refresh\" content=\"0;url=admin_show.php\">";
 }
 
 // Ausgabe von Cards je admin

@@ -42,10 +42,10 @@ if (isset($_POST['save']) && ($_POST['a_pw'] == $_POST['a_pw_verify'])) {
     
     if ($pdoExec) {
         echo 'Data Updated';
-        echo "<script type='text/javascript'>window.location='admin_show.php'; </script>";
+        echo "<meta http-equiv=\"refresh\" content=\"1;url=admin_show.php\">";
     } else {
         echo 'Data NOT Updated';
-        echo "<script type='text/javascript'>window.location='admin_show.php'; </script>";
+        echo "<meta http-equiv=\"refresh\" content=\"1;url=admin_show.php\">";
     }
    }
 // Bei Erstaufruf prüfe nichts

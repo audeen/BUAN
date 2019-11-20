@@ -44,7 +44,8 @@ else {
 //Die Anfrage ist gültig, der Nutzer bekommt eine ID zugewiesen, die abgefragt werden kann
 $_SESSION['user_id_reset_pass'] = $userId;
 
-echo "<script type='text/javascript'>window.location='../intern/sites/admin_pw_create.php'; </script>";
+echo "<meta http-equiv=\"refresh\" content=\"0;url=../intern/sites/admin_pw_create.php\">";
+
 /* echo "<form action =\"#\" method=\"POST\">";
 echo    "<input type=\"hidden\" name=\"user_id\" value=\"".$user_id."\">";
 echo "</form>"; */

@@ -64,10 +64,10 @@ if(isset($_POST['update']))
     if($pdoExec)
     {
         echo 'Data Updated';
-        echo "<script type='text/javascript'>window.location='product_show.php'; </script>";
+        echo "<meta http-equiv=\"refresh\" content=\"1;url=product_show.php\">";
     }else{
         echo 'ERROR Data Not Updated';
-        echo "<script type='text/javascript'>window.location='product_show.php'; </script>";
+        echo "<meta http-equiv=\"refresh\" content=\"1;url=product_show.php\">";
     }
 
 }
