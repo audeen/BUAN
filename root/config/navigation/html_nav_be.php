@@ -9,7 +9,7 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
-include('config.php');
+include('../../config/config.php');
 include($lang_nav_be);
 ?>
 
@@ -37,7 +37,7 @@ include($lang_nav_be);
       <?php
       // SWITCHER LINK
         while(list($key, $val) = each($styleSheets)){
-          echo "<button type=\"button\" class=\"btn btn-primary m-2 \"><a href='../../config/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a></button>";
+          echo "<button type=\"button\" class=\"btn btn-primary m-2 \"><a href='../../config/functions/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a></button>";
         }
       ?>
       </li>

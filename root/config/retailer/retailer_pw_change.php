@@ -3,16 +3,16 @@
 
 //////////////////////////////////////////////////
 //  BUAN-Projekt                                //
-//  Dateiname:   admin_pw_change.php            //
+//  Dateiname:   retailer_pw_change.php         //
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
-//  Beschreibung : Admin Password Change        //
+//  Beschreibung : Retailer Password Change     //
 //  Ersteller    : Jannik Sievert               //
 //  Stand        : 18.11.2019                   //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 
 
-include('config.php');
+include('../../config/config.php');
 // Wenn $_POST save gesetzt, prüfe, ob Password und Verify-Password übereinstimmen
 
 if (isset($_POST['save']) && ($_POST['r_pw'] == $_POST['r_pw_verify'])) {

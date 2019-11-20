@@ -2,7 +2,7 @@
 
 //////////////////////////////////////////////////
 //  BUAN-Projekt                                //
-//  Dateiname:   retailer_insert.php            //
+//  Dateiname:   retailer_update.php            //
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
 //  Beschreibung : php-skript für UPDATE retailer//
 //  Ersteller    : Jannik Sievert               //
@@ -10,7 +10,7 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 
-include ('config.php');
+include ('../../config/config.php');
 // php update data in mysql database using PDO
 
 if(isset($_POST['update']))
@@ -70,11 +70,11 @@ if(isset($_POST['update']))
     if($pdoExec)
     {
         echo 'Data Updated';
-        echo "<meta http-equiv=\"refresh\" content=\"1;url=retailer_show.php.php\">";
+        echo "<meta http-equiv=\"refresh\" content=\"1;url=retailer_show.php\">";
 
     }else{
         echo 'ERROR Data Not Updated';
-        echo "<meta http-equiv=\"refresh\" content=\"1;url=retailer_show.php.php\">";
+        echo "<meta http-equiv=\"refresh\" content=\"1;url=retailer_show.php\">";
     }
 
 }

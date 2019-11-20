@@ -1,7 +1,7 @@
 <?php
 // https://www.codingcage.com/2014/12/file-upload-and-view-with-php-and-mysql.html
 
-include ('config.php');
+include ('../../config/config.php');
 $image = "";
 $id_r =  $_POST['id_r'];
 

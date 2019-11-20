@@ -16,11 +16,11 @@
 
 
   <!-- html-head einbinden -->
-  <?php include ('../config/html_head.php'); ?>
+  <?php include ('html_head.php'); ?>
   <body>
 
     <!-- frontend-navigation einbinden -->
-    <?php include ('../config/html_nav_fe.php'); ?>
+    <?php include ('html_nav_fe.php'); ?>
     <div class="container"><?php include ("../control/control.php");?></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

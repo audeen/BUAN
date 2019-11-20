@@ -2,7 +2,7 @@
 
 //////////////////////////////////////////////////
 //  BUAN-Projekt                                //
-//  Dateiname:   security.php                   //
+//  Dateiname:   authentification.php           //
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
 //  Beschreibung : Login/Blocked-Abfrage        //
 //  Ersteller    : Jannik Sievert               //

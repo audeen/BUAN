@@ -14,13 +14,13 @@ session_start();
 
 
 <!-- Include Security-File -->
-  <?php include ('../../config/security.php'); ?>
+  <?php include ('../../config/functions/authentification.php'); ?>
 <!-- html-head einbinden -->
-  <?php include ('../../config/html_head.php'); ?>
+  <?php include ('../../config/navigation/html_head.php'); ?>
   
 <body>
     <!-- backend-navigation einbinden -->
-  <?php include('../../config/html_nav_be.php'); ?>
+  <?php include('../../config/navigation/html_nav_be.php'); ?>
   <?php include('../../config/config.php');?>
   <?php include($lang_admin_edit); ?>
 
@@ -33,8 +33,8 @@ session_start();
 <?php
 
 include ('../../config/config.php');
-include ('../../config/admin_update.php');
-include ('../../config/admin_pw_reset.php');
+include ('../../config/admin/admin_update.php');
+include ('../../config/admin/admin_pw_reset.php');
 
 // Datenbankverbindung herstellen
 $pdo;

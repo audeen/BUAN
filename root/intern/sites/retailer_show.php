@@ -21,15 +21,15 @@ $lang_retailershow[1][0] = "All Retailers";
 $lang_retailershow[1][1] = "Add Retailer";
 ?>
 <!-- Include Security-File -->
-<?php include ('../../config/security.php'); ?>
+<?php include ('../../config/functions/authentification.php'); ?>
 
 <!DOCTYPE html>
 <html lang="de">
   <!-- html-head einbinden -->
-  <?php include ('../../config/html_head.php'); ?>
+  <?php include ('../../config/navigation/html_head.php'); ?>
   <body>
     <!-- backend-navigation einbinden -->
-    <?php include ('../../config/html_nav_be.php'); ?>
+    <?php include ('../../config/navigation/html_nav_be.php'); ?>
 
     <div class="container">
       <div class="container-fluid">
@@ -45,7 +45,7 @@ $lang_retailershow[1][1] = "Add Retailer";
       </div>
 
 
-      <?php include ('../../config/retailer_query.php'); ?>
+      <?php include ('../../config/retailer/retailer_query.php'); ?>
     </div>
 
     <!-- Optional JavaScript -->

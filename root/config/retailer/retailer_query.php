@@ -10,7 +10,7 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 
-include ('config.php');
+include ('../../config/config.php');
 include($lang_retailer_query);
 
 $pdo;

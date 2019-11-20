@@ -14,13 +14,13 @@ session_start();
 
 
 <!-- Include Security-File -->
-<?php include ('../../config/security.php'); ?>
+<?php include ('../../config/functions/authentification.php'); ?>
 
 <!-- html-head einbinden -->
-<?php include ('../../config/html_head.php'); ?>
+<?php include ('../../config/navigation/html_head.php'); ?>
 <body>
     <!-- backend-navigation einbinden -->
-  <?php include ('../../config/html_nav_be.php'); ?>
+  <?php include ('../../config/navigation/html_nav_be.php'); ?>
 
 
 <div class="container">
@@ -32,7 +32,7 @@ session_start();
 <?php
 
 include ('../../config/config.php');
-include ('../../config/retailer_insert.php');
+include ('../../config/retailer/retailer_insert.php');
 
 // Datenbankverbindung herstellen
 $pdo;

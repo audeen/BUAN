@@ -14,7 +14,7 @@
 
 
 
-<?php include ('php_login_be.php'); ?>
+<?php include ('../config/functions/php_login_be.php'); ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">BUAN</a>
@@ -75,7 +75,7 @@
     <?php
       // SWITCHER LINK
         while(list($key, $val) = each($styleSheets)){
-          echo "<button type=\"button\" class=\"btn btn-primary m-2 \"><a href='../config/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a></button>";
+          echo "<button type=\"button\" class=\"btn btn-primary m-2 \"><a href='../config/functions/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a></button>";
         }
     ?> 
 

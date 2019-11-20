@@ -12,7 +12,7 @@
 //////////////////////////////////////////////////
 
 
-include('config.php');
+include('../../config/config.php');
 // php update data in mysql database using PDO
 
 if (isset($_POST['update'])) {

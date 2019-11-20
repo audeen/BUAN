@@ -16,15 +16,15 @@ session_start();
 
 
 <!-- Include Security-File -->
-<?php include ('../../config/security.php'); ?>
+<?php include ('../../config/functions/authentification.php'); ?>
 
 
 
   <!-- html-head einbinden -->
-  <?php include ('../../config/html_head.php'); ?>
+  <?php include ('../../config/navigation/html_head.php'); ?>
   <body>
     <!-- backend-navigation einbinden -->
-    <?php include ('../../config/html_nav_be.php'); ?>
+    <?php include ('../../config/navigation/html_nav_be.php'); ?>
 
     <div class="container">
       <div class="container-fluid">
@@ -32,7 +32,7 @@ session_start();
           <div class="alert alert-primary mt-3 col-12" role="alert"><h2 class="text-center">Admins</h2><br><br>
           </div>
         </div>
-        <?php include ('../../config/admin_query.php'); ?>
+        <?php include ('../../config/admin/admin_query.php'); ?>
       </div>
 
     <!-- Optional JavaScript -->

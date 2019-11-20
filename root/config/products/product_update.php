@@ -2,15 +2,15 @@
 
 //////////////////////////////////////////////////
 //  BUAN-Projekt                                //
-//  Dateiname:   retailer_insert.php            //
+//  Dateiname:   product_update.php             //
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
-//  Beschreibung : php-skript für UPDATE retailer//
+//  Beschreibung : php-skript für UPDATE product//
 //  Ersteller    : Jannik Sievert               //
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 
-include ('config.php');
+include ('../../config/config.php');
 // php update data in mysql database using PDO
 
 if(isset($_POST['update']))

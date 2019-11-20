@@ -13,7 +13,7 @@
 
 session_start();
 
-include ('config.php');
+include ('../config/config.php');
 
 // https://thisinterestsme.com/php-user-registration-form/
 

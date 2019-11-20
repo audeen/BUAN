@@ -4,19 +4,19 @@ if (isset($_POST['pw'])){
 //https://thisinterestsme.com/php-reset-password-form/
 
 //Connect to MySQL database using PDO.
-include ('config.php');
+include ('../../config/config.php');
 $pdo;
 //Get the name that is being searched for.
-$a_mail = isset($_POST['a_mail']) ? trim($_POST['a_mail']) : '';
+$r_mail = isset($_POST['r_mail']) ? trim($_POST['r_mail']) : '';
  
 //The simple SQL query that we will be running.
-$sql = "SELECT `id_a`, `a_mail` FROM `admins` WHERE `a_mail` = :a_mail";
+$sql = "SELECT `id_r`, `r_mail` FROM `retailer` WHERE `r_mail` = :r_mail";
  
 //Prepare our SELECT statement.
 $statement = $pdo->prepare($sql);
  
 //Bind the $name variable to our :name parameter.
-$statement->bindValue(':a_mail', $a_mail);
+$statement->bindValue(':r_mail', $r_mail);
  
 //Execute the SQL statement.
 $statement->execute();
@@ -32,8 +32,8 @@ if(empty($userInfo)){
 }
  
 //The user's email address and id.
-$userEmail = $userInfo['a_mail'];
-$userId = $userInfo['id_a'];
+$userEmail = $userInfo['r_mail'];
+$userId = $userInfo['id_r'];
  
 //Create a secure token for this forgot password request.
 $token = openssl_random_pseudo_bytes(16);
@@ -44,16 +44,16 @@ $token = bin2hex($token);
  
 //The SQL statement.
 $insertSql = "INSERT INTO password_reset_request
-              (a_id, date_requested, token)
+              (r_id, date_requested, token)
               VALUES
-              (:a_id, :date_requested, :token)";
+              (:r_id, :date_requested, :token)";
  
 //Prepare our INSERT SQL statement.
 $statement = $pdo->prepare($insertSql);
  
 //Execute the statement and insert the data.
 $statement->execute(array(
-    "a_id" => $userId,
+    "r_id" => $userId,
     "date_requested" => date("Y-m-d H:i:s"),
     "token" => $token
 ));
@@ -65,7 +65,7 @@ $passwordRequestId = $pdo->lastInsertId();
 //Create a link to the URL that will verify the
 //forgot password request and allow the user to change their
 //password.
-$verifyScript = 'https://localhost/BUAN/root/config/admin_pw_auth.php';
+$verifyScript = 'https://localhost/BUAN/root/config/retailer/retailer_pw_auth.php';
  
 //The link that we will send the user via email.
 $linkToSend = $verifyScript . '?uid=' . $userId . '&id=' . $passwordRequestId . '&t=' . $token;

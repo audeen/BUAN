@@ -32,17 +32,17 @@ if (!isset($_SESSION['user_id_reset_pass'])) {
 }
 
 //  html-head einbinden 
-include ('../../config/html_head.php'); 
+include ('../../config/navigation/html_head.php'); 
   
 // backend-navigation einbinden
-include ('../../config/html_nav_be.php');
+include ('../../config/navigation/html_nav_be.php');
 ?>
 
 <div class="container">
 
 <?php
 // Passwort-ändern-Skript einbinden
-include ('../../config/admin_pw_change.php');
+include ('../../config/admin/admin_pw_change.php');
 // Datenbankverbindung herstellen
 $pdo;
 
