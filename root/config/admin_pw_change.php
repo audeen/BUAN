@@ -13,7 +13,7 @@
 
 
 include('config.php');
-// php update data in mysql database using PDO
+// Wenn $_POST save gesetzt, prüfe, ob Password und Verify-Password übereinstimmen
 
 if (isset($_POST['save']) && ($_POST['a_pw'] == $_POST['a_pw_verify'])) {
     try {
@@ -26,7 +26,7 @@ if (isset($_POST['save']) && ($_POST['a_pw'] == $_POST['a_pw_verify'])) {
     
     // get values form input text and number
     
-    $id_a      = $_SESSION ['user_id'];
+    $id_a      = $_SESSION['user_id_reset_pass'];
     $a_pw      = $_POST['a_pw'];
 
     $passwordHash = md5($a_pw);      
@@ -44,10 +44,15 @@ if (isset($_POST['save']) && ($_POST['a_pw'] == $_POST['a_pw_verify'])) {
         echo 'Data Updated';
         echo "<script type='text/javascript'>window.location='admin_show.php'; </script>";
     } else {
-        echo 'Der angemeldete Admin kann sein Passwort nicht &auml;ndern!';
-        /* echo "<script type='text/javascript'>window.location='admin_show.php'; </script>"; */
+        echo 'Data NOT Updated';
+        echo "<script type='text/javascript'>window.location='admin_show.php'; </script>";
     }
    }
+// Bei Erstaufruf prüfe nichts
+elseif (!isset($_POST['save'])) {
+    
+}
+// Wenn die Passwörter nicht übereinstimmen
 else {
     echo "<div class=\"alert alert-danger mt-3\" role=\"alert\">";
         /* echo $lang_adminedit[$_SESSION['language']][0]; */

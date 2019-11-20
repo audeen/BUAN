@@ -20,7 +20,7 @@ session_start();
   
 <body>
     <!-- backend-navigation einbinden -->
-  <?php include ('../../config/html_nav_be.php'); ?>
+  <?php include('../../config/html_nav_be.php'); ?>
   <?php include('../../config/config.php');?>
   <?php include($lang_admin_edit); ?>
 
@@ -102,12 +102,13 @@ echo "<div class=\"row\">\n";
               echo $lang_adminedit[$_SESSION['language']][7];
             }
             else {
-              echo "<button type=\"submit\" class=\"btn btn-outline-warning mr-2\" name=\"pw\">".$lang_adminedit[$_SESSION['language']][3]."</button>";
+              echo "<button type=\"submit\" class=\"btn btn-outline-warning mb-2 mr-2\" name=\"pw\">".$lang_adminedit[$_SESSION['language']][3]."</button>";
             }
             // Ist der Vorgang gestartet, schalte Button für E-Mail-Versand frei
             if (isset($_POST['pw'])) {
               $linkToSend = urlencode($linkToSend);
-              echo "<a class=\"btn btn-outline-success mr-2\" href=\"mailto:".$_POST['a_mail']."?subject=".$lang_adminedit[$_SESSION['language']][3]."&body=".$linkToSend."\">".$lang_adminedit[$_SESSION['language']][10]."</a>";
+              echo "<br>";
+              echo "<a class=\"btn btn-outline-success\" href=\"mailto:".$_POST['a_mail']."?subject=".$lang_adminedit[$_SESSION['language']][3]."&body=".$linkToSend."\">".$lang_adminedit[$_SESSION['language']][10]."</a>";
             }
           echo "</li>\n";
           echo "</ul>\n";
@@ -136,5 +137,5 @@ echo "</div>";
     <script src="../js/bootstrap.min.js"></script>
     <?php include ("../control/control.php");?>
   </body>
-</html>
+
 
