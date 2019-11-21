@@ -55,3 +55,8 @@ ____
     - Schriftarten einbinden
     - geblockte produkte ausblenden
     - bestellungen in der zukunft ausstellen
+    quantity warenkorb
+    edit-forms benennen
+
+
+    

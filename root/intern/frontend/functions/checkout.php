@@ -9,7 +9,7 @@ if (isset($_POST['order'])) {
         $retailer =   !empty($_SESSION['user_id_r']) ? trim($_SESSION['user_id_r']) : null;
         $product = !empty($key) ? trim($key) : null;
         $quantity = !empty($value) ? trim($value) : null;
-        $o_nr = substr(time(), 0, -5)."-".substr(time(), -5)."/".$_SESSION['user_id_r'];
+        $o_nr = substr(time(), -5).$retailer;
 
         $sql = "INSERT INTO orders (
             order_number,

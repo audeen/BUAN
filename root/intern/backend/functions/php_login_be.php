@@ -25,19 +25,20 @@ $lang_phploginbe[0][1] = "Account konnte nicht gefunden werden";
 $lang_phploginbe[0][2] = "Nutzer blockiert";
 $lang_phploginbe[0][3] = "Passwort falsch!";
 $lang_phploginbe[0][4] = "Zur&uuml;ck";
+$lang_phploginbe[0][5] = "Captcha Falsch";
 
 $lang_phploginbe[1][0] = "Please Log in";
 $lang_phploginbe[1][1] = "Account not found";
 $lang_phploginbe[1][2] = "User blocked";
 $lang_phploginbe[1][3] = "Wrong password!";
 $lang_phploginbe[1][4] = "Back";
+$lang_phploginbe[1][5] = "Captcha wrong";
 
 
 $errorMessage = $lang_phploginbe[$_SESSION['language']][0];  
 
 // Login gedrückt?
 if(isset($_POST['login_be'])){
-    
     //Werte übertragen
     $username = !empty($_POST['username']) ? trim($_POST['username']) : null;
     $passwordAttempt = !empty($_POST['password']) ? trim($_POST['password']) : null;
@@ -68,7 +69,7 @@ if(isset($_POST['login_be'])){
         $validPassword = md5($passwordAttempt);
         
         //Gleiches Passwort?
-        if($validPassword === $user['a_pw']){
+        if(($validPassword === $user['a_pw']) && ($_POST['captcha_erg'] == $_SESSION['ergebnis'])){
             
             //Session-Variablen setzen
             $_SESSION['user_id_a'] = $user['id_a'];
@@ -79,9 +80,13 @@ if(isset($_POST['login_be'])){
             echo "<meta http-equiv=\"refresh\" content=\"0;url=../intern/backend/sites/index.php\">";
             exit;
             
-        } else{
+        } elseif ($validPassword != $user['a_pw']) {
             //Passwörter stimmen nicht überein, Fehlermeldung ausgeben
             die($lang_phploginbe[$_SESSION['language']][3]."<br><a href=\"index.php\" class=\"btn btn-danger btn-lg\" role=\"button\">".$lang_phploginbe[$_SESSION['language']][4]."</a>");  
+        }
+        else {
+            // CAPTCHA falsch
+            die($lang_phploginbe[$_SESSION['language']][5]."<br><a href=\"index.php\" class=\"btn btn-danger btn-lg\" role=\"button\">".$lang_phploginbe[$_SESSION['language']][4]."</a>");  
         }
     }
     
