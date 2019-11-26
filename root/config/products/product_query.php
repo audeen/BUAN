@@ -29,11 +29,11 @@ echo "<div class=\"row\">\n";
 
     echo "<div class=\"col-md-4\">\n";
     echo "<div class=\"card mb-3\">\n";
-    echo "  <h3 class=\"card-header\">".$row['p_name']."</h3>\n";
-    echo "  <div class=\"card-body\">\n";
-    echo "    <h6 class=\"card-subtitle text-muted\">ID: ".$row['id_p']."</h6>\n";
-    echo "    <h6 class=\"card-subtitle mb-2 text-muted\">Status: ".$blocked."</h6>\n";
-    echo "  </div>\n";
+      echo "<h3 class=\"card-header\">".$row['p_name']."</h3>\n";
+      echo "<div class=\"card-body\">\n";
+        echo "<h6 class=\"card-subtitle text-muted\">ID: ".$row['id_p']."</h6>\n";
+        echo "<h6 class=\"card-subtitle mb-2 text-muted\">Status: ".$blocked."</h6>\n";
+    echo "</div>\n";
 
     echo "<div class=\"card-body\">";
     echo "<img class=\"img-fluid \" src=\"../../images/products/".$row['p_img']."\" alt=\"Produktfoto " .$row['p_name']." \">\n";

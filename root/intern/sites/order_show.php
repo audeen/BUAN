@@ -2,9 +2,9 @@
 
 //////////////////////////////////////////////////
 //  BUAN-Projekt                                //
-//  Dateiname:   retailer_show.php              //
+//  Dateiname:   order_show.php                 //
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
-//  Beschreibung : HTML-Teil retailer_show      //
+//  Beschreibung : HTML-Teil order_show         //
 //  Ersteller    : Jannik Sievert               //
 //  Stand        :                              //
 //  Version      : 1.0                          //
@@ -12,7 +12,7 @@
 session_start();
 
 include('../../config/config.php');
-include($lang_product_show);
+include($lang_order_show);
 
 ?>
 
@@ -33,12 +33,10 @@ include($lang_product_show);
     <div class="container">
       <div class="container-fluid">
         <div class="row">
-          <div class="alert alert-primary mt-3 col-12" role="alert"><h2 class="text-center"><?php echo $lang_productshow[$_SESSION['language']][9];?></h2>
-             <a href="product_create.php" class="btn btn-success btn-link btn-lg float-right" role="button"><?php echo $lang_productshow[$_SESSION['language']][10];?></a>
-          </div>
+          <div class="alert alert-primary mt-3 col-12" role="alert"><h2 class="text-center"><?php echo $lang_ordershow[$_SESSION['language']][0];?></h2></div>
         </div>
       </div>
-      <?php include ('../../config/products/product_query.php'); ?>
+      <?php include ('../../config/orders/order_query.php'); ?>
     </div>
 
     <!-- Optional JavaScript -->

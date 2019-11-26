@@ -15,12 +15,12 @@ $defaultStyleSheet=0;
 
 // SET STYLESHEET
 if(!isset($_COOKIE["STYLE"])){
-if(isset($_SESSION["STYLE"])){
-echo $styleSheets[$_SESSION["STYLE"]]["sheet"];
-} else {
-echo $styleSheets[$defaultStyleSheet]["sheet"];
-}
-} else {
-echo $styleSheets[$_COOKIE["STYLE"]]["sheet"];
+   if(isset($_SESSION["STYLE"])){
+      echo $styleSheets[$_SESSION["STYLE"]]["sheet"];
+   } else {
+      echo $styleSheets[$defaultStyleSheet]["sheet"];
+   }
+   } else {
+      echo $styleSheets[$_COOKIE["STYLE"]]["sheet"];
 }
 ?> 

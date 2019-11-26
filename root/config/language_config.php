@@ -31,4 +31,5 @@ $lang_admin_query = '../../language/admin_query.php';
 $lang_retailer_query = '../../language/retailer_query.php';
 $lang_retailer_edit = '../../language/retailer_edit.php';
 $lang_product_show = '../../language/product_show.php';
+$lang_order_show = '../../language/order_show.php';
 ?>
