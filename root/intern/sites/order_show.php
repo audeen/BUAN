@@ -30,7 +30,7 @@ include($lang_order_show);
       <div class="container-fluid">
         <div class="row">
           <div class="alert alert-primary mt-3 col-12" role="alert"><h2 class="text-center"><?php echo $lang_ordershow[$_SESSION['language']][0];?></h2>
-            <form id="retailers" action="#" method="POST">
+            <form action="#" method="POST">
             <?php
             // Query für Dropdown-Menü mit selected, falls ein Händler ausgewählt wurde
               $sql = "SELECT * FROM retailer";
@@ -69,13 +69,22 @@ include($lang_order_show);
                 <option value="2020" <?php if (($_POST['year']) == 2020 ) echo 'selected';?>>2020</option>
                 <option value="2021" <?php if (($_POST['year']) == 2021 ) echo 'selected';?>>2021</option>
               <select>
+              <button type="submit" name="show" href="#" class="btn btn-success btn-lg float-right mt-2" role="button"><?php echo $lang_ordershow[$_SESSION['language']][8]?></button>
+              </form>
               <?php
-              // Ist ein Händler und ein Monat gewählt, erscheint ein Button zur Abrechnung
+              // Ist ein Händler und ein Monat gewählt, erscheint ein Button zur Abrechnung mit hidden-inputs zur Weitergabe über POST
                 if(isset($_POST['year']) and ($_POST['month']) != "all" and ($_POST['retailer']) != "all" ){
-                  echo "<button type=\"submit\" href=\"#\" class=\"btn btn-success btn-lg float-left mt-2\" role=\"button\">".$lang_ordershow[$_SESSION['language']][10]."</button>";
+                    $retailer = $_POST['retailer'];
+                    $year = $_POST['year'];
+                    $month1 = $_POST['month'];
+                    echo "<form action=\"../../intern/sites/billing.php\" method=\"POST\">";
+                      echo "<input type=\"hidden\" name=\"retailer\" value=\"".$retailer."\"></input>";
+                      echo "<input type=\"hidden\" name=\"year\" value=\"".$year."\"></input>";
+                      echo "<input type=\"hidden\" name=\"month\" value=\"".$month1."\"></input>";
+                      echo "<button type=\"submit\" class=\"btn btn-success btn-lg float-left mt-2\" role=\"button\">".$lang_ordershow[$_SESSION['language']][10]."</button>";
+                    echo "</form>";
                 }
               ?>
-              <button type="submit" href="#" class="btn btn-success btn-lg float-right mt-2" role="button"><?php echo $lang_ordershow[$_SESSION['language']][8]?></button>
             </form>
           </div>
         </div>

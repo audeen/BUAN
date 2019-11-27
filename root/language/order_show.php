@@ -8,9 +8,9 @@ $lang_ordershow[0][4] = "Bestelldatum";
 $lang_ordershow[0][5] = "Menge";
 $lang_ordershow[0][6] = "Gesamtpreis";
 $lang_ordershow[0][7] = "St&uuml;ck";
-$lang_ordershow[0][8] = "Zeigen";
+$lang_ordershow[0][8] = "Anzeigen";
 $lang_ordershow[0][9] = "Alle H&auml;ndler";
-$lang_ordershow[0][10] = "Abrechnen";
+$lang_ordershow[0][10] = "Zur Abrechnung";
 $lang_ordershow[0][7] = "St&uuml;ck";
 $lang_ordershow[0][7] = "St&uuml;ck";
 
@@ -27,7 +27,7 @@ $lang_ordershow[1][6] = "Total Price";
 $lang_ordershow[1][7] = "Pieces";
 $lang_ordershow[1][8] = "Show";
 $lang_ordershow[1][9] = "All Retailers";
-$lang_ordershow[1][10] = "Bill";
+$lang_ordershow[1][10] = "Go to billing";
 $lang_ordershow[1][7] = "Pieces";
 
 

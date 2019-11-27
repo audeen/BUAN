@@ -54,7 +54,8 @@ CREATE TABLE `retailer`
       `r_city`      varchar(20)    NOT NULL     default '',
       `r_country`   varchar(20)    NOT NULL     default '',
       `r_saved`     int(12)        NOT NULL     default 0,
-      `r_img`       varchar(80)    NOT NULL     
+      `r_img`       varchar(80)    NOT NULL,
+      `basic_pay`   int(10)        NOT NULL     default 3000
 
    );
 
@@ -75,7 +76,8 @@ INSERT INTO `retailer` VALUES
       'Aarup',
       'Denmark',
       1570450112,
-      '13438.jpg'),
+      '13438.jpg',
+      3000),
    (2,
       0,
       'Jarkko',
@@ -88,7 +90,8 @@ INSERT INTO `retailer` VALUES
       'PORVOO',
       'Finland',
       1570450112,
-      '686622.jpg'),
+      '686622.jpg',
+      3000),
    (3,
       0,
       'Thomas',
@@ -101,7 +104,8 @@ INSERT INTO `retailer` VALUES
       'Hamburg Nienstedten ',
       'Germany',
       1570450112,
-      '437155.jpg'),
+      '437155.jpg',
+      3000),
    (4,
       0,
       'Razmus',
@@ -114,7 +118,8 @@ INSERT INTO `retailer` VALUES
       'KNUTBY',
       'Sweden',
       1570450112,
-      '792789.jpg'),
+      '792789.jpg',
+      3000),
    (5,
       0,
       'Mina',
@@ -127,7 +132,9 @@ INSERT INTO `retailer` VALUES
       'HALDEN',
       'Norway',
       1570450112,
-      '345260.jpg');             
+      '345260.jpg',
+      3000);
+
 
 ################################################################
 #Ende Tabelle retailer
@@ -245,7 +252,6 @@ CREATE TABLE `orders` (
    
 
 ################################################################
-#Ende Tabelle orders
 # Daten in Tabelle schreiben - orders
 ################################################################
 
@@ -327,3 +333,19 @@ INSERT INTO `orders` VALUES
       '2019-11-25 10:01:00',
       7
       );
+################################################################
+#Ende Tabelle orders
+#Tabelle für Abrechnungen
+#Lösche Tabelle bills, falls existent
+################################################################
+
+DROP TABLE IF EXISTS `bills`;
+CREATE TABLE `bills` (
+   `id_i`               int(10)        PRIMARY KEY    NOT NULL    AUTO_INCREMENT,
+   `invoice_number`     int(10)        NOT NULL,
+   `r_id`               int(10)        NOT NULL,
+   `invoice_date`       datetime       NOT NULL,
+   `basic_pay`          int(10)        NOT NULL,
+   `revenue`            int(10)        NOT NULL,
+   `bonus`              int(10)        NOT NULL
+    );
