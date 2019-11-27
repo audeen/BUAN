@@ -17,15 +17,35 @@ include($lang_product_show);
 //Datenbankverbindung herstellen
 $pdo;
 
+// Sortierungsmöglichkeit im Table-Head über GET
 $sort = isset($_GET['sort']) ? (($_GET['sort'] === "DESC") ? "ASC" : "DESC") : "ASC"; //by rebitz
 $attribute = isset($_GET['attribute']) ? $_GET['attribute'] : "id_o";
 
+if(isset($_POST['retailer'])) {
 
+   $retailer = "=".$_POST['retailer'];
+   $year = $_POST['year'];
+   $month1 = $_POST['month'];
+   $month2 = $_POST['month'];
+   if ($month1 == "all") {
+      $month1 = "01";
+      $month2 = "12";
+   }
+   if ($retailer == "=all") {
+      $retailer = "LIKE '%'";
+   }
+   $sql =   "SELECT * 
+            FROM products, retailer, orders 
+            WHERE id_r $retailer
+            AND r_id = id_r
+            AND id_p = p_id
+            AND
+            `order_date` BETWEEN '$year-$month1-01' AND '$year-$month2-31'";
+}
 
-
-
-$sql = "SELECT * FROM products, retailer, orders WHERE id_r = r_id AND id_p = p_id ORDER BY $attribute $sort";
-
+else {
+   $sql = "SELECT * FROM products, retailer, orders WHERE id_r = r_id AND id_p = p_id ORDER BY $attribute $sort";;
+}
 echo "<div id=\"orders\" class=\"table-responsive table-hover\">\n";
 echo "<table class=\"table\">";
    echo "<thead>";
@@ -56,7 +76,3 @@ echo "<table class=\"table\">";
 echo "</table>";
 echo "</div>";
 ?>
-
-<script>
-    $('tbody').sortable();
-</script> 
