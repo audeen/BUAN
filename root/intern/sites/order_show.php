@@ -25,27 +25,23 @@ include($lang_order_show);
   <body>
     <!-- backend-navigation einbinden -->
     <?php include ('../../config/navigation/html_nav_be.php'); ?>
-    <?php
-    $pdo;
-    $sql = $pdo->prepare("SELECT * FROM retailer");
-    $sql->execute();
-    $row = $sql->fetch();
-    ?>
+    
     <div class="container">
       <div class="container-fluid">
         <div class="row">
           <div class="alert alert-primary mt-3 col-12" role="alert"><h2 class="text-center"><?php echo $lang_ordershow[$_SESSION['language']][0];?></h2>
             <form id="retailers" action="#" method="POST">
             <?php
+            // Query für Dropdown-Menü mit selected, falls ein Händler ausgewählt wurde
               $sql = "SELECT * FROM retailer";
               echo "<select class=\"form-control\" name=\"retailer\">";
                 foreach ($pdo->query($sql) as $row) {
                   echo "<option value=\"".$row['id_r']."\"".((($_POST['retailer']) == $row['id_r'])? 'selected="selected"' : "").">".$row['r_surname'].", ".$row['r_prename']."</option>";
                 }
+            // Ohne Auswahl werden alle Händler angezeigt
                 echo "<option value=\"all\"".((!isset($_POST['retailer']) OR (($_POST['retailer']) == "all" ))? 'selected="selected"' : "").">".$lang_ordershow[$_SESSION['language']][9]."</option>";
               echo "</select>";
-            ?>
-            <?php
+            // Vorbelegung für Erstaufruf      
               if (!isset($_POST['month'])){
                 $_POST['month'] = 'all';
               }
@@ -73,6 +69,12 @@ include($lang_order_show);
                 <option value="2020" <?php if (($_POST['year']) == 2020 ) echo 'selected';?>>2020</option>
                 <option value="2021" <?php if (($_POST['year']) == 2021 ) echo 'selected';?>>2021</option>
               <select>
+              <?php
+              // Ist ein Händler und ein Monat gewählt, erscheint ein Button zur Abrechnung
+                if(isset($_POST['year']) and ($_POST['month']) != "all" and ($_POST['retailer']) != "all" ){
+                  echo "<button type=\"submit\" href=\"#\" class=\"btn btn-success btn-lg float-left mt-2\" role=\"button\">".$lang_ordershow[$_SESSION['language']][10]."</button>";
+                }
+              ?>
               <button type="submit" href="#" class="btn btn-success btn-lg float-right mt-2" role="button"><?php echo $lang_ordershow[$_SESSION['language']][8]?></button>
             </form>
           </div>
