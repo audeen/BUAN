@@ -12,7 +12,7 @@
 // CSS SWITCH ///////////////////////////////////////////////////
 function CSS_Switch($css)
 {
-   echo "<link rel=\"stylesheet\" href=\"../../control/css/".$css.".css\" type=\"text/css\">";
+   echo "<link rel=\"stylesheet\" href=\"../../../control/css/".$css.".css\" type=\"text/css\">";
 }
 /////////////////////////////////////////////////////////////////
 

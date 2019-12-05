@@ -17,8 +17,8 @@ $default_css = "static";
 /////////////////////////////////////////////////////////////////
 
 // Included CSS Style Files /////////////////////////////////////
-echo "<link rel=\"stylesheet\" href=\"../../control/css/default.css\" type=\"text/css\">";
-echo "<link rel=\"stylesheet\" href=\"../../control/css/buttons.css\" type=\"text/css\">";
+echo "<link rel=\"stylesheet\" href=\"../../../control/css/default.css\" type=\"text/css\">";
+echo "<link rel=\"stylesheet\" href=\"../../../control/css/buttons.css\" type=\"text/css\">";
 
 // Open Close Data defaults /////////////////////////////////////
 $open_b = "button_ud_open";
