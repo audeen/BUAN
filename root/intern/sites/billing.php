@@ -168,6 +168,7 @@ echo "<div>";
                   AND order_date BETWEEN '$year-$month1-01' AND '$year-$month2-31'");
 
          foreach ($pdo->query($sql) as $row) {
+            print_r($row);
             echo "<tr>";
                echo "<th scope=\"row\">DUMMY</th>";
                echo "<td>".$row['p_name']."</td>";
@@ -205,7 +206,19 @@ echo "<div>";
 
 echo "</div>";
 
+echo "<form action = \"../../config/functions/receipt.php\" method =\"POST\" >";
 
+
+                      echo "<input type=\"hidden\" name=\"retailer\" value=\"".$retailer."\"></input>";
+                      echo "<input type=\"hidden\" name=\"year\" value=\"".$year."\"></input>";
+                      echo "<input type=\"hidden\" name=\"month\" value=\"".$month1."\"></input>";
+                      echo "<input type=\"hidden\" name=\"total\" value=\"".$total."\"></input>";
+                      echo "<input type=\"hidden\" name=\"basicpay\" value=\"".$row['basic_pay']."\"></input>";
+                      echo "<input type=\"hidden\" name=\"bonus\" value=\"".$bonus."\"></input>";
+                      echo "<input type=\"hidden\" name=\"pay\" value=\"".$pay."\"></input>";
+   echo "<input type=\"submit\" name=\"billing\" >";
+echo "</form>";
+   
 
 ?>
 

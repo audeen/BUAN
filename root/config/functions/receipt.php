@@ -10,6 +10,18 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 
+session_start();
+
+include('../../config/config.php');
+include($lang_bill);
+
+$pdo;
+print_r($_POST);
+$retailer = $_POST['retailer'];
+$year = $_POST['year'];
+$month = $_POST['month'];
+
+
 
 //https://www.php-einfach.de/experte/php-codebeispiele/pdf-per-php-erstellen-pdf-rechnung/
 
@@ -35,10 +47,23 @@ $rechnungs_footer = "Wir bitten um eine Begleichung der Rechnung innerhalb von 1
 <b>BIC</b>: C46X453AD";
  
 //Auflistung eurer verschiedenen Posten im Format [Produktbezeichnung, Menge, Einzelpreis]
-$rechnungs_posten = array(
- array("Produkt 1", 1, 42.50),
- array("Produkt 2", 5, 5.20),
- array("Produkt 3", 3, 10.00));
+
+$sql =   ("SELECT * FROM products, retailer, orders 
+WHERE id_r $retailer
+AND r_id = id_r
+AND id_p = p_id
+AND order_date BETWEEN '$year-$month-01' AND '$year-$month-31'");
+print_r($sql);
+foreach ($pdo->query($sql) as $row) {
+echo "<tr>";
+echo "<th scope=\"row\">DUMMY</th>";
+echo "<td>".$row['p_name']."</td>";
+echo "<td>".$row['qty']." ".$lang_billing[$_SESSION['language']][8]."</td>";
+echo "<td>".$row['p_price']." &euro;</td>";
+echo "<td>".$row['qty']*$row['p_price']." &euro;</td>";
+echo "</tr>";
+}
+
  
 //Höhe eurer Umsatzsteuer. 0.19 für 19% Umsatzsteuer
 $umsatzsteuer = 0.0; 
@@ -89,19 +114,32 @@ Rechnung
  
  
 $gesamtpreis = 0;
- 
-foreach($rechnungs_posten as $posten) {
- $menge = $posten[1];
- $einzelpreis = $posten[2];
- $preis = $menge*$einzelpreis;
- $gesamtpreis += $preis;
- $html .= '<tr>
-                <td>'.$posten[0].'</td>
- <td style="text-align: center;">'.$posten[1].'</td> 
- <td style="text-align: center;">'.number_format($posten[2], 2, ',', '').' Euro</td>	
-                <td style="text-align: center;">'.number_format($preis, 2, ',', '').' Euro</td>
-              </tr>';
+
+$sql =   ("SELECT * FROM products, retailer, orders 
+WHERE id_r $retailer
+AND r_id = id_r
+AND id_p = p_id
+AND order_date BETWEEN '$year-$month-01' AND '$year-$month-31'");
+
+foreach ($pdo->query($sql) as $row) {
+$name = $row['p_name'];
+$quantity = $row['qty'];
+$pieces = $lang_billing[$_SESSION['language']][8];
+$singleprice = $row['p_price'];
+$price = $row['qty']*$row['p_price'];
+
+$html .=
+'<tr>
+<th scope="row">DUMMY</th>
+<td style="text-align: center;">'.$name.'</td>
+<td style="text-align: center;">'.$quantity.' '.$pieces.'</td>
+<td style="text-align: center;">'.$singleprice.' &euro;</td>
+<td style="text-align: center;">'.$price.' &euro;</td>
+</tr>';
 }
+
+ 
+
 $html .="</table>";
  
  
@@ -109,25 +147,24 @@ $html .="</table>";
 $html .= '
 <hr>
 <table cellpadding="5" cellspacing="0" style="width: 100%;" border="0">';
-if($umsatzsteuer > 0) {
- $netto = $gesamtpreis / (1+$umsatzsteuer);
- $umsatzsteuer_betrag = $gesamtpreis - $netto;
- 
- $html .= '
- <tr>
- <td colspan="3">Zwischensumme (Netto)</td>
- <td style="text-align: center;">'.number_format($netto , 2, ',', '').' Euro</td>
- </tr>
- <tr>
- <td colspan="3">Umsatzsteuer ('.intval($umsatzsteuer*100).'%)</td>
- <td style="text-align: center;">'.number_format($umsatzsteuer_betrag, 2, ',', '').' Euro</td>
- </tr>';
-}
+
  
 $html .='
             <tr>
-                <td colspan="3"><b>Gesamtsumme: </b></td>
-                <td style="text-align: center;"><b>'.number_format($gesamtpreis, 2, ',', '').' Euro</b></td>
+                <td colspan="3"><b>Gesamtsumme Bestellungen: </b></td>
+                <td style="text-align: center;"><b>'.$_POST['total'].' Euro</b></td>
+            </tr>
+            <tr>
+                <td colspan="3"><b>Grundgehalt: </b></td>
+                <td style="text-align: center;"><b>'.$_POST['basicpay'].' Euro</b></td>
+            </tr>
+            <tr>
+                <td colspan="3"><b>Bonus: </b></td>
+                <td style="text-align: center;"><b>'.$_POST['bonus'].' Euro</b></td>
+            </tr>
+            <tr>
+                <td colspan="3"><b>Gesamtgehalt: </b></td>
+                <td style="text-align: center;"><b>'.$_POST['pay'].' Euro</b></td>
             </tr> 
         </table>
 <br><br><br>';
@@ -185,10 +222,10 @@ $pdf->writeHTML($html, true, false, true, false, '');
 //Ausgabe der PDF
  
 //Variante 1: PDF direkt an den Benutzer senden:
-$pdf->Output($pdfName, 'I');
+/* $pdf->Output($pdfName, 'I'); */
  
 //Variante 2: PDF im Verzeichnis abspeichern:
-//$pdf->Output(dirname(__FILE__).'/'.$pdfName, 'F');
-//echo 'PDF herunterladen: <a href="'.$pdfName.'">'.$pdfName.'</a>';
+$pdf->Output(dirname(__FILE__).'/'.$pdfName, 'F');
+echo 'PDF herunterladen: <a href="'.$pdfName.'">'.$pdfName.'</a>';
 
 ?>
