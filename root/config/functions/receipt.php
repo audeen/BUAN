@@ -16,8 +16,6 @@ include('../../config/config.php');
 include($lang_bill);
 
 
-
-
 $retailer = $_POST['retailer'];
 $year = $_POST['year'];
 $month = $_POST['month'];
@@ -26,7 +24,7 @@ $month = $_POST['month'];
 $pdo;
 $sql =   $pdo->prepare("SELECT * 
             FROM products, retailer, orders 
-            WHERE id_r  $retailer
+            WHERE id_r  = $retailer
             AND r_id = id_r
             AND id_p = p_id
             AND order_date BETWEEN '$year-$month-01' AND '$year-$month-31'");
@@ -37,7 +35,7 @@ $time = strtotime($row['order_date']);
 if (empty($row)) {
     $sql = $pdo->prepare("SELECT *
           FROM retailer
-          WHERE id_r  $retailer");
+          WHERE id_r = $retailer");
     $sql->execute();
     $row = $sql->fetch();
 
@@ -49,7 +47,7 @@ if (empty($row)) {
 
 
 $rechnungs_nummer = $_POST['billnumber'];
-$rechnungs_datum = date("d.m.Y");
+$rechnungs_datum = date("Y-m-t");
 $pdfAuthor = "BUAN";
  
 $rechnungs_header = '
@@ -123,7 +121,7 @@ $gesamtpreis = 0;
 
 
 $sql =   ("SELECT * FROM products, retailer, orders 
-WHERE id_r $retailer
+WHERE id_r = $retailer
 AND r_id = id_r
 AND id_p = p_id
 AND order_date BETWEEN '$year-$month-01' AND '$year-$month-31'");
@@ -131,7 +129,6 @@ $positions = $pdo->query("SELECT FOUND_ROWS()")->fetchColumn();
 
 
 foreach ($pdo->query($sql) as $key => $row) {
-print_r($row);
     
 $name = $row['p_name'];
 $quantity = $row['qty'];
@@ -248,7 +245,7 @@ $rot, IMG_ARC_PIE);
 
 imagepng ($flaeche, "diagramm.png");
 imagedestroy($flaeche);
-echo "<img src='diagramm.png'>";
+
 
 $html .= nl2br($rechnungs_footer);
  
@@ -324,12 +321,106 @@ $pdf->Image
  
 //Ausgabe der PDF
  
-//Variante 1: PDF direkt an den Benutzer senden:
-/* $pdf->Output($pdfName, 'I'); */
-/* $pdf_file_link = "pdf".DIRECTORY_SEPARATOR."payrolls".DIRECTORY_SEPARATOR.$pdf_name.".pdf";
-$pdf_file_name = realpath('./../..').DIRECTORY_SEPARATOR.$pdf_file_link; */
-//Variante 2: PDF im Verzeichnis abspeichern:
-$pdf->Output/* (dirname(__FILE__). */(realpath('./../..').DIRECTORY_SEPARATOR."pdf".DIRECTORY_SEPARATOR.$pdfName, 'F');
-echo "PDF herunterladen: <a href=\"../../pdf".DIRECTORY_SEPARATOR.$pdfName."\">".$pdfName."</a>";
+$pdf->Output(realpath('./../..').DIRECTORY_SEPARATOR."pdf".DIRECTORY_SEPARATOR.$pdfName, 'F');
+
+
+//Daten beziehen
+$billnumber =   !empty($_POST['billnumber']) ? trim($_POST['billnumber']) : null;
+$retailer = !empty($_POST['retailer']) ? trim($_POST['retailer']) : null;
+$billdate =  date("Y-m-t H:i:s");
+$basicpay = !empty($_POST['basicpay']) ? trim($_POST['basicpay']) : null;
+$revenue =  !empty($_POST['total']) ? trim($_POST['total']) : 0;
+$bonus =  !empty($_POST['bonus']) ? trim($_POST['bonus']) : 0; 
+$pay =  !empty($_POST['pay']) ? trim($_POST['pay']) : null;
+
+
+//
+$sql = "SELECT COUNT(invoice_number) AS num FROM bills WHERE invoice_number = :invoice_number";
+$stmt = $pdo->prepare($sql);
+
+$stmt->bindValue(':invoice_number', $billnumber);
+
+//Execute.
+$stmt->execute();
+    
+//Fetch the row.
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Rechnung existiert schon? Beenden!
+if($row['num'] > 0){
+    
+    die("
+        <div class=\"btn btn-danger btn-lg text-center mt-2\">Monat bereits abgerechnet</div>
+
+        <form action=\"../../intern/sites/billing.php\" method=\"post\">
+            <input type=\"hidden\" name=\"retailer\" value=\"".$retailer."\">
+            <input type=\"hidden\" name=\"month\" value=\"".$month."\">
+            <input type=\"hidden\" name=\"year\" value=\"".$year."\">
+            <br><br>
+            <a type=\"button\" class=\"btn btn-success\" href=\"../../pdf".DIRECTORY_SEPARATOR.$pdfName."\">Gehaltsabrechnung<br>anzeigen</a>
+            <br>
+            <button class=\"btn btn-success mt-4\" type=\"submit\">Zurück</button>
+            
+        </form>
+        
+    ");
+    
+} 
+
+$sql = "INSERT INTO bills (
+    invoice_number,
+    r_id,
+    invoice_date,
+    basic_pay,
+    revenue,
+    bonus,
+    pay
+)
+VALUES (
+        :invoice_number,
+        :r_id, 
+        :invoice_date,
+        :basic_pay,
+        :revenue,
+        :bonus,
+        :pay
+        )";
+
+$stmt = $pdo->prepare($sql);
+
+
+$stmt->bindValue(':invoice_number', $billnumber);
+$stmt->bindValue(':r_id', $retailer);
+$stmt->bindValue(':invoice_date', $billdate);
+$stmt->bindValue(':basic_pay', $basicpay);
+$stmt->bindValue(':revenue', $revenue);
+$stmt->bindValue(':bonus', $bonus);
+$stmt->bindValue(':pay', $pay);
+
+$result = $stmt->execute();
+
+
+if($result){
+    //What you do here is up to you!
+    echo "<div class=\"btn btn-danger btn-lg text-center mt-2\">Monat abgerechnet!</div>
+
+    <form action=\"../../intern/sites/billing.php\" method=\"post\">
+        <input type=\"hidden\" name=\"retailer\" value=\"".$retailer."\">
+        <input type=\"hidden\" name=\"month\" value=\"".$month."\">
+        <input type=\"hidden\" name=\"year\" value=\"".$year."\">
+        <br><br>
+        <a type=\"button\" class=\"btn btn-success\" href=\"../../pdf".DIRECTORY_SEPARATOR.$pdfName."\">Gehaltsabrechnung<br>anzeigen</a>
+        <br>
+        <button class=\"btn btn-success mt-4\" type=\"submit\">Zurück</button>
+        
+    </form>";
+    unset($_POST['bill']);
+}
+else {
+    echo "Error, data not saved.";
+
+}
+
+
 
 ?>

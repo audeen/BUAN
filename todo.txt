@@ -1,3 +1,14 @@
 Backend: 
-   - Positionen in Rechnung
-   - 
+   
+   - Gehaltsabrechung flaggen
+   - Translations
+   
+
+Frontend:
+
+   - Navigation
+   - Warenkorb
+   - Passwort
+   - Kontaktdaten
+   - Bestellvorgang
+   - Translations

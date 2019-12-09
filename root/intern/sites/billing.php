@@ -17,7 +17,8 @@ include($lang_bill);
 
 
 
-$retailer = "=".$_POST['retailer'];
+$retailer = $_POST['retailer'];
+
 $year = $_POST['year'];
 $month = $_POST['month'];
 
@@ -26,7 +27,7 @@ $month = $_POST['month'];
 // Gesamtsumme Bestellungen/Monat errechnen & in Variable schreiben
 $sql =   $pdo->prepare("SELECT SUM(total)
       FROM products, retailer, orders 
-      WHERE id_r $retailer
+      WHERE id_r = $retailer
       AND r_id = id_r
       AND id_p = p_id
       AND order_date BETWEEN '$year-$month-01' AND '$year-$month-31'");
@@ -61,7 +62,7 @@ else {
 // Daten aus Datenbank holen 
 $sql =   $pdo->prepare("SELECT * 
             FROM products, retailer, orders 
-            WHERE id_r $retailer
+            WHERE id_r = $retailer
             AND r_id = id_r
             AND id_p = p_id
             AND order_date BETWEEN '$year-$month-01' AND '$year-$month-31'");
@@ -71,14 +72,10 @@ $row = $sql->fetch();
 if (empty($row)) {
    $sql = $pdo->prepare("SELECT *
          FROM retailer
-         WHERE id_r $retailer");
+         WHERE id_r = $retailer");
    $sql->execute();
    $row = $sql->fetch();
 }
-
-print_r($row);
-
-
 
 $pay = $bonus + $row['basic_pay'];
 
@@ -171,13 +168,12 @@ echo "<div>";
          echo "<tbody";
          //Ausgabe Bestellungen des Monats
          $sql =   ("SELECT * FROM products, retailer, orders 
-                  WHERE id_r $retailer
+                  WHERE id_r = $retailer
                   AND r_id = id_r
                   AND id_p = p_id
                   AND order_date BETWEEN '$year-$month-01' AND '$year-$month-31'");
 
          foreach ($pdo->query($sql) as $row) {
-            print_r($row);
             echo "<tr>";
                echo "<td>".$row['p_name']."</td>";
                echo "<td>".$row['qty']." ".$lang_billing[$_SESSION['language']][8]."</td>";
@@ -214,7 +210,7 @@ echo "<div>";
 
 echo "</div>";
 
-echo "<form action = \"../../config/functions/receipt.php\" method =\"POST\" >";
+echo "<form action = \"receipt_show.php\" method =\"POST\" >";
 
 
                       echo "<input type=\"hidden\" name=\"retailer\" value=\"".$retailer."\"></input>";
@@ -227,9 +223,9 @@ echo "<form action = \"../../config/functions/receipt.php\" method =\"POST\" >";
                       echo "<input type=\"hidden\" name=\"billnumber\" value=\"".$billnumber."\"></input>";
    echo "<input type=\"submit\" name=\"billing\" >";
 echo "</form>";
-   
+
 
 ?>
-    <?php include ("../control/control.php");?>
+
         </div>
       </div>

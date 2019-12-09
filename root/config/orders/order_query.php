@@ -19,7 +19,7 @@ $pdo;
 
 // Sortierungsmöglichkeit im Table-Head über GET
 $sort = isset($_GET['sort']) ? (($_GET['sort'] === "DESC") ? "ASC" : "DESC") : "ASC"; //by rebitz
-$attribute = isset($_GET['attribute']) ? $_GET['attribute'] : "id_o";
+$attribute = isset($_GET['attribute']) ? $_GET['attribute'] : "order_date";
 
 
 //Monats- / Jahresauswahl
@@ -44,10 +44,12 @@ if(isset($_POST['retailer'])) {
             AND
             `order_date` BETWEEN '$year-$month1-01' AND '$year-$month2-31'";
 }
-
 else {
-   $sql = "SELECT * FROM products, retailer, orders WHERE id_r = r_id AND id_p = p_id ORDER BY $attribute $sort";;
+
+   $sql = "SELECT * FROM products, retailer, orders WHERE id_r = r_id AND id_p = p_id ORDER BY $attribute $sort";
 }
+
+
 echo "<div id=\"orders\" class=\"table-responsive table-hover\">\n";
 echo "<table class=\"table\">";
    echo "<thead>";

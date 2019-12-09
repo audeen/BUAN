@@ -13,7 +13,12 @@ session_start();
 
 include('../../config/config.php');
 include($lang_order_show);
-
+if(isset($_POST['year']) and ($_POST['month'])) {
+  $datum = date("Y-m-t", strtotime($_POST['year']."-".$_POST['month']));
+}  
+else {
+  $datum ="";
+}
 ?>
 <!-- Include Security-File -->
 <?php include ('../../config/functions/authentification.php'); ?>
@@ -72,8 +77,9 @@ include($lang_order_show);
               <button type="submit" name="show" href="#" class="btn btn-success btn-lg float-right mt-2" role="button"><?php echo $lang_ordershow[$_SESSION['language']][8]?></button>
               </form>
               <?php
-              // Ist ein Händler und ein Monat gewählt, erscheint ein Button zur Abrechnung mit hidden-inputs zur Weitergabe über POST
-                if(isset($_POST['year']) and ($_POST['month']) != "all" and ($_POST['retailer']) != "all" ){
+              
+              // Ist ein Händler und ein Monat gewählt, erscheint ein Button zur Abrechnung mit hidden-inputs zur Weitergabe über POST + Rechnungen in der Zukunft nicht möglich
+                if(isset($_POST['year']) and ($_POST['month']) != "all" and ($_POST['retailer']) != "all" and strtotime($datum) < time()){
                     $retailer = $_POST['retailer'];
                     $year = $_POST['year'];
                     $month1 = $_POST['month'];
