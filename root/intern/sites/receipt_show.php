@@ -9,7 +9,7 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
-
+session_start();
 
 include('../../config/config.php');
 include($lang_product_show);
@@ -18,11 +18,7 @@ include($lang_product_show);
 
 
 <!-- Include Security-File -->
-<?php /* include ('../../config/functions/authentification.php'); */ ?>
-
-
-
-
+<?php include('../../config/functions/authentification.php'); ?>
 
 <!DOCTYPE html>
 <html lang="de">

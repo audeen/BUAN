@@ -4,7 +4,7 @@
 //  BUAN-Projekt                                //
 //  Dateiname:   retailer_show.php              //
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
-//  Beschreibung : HTML-Teil retailer_show      //
+//  Beschreibung : Übersichtsseite Produkte     //
 //  Ersteller    : Jannik Sievert               //
 //  Stand        :                              //
 //  Version      : 1.0                          //
@@ -29,7 +29,6 @@ include($lang_product_show);
   <body>
     <!-- backend-navigation einbinden -->
     <?php include ('../../config/navigation/html_nav_be.php'); ?>
-
     <div class="container">
       <div class="container-fluid">
         <div class="row">

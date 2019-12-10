@@ -4,7 +4,7 @@
 //  BUAN-Projekt                                //
 //  Dateiname:   admin_show.php                 //
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
-//  Beschreibung : HTML-Teil admin_show        //
+//  Beschreibung : Übersichtsseite aller Admins //
 //  Ersteller    : Jannik Sievert               //
 //  Stand        :                              //
 //  Version      : 1.0                          //

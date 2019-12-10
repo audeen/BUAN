@@ -24,13 +24,15 @@ if (isset($_POST['save']) && ($_POST['a_pw'] == $_POST['a_pw_verify'])) {
         exit();
     }
     
-    // get values form input text and number
+    // Werte aus Feldern holen
     
     $id_a      = $_SESSION['user_id_reset_pass'];
     $a_pw      = $_POST['a_pw'];
 
-    $passwordHash = md5($a_pw);      
+    // Passworteingabe hashen
+    $passwordHash = md5($a_pw);  
     
+    // Datenbank aktualisieren
     $query = "UPDATE `admins` SET `a_pw`=:a_pw WHERE `id_a` =:id_a";
     
     $pdoResult = $pdo->prepare($query);
@@ -41,7 +43,7 @@ if (isset($_POST['save']) && ($_POST['a_pw'] == $_POST['a_pw_verify'])) {
     ));
     
     if ($pdoExec) {
-        echo 'Data Updated';
+        echo 'Data Updated'; // ÜBERSETZUNG FEHLT
         echo "<meta http-equiv=\"refresh\" content=\"1;url=admin_show.php\">";
     } else {
         echo 'Data NOT Updated';
@@ -55,7 +57,7 @@ elseif (!isset($_POST['save'])) {
 // Wenn die Passwörter nicht übereinstimmen
 else {
     echo "<div class=\"alert alert-danger mt-3\" role=\"alert\">";
-        /* echo $lang_adminedit[$_SESSION['language']][0]; */
+        /* echo $lang_adminedit[$_SESSION['language']][0]; */   /// ÜBERSETZUNG FEHLT
         echo "Passwörter stimmen nicht überein!";
     echo "</div>";
 }

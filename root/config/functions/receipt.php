@@ -9,19 +9,21 @@
 //  Stand        : 27.11.2019                   //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
+// Orientiert an: 
+// https://www.php-einfach.de/experte/php-codebeispiele/pdf-per-php-erstellen-pdf-rechnung/
 
-session_start();
 
 include('../../config/config.php');
 include($lang_bill);
 
-
+// Werte aus POST in Variablen schreiben
 $retailer = $_POST['retailer'];
 $year = $_POST['year'];
 $month = $_POST['month'];
-
-
+//Datenbankverbindung herstellen
 $pdo;
+
+//Daten beziehen
 $sql =   $pdo->prepare("SELECT * 
             FROM products, retailer, orders 
             WHERE id_r  = $retailer
@@ -30,8 +32,12 @@ $sql =   $pdo->prepare("SELECT *
             AND order_date BETWEEN '$year-$month-01' AND '$year-$month-31'");
 $sql->execute();
 $row = $sql->fetch();
+
+//Bestelldatum in Variable schreiben
 $time = strtotime($row['order_date']);
 
+
+// Keine Bestellungen im Monat getätigt?
 if (empty($row)) {
     $sql = $pdo->prepare("SELECT *
           FROM retailer
@@ -40,10 +46,6 @@ if (empty($row)) {
     $row = $sql->fetch();
 
  }
-
-
-
-//https://www.php-einfach.de/experte/php-codebeispiele/pdf-per-php-erstellen-pdf-rechnung/
 
 
 $rechnungs_nummer = $_POST['billnumber'];
@@ -65,18 +67,9 @@ $rechnungs_footer = "";
  
 $pdfName = "Rechnung_".$rechnungs_nummer.".pdf";
 
-
-
-
-
  
  
 //////////////////////////// Inhalt des PDFs als HTML-Code \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- 
- 
-// Erstellung des HTML-Codes. Dieser HTML-Code definiert das Aussehen eures PDFs.
-// tcpdf unterstützt recht viele HTML-Befehle. Die Nutzung von CSS ist allerdings
-// stark eingeschränkt.
  
 $html = '
 <table cellpadding="5" cellspacing="0" style="width: 100%; ">
@@ -112,14 +105,7 @@ Gehaltsabrechnung
  <td style="text-align: center;"><b>Einzelpreis</b></td>
  </tr>';
  
- 
-$gesamtpreis = 0;
-
-
-
 // Positionen zählen
-
-
 $sql =   ("SELECT * FROM products, retailer, orders 
 WHERE id_r = $retailer
 AND r_id = id_r
@@ -127,7 +113,7 @@ AND id_p = p_id
 AND order_date BETWEEN '$year-$month-01' AND '$year-$month-31'");
 $positions = $pdo->query("SELECT FOUND_ROWS()")->fetchColumn();
 
-
+// Bestellungen eines Monats ausgeben
 foreach ($pdo->query($sql) as $key => $row) {
     
 $name = $row['p_name'];
@@ -148,15 +134,11 @@ $html .=
 
 }
  
-
 $html .="</table>";
- 
- 
  
 $html .= '
 <hr>
 <table cellpadding="5" cellspacing="0" style="width: 100%;" border="0">';
-
  
 $html .='
             <tr>
@@ -180,7 +162,7 @@ $html .='
  
 
 //Kreisdiagramm
-
+// Viertes Semester
 // Anteilige Prozentwerte je Eingabewert --
 // alle Werte ergeben 100 Prozent ---------
 $alle = $_POST['pay'];

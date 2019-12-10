@@ -11,14 +11,15 @@
 //////////////////////////////////////////////////
 
 
-// Verbindung mit der Datenbank herstellen
 include('../../config/config.php');
 include($lang_admin_query);
 
+// Verbindung mit der Datenbank herstellen & Admins wählen
 $pdo;
 $sql = "SELECT * FROM admins";
 
 echo "<div class=\"row\">\n";
+  // Darstellung von Admins auf Karten
   foreach ($pdo->query($sql) as $row) {
     echo "<div class=\"col-md-4\">\n";
       echo "<div class=\"card mb-3\">\n";

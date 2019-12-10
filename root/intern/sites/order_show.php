@@ -4,7 +4,7 @@
 //  BUAN-Projekt                                //
 //  Dateiname:   order_show.php                 //
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
-//  Beschreibung : HTML-Teil order_show         //
+//  Beschreibung : Übersichtsseite Bestellungen //
 //  Ersteller    : Jannik Sievert               //
 //  Stand        :                              //
 //  Version      : 1.0                          //
@@ -13,17 +13,21 @@ session_start();
 
 include('../../config/config.php');
 include($lang_order_show);
+
+// Wenn POST-Variablen gesetzt sind, 
+
 if(isset($_POST['year']) and ($_POST['month'])) {
   $datum = date("Y-m-t", strtotime($_POST['year']."-".$_POST['month']));
+  
 }  
 else {
   $datum ="";
-}
-?>
-<!-- Include Security-File -->
-<?php include ('../../config/functions/authentification.php'); ?>
+  }
 
-<!DOCTYPE html>
+//Include Security-File
+include ('../../config/functions/authentification.php'); 
+?>
+
 <html lang="de">
   <!-- html-head einbinden -->
   <?php include ('../../config/navigation/html_head.php'); ?>
@@ -53,8 +57,11 @@ else {
               if (!isset($_POST['year'])){
                 $_POST['year'] = date("Y");
               }
+            
+            // Dropdown für Monat + Jahr
             ?>
-              <select class="form-control" name="month">
+                         
+             <select class="form-control" name="month">
                 <option value=1 <?php if (($_POST['month']) == 1 ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][1];?></option>
                 <option value=2 <?php if (($_POST['month']) == 2 ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][2];?></option>
                 <option value=3 <?php if (($_POST['month']) == 3 ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][3];?></option>
@@ -77,8 +84,8 @@ else {
               <button type="submit" name="show" href="#" class="btn btn-success btn-lg float-right mt-2" role="button"><?php echo $lang_ordershow[$_SESSION['language']][8]?></button>
               </form>
               <?php
-              
-              // Ist ein Händler und ein Monat gewählt, erscheint ein Button zur Abrechnung mit hidden-inputs zur Weitergabe über POST + Rechnungen in der Zukunft nicht möglich
+
+                // Ist ein Händler und ein Monat gewählt, erscheint ein Button zur Abrechnung mit hidden-inputs zur Weitergabe über POST + Rechnungen in der Zukunft nicht möglich
                 if(isset($_POST['year']) and ($_POST['month']) != "all" and ($_POST['retailer']) != "all" and strtotime($datum) < time()){
                     $retailer = $_POST['retailer'];
                     $year = $_POST['year'];
@@ -90,6 +97,7 @@ else {
                       echo "<button type=\"submit\" class=\"btn btn-success btn-lg float-left mt-2\" role=\"button\">".$lang_ordershow[$_SESSION['language']][10]."</button>";
                     echo "</form>";
                 }
+                
               ?>
             </form>
           </div>

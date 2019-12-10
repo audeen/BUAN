@@ -1,5 +1,15 @@
 <?php 
 
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   admin_pw_auth.php              //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Prüfung PW-Link mit Request  //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        : 18.11.2019                   //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
+
 session_start();
 include ('../config.php');
 $pdo;
@@ -32,7 +42,7 @@ $statement->execute(array(
 
 $requestInfo = $statement->fetch(PDO::FETCH_ASSOC);
 
-//Wenn requestInfo leer ist, ist es keine gültige Anfrage (Manipulationsversuch über GET)
+//Wenn requestInfo leer ist, ist es keine gültige Anfrage (evtl. Manipulationsversuch über GET)
 
 if(empty($requestInfo)){
     echo 'Invalid request!';
@@ -46,9 +56,6 @@ $_SESSION['user_id_reset_pass'] = $userId;
 
 echo "<meta http-equiv=\"refresh\" content=\"0;url=../../intern/sites/admin_pw_create.php\">";
 
-/* echo "<form action =\"#\" method=\"POST\">";
-echo    "<input type=\"hidden\" name=\"user_id\" value=\"".$user_id."\">";
-echo "</form>"; */
 exit;
 }
 

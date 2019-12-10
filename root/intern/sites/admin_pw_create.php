@@ -12,7 +12,7 @@
 session_start();
 include ('../../config/config.php');
 
-// Spracharrays lokal verwendet, um Dateien zu sparen
+// Spracharrays lokal 
 $lang_apwcreate = array();
 $lang_apwcreate[0][0] = "Passwort &auml;ndern";
 $lang_apwcreate[0][1] = "Neues Passwort";

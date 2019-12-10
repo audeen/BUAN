@@ -4,7 +4,7 @@
 //  BUAN-Projekt                                //
 //  Dateiname:   retailer_create.php            //
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
-//  Beschreibung : HTML-Teil retailer_create    //
+//  Beschreibung : Retailer ERstellen           //
 //  Ersteller    : Jannik Sievert               //
 //  Stand        :                              //
 //  Version      : 1.0                          //
@@ -43,36 +43,32 @@ if (isset($_SESSION['cancel'])){
   echo "<meta http-equiv=\"refresh\" content=\"0;url=product_create.php\">";
 }
 
-  echo "  <div class=\"ld-center\">\n";
-  echo "    <div class=\"card mb-3\">\n";
-    echo "    <form action=\"#\" method=\"POST\">";
-    echo "    <h5 class=\"card-header\">Neuer H&auml;ndler</h5>\n";
-    echo "    <div class=\"card-body\">\n";
-    echo "      <h6 class=\"card-subtitle text-muted\">ID wird automatisch vergeben</h6>\n";
-    echo "    </div>\n";
-    echo "    <div class=\"card-body\">\n";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_prename\" placeholder=\"Prename\" required>";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_surname\" placeholder=\"Surname\" required>";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_alias\" placeholder=\"Alias\" required>";
-    echo "      <input type=\"password\"class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_pw\" placeholder=\"Password\" required>";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_mail\" placeholder=\"E-Mail\" required>";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_street\" placeholder=\"Stra&szlig;e, Nummer\" required>";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_postal\" placeholder=\"PLZ\" required>";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_city\" placeholder=\"Stadt\" required>";
-    echo "      <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_country\" placeholder=\"Land\" required>";
-    echo "    </div>\n";
-    echo "    <div class=\"card-body\">\n";
-    echo "      <input type=\"hidden\" name=\"r_saved\" value=\"".time()."\">";
-    echo "      <button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"register\">Anlegen</button>";
-    echo "      <button class=\"btn btn-outline-danger\" name=\"cancel\" formnovalidate>Abbrechen</button>";
-
-    echo "    </form>";
-    echo "    </div>\n";
-
-    echo "  </div>\n";
+  echo "<div class=\"ld-center\">\n";
+  echo "<div class=\"card mb-3\">\n";
+    echo "<form action=\"#\" method=\"POST\">";
+      echo "<h5 class=\"card-header\">Neuer H&auml;ndler</h5>\n";
+      echo "<div class=\"card-body\">\n";
+        echo "<h6 class=\"card-subtitle text-muted\">ID wird automatisch vergeben</h6>\n";
+      echo "</div>\n";
+      echo "<div class=\"card-body\">\n";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_prename\" placeholder=\"Prename\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_surname\" placeholder=\"Surname\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_alias\" placeholder=\"Alias\" required>";
+        echo "<input type=\"password\"class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_pw\" placeholder=\"Password\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_mail\" placeholder=\"E-Mail\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_street\" placeholder=\"Stra&szlig;e, Nummer\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_postal\" placeholder=\"PLZ\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_city\" placeholder=\"Stadt\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_country\" placeholder=\"Land\" required>";
+      echo "</div>\n";
+      echo "<div class=\"card-body\">\n";
+        echo "<input type=\"hidden\" name=\"r_saved\" value=\"".time()."\">";
+        echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"register\">Anlegen</button>";
+        echo "<button class=\"btn btn-outline-danger\" name=\"cancel\" formnovalidate>Abbrechen</button>";
+      echo "</form>";
     echo "</div>\n";
-
-
+    echo "</div>\n";
+    echo "</div>\n";
 ?>
 
 </div>

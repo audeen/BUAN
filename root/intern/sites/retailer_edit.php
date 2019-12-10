@@ -4,7 +4,7 @@
 //  BUAN-Projekt                                //
 //  Dateiname:   retailer_edit.php              //
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
-//  Beschreibung : HTML-Teil retailer_edit      //
+//  Beschreibung : Retailer bearbeiten          //
 //  Ersteller    : Jannik Sievert               //
 //  Stand        :                              //
 //  Version      : 1.0                          //

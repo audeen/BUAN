@@ -4,7 +4,7 @@
 //  BUAN-Projekt                                //
 //  Dateiname:   retailer_show.ph               //
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
-//  Beschreibung : HTML-Teil retailer_show      //
+//  Beschreibung : Händler anzeigen             //
 //  Ersteller    : Jannik Sievert               //
 //  Stand        :                              //
 //  Version      : 1.0                          //

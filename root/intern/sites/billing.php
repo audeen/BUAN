@@ -15,13 +15,10 @@ session_start();
 include('../../config/config.php');
 include($lang_bill);
 
-
-
 $retailer = $_POST['retailer'];
 
 $year = $_POST['year'];
 $month = $_POST['month'];
-
 
 
 // Gesamtsumme Bestellungen/Monat errechnen & in Variable schreiben
@@ -55,9 +52,6 @@ elseif ($total > 3000){
 else {
    $bonus = 0;
 }
-
-
-
 
 // Daten aus Datenbank holen 
 $sql =   $pdo->prepare("SELECT * 
@@ -210,9 +204,9 @@ echo "<div>";
 
 echo "</div>";
 
+// Zurück-Button mit Datenübergabe
+
 echo "<form action = \"receipt_show.php\" method =\"POST\" >";
-
-
                       echo "<input type=\"hidden\" name=\"retailer\" value=\"".$retailer."\"></input>";
                       echo "<input type=\"hidden\" name=\"year\" value=\"".$year."\"></input>";
                       echo "<input type=\"hidden\" name=\"month\" value=\"".$month."\"></input>";
@@ -223,7 +217,6 @@ echo "<form action = \"receipt_show.php\" method =\"POST\" >";
                       echo "<input type=\"hidden\" name=\"billnumber\" value=\"".$billnumber."\"></input>";
    echo "<input type=\"submit\" name=\"billing\" >";
 echo "</form>";
-
 
 ?>
 

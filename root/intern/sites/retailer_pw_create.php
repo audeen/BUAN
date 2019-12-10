@@ -4,7 +4,7 @@
 //  BUAN-Projekt                                //
 //  Dateiname:   admin_edit.php                 //
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
-//  Beschreibung : HTML-Teil admin_edit         //
+//  Beschreibung : Händler Passwort ändern      //
 //  Ersteller    : Jannik Sievert               //
 //  Stand        :                              //
 //  Version      : 1.0                          //
