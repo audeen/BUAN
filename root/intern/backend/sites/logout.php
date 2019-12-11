@@ -17,6 +17,6 @@ session_start();
     unset($_SESSION);
     session_destroy();
     session_write_close();
-    echo "<meta http-equiv=\"refresh\" content=\"0;url=../../intern/backend/sites/index.php\">";
+    echo "<meta http-equiv=\"refresh\" content=\"0;url=../../../sites/index.php\">";
     die;
 ?>

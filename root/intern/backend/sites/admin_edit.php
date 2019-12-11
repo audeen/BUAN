@@ -21,7 +21,7 @@ session_start();
 <body>
     <!-- backend-navigation einbinden -->
   <?php include('../../backend/navigation/html_nav_be.php'); ?>
-  <?php include('../../config/config.php');?>
+  <?php include('../../../config/config.php');?>
   <?php include($lang_admin_edit); ?>
 
 <div class="container">
@@ -32,7 +32,7 @@ session_start();
 
 <?php
 
-include ('../../config/config.php');
+
 include ('../../backend/admin/admin_update.php');
 include ('../../backend/admin/admin_pw_reset.php');
 
@@ -135,7 +135,7 @@ echo "</div>";
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <?php include ("../control/control.php");?>
+    <?php include ("../../control/control.php");?>
   </body>
 
 

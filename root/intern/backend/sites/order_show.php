@@ -11,7 +11,7 @@
 //////////////////////////////////////////////////
 session_start();
 
-include('../../config/config.php');
+include('../../../config/config.php');
 include($lang_order_show);
 
 // Wenn POST-Variablen gesetzt sind, 
@@ -90,7 +90,7 @@ include ('../../backend/functions/authentification.php');
                     $retailer = $_POST['retailer'];
                     $year = $_POST['year'];
                     $month1 = $_POST['month'];
-                    echo "<form action=\"../../intern/backend/sites/billing.php\" method=\"POST\">";
+                    echo "<form action=\"billing.php\" method=\"POST\">";
                       echo "<input type=\"hidden\" name=\"retailer\" value=\"".$retailer."\"></input>";
                       echo "<input type=\"hidden\" name=\"year\" value=\"".$year."\"></input>";
                       echo "<input type=\"hidden\" name=\"month\" value=\"".$month1."\"></input>";
@@ -111,6 +111,6 @@ include ('../../backend/functions/authentification.php');
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <?php include ("../control/control.php");?>
+    <?php include ("../../control/control.php");?>
   </body>
 </html>

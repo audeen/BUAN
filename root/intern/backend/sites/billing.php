@@ -12,7 +12,7 @@
 
 session_start();
 
-include('../../config/config.php');
+include('../../../config/config.php');
 include($lang_bill);
 
 $retailer = $_POST['retailer'];

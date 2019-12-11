@@ -14,7 +14,7 @@
 // https://www.codingcage.com/2014/12/file-upload-and-view-with-php-and-mysql.html
 
 
-$image = "";
+
 // Wert aus POST in Variable schreiben
 if (isset($_POST['id_r'])){
     $id_r =  $_POST['id_r'];
@@ -32,14 +32,14 @@ if (isset($_POST['id_r'])){
    //Uploadverzeichnis wählen
    $upload_dir = '../../../images/retailer/'; 
    
-   //Dateiendung auslesen und in Variable schreiben
-   $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION));
+/*    //Dateiendung auslesen und in Variable schreiben
+   $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); */
   
    // Zugelassene Dateiendungen wählen
    $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
   
-   // Bild umbenennen
-   $image = rand(1000,1000000).".".$imgExt;
+/*    // Bild umbenennen
+   $image = rand(1000,1000000).".".$imgExt; */
     
    // Prüfe Dateiendung gegen zugelassene Dateiendungen
    if(in_array($imgExt, $valid_extensions)){   
@@ -57,7 +57,7 @@ if (isset($_POST['id_r'])){
    }
     
    //Kein Fehler? Dann weiter
-   if(!isset($errMSG))
+   if(!isset($errMSG) && (isset($_POST['id_r'])))
    {
        $query = "UPDATE 
                      `retailer`

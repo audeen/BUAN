@@ -75,7 +75,7 @@
     <?php
       // SWITCHER LINK
         while(list($key, $val) = each($styleSheets)){
-          echo "<button type=\"button\" class=\"btn btn-primary m-2 \"><a href='../backend/functions/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a></button>";
+          echo "<button type=\"button\" class=\"btn btn-primary m-2 \"><a href='../intern/backend/functions/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a></button>";
         }
     ?> 
 

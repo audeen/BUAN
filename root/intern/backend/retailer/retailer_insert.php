@@ -16,7 +16,7 @@
  
 //If the POST var "register" exists (our submit button), then we can
 //assume that the user has submitted the registration form.
-if(isset($_POST['register'])){
+if(isset($_POST['update'])){
     
     //Retrieve the field values from our registration form.
     $prename = !empty($_POST['r_prename']) ? trim($_POST['r_prename']) : null;
@@ -29,7 +29,10 @@ if(isset($_POST['register'])){
     $city = !empty($_POST['r_city']) ? trim($_POST['r_city']) : null;
     $country = !empty($_POST['r_country']) ? trim($_POST['r_country']) : null;
     $saved = !empty($_POST['r_saved']) ? trim($_POST['r_saved']) : null;
-    $image =  !empty($_POST['image']) ? trim($_POST['image']) : null;
+
+    $image = $_FILES['image']['name'];
+    $imgExt = strtolower(pathinfo($image,PATHINFO_EXTENSION));
+    $image = rand(1000,1000000).".".$imgExt;
 
     //TO ADD: Error checking (username characters, password length, etc).
     //Basically, you will need to add your own error checking BEFORE

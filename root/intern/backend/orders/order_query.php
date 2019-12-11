@@ -11,7 +11,7 @@
 //////////////////////////////////////////////////
 
 
-include ('../../config/config.php');
+
 include($lang_product_show);
 
 //Datenbankverbindung herstellen

@@ -12,7 +12,7 @@
 //////////////////////////////////////////////////
 
 
-include('../../config/config.php');
+
 // Wenn update gesetzt, stelle Datenbankverbindung her
 
 if (isset($_POST['update'])) {

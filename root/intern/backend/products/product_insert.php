@@ -25,7 +25,11 @@ if(isset($_POST['update'])){
     $amount = !empty($_POST['p_amount']) ? trim($_POST['p_amount']) : null;
     $price =  !empty($_POST['p_price']) ? trim($_POST['p_price']) : null;
     $saved =  !empty($_POST['p_saved']) ? trim($_POST['p_saved']) : null;
-    $image =  !empty($_FILES['image']['name']) ? trim($_FILES['image']['name']) : null;
+    
+
+    $image = $_FILES['image']['name'];
+    $imgExt = strtolower(pathinfo($image,PATHINFO_EXTENSION));
+    $image = rand(1000,1000000).".".$imgExt;
     
     //TO ADD: Error checking (username characters, password length, etc).
     //Basically, you will need to add your own error checking BEFORE

@@ -32,6 +32,10 @@ if(isset($_POST['update']))
     $amount = !empty($_POST['p_amount']) ? trim($_POST['p_amount']) : null;
     $price = !empty($_POST['p_price']) ? trim($_POST['p_price']) : null;
     $saved = !empty($_POST['p_saved']) ? trim($_POST['p_saved']) : null;
+
+    $image = $_FILES['image']['name'];
+    $imgExt = strtolower(pathinfo($image,PATHINFO_EXTENSION));
+    $image = rand(1000,1000000).".".$imgExt;
     
     $query =    "UPDATE `products` 
                 SET 

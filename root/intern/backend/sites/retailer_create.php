@@ -45,7 +45,7 @@ if (isset($_SESSION['cancel'])){
 
   echo "<div class=\"ld-center\">\n";
   echo "<div class=\"card mb-3\">\n";
-    echo "<form action=\"#\" method=\"POST\">";
+    echo "<form action=\"#\" method=\"POST\" enctype=\"multipart/form-data\">";
       echo "<h5 class=\"card-header\">Neuer H&auml;ndler</h5>\n";
       echo "<div class=\"card-body\">\n";
         echo "<h6 class=\"card-subtitle text-muted\">ID wird automatisch vergeben</h6>\n";

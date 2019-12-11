@@ -18,7 +18,7 @@
 if (isset($_POST['id_p'])){
     $id_p = $_POST['id_p'];
 }
-print_r($_FILES);
+
 //Update gesetzt?
 if(isset($_POST['update']))
 {
@@ -30,14 +30,14 @@ if(isset($_POST['update']))
    //Uploadverzeichnis wählen
    $upload_dir = '../../../images/products/'; 
    
-   //Dateiendung auslesen und in Variable schreiben
-   $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION));
+/*    //Dateiendung auslesen und in Variable schreiben
+   $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); */
   
    // Zugelassene Dateiendungen wählen
    $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); 
   
-   // Bild umbenennen
-   $image = rand(1000,1000000).".".$imgExt;
+/*    // Bild umbenennen
+   $image = rand(1000,1000000).".".$imgExt; */
     
    // Prüfe Dateiendung gegen zugelassene Dateiendungen
    if(in_array($imgExt, $valid_extensions)){   
@@ -55,7 +55,7 @@ if(isset($_POST['update']))
    }
   
   //Kein Fehler? Dann weiter
-/*   if(!isset($errMSG))
+  if(!isset($errMSG) && (isset($_POST['id_p'])))
   {
    $query =   "UPDATE
                      `products`
@@ -71,5 +71,5 @@ if(isset($_POST['update']))
    $pdoExec = $pdoResult->execute(array(
       ":p_img"=>$image,
       ":id_p"=>$id_p));
-  } */
+  }
 }

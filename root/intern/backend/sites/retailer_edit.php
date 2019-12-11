@@ -10,7 +10,7 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
-include('../../config/config.php');
+include('../../../config/config.php');
 include($lang_retailer_edit);
 ?>
 
@@ -32,7 +32,7 @@ include($lang_retailer_edit);
 
 <?php
 
-include ('../../config/config.php');
+
 include ('../../backend/retailer/retailer_update.php');
 include ('../../backend/functions/image_upload_r.php');
 include ('../../backend/retailer/retailer_pw_reset.php');
@@ -139,7 +139,7 @@ echo "</div>";
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <?php include ("../control/control.php");?>
+    <?php include ("../../control/control.php");?>
   </body>
 </html>
 

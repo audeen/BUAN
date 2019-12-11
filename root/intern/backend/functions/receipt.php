@@ -13,7 +13,7 @@
 // https://www.php-einfach.de/experte/php-codebeispiele/pdf-per-php-erstellen-pdf-rechnung/
 
 
-include('../../config/config.php');
+
 include($lang_bill);
 
 // Werte aus POST in Variablen schreiben
@@ -236,7 +236,7 @@ $html .= nl2br($rechnungs_footer);
 //////////////////////////// Erzeugung eures PDF Dokuments \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  
 // TCPDF Library laden
-require_once('../../tcpdf/tcpdf.php');
+require_once('../../../tcpdf/tcpdf.php');
  
 // Erstellung des PDF Dokuments
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);

@@ -10,7 +10,7 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 
-include ('../../config/config.php');
+
 // php update data in mysql database using PDO
 
 if(isset($_POST['update']))
@@ -32,6 +32,10 @@ if(isset($_POST['update']))
     $r_postal = !empty($_POST['r_postal']) ? trim($_POST['r_postal']) : null;
     $r_city = !empty($_POST['r_city']) ? trim($_POST['r_city']) : null;
     $r_country = !empty($_POST['r_country']) ? trim($_POST['r_country']) : null;
+
+    $image = $_FILES['image']['name'];
+    $imgExt = strtolower(pathinfo($image,PATHINFO_EXTENSION));
+    $image = rand(1000,1000000).".".$imgExt;
     
     $id_r = $_POST['id_r'];
     $r_saved = $_POST['r_saved'];

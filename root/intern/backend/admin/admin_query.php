@@ -11,7 +11,7 @@
 //////////////////////////////////////////////////
 
 
-include('../../config/config.php');
+include('../../../config/config.php');
 include($lang_admin_query);
 
 // Verbindung mit der Datenbank herstellen & Admins wählen
