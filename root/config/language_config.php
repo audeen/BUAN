@@ -24,13 +24,13 @@ if(isset($_POST['language'])){
    $_SESSION['language'] = $_POST['language'];
 }
 
-$lang_index_be = '../../language/index_be.php';
-$lang_nav_be = '../../language/nav_be.php';
-$lang_admin_edit = '../../language/admin_edit.php';
-$lang_admin_query = '../../language/admin_query.php';
-$lang_retailer_query = '../../language/retailer_query.php';
-$lang_retailer_edit = '../../language/retailer_edit.php';
-$lang_product_show = '../../language/product_show.php';
-$lang_order_show = '../../language/order_show.php';
-$lang_bill = '../../language/billing.php';
+$lang_index_be = '../../../language/index_be.php';
+$lang_nav_be = '../../../language/nav_be.php';
+$lang_admin_edit = '../../../language/admin_edit.php';
+$lang_admin_query = '../../../language/admin_query.php';
+$lang_retailer_query = '../../../language/retailer_query.php';
+$lang_retailer_edit = '../../../language/retailer_edit.php';
+$lang_product_show = '../../../language/product_show.php';
+$lang_order_show = '../../../language/order_show.php';
+$lang_bill = '../../../language/billing.php';
 ?>

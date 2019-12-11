@@ -1,5 +1,6 @@
 Backend: 
    
+   - Random-Bildname in upload übergeben (products/retailers)
 
    - Translations
    
@@ -12,3 +13,7 @@ Frontend:
    - Kontaktdaten
    - Bestellvorgang
    - Translations
+
+
+Dokumentation:
+   - Testing - Bildupload hat nicht funktioniert
