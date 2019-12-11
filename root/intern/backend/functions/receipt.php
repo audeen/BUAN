@@ -356,7 +356,8 @@ $sql = "INSERT INTO bills (
     basic_pay,
     revenue,
     bonus,
-    pay
+    pay,
+    pdf
 )
 VALUES (
         :invoice_number,
@@ -365,7 +366,8 @@ VALUES (
         :basic_pay,
         :revenue,
         :bonus,
-        :pay
+        :pay,
+        :pdf
         )";
 
 $stmt = $pdo->prepare($sql);
@@ -378,6 +380,7 @@ $stmt->bindValue(':basic_pay', $basicpay);
 $stmt->bindValue(':revenue', $revenue);
 $stmt->bindValue(':bonus', $bonus);
 $stmt->bindValue(':pay', $pay);
+$stmt->bindValue(':pdf', $pdfName);
 
 $result = $stmt->execute();
 

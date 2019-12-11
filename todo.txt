@@ -1,6 +1,6 @@
 Backend: 
    
-   - Random-Bildname in upload übergeben (products/retailers)
+   - Monat in Gehaltsabrechnung PDF schreiben
 
    - Translations
    

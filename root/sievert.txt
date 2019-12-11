@@ -369,5 +369,6 @@ CREATE TABLE `bills` (
    `basic_pay`          int(10)        NOT NULL,
    `revenue`            int(10)        NOT NULL,
    `bonus`              int(10)        NOT NULL,
-   `pay`                int(10)        NOT NULL
+   `pay`                int(10)        NOT NULL,
+   `pdf`                varchar(255)   NOT NULL
     );
