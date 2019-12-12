@@ -14,7 +14,7 @@
 
 
 
-include($lang_bill);
+include($lang_receipt);
 
 // Werte aus POST in Variablen schreiben
 $retailer = $_POST['retailer'];
@@ -65,7 +65,7 @@ $rechnungs_empfaenger = ''.$row['r_prename'].' '.$row['r_surname'].'
 $rechnungs_footer = "";
 
  
-$pdfName = "Rechnung_".$rechnungs_nummer.".pdf";
+$pdfName = $lang_receipt[$_SESSION['language']][0].'-'.$rechnungs_nummer.".pdf";
 
  
  
@@ -75,17 +75,16 @@ $html = '
 <table cellpadding="5" cellspacing="0" style="width: 100%; ">
  <tr>
  <td>'.nl2br(trim($rechnungs_header)).'</td>
-    <td style="text-align: right">
-Rechnungsnummer '.$rechnungs_nummer.'<br>
-Rechnungsdatum: '.$rechnungs_datum.'<br>
+    <td style="text-align: right">'
+    .$lang_receipt[$_SESSION['language']][1].$rechnungs_nummer.'<br>'
+    .$lang_receipt[$_SESSION['language']][2].$rechnungs_datum.'<br>
 
  </td>
  </tr>
  
  <tr>
  <td style="font-size:1.3em; font-weight: bold;">
-<br><br>
-Gehaltsabrechnung
+<br><br>'.$lang_receipt[$_SESSION['language']][0].'
 <br>
  </td>
  </tr>
@@ -99,10 +98,10 @@ Gehaltsabrechnung
  
 <table cellpadding="5" cellspacing="0" style="width: 100%;" border="0">
  <tr style="background-color: #cccccc; padding:5px;">
- <td style="padding:5px;"><b>Position</b></td>
- <td style="text-align: center;"><b>Produkt</b></td>
- <td style="text-align: center;"><b>Menge</b></td>
- <td style="text-align: center;"><b>Einzelpreis</b></td>
+ <td style="padding:5px;"><b>'.$lang_receipt[$_SESSION['language']][3].'</b></td>
+ <td style="text-align: center;"><b>'.$lang_receipt[$_SESSION['language']][4].'</b></td>
+ <td style="text-align: center;"><b>'.$lang_receipt[$_SESSION['language']][5].'</b></td>
+ <td style="text-align: center;"><b>'.$lang_receipt[$_SESSION['language']][6].'</b></td>
  </tr>';
  
 // Positionen zählen
@@ -118,7 +117,7 @@ foreach ($pdo->query($sql) as $key => $row) {
     
 $name = $row['p_name'];
 $quantity = $row['qty'];
-$pieces = $lang_billing[$_SESSION['language']][8];
+$pieces = $lang_receipt[$_SESSION['language']][10];
 $singleprice = $row['p_price'];
 $price = $row['qty']*$row['p_price'];
 $key += 1;
@@ -142,11 +141,11 @@ $html .= '
  
 $html .='
             <tr>
-                <td colspan="3"><b>Gesamtsumme Bestellungen: </b></td>
+                <td colspan="3"><b>'.$lang_receipt[$_SESSION['language']][10].'</b></td>
                 <td style="text-align: center;"><b>'.$_POST['total'].' Euro</b></td>
             </tr>
             <tr>
-                <td colspan="3"><b>Grundgehalt: </b></td>
+                <td colspan="3"><b>'.$lang_receipt[$_SESSION['language']][8].' </b></td>
                 <td style="text-align: center;"><b>'.$_POST['basicpay'].' Euro</b></td>
             </tr>
             <tr>
@@ -154,7 +153,7 @@ $html .='
                 <td style="text-align: center;"><b>'.$_POST['bonus'].' Euro</b></td>
             </tr>
             <tr>
-                <td colspan="3"><b>Gesamtgehalt: </b></td>
+                <td colspan="3"><b>'.$lang_receipt[$_SESSION['language']][9].' </b></td>
                 <td style="text-align: center;"><b>'.$_POST['pay'].' Euro</b></td>
             </tr> 
         </table>
@@ -193,7 +192,7 @@ $gruen = imagecolorallocate($flaeche,0,255,0);
 imagefilledrectangle($flaeche,580,140,600,120,$gruen);
 
 // Legendentext ----------------------------
-imagestring($flaeche,15,620,80,"Grundgehalt",$schriftfarbe);
+imagestring($flaeche,15,620,80,$lang_receipt[$_SESSION['language']][8],$schriftfarbe);
 
 // Legende 2 *******************************
 $rot = imagecolorallocate($flaeche,255,0,0);
@@ -275,9 +274,8 @@ $pdf->AddPage();
 // Fügt den HTML Code in das PDF Dokument ein
 $pdf->writeHTML($html, true, false, true, false, '');
 
-// ADD AN IMAGE
+
 $img = "diagramm.png";
-// I HAVE NO IDEA WHAT THIS IS DOING TO IMAGE SCALE - EXPERIMENT WITH IT
 $pdf->setImageScale(2);
 
 // GET THE IMAGE SETTINGS
@@ -332,16 +330,16 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if($row['num'] > 0){
     
     die("
-        <div class=\"btn btn-danger btn-lg text-center mt-2\">Monat bereits abgerechnet</div>
+        <div class=\"btn btn-danger btn-lg text-center mt-2\">".$lang_receipt[$_SESSION['language']][12]."</div>
 
-        <form action=\"../../intern/backend/sites/billing.php\" method=\"post\">
+        <form action=\"billing.php\" method=\"post\">
             <input type=\"hidden\" name=\"retailer\" value=\"".$retailer."\">
             <input type=\"hidden\" name=\"month\" value=\"".$month."\">
             <input type=\"hidden\" name=\"year\" value=\"".$year."\">
             <br><br>
-            <a type=\"button\" class=\"btn btn-success\" href=\"../../pdf".DIRECTORY_SEPARATOR.$pdfName."\">Gehaltsabrechnung<br>anzeigen</a>
+            <a type=\"button\" class=\"btn btn-success\" href=\"../../pdf".DIRECTORY_SEPARATOR.$pdfName."\">".$lang_receipt[$_SESSION['language']][13]."</a>
             <br>
-            <button class=\"btn btn-success mt-4\" type=\"submit\">Zurück</button>
+            <button class=\"btn btn-success mt-4\" type=\"submit\">".$lang_receipt[$_SESSION['language']][14]."</button>
             
         </form>
         
@@ -386,17 +384,17 @@ $result = $stmt->execute();
 
 
 if($result){
-    //What you do here is up to you!
-    echo "<div class=\"btn btn-danger btn-lg text-center mt-2\">Monat abgerechnet!</div>
+    
+    echo "<div class=\"btn btn-danger btn-lg text-center mt-2\">".$lang_receipt[$_SESSION['language']][11]."</div>
 
-    <form action=\"../../intern/backend/sites/billing.php\" method=\"post\">
+    <form action=\"billing.php\" method=\"post\">
         <input type=\"hidden\" name=\"retailer\" value=\"".$retailer."\">
         <input type=\"hidden\" name=\"month\" value=\"".$month."\">
         <input type=\"hidden\" name=\"year\" value=\"".$year."\">
         <br><br>
-        <a type=\"button\" class=\"btn btn-success\" href=\"../../pdf".DIRECTORY_SEPARATOR.$pdfName."\">Gehaltsabrechnung<br>anzeigen</a>
+        <a type=\"button\" class=\"btn btn-success\" href=\"../../pdf".DIRECTORY_SEPARATOR.$pdfName."\">".$lang_receipt[$_SESSION['language']][13]."</a>
         <br>
-        <button class=\"btn btn-success mt-4\" type=\"submit\">Zurück</button>
+        <button class=\"btn btn-success mt-4\" type=\"submit\">".$lang_receipt[$_SESSION['language']][14]."</button>
         
     </form>";
     unset($_POST['bill']);

@@ -14,7 +14,8 @@ $lang_billing[0][10] = "Gesamtsumme Bestellungen:";
 $lang_billing[0][11] = "Grundgehalt:";
 $lang_billing[0][12] = "Bonus:";
 $lang_billing[0][13] = "Gesamtgehalt";
-$lang_billing[0][8] = "St&uuml;ck";
+$lang_billing[0][14] = "Zur Abrechnung";
+
 
 
 
@@ -27,6 +28,12 @@ $lang_billing[1][5] = "Quantity";
 $lang_billing[1][6] = "Price per unit";
 $lang_billing[1][7] = "Sum";
 $lang_billing[1][8] = "pieces";
+$lang_billing[1][9] = "Invoice address:";
+$lang_billing[1][10] = "Orders Total:";
+$lang_billing[1][11] = "Basic Pay:";
+$lang_billing[1][12] = "Bonus:";
+$lang_billing[1][13] = "Total Pay:";
+$lang_billing[1][14] = "To Accounting";
 
 $lang_billcalendar[0][0] = "";
 $lang_billcalendar[0][1] = "Januar";

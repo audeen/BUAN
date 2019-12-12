@@ -1,7 +1,7 @@
 Backend: 
    
    - Monat in Gehaltsabrechnung PDF schreiben
-
+   - D/E Switch nur auf index
    - Translations
    
 

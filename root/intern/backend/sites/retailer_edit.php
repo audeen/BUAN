@@ -71,7 +71,7 @@ if (empty($_POST['id_r'])) {
           echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_country\" value=\"".$row['r_country']."\">";
         echo "</div>\n";        
         echo "<div class=\"card-body\">";
-          echo "<label class=\"control-label\"><h5>H&auml;ndlerbild festlegen</h5></label>";
+          echo "<label class=\"control-label\"><h5>".$lang_retaileredit[$_SESSION['language']][8]."</h5></label>";
           echo "<input class=\"input-group\" type=\"file\" name=\"image\" value=\"".$row['r_img']."\" accept=\"image/*\" />";
         echo "</div>";
 

@@ -14,7 +14,7 @@ include($lang_nav_be);
 ?>
 
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-  <a class="navbar-brand" href="../../intern/backend/sites/index.php">BUAN</a>
+  <a class="navbar-brand" href="../../backend/sites/index.php">BUAN</a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -41,18 +41,18 @@ include($lang_nav_be);
         }
       ?>
       </li>
-      <li>
+<!--       <li>
         <?php
-          echo "<form action=\"#\" method=\"post\">";
+/*           echo "<form action=\"#\" method=\"post\">";
           echo "<button type=\"submit\" name=\"language\" value=\"0\">";
             echo "deutsch";
           echo "</button>";
           echo "<form action=\"#\" method=\"post\">";
           echo "<button type=\"submit\" name=\"language\" value=\"1\">";
             echo "english";
-          echo "</button>";
+          echo "</button>"; */
         ?>
-      </li>
+      </li> -->
       <li class="nav-item active">
         <form action="#">
           <a class="nav-link" href="logout.php"

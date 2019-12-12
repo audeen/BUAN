@@ -10,6 +10,8 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
+include('../../../config/config.php');
+include($lang_retailer_create);
 ?>
 
 
@@ -26,7 +28,7 @@ session_start();
 <div class="container">
 
   <div class="alert alert-primary mt-3" role="alert">
-    H&auml;ndler anlegen
+  <?php echo $lang_retailercreate[$_SESSION['language']][0]; ?>
   </div>
 
 <?php
@@ -46,29 +48,29 @@ if (isset($_SESSION['cancel'])){
   echo "<div class=\"ld-center\">\n";
   echo "<div class=\"card mb-3\">\n";
     echo "<form action=\"#\" method=\"POST\" enctype=\"multipart/form-data\">";
-      echo "<h5 class=\"card-header\">Neuer H&auml;ndler</h5>\n";
+      echo "<h5 class=\"card-header\">".$lang_retailercreate[$_SESSION['language']][1]."</h5>\n";
       echo "<div class=\"card-body\">\n";
-        echo "<h6 class=\"card-subtitle text-muted\">ID wird automatisch vergeben</h6>\n";
+        echo "<h6 class=\"card-subtitle text-muted\">".$lang_retailercreate[$_SESSION['language']][2]."</h6>\n";
       echo "</div>\n";
       echo "<div class=\"card-body\">\n";
-        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_prename\" placeholder=\"Prename\" required>";
-        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_surname\" placeholder=\"Surname\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_prename\" placeholder=\"".$lang_retailercreate[$_SESSION['language']][3]."\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_surname\" placeholder=\"".$lang_retailercreate[$_SESSION['language']][4]."\" required>";
         echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_alias\" placeholder=\"Alias\" required>";
-        echo "<input type=\"password\"class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_pw\" placeholder=\"Password\" required>";
+        echo "<input type=\"password\"class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_pw\" placeholder=\"".$lang_retailercreate[$_SESSION['language']][5]."\" required>";
         echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_mail\" placeholder=\"E-Mail\" required>";
-        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_street\" placeholder=\"Stra&szlig;e, Nummer\" required>";
-        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_postal\" placeholder=\"PLZ\" required>";
-        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_city\" placeholder=\"Stadt\" required>";
-        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_country\" placeholder=\"Land\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_street\" placeholder=\"".$lang_retailercreate[$_SESSION['language']][6]."\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_postal\" placeholder=\"".$lang_retailercreate[$_SESSION['language']][7]."\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_city\" placeholder=\"".$lang_retailercreate[$_SESSION['language']][8]."\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_country\" placeholder=\"".$lang_retailercreate[$_SESSION['language']][9]."\" required>";
       echo "</div>\n";
       echo "<div class=\"card-body\">";
-        echo "<label class=\"control-label\"><h5>Händlerbild übersetzen</h5></label>";
+        echo "<label class=\"control-label\"><h5>".$lang_retailercreate[$_SESSION['language']][10]."</h5></label>";
         echo "<input class=\"input-group\" type=\"file\" name=\"image\" accept=\"image/*\" />";
       echo "</div>";
       echo "<div class=\"card-body\">\n";
         echo "<input type=\"hidden\" name=\"r_saved\" value=\"".time()."\">";
-        echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">Anlegen</button>";
-        echo "<button class=\"btn btn-outline-danger\" name=\"cancel\" formnovalidate>Abbrechen</button>";
+        echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">".$lang_retailercreate[$_SESSION['language']][11]."</button>";
+        echo "<button class=\"btn btn-outline-danger\" name=\"cancel\" formnovalidate>".$lang_retailercreate[$_SESSION['language']][12]."</button>";
       echo "</form>";
     echo "</div>\n";
     echo "</div>\n";

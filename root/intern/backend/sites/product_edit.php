@@ -10,6 +10,8 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
+include('../../../config/config.php');
+include($lang_product_edit);
 ?>
 
 
@@ -25,12 +27,10 @@ session_start();
 <div class="container">
 
   <div class="alert alert-danger mt-3" role="alert">
-    Produkt-Bearbeitung
+    <?php echo $lang_productedit[$_SESSION['language']][0]?>
   </div>
 
 <?php
-
-include ('../../../config/config.php');
 
 include ('../../backend/products/product_update.php');
 
@@ -69,7 +69,7 @@ if (empty($_POST['id_p'])) {
   echo "  </div>\n";
 
   echo "<div class=\"card-body\">";
-  echo "<label class=\"control-label\"><h5>Produktbild festlegen</h5></label></td>";
+  echo "<label class=\"control-label\"><h5>".$lang_productedit[$_SESSION['language']][1]."</h5></label></td>";
   echo "<td><input class=\"input-group\" type=\"file\" name=\"image\" accept=\"image/*\" />";
   
   echo "</div>";
@@ -91,13 +91,13 @@ if (empty($_POST['id_p'])) {
   echo "    <h5>Status:<br></h5>\n";
   echo "  <input class=\"form-check-input\" type=\"radio\" name=\"p_blocked\" id=\"exampleRadios1\" value=\"0\"".$active."\n";
   echo "  <label class=\"form-check-label\" for=\"exampleRadios1\">\n";
-  echo "  Aktiv\n";
+  echo $lang_productedit[$_SESSION['language']][2];
   echo "  </label>\n";
   echo "</div>";
   echo "<div class=\"form-check mb-2\">\n";
   echo "  <input class=\"form-check-input\" type=\"radio\" name=\"p_blocked\" id=\"exampleRadios1\" value=\"1\"".$blocked."\n";
   echo "  <label class=\"form-check-label\" for=\"exampleRadios1\">\n";
-  echo "  Blockiert\n";
+  echo $lang_productedit[$_SESSION['language']][3];
   echo "  </label>\n";
   echo "</div>";
 
@@ -105,14 +105,14 @@ if (empty($_POST['id_p'])) {
   echo "  </ul>\n";
  
   echo "  <div class=\"card-body\">\n";
-  echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">Aktualisieren</button>";
-  echo "<button type=\"submit\" class=\"btn btn-outline-danger\" name=\"cancel\">Abbrechen</button>";
+  echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">".$lang_productedit[$_SESSION['language']][4]."</button>";
+  echo "<button type=\"submit\" class=\"btn btn-outline-danger\" name=\"cancel\">".$lang_productedit[$_SESSION['language']][5]."</button>";
   echo "<input type=\"hidden\" name=\"id_p\" value=\"".$row['id_p']."\">";
   echo "<input type=\"hidden\" name=\"p_saved\" value=\"".time()."\">";
   echo "</form>";
   echo "  </div>\n";
   echo "  <div class=\"card-footer text-muted\">\n";
-  echo" Zuletzt bearbeitet: ".(date("d.m.Y, H:i:s",$row['p_saved']));
+  echo $lang_productedit[$_SESSION['language']][6]." ".(date("d.m.Y, H:i:s",$row['p_saved']));
   echo "  </div>\n";
   echo "</form>";
   echo "</div>\n";

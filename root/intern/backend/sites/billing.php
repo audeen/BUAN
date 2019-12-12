@@ -15,8 +15,11 @@ session_start();
 include('../../../config/config.php');
 include($lang_bill);
 
-$retailer = $_POST['retailer'];
+if (!isset($_POST['retailer'])){
+   echo "<meta http-equiv=\"refresh\" content=\"0;url=../../backend/sites/order_show.php\">";
+}
 
+$retailer = $_POST['retailer'];
 $year = $_POST['year'];
 $month = $_POST['month'];
 
@@ -152,7 +155,7 @@ echo "<div>";
       echo "<table class=\"table\">";
          echo "<thead>";
             echo "<tr>";
-               echo "<th scope=\"col\">Position</th>";
+
                echo "<th scope=\"col\">".$lang_billing[$_SESSION['language']][4]."</th>";
                echo "<th scope=\"col\">".$lang_billing[$_SESSION['language']][5]."</th>";
                echo "<th scope=\"col\">".$lang_billing[$_SESSION['language']][6]."</th>";
@@ -215,7 +218,7 @@ echo "<form action = \"receipt_show.php\" method =\"POST\" >";
                       echo "<input type=\"hidden\" name=\"bonus\" value=\"".$bonus."\"></input>";
                       echo "<input type=\"hidden\" name=\"pay\" value=\"".$pay."\"></input>";
                       echo "<input type=\"hidden\" name=\"billnumber\" value=\"".$billnumber."\"></input>";
-   echo "<input type=\"submit\" name=\"billing\" >";
+   echo "<input class=\"btn btn-success mb-6\" type=\"submit\" name=\"billing\" value=\"".$lang_billing[$_SESSION['language']][14]."\" >";
 echo "</form>";
 
 ?>

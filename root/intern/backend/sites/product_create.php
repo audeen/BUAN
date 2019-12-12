@@ -10,8 +10,10 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
-
 include ('../../../config/config.php');
+include($lang_product_create);
+
+
 //Include Security-File 
 include ('../../backend/functions/authentification.php');
 
@@ -25,7 +27,7 @@ include ('../../backend/navigation/html_nav_be.php');
 
 <div class="container">
   <div class="alert alert-primary mt-3" role="alert">
-    Produkt anlegen --- Übersetzung fehlt
+  <?php echo $lang_productcreate[$_SESSION['language']][0];?>
   </div>
 
 <?php
@@ -43,25 +45,25 @@ if (isset($_SESSION['cancel'])){
   echo "<div class=\"ld-center\">\n";
   echo "<div class=\"card mb-3\">\n";
     echo "<form action=\"#\" method=\"POST\" enctype=\"multipart/form-data\">";
-      echo "<h5 class=\"card-header\">Neues Produkt</h5>\n";
+      echo "<h5 class=\"card-header\">".$lang_productcreate[$_SESSION['language']][1]."</h5>\n";
       echo "<div class=\"card-body\">\n";
-        echo "<h6 class=\"card-subtitle text-muted\">ID wird automatisch vergeben</h6>\n";
+        echo "<h6 class=\"card-subtitle text-muted\">".$lang_productcreate[$_SESSION['language']][2]."</h6>\n";
       echo "</div>\n";
       echo "<div class=\"card-body\">\n";
-        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name\" placeholder=\"Name deutsch\" required>";
-        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin\" placeholder=\"Herkunftsland\" required>";
-        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_desc\" placeholder=\"Beschreibungsdext\" required>";
-        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_price\" placeholder=\"Preis/Price\" required>";
-        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_amount\" placeholder=\"Anzahl/Count\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name\" placeholder=\"".$lang_productcreate[$_SESSION['language']][3]."\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin\" placeholder=\"".$lang_productcreate[$_SESSION['language']][4]."\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_desc\" placeholder=\"".$lang_productcreate[$_SESSION['language']][5]."\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_price\" placeholder=\"".$lang_productcreate[$_SESSION['language']][6]."\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_amount\" placeholder=\"".$lang_productcreate[$_SESSION['language']][7]."\" required>";
       echo "</div>\n";
       echo "<div class=\"card-body\">";
-        echo "<label class=\"control-label\"><h5>Produtbild festlegen</h5></label>";
+        echo "<label class=\"control-label\"><h5>".$lang_productcreate[$_SESSION['language']][8]."</h5></label>";
         echo "<input class=\"input-group\" type=\"file\" name=\"image\">";
       echo "</div>";
       echo "<div class=\"card-body\">\n";
         echo "<input type=\"hidden\" name=\"p_saved\" value=\"".time()."\">";
-        echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">Anlegen</button>";
-        echo "<button class=\"btn btn-outline-danger\" name=\"cancel\" formnovalidate>Abbrechen</button>";
+        echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">".$lang_productcreate[$_SESSION['language']][9]."</button>";
+        echo "<button class=\"btn btn-outline-danger\" name=\"cancel\" formnovalidate>".$lang_productcreate[$_SESSION['language']][10]."</button>";
     echo "</form>";
     echo "</div>\n";
   echo "</div>\n";

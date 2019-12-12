@@ -12,13 +12,25 @@
 //////////////////////////////////////////////////
 
 session_start();
-
 include ('../config/config.php');
 
 // Orientiert an:
 // https://thisinterestsme.com/php-user-registration-form/
 
-$errorMessage = "Bitte Einloggen";  // ÜBERSETZEN
+// Spracharrays lokal 
+$lang_phploginbe = array();
+$lang_phploginbe[0][0] = "Bitte einloggen!";
+$lang_phploginbe[0][1] = "Account konnte nicht gefunden werden";
+$lang_phploginbe[0][2] = "Nutzer blockiert";
+$lang_phploginbe[0][3] = "Passwort falsch!";
+
+$lang_phploginbe[1][0] = "Please Log in";
+$lang_phploginbe[1][1] = "Account not found";
+$lang_phploginbe[1][2] = "User blocked";
+$lang_phploginbe[1][3] = "Wrong password!";
+
+
+$errorMessage = $lang_phploginbe[$_SESSION['language']][0];  // ÜBERSETZEN
 
 // Login gedrückt?
 if(isset($_POST['login'])){
@@ -40,12 +52,12 @@ if(isset($_POST['login'])){
 
     if($user === false){
         //Nutzer konnte nicht gefunden werden
-        die('Incorrect username / password combination!'); // Übersetzen
+        die($lang_phploginbe[$_SESSION['language']][1]); // Übersetzen
     } 
     //Blockierung prüfen
     elseif ($user['a_blocked']!=0){
         
-        die('User Blocked'); // Übersetzen
+        die($lang_phploginbe[$_SESSION['language']][2]); // Übersetzen
         exit; 
     }
     else{
@@ -66,7 +78,7 @@ if(isset($_POST['login'])){
             
         } else{
             //Passwörter stimmen nicht überein
-            die('Incorrect username / password combination!');  //Übersetzen
+            die($lang_phploginbe[$_SESSION['language']][3]);  //Übersetzen
         }
     }
     

@@ -1,5 +1,6 @@
 <?php
 
+
 $lang_productshow[0][0] = "Aktiv";
 $lang_productshow[0][1] = "Inaktiv";
 $lang_productshow[0][2] = "Beschreibung";
@@ -25,5 +26,6 @@ $lang_productshow[1][7] = "Last edited: ";
 $lang_productshow[1][8] = " Pieces";
 $lang_productshow[1][9] = "All Products";
 $lang_productshow[1][10] = "Add Product";
+
 
 ?>

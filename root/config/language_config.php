@@ -33,4 +33,8 @@ $lang_retailer_edit = '../../../language/retailer_edit.php';
 $lang_product_show = '../../../language/product_show.php';
 $lang_order_show = '../../../language/order_show.php';
 $lang_bill = '../../../language/billing.php';
+$lang_receipt = '../../../language/receipt.php';
+$lang_product_create = '../../../language/product_create.php';
+$lang_product_edit = '../../../language/product_edit.php';
+$lang_retailer_create = '../../../language/retailer_create.php';
 ?>
