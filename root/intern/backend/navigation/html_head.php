@@ -13,6 +13,7 @@
 ?>
 
 <head>
+  <!-- Css einbinden -->
   <?php include('../../../intern/backend/functions/styledefinitions.php'); ?> 
   <!-- Frontend Zeichensatz festlegen -->
   <?php header('content-type:text/html; charset=ISO-8859-1');?>

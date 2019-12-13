@@ -12,8 +12,7 @@
 // Orientiert an: 
 // https://www.php-einfach.de/experte/php-codebeispiele/pdf-per-php-erstellen-pdf-rechnung/
 
-
-
+//Sprachdatei einbinden
 include($lang_receipt);
 
 // Werte aus POST in Variablen schreiben
@@ -51,7 +50,7 @@ if (empty($row)) {
 $rechnungs_nummer = $_POST['billnumber'];
 $rechnungs_datum = date("Y-m-t");
 $pdfAuthor = "BUAN";
- 
+//Logo-Dummy
 $rechnungs_header = '
 <img src="logo.png">
 BUAN
@@ -61,9 +60,6 @@ $rechnungs_empfaenger = ''.$row['r_prename'].' '.$row['r_surname'].'
 '.$row['r_street'].'
 '.$row['r_postal'].' '.$row['r_city'].'
 '.$row['r_country'].'';
- 
-$rechnungs_footer = "";
-
  
 $pdfName = $lang_receipt[$_SESSION['language']][0].'-'.$rechnungs_nummer.".pdf";
 
@@ -232,7 +228,7 @@ $html .= nl2br($rechnungs_footer);
  
  
  
-//////////////////////////// Erzeugung eures PDF Dokuments \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//////////////////////////// Erzeugung des PDF Dokuments \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
  
 // TCPDF Library laden
 require_once('../../../tcpdf/tcpdf.php');
@@ -254,7 +250,7 @@ $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 // Auswahl des Font
 $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
  
-// Auswahl der MArgins
+// Auswahl der Margins
 $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
 $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
 $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
@@ -314,7 +310,7 @@ $bonus =  !empty($_POST['bonus']) ? trim($_POST['bonus']) : 0;
 $pay =  !empty($_POST['pay']) ? trim($_POST['pay']) : null;
 
 
-//
+//Generierte Invoice_Nummer mit der Datenbank prüfen
 $sql = "SELECT COUNT(invoice_number) AS num FROM bills WHERE invoice_number = :invoice_number";
 $stmt = $pdo->prepare($sql);
 
@@ -346,7 +342,7 @@ if($row['num'] > 0){
     ");
     
 } 
-
+//Daten in Datenbank schreiben
 $sql = "INSERT INTO bills (
     invoice_number,
     r_id,
@@ -370,7 +366,7 @@ VALUES (
 
 $stmt = $pdo->prepare($sql);
 
-
+//Werte an Parameter binden
 $stmt->bindValue(':invoice_number', $billnumber);
 $stmt->bindValue(':r_id', $retailer);
 $stmt->bindValue(':invoice_date', $billdate);
@@ -382,7 +378,7 @@ $stmt->bindValue(':pdf', $pdfName);
 
 $result = $stmt->execute();
 
-
+// Wenn erfolgreich, Rechnungsstatus, PDF-Link und Zurückbutton einblenden
 if($result){
     
     echo "<div class=\"btn btn-danger btn-lg text-center mt-2\">".$lang_receipt[$_SESSION['language']][11]."</div>
@@ -403,7 +399,4 @@ else {
     echo "Error, data not saved.";
 
 }
-
-
-
 ?>

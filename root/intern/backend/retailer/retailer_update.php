@@ -9,9 +9,7 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
-
-
-// php update data in mysql database using PDO
+// Wenn update gesetzt, stelle Datenbankverbindung her
 
 if(isset($_POST['update']))
 {
@@ -22,7 +20,7 @@ if(isset($_POST['update']))
         exit();
     }
     
-    // get values form input text and number
+    //Werte aus Form in Variablen schreiben
     
     $r_prename = !empty($_POST['r_prename']) ? trim($_POST['r_prename']) : null;
     $r_surname = !empty($_POST['r_surname']) ? trim($_POST['r_surname']) : null;
@@ -33,15 +31,18 @@ if(isset($_POST['update']))
     $r_city = !empty($_POST['r_city']) ? trim($_POST['r_city']) : null;
     $r_country = !empty($_POST['r_country']) ? trim($_POST['r_country']) : null;
 
+    // Bilddaten beziehen und Erweiterung auslesen, Zufällige Zahl als Namen festlegen, um Dopplungen zu vermeiden
     $image = $_FILES['image']['name'];
     $imgExt = strtolower(pathinfo($image,PATHINFO_EXTENSION));
     $image = rand(1000,1000000).".".$imgExt;
     
+    //Werte aus Post in Variablen schreiben, um weitergabe zu ermöglichen
+
     $id_r = $_POST['id_r'];
     $r_saved = $_POST['r_saved'];
     $r_blocked = $_POST['r_blocked'];
     
-    
+    // Den Attributen die eingegebenen Werte zuweisen
     $query =    "UPDATE `retailer` 
                 SET 
                 `r_prename`=:r_prename,
@@ -59,6 +60,7 @@ if(isset($_POST['update']))
     
     $pdoResult = $pdo->prepare($query);
     
+    //Update
     $pdoExec = $pdoResult->execute(array(
                                         ":r_surname"=>$r_surname,
                                         ":r_prename"=>$r_prename,
@@ -71,6 +73,8 @@ if(isset($_POST['update']))
                                         ":r_country"=>$r_country,
                                         ":r_saved"=>$r_saved,
                                         ":id_r"=>$id_r,));
+                                        
+    // Abfrage, ob Datenänderung erfolgreich war                                    
     if($pdoExec)
     {
         echo 'Data Updated';

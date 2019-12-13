@@ -12,12 +12,13 @@
 //////////////////////////////////////////////////
 
 session_start();
+//Config-Datei einbinden
 include ('../config/config.php');
 
 // Orientiert an:
 // https://thisinterestsme.com/php-user-registration-form/
 
-// Spracharrays lokal 
+// Spracharray lokal 
 $lang_phploginbe = array();
 $lang_phploginbe[0][0] = "Bitte einloggen!";
 $lang_phploginbe[0][1] = "Account konnte nicht gefunden werden";
@@ -30,7 +31,7 @@ $lang_phploginbe[1][2] = "User blocked";
 $lang_phploginbe[1][3] = "Wrong password!";
 
 
-$errorMessage = $lang_phploginbe[$_SESSION['language']][0];  // ÜBERSETZEN
+$errorMessage = $lang_phploginbe[$_SESSION['language']][0];  
 
 // Login gedrückt?
 if(isset($_POST['login'])){
@@ -77,8 +78,8 @@ if(isset($_POST['login'])){
             exit;
             
         } else{
-            //Passwörter stimmen nicht überein
-            die($lang_phploginbe[$_SESSION['language']][3]);  //Übersetzen
+            //Passwörter stimmen nicht überein, Fehlermeldung ausgeben
+            die($lang_phploginbe[$_SESSION['language']][3]);  
         }
     }
     

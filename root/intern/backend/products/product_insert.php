@@ -9,16 +9,14 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
-
- 
+//Config-Datei einbinden
 include ('../../../config/config.php');
  
  
-//If the POST var "register" exists (our submit button), then we can
-//assume that the user has submitted the registration form.
+//Update gesetzt?
 if(isset($_POST['update'])){
     
-    //Retrieve the field values from our registration form.
+    //Daten aus form beziehen
     $name =   !empty($_POST['p_name']) ? trim($_POST['p_name']) : null;
     $origin = !empty($_POST['p_origin']) ? trim($_POST['p_origin']) : null;
     $desc =   !empty($_POST['p_desc']) ? trim($_POST['p_desc']) : null;
@@ -26,42 +24,31 @@ if(isset($_POST['update'])){
     $price =  !empty($_POST['p_price']) ? trim($_POST['p_price']) : null;
     $saved =  !empty($_POST['p_saved']) ? trim($_POST['p_saved']) : null;
     
-
+    //Bilddaten auslesen und in Variablen schreiben
     $image = $_FILES['image']['name'];
     $imgExt = strtolower(pathinfo($image,PATHINFO_EXTENSION));
     $image = rand(1000,1000000).".".$imgExt;
     
-    //TO ADD: Error checking (username characters, password length, etc).
-    //Basically, you will need to add your own error checking BEFORE
-    //the prepared statement is built and executed.
+    //Zähle Rows mit identischem Namen
     
-    //Now, we need to check if the supplied username already exists.
-    
-    //Construct the SQL statement and prepare it.
     $sql = "SELECT COUNT(p_name) AS num FROM products WHERE p_name = :p_name";
     $stmt = $pdo->prepare($sql);
     
-    //Bind the provided username to our prepared statement.
+    //Wert an Parameter binden
     $stmt->bindValue(':p_name', $name);
  
-    //Execute.
     $stmt->execute();
     
-    //Fetch the row.
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     
-    //If the provided username already exists - display error.
-    //TO ADD - Your own method of handling this error. For example purposes,
-    //I'm just going to kill the script completely, as error handling is outside
-    //the scope of this tutorial.
+    //Name bereits vergeben, beende Skript
     if($row['num'] > 0){
 
         die("This product already exists!<meta http-equiv=\"refresh\" content=\"1;url=product_create.php\">");
         
     } 
 
-    //Prepare our INSERT statement.
-    //Remember: We are inserting a new row into our users table.
+    // Daten in Datenbank schreiben
     $sql = "INSERT INTO products (
                             p_name,
                             p_origin,
@@ -83,7 +70,7 @@ if(isset($_POST['update'])){
 
     $stmt = $pdo->prepare($sql);
     
-    //Bind our variables.
+    //Variablen an Parameter binden
     $stmt->bindValue(':p_name', $name);
     $stmt->bindValue(':p_origin', $origin);
     $stmt->bindValue(':p_desc', $desc);
@@ -92,12 +79,11 @@ if(isset($_POST['update'])){
     $stmt->bindValue(':p_saved', $saved);
     $stmt->bindValue(':p_img', $image);
 
-    //Execute the statement and insert the new account.
+    //Insert
     $result = $stmt->execute();
     
-    //If the signup process is successful.
+    //Insert erfolgreich?
     if($result){
-        //What you do here is up to you!
         echo 'Product added.';
         unset($_POST['register']);
     }

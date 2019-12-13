@@ -9,9 +9,10 @@
 //  Stand        : 18.11.2019                   //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
-
 session_start();
+//Config-Datei einbinden
 include ('../config.php');
+// Datenbankverbindung herstellen
 $pdo;
 
 //User-ID aus GET-Variable holen

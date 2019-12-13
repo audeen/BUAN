@@ -4,7 +4,7 @@ if (isset($_POST['pw'])){
 //https://thisinterestsme.com/php-reset-password-form/
 
 //Connect to MySQL database using PDO.
-include ('../../config/config.php');
+include ('../../../config/config.php');
 $pdo;
 //Get the name that is being searched for.
 $r_mail = isset($_POST['r_mail']) ? trim($_POST['r_mail']) : '';
@@ -65,7 +65,7 @@ $passwordRequestId = $pdo->lastInsertId();
 //Create a link to the URL that will verify the
 //forgot password request and allow the user to change their
 //password.
-$verifyScript = 'https://localhost/BUAN/root/config/retailer/retailer_pw_auth.php';
+$verifyScript = 'https://localhost/BUAN/root/intern/backend/retailer/retailer_pw_auth.php';
  
 //The link that we will send the user via email.
 $linkToSend = $verifyScript . '?uid=' . $userId . '&id=' . $passwordRequestId . '&t=' . $token;

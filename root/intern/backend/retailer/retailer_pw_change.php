@@ -12,7 +12,7 @@
 //////////////////////////////////////////////////
 
 
-include('../../config/config.php');
+include('../../../config/config.php');
 // Wenn $_POST save gesetzt, prüfe, ob Password und Verify-Password übereinstimmen
 
 if (isset($_POST['save']) && ($_POST['r_pw'] == $_POST['r_pw_verify'])) {

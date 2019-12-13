@@ -9,9 +9,7 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
-
-
-
+// Sprachdatei einbinden
 include($lang_product_show);
 
 //Datenbankverbindung herstellen
@@ -20,7 +18,6 @@ $pdo;
 // Sortierungsmöglichkeit im Table-Head über GET
 $sort = isset($_GET['sort']) ? (($_GET['sort'] === "DESC") ? "ASC" : "DESC") : "ASC"; //by rebitz
 $attribute = isset($_GET['attribute']) ? $_GET['attribute'] : "order_date";
-
 
 //Monats- / Jahresauswahl
 if(isset($_POST['retailer'])) {
@@ -54,6 +51,7 @@ echo "<div id=\"orders\" class=\"table-responsive table-hover\">\n";
 echo "<table class=\"table\">";
    echo "<thead>";
       echo "<tr>";
+      //Sortierfunktion im Tabellenkopf
          echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=id_o&sort=".$sort."\">ID</a></th>";
          echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=order_numbersort=".$sort."\">".$lang_ordershow[$_SESSION['language']][1]."</th>";
          echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=r_surname&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][2]."</th>";
@@ -64,6 +62,7 @@ echo "<table class=\"table\">";
       echo "</tr>";
    echo "</thead>";
    echo "<tbody";
+         //Jede Bestellung des Monats ausgeben
          foreach ($pdo->query($sql) as $row) {
             echo "<tr>";
             echo "<th scope=\"row\">".$row['id_o']."</th>";

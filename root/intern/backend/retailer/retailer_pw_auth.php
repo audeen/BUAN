@@ -1,7 +1,7 @@
 <?php 
 
 session_start();
-include ('../config.php');
+include ('../../../config/config.php');
 $pdo;
 
 //User-ID aus GET-Variable holen
@@ -44,7 +44,7 @@ else {
 //Die Anfrage ist gültig, der Nutzer bekommt eine ID zugewiesen, die abgefragt werden kann
 $_SESSION['user_id_reset_pass'] = $userId;
 
-echo "<meta http-equiv=\"refresh\" content=\"0;url=../../intern/backend/sites/retailer_pw_create.php\">";
+echo "<meta http-equiv=\"refresh\" content=\"0;url=../../backend/sites/retailer_pw_create.php\">";
 
 /* echo "<form action =\"#\" method=\"POST\">";
 echo    "<input type=\"hidden\" name=\"user_id\" value=\"".$user_id."\">";

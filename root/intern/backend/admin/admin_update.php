@@ -10,9 +10,6 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
-
-
-
 // Wenn update gesetzt, stelle Datenbankverbindung her
 
 if (isset($_POST['update'])) {
@@ -45,9 +42,6 @@ if (isset($_POST['update'])) {
         ":id_a" => $id_a
     ));
     
-
-    // ÜBERSETZEN
-
     // Daten erfolgreich übertragen?
     if ($pdoExec) {
         echo 'Data Updated';

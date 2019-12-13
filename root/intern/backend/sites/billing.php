@@ -9,7 +9,7 @@
 //  Stand        : 27.11.2019                   //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
-
+//Session starten
 session_start();
 
 include('../../../config/config.php');

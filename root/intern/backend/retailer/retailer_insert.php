@@ -10,15 +10,10 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 
- 
-
- 
- 
-//If the POST var "register" exists (our submit button), then we can
-//assume that the user has submitted the registration form.
+//Anlegen gedrückt?
 if(isset($_POST['update'])){
     
-    //Retrieve the field values from our registration form.
+    //Daten aus form beziehen
     $prename = !empty($_POST['r_prename']) ? trim($_POST['r_prename']) : null;
     $surname = !empty($_POST['r_surname']) ? trim($_POST['r_surname']) : null;
     $alias = !empty($_POST['r_alias']) ? trim($_POST['r_alias']) : null;
@@ -30,43 +25,37 @@ if(isset($_POST['update'])){
     $country = !empty($_POST['r_country']) ? trim($_POST['r_country']) : null;
     $saved = !empty($_POST['r_saved']) ? trim($_POST['r_saved']) : null;
 
+    // Bilddaten beziehen und Erweiterung auslesen, Zufällige Zahl als Namen festlegen, um Dopplungen zu vermeiden
     $image = $_FILES['image']['name'];
     $imgExt = strtolower(pathinfo($image,PATHINFO_EXTENSION));
     $image = rand(1000,1000000).".".$imgExt;
 
-    //TO ADD: Error checking (username characters, password length, etc).
-    //Basically, you will need to add your own error checking BEFORE
-    //the prepared statement is built and executed.
     
-/*     //Now, we need to check if the supplied username already exists.
+    //Existiert der Alias bereits?
     
-    //Construct the SQL statement and prepare it.
-    $sql = "SELECT COUNT(r_name) AS num FROM retailer WHERE r_name = :r_name";
+    //Rows mit gleichem Alias auslesen
+    $sql = "SELECT COUNT(r_alias) AS num FROM retailer WHERE r_alias = :r_alias";
     $stmt = $pdo->prepare($sql);
     
-    //Bind the provided username to our prepared statement.
-    $stmt->bindValue(':r_name', $username);
+    //Eingegebenes Alias an Attribut binden
+    $stmt->bindValue(':r_alias', $alias);
 
- 
     //Execute.
     $stmt->execute();
     
-    //Fetch the row.
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     
-    //If the provided username already exists - display error.
-    //TO ADD - Your own method of handling this error. For example purposes,
-    //I'm just going to kill the script completely, as error handling is outside
-    //the scope of this tutorial.
+    // Alias existiert bereits? Beenden & Fehlermeldung ausgeben
     if($row['num'] > 0){
-        die('That username already exists!');
+        die('That Alias already exists! <meta http-equiv="refresh" content=1;url=../../backend/sites/retailer_show.php>
+        ');
+
     }
-     */
-    //Hash the password as we do NOT want to store our passwords in plain text.
+    
+    //Eingegebenes Passwort hashen
     $passwordHash = md5($pass);
     
-    //Prepare our INSERT statement.
-    //Remember: We are inserting a new row into our users table.
+    // Insert vorbereiten
     $sql = "INSERT INTO retailer (
                                 r_prename,
                                 r_surname,
@@ -93,7 +82,7 @@ if(isset($_POST['update'])){
                                     :r_img)";
     $stmt = $pdo->prepare($sql);
     
-    //Bind our variables.
+    //Variablen an Attribute binden
     
     $stmt->bindValue(':r_prename', $prename);
     $stmt->bindValue(':r_surname', $surname);
@@ -108,12 +97,12 @@ if(isset($_POST['update'])){
     $stmt->bindValue(':r_img', $image);
 
  
-    //Execute the statement and insert the new account.
+    //Ausführen und Inserten
     $result = $stmt->execute();
     
-    //If the signup process is successful.
+    //Erfolgreich?
     if($result){
-        //What you do here is up to you!
+        
         echo 'Thank you for registering with our website.';
         echo "<meta http-equiv=\"refresh\" content=\"0;url=../../backend/sites/retailer_show.php\">";
 

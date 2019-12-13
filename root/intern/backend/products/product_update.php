@@ -10,9 +10,7 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 
-include ('../../../config/config.php');
-// php update data in mysql database using PDO
-
+// Update gesetzut?
 if(isset($_POST['update']))
 {
     try {
@@ -22,7 +20,7 @@ if(isset($_POST['update']))
         exit();
     }
     
-    // get values form input text and number
+    // Daten aus Form beziehen
     
     $id_p = $_POST['id_p'];
     $blocked = $_POST['p_blocked'];
@@ -33,10 +31,12 @@ if(isset($_POST['update']))
     $price = !empty($_POST['p_price']) ? trim($_POST['p_price']) : null;
     $saved = !empty($_POST['p_saved']) ? trim($_POST['p_saved']) : null;
 
+    // Bilddaten beziehen und Erweiterung auslesen, Zufällige Zahl als Namen festlegen, um Dopplungen zu vermeiden
     $image = $_FILES['image']['name'];
     $imgExt = strtolower(pathinfo($image,PATHINFO_EXTENSION));
     $image = rand(1000,1000000).".".$imgExt;
     
+    // Den Attributen die eingegebenen Werte zuweisen
     $query =    "UPDATE `products` 
                 SET 
                 `p_name`=:p_name,
@@ -52,6 +52,7 @@ if(isset($_POST['update']))
     
     $pdoResult = $pdo->prepare($query);
     
+    // Update
     $pdoExec = $pdoResult->execute(array(
                 ":p_name"=>$name,
                 ":p_origin"=>$origin,
@@ -64,7 +65,7 @@ if(isset($_POST['update']))
             ));
 
     
-    
+    // Abfrage, ob Datenänderung erfolgreich war
     if($pdoExec)
     {
         echo 'Data Updated';

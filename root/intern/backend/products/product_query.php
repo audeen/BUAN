@@ -9,13 +9,17 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
-
+//Config-Datei einbinden
 include ('../../../config/config.php');
+//Sprachdatei einbinden
 include($lang_product_show);
+//Datenbankverbindung herstellen
 $pdo;
+//Alle Produkte wählen
 $sql = "SELECT * FROM products";
 
 echo "<div class=\"row\">\n";
+  // Für jedes Produkt bestimmte Attribute darstellen
   foreach ($pdo->query($sql) as $row) {
 
         // Blockierung aus Query abfragen und Wert in String umwandeln

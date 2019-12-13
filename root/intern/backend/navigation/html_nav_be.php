@@ -9,7 +9,9 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
+// Config-Datei einbinden
 include('../../../config/config.php');
+// Sprach-Datei einbinden
 include($lang_nav_be);
 ?>
 
@@ -35,7 +37,7 @@ include($lang_nav_be);
       </li>
       <li>
       <?php
-      // SWITCHER LINK
+      //Css-Switcher
         while(list($key, $val) = each($styleSheets)){
           echo "<button type=\"button\" class=\"btn btn-primary m-2 \"><a href='../../backend/functions/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a></button>";
         }
