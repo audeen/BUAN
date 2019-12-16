@@ -62,6 +62,7 @@ include ('../../backend/functions/authentification.php');
             ?>
                          
              <select class="form-control" name="month">
+                <option value="all" <?php if (($_POST['month']) == "all" ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][13];?></option>
                 <option value=1 <?php if (($_POST['month']) == 1 ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][1];?></option>
                 <option value=2 <?php if (($_POST['month']) == 2 ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][2];?></option>
                 <option value=3 <?php if (($_POST['month']) == 3 ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][3];?></option>
@@ -74,14 +75,14 @@ include ('../../backend/functions/authentification.php');
                 <option value=10 <?php if (($_POST['month']) == 10 ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][10];?></option>
                 <option value=11 <?php if (($_POST['month']) == 11 ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][11];?></option>
                 <option value=12 <?php if (($_POST['month']) == 12 ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][12];?></option>
-                <option value="all" <?php if (($_POST['month']) == "all" ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][13];?></option>
+                
               <select>
               <select class="form-control" name="year">
                 <option value="2019" <?php if (($_POST['year']) == 2019 ) echo 'selected';?>>2019</option>
                 <option value="2020" <?php if (($_POST['year']) == 2020 ) echo 'selected';?>>2020</option>
                 <option value="2021" <?php if (($_POST['year']) == 2021 ) echo 'selected';?>>2021</option>
               <select>
-              <button type="submit" name="show" href="#" class="btn btn-success btn-lg float-right mt-2" role="button"><?php echo $lang_ordershow[$_SESSION['language']][8]?></button>
+              <button type="submit" name="show" href="#" class="btn btn-success btn-lg float-right mb-2 mt-4" role="button"><?php echo $lang_ordershow[$_SESSION['language']][8]?></button>
               </form>
               <?php
 
@@ -94,7 +95,7 @@ include ('../../backend/functions/authentification.php');
                       echo "<input type=\"hidden\" name=\"retailer\" value=\"".$retailer."\"></input>";
                       echo "<input type=\"hidden\" name=\"year\" value=\"".$year."\"></input>";
                       echo "<input type=\"hidden\" name=\"month\" value=\"".$month1."\"></input>";
-                      echo "<button type=\"submit\" class=\"btn btn-success btn-lg float-left mt-2\" role=\"button\">".$lang_ordershow[$_SESSION['language']][10]."</button>";
+                      echo "<button type=\"submit\" class=\"btn btn-success btn-lg float-left mb-2 mt-2\" role=\"button\">".$lang_ordershow[$_SESSION['language']][10]."</button>";
                     echo "</form>";
                 }
                 
@@ -108,9 +109,9 @@ include ('../../backend/functions/authentification.php');
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../js/jquery-3.4.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../../js/jquery-3.4.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
     <?php include ("../../control/control.php");?>
   </body>
 </html>

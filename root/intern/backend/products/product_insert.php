@@ -44,7 +44,11 @@ if(isset($_POST['update'])){
     //Name bereits vergeben, beende Skript
     if($row['num'] > 0){
 
-        die("This product already exists!<meta http-equiv=\"refresh\" content=\"1;url=product_create.php\">");
+        echo "<div class=\"alert alert-danger mt-3\" role=\"alert\">";
+            echo $lang_productcreate[$_SESSION['language']][13];
+            echo "<meta http-equiv=\"refresh\" content=\"1;url=../../backend/sites/product_show.php\">";
+        echo "</div>";
+        die();
         
     } 
 
@@ -84,7 +88,8 @@ if(isset($_POST['update'])){
     
     //Insert erfolgreich?
     if($result){
-        echo 'Product added.';
+        echo "<div class=\"alert alert-success m-3\">".$lang_productcreate[$_SESSION['language']][12]."</div>";
+        echo "<meta http-equiv=\"refresh\" content=\"1;url=../../backend/sites/product_show.php\">";
         unset($_POST['register']);
     }
     else {

@@ -43,12 +43,12 @@ if (isset($_POST['update'])) {
     ));
     
     // Daten erfolgreich übertragen?
-    if ($pdoExec) {
-        echo 'Data Updated';
-        echo "<meta http-equiv=\"refresh\" content=\"1;url=admin_show.php\">";
-    } else {
-        echo 'ERROR Data Not Updated';
-        echo "<meta http-equiv=\"refresh\" content=\"1;url=admin_show.php\">";
+    if ($pdoExec){
+        echo "<div class=\"alert alert-success m-3\">".$lang_adminedit[$_SESSION['language']][12]."</div>";
+        echo "<meta http-equiv=\"refresh\" content=\"1;url=product_show.php\">";
+    }else{
+        echo "<div class=\"alert alert-danger m-3\">".$lang_adminedit[$_SESSION['language']][13]."</div>";
+        echo "<meta http-equiv=\"refresh\" content=\"1;url=product_show.php\">";
     }
     
 }

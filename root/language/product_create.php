@@ -11,7 +11,11 @@ $lang_productcreate[0][7] = "Anzahl vorr&auml;tig";
 $lang_productcreate[0][8] = "Produktbild festlegen";
 $lang_productcreate[0][9] = "Anlegen";
 $lang_productcreate[0][10] = "Abbrechen";
-
+$lang_productcreate[0][11] = "Zur&uuml;cksetzen";
+$lang_productcreate[0][12] = "Produkt erfolgreich hinzugefügt!";
+$lang_productcreate[0][13] = "Produkt existiert bereits!";
+$lang_productcreate[0][14] = "&Auml;nderung erfolgreich!";
+$lang_productcreate[0][15] = "&Auml;nderung nicht erfolgreich!";
 
 
 $lang_productcreate[1][0] = "Create Product";
@@ -25,6 +29,9 @@ $lang_productcreate[1][7] = "Amount";
 $lang_productcreate[1][8] = "Choose Productpicture";
 $lang_productcreate[1][9] = "Create";
 $lang_productcreate[1][10] = "Cancel";
-
-
+$lang_productcreate[1][11] = "Clear changes";
+$lang_productcreate[1][12] = "Product added!";
+$lang_productcreate[1][13] = "Product already exists!";
+$lang_productcreate[1][14] = "Edit successful!";
+$lang_productcreate[1][15] = "Edit not successful!";
 ?>

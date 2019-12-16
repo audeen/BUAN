@@ -11,13 +11,14 @@
 //////////////////////////////////////////////////
 
 
-// Vorbelegung für den Zugriff auf den Internetserver
+/* // Vorbelegung für den Zugriff auf den Internetserver
 $host  = "localhost";
 $user  = "root";
 $pass  = "";
-$dbase = "sievert";
+$dbase = "sievert"; */
 
-$pdo = new PDO('mysql:host=localhost;dbname=sievert', 'root', '');
+$db = 'mysql:host=localhost;dbname=sievert;charset=utf8';
+$pdo = new PDO($db, 'root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 

@@ -8,5 +8,5 @@ if(isset($_REQUEST["SETSTYLE"])){
 
 
 // Seite neu laden - Vllt tauschen gegen meta-refresh
-header("Location: ".$_SERVER["HTTP_REFERER"]);
+echo "<meta http-equiv=\"refresh\" content=\"0;url=../sites/index.php\">";
 ?> 

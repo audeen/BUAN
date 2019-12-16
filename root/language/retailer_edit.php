@@ -9,6 +9,9 @@ $lang_retaileredit [0][5] = "Zuletzt bearbeitet: ";
 $lang_retaileredit [0][6] = "Passwort zur&uuml;cksetzen";
 $lang_retaileredit [0][7] = "Link verschicken";
 $lang_retaileredit [0][8] = "Bild w&auml;hlen";
+$lang_retaileredit [0][9] = "Zur&uuml;cksetzen";
+$lang_retaileredit [0][10] = "&Auml;nderung erfolgreich!";
+$lang_retaileredit [0][11] = "&Auml;nderung nicht erfolgreich!";
 
 $lang_retaileredit [1][0] = "Edit Retailer";
 $lang_retaileredit [1][1] = "Active";
@@ -19,6 +22,8 @@ $lang_retaileredit [1][5] = "Last edited: ";
 $lang_retaileredit [1][6] = "Reset Password";
 $lang_retaileredit [1][7] = "Send Link";
 $lang_retaileredit [1][8] = "Choose Picture";
-
+$lang_retaileredit [1][9] = "Clear changes";
+$lang_retaileredit[1][10] = "Edit successful!";
+$lang_retaileredit[1][11] = "Edit not successful!";1
 
 ?>

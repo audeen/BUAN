@@ -25,6 +25,8 @@ if (isset($_POST['id_r'])){
   $imgFile = $_FILES['image']['name'];
   $tmp_dir = $_FILES['image']['tmp_name'];
   $imgSize = $_FILES['image']['size'];
+  $image = $_FILES['image']['name'];
+  $imgExt = strtolower(pathinfo($image,PATHINFO_EXTENSION));
 
    //Uploadverzeichnis wählen
    $upload_dir = '../../../images/retailer/'; 

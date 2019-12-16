@@ -15,7 +15,7 @@
 
 if(!isset($_SESSION['user_id']) || !isset($_SESSION['logged_in'])){
   //Nicht eingeloggt? Dann weiterleiten zur Startseite
-  echo "<meta http-equiv=\"refresh\" content=\"0;url=../../sites/index.php\">";
+  echo "<meta http-equiv=\"refresh\" content=\"0;url=../../../sites/index.php\">";
   exit;
 }
 

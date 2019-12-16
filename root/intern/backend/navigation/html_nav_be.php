@@ -39,18 +39,18 @@ include($lang_nav_be);
       <?php
       //Css-Switcher
         while(list($key, $val) = each($styleSheets)){
-          echo "<button type=\"button\" class=\"btn btn-primary m-2 \"><a href='../../backend/functions/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a></button>";
+          echo "<button type=\"button\" class=\"btn btn-primary mr-2 \" href='../../backend/functions/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</button>";
         }
       ?>
       </li>
       <li>
         <?php
-          echo "<form action=\"#\" method=\"post\">";
-          echo "<button type=\"submit\" name=\"language\" value=\"0\">";
+          echo "<form action=\"index.php\" method=\"post\">";
+          echo "<button type=\"submit\" class=\"btn btn-primary mr-2 name=\"language\" value=\"0\">";
             echo "deutsch";
           echo "</button>";
-          echo "<form action=\"#\" method=\"post\">";
-          echo "<button type=\"submit\" name=\"language\" value=\"1\">";
+          echo "<form action=\"index.php\" method=\"post\">";
+          echo "<button type=\"submit\" class=\"btn btn-primary mr-2 name=\"language\" value=\"1\">";
             echo "english";
           echo "</button>";
         ?>

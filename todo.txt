@@ -16,10 +16,10 @@ Dokumentation:
    - Testing - Bildupload hat nicht funktioniert
 
 
-   - Deutsch englisch button ist weg
-   - Straßenname in Datenbank mit &auml;
-   - ganzes jahr nach oben
-   - Email-Bestätigung bei Händler anlegen
+
+
+
+
    - mindestlänge password
    - passwort verifikation
    - abbrechen zurück zu händlerüberischt
@@ -37,6 +37,6 @@ Dokumentation:
    - Grundgehalt: WERT
    - BONUS: WERT
    - PROZENTWERTE 
-   - PDF im target blank
+   - PDF im target blank // sicherheitsrisiko? bevormundung?
    - Zurück & Zurück zu bestellungen
    - Sprach/Styleswitches schicken zu index

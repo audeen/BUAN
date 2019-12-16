@@ -36,11 +36,6 @@ include ('../../backend/functions/image_upload_p.php');
 // Datenbankverbindung herstellen
 $pdo;
 
-// Refresh für Abbrechen-Button
-
-if (isset($_SESSION['cancel'])){
-  echo "<meta http-equiv=\"refresh\" content=\"1;url=product_create.php\">";
-}
 
   echo "<div class=\"ld-center\">\n";
   echo "<div class=\"card mb-3\">\n";
@@ -52,9 +47,11 @@ if (isset($_SESSION['cancel'])){
       echo "<div class=\"card-body\">\n";
         echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name\" placeholder=\"".$lang_productcreate[$_SESSION['language']][3]."\" required>";
         echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin\" placeholder=\"".$lang_productcreate[$_SESSION['language']][4]."\" required>";
-        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_desc\" placeholder=\"".$lang_productcreate[$_SESSION['language']][5]."\" required>";
-        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_price\" placeholder=\"".$lang_productcreate[$_SESSION['language']][6]."\" required>";
-        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_amount\" placeholder=\"".$lang_productcreate[$_SESSION['language']][7]."\" required>";
+        echo "<div class=\"form-group\">";
+          echo "<textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_desc\" placeholder=\"".$lang_productcreate[$_SESSION['language']][5]."\"></textarea>";
+        echo "</div>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" type=\"number\" name=\"p_price\" placeholder=\"".$lang_productcreate[$_SESSION['language']][6]."\" required>";
+        echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" type=\"number\" name=\"p_amount\" placeholder=\"".$lang_productcreate[$_SESSION['language']][7]."\" required>";
       echo "</div>\n";
       echo "<div class=\"card-body\">";
         echo "<label class=\"control-label\"><h5>".$lang_productcreate[$_SESSION['language']][8]."</h5></label>";
@@ -63,7 +60,8 @@ if (isset($_SESSION['cancel'])){
       echo "<div class=\"card-body\">\n";
         echo "<input type=\"hidden\" name=\"p_saved\" value=\"".time()."\">";
         echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">".$lang_productcreate[$_SESSION['language']][9]."</button>";
-        echo "<button class=\"btn btn-outline-danger\" name=\"cancel\" formnovalidate>".$lang_productcreate[$_SESSION['language']][10]."</button>";
+        echo "<input type=\"reset\" class=\"btn btn-outline-warning mr-2\" value=".$lang_productcreate[$_SESSION['language']][11]." formnovalidate>";
+        echo "<a href=\"product_show.php\" class=\"btn btn-outline-danger\" formnovalidate>".$lang_productcreate[$_SESSION['language']][10]."</a>";
     echo "</form>";
     echo "</div>\n";
   echo "</div>\n";
@@ -73,9 +71,9 @@ if (isset($_SESSION['cancel'])){
 </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../js/jquery-3.4.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../../js/jquery-3.4.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
     <?php include ("../../control/control.php");?>
   </body>
 </html>

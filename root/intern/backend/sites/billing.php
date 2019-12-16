@@ -219,6 +219,8 @@ echo "<form action = \"receipt_show.php\" method =\"POST\" >";
                       echo "<input type=\"hidden\" name=\"pay\" value=\"".$pay."\"></input>";
                       echo "<input type=\"hidden\" name=\"billnumber\" value=\"".$billnumber."\"></input>";
    echo "<input class=\"btn btn-success mb-6\" type=\"submit\" name=\"billing\" value=\"".$lang_billing[$_SESSION['language']][14]."\" >";
+   echo "<a href=\"order_show.php\" class=\"btn btn-danger float-right mb-6\" >".$lang_billing[$_SESSION['language']][15]."</a>";
+
 echo "</form>";
 
 ?>

@@ -15,6 +15,7 @@ $lang_billing[0][11] = "Grundgehalt:";
 $lang_billing[0][12] = "Bonus:";
 $lang_billing[0][13] = "Gesamtgehalt";
 $lang_billing[0][14] = "Zur Abrechnung";
+$lang_billing[0][15] = "Zurück zu Bestellungen";
 
 
 
@@ -34,6 +35,7 @@ $lang_billing[1][11] = "Basic Pay:";
 $lang_billing[1][12] = "Bonus:";
 $lang_billing[1][13] = "Total Pay:";
 $lang_billing[1][14] = "To Accounting";
+$lang_billing[1][15] = "Back to Orders";
 
 $lang_billcalendar[0][0] = "";
 $lang_billcalendar[0][1] = "Januar";

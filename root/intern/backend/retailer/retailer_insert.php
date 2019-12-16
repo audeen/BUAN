@@ -11,7 +11,7 @@
 //////////////////////////////////////////////////
 
 //Anlegen gedrückt?
-if(isset($_POST['update'])){
+if (isset($_POST['update']) && ($_POST['r_pw'] == $_POST['r_pw_verify'])) {
     
     //Daten aus form beziehen
     $prename = !empty($_POST['r_prename']) ? trim($_POST['r_prename']) : null;
@@ -47,8 +47,13 @@ if(isset($_POST['update'])){
     
     // Alias existiert bereits? Beenden & Fehlermeldung ausgeben
     if($row['num'] > 0){
-        die('That Alias already exists! <meta http-equiv="refresh" content=1;url=../../backend/sites/retailer_show.php>
-        ');
+        
+        echo "<div class=\"alert alert-danger mt-3\" role=\"alert\">";
+            echo $lang_retailercreate[$_SESSION['language']][17];
+            echo "<meta http-equiv=\"refresh\" content=\"0;url=../../backend/sites/retailer_show.php\">";
+        echo "</div>";
+        die();
+        
 
     }
     
@@ -102,12 +107,16 @@ if(isset($_POST['update'])){
     
     //Erfolgreich?
     if($result){
-        
-        echo 'Thank you for registering with our website.';
-        echo "<meta http-equiv=\"refresh\" content=\"0;url=../../backend/sites/retailer_show.php\">";
+        echo "<div class=\"alert alert-success m-3\">".$lang_retailercreate[$_SESSION['language']][16]."</div>";
+        echo "<meta http-equiv=\"refresh\" content=\"1;url=../../backend/sites/retailer_show.php\">";
 
     }
     
+}
+elseif (isset($_POST['update']) && ($_POST['r_pw'] != $_POST['r_pw_verify'])) {
+    echo "<div class=\"alert alert-danger mt-3\" role=\"alert\">";
+        echo $lang_retailercreate[$_SESSION['language']][14];
+    echo "</div>";
 }
 
 ?>

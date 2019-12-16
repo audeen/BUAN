@@ -26,7 +26,7 @@ include($lang_retailer_edit);
 
 <div class="container">
 
-  <div class="alert alert-danger mt-3" role="alert">
+  <div class="alert alert-warning mt-3" role="alert">
     <?php echo $lang_retaileredit[$_SESSION['language']][0]; ?>
   </div>
 
@@ -64,9 +64,9 @@ if (empty($_POST['id_r'])) {
           echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_prename\" value=\"".$row['r_prename']."\">";
           echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_surname\" value=\"".$row['r_surname']."\">";
           echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_alias\" value=\"".$row['r_alias']."\">";
-          echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_mail\" value=\"".$row['r_mail']."\">";
+          echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" type=\"email\" name=\"r_mail\" value=\"".$row['r_mail']."\">";
           echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_street\" value=\"".$row['r_street']."\">";
-          echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_postal\" value=\"".$row['r_postal']."\">";
+          echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" type=\"number\" name=\"r_postal\" value=\"".$row['r_postal']."\">";
           echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_city\" value=\"".$row['r_city']."\">";
           echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"r_country\" value=\"".$row['r_country']."\">";
         echo "</div>\n";        
@@ -104,7 +104,7 @@ if (empty($_POST['id_r'])) {
 
         echo "<ul class=\"list-group list-group-flush\">\n";
         echo "<li class=\"list-group-item\">";
-            echo "<button type=\"submit\" class=\"btn btn-outline-warning mb-2 mr-2\" name=\"pw\">".$lang_retaileredit[$_SESSION['language']][6]."</button>";
+            echo "<button type=\"submit\" class=\"btn btn-primary mb-2 mt-2\" name=\"pw\">".$lang_retaileredit[$_SESSION['language']][6]."</button>";
 
           // Ist der Vorgang gestartet, schalte Button für E-Mail-Versand frei
           if (isset($_POST['pw'])) {
@@ -117,7 +117,8 @@ if (empty($_POST['id_r'])) {
       
         echo "<div class=\"card-body\">\n";
           echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">".$lang_retaileredit[$_SESSION['language']][3]."</button>";
-          echo "<button type=\"submit\" class=\"btn btn-outline-danger\" name=\"cancel\">".$lang_retaileredit[$_SESSION['language']][4]."</button>";
+          echo "<input type=\"reset\" class=\"btn btn-outline-warning mr-2\" value=".$lang_retaileredit[$_SESSION['language']][9]." formnovalidate>";
+          echo "<a href=\"retailer_show.php\" class=\"btn btn-outline-danger\" formnovalidate>".$lang_retaileredit[$_SESSION['language']][4]."</a>";
           echo "<input type=\"hidden\" name=\"id_r\" value=\"".$row['id_r']."\">";
           echo "<input type=\"hidden\" name=\"r_saved\" value=\"".time()."\">";
         echo "</div>\n";
@@ -136,9 +137,9 @@ echo "</div>";
 </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../js/jquery-3.4.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../../js/jquery-3.4.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
     <?php include ("../../control/control.php");?>
   </body>
 </html>

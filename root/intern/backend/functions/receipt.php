@@ -72,8 +72,8 @@ $html = '
  <tr>
  <td>'.nl2br(trim($rechnungs_header)).'</td>
     <td style="text-align: right">'
-    .$lang_receipt[$_SESSION['language']][1].$rechnungs_nummer.'<br>'
-    .$lang_receipt[$_SESSION['language']][2].$rechnungs_datum.'<br>
+    .$lang_receipt[$_SESSION['language']][1].": ".$rechnungs_nummer.'<br>'
+    .$lang_receipt[$_SESSION['language']][2].": ".$rechnungs_datum.'<br>
 
  </td>
  </tr>
@@ -137,7 +137,7 @@ $html .= '
  
 $html .='
             <tr>
-                <td colspan="3"><b>'.$lang_receipt[$_SESSION['language']][10].'</b></td>
+                <td colspan="3"><b>'.$lang_receipt[$_SESSION['language']][7].'</b></td>
                 <td style="text-align: center;"><b>'.$_POST['total'].' Euro</b></td>
             </tr>
             <tr>
@@ -188,12 +188,12 @@ $gruen = imagecolorallocate($flaeche,0,255,0);
 imagefilledrectangle($flaeche,580,140,600,120,$gruen);
 
 // Legendentext ----------------------------
-imagestring($flaeche,15,620,80,$lang_receipt[$_SESSION['language']][8],$schriftfarbe);
+imagestring($flaeche,15,620,80,$lang_receipt[$_SESSION['language']][8].$_POST['basicpay']." Euro",$schriftfarbe);
 
 // Legende 2 *******************************
 $rot = imagecolorallocate($flaeche,255,0,0);
 imagefilledrectangle($flaeche,580,80,600,100,$rot);
-imagestring($flaeche,15,620,120,"Bonus",$schriftfarbe);
+imagestring($flaeche,15,620,120,"Bonus: ".$_POST['bonus']." Euro",$schriftfarbe);
 
 // Kreisdiagramm ***************************
 // Gradanteil je Kreissegment --------------
@@ -326,16 +326,17 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 if($row['num'] > 0){
     
     die("
-        <div class=\"btn btn-danger btn-lg text-center mt-2\">".$lang_receipt[$_SESSION['language']][12]."</div>
+        <div class=\"btn btn-warning btn-lg text-center mt-2\">".$lang_receipt[$_SESSION['language']][12]."</div>
 
         <form action=\"billing.php\" method=\"post\">
             <input type=\"hidden\" name=\"retailer\" value=\"".$retailer."\">
             <input type=\"hidden\" name=\"month\" value=\"".$month."\">
             <input type=\"hidden\" name=\"year\" value=\"".$year."\">
             <br><br>
-            <a type=\"button\" class=\"btn btn-success\" href=\"../../pdf".DIRECTORY_SEPARATOR.$pdfName."\">".$lang_receipt[$_SESSION['language']][13]."</a>
+            <a type=\"button\" class=\"btn btn-primary\" href=\"../../pdf".DIRECTORY_SEPARATOR.$pdfName."\" target=\"_blank\">".$lang_receipt[$_SESSION['language']][13]."</a>
             <br>
-            <button class=\"btn btn-success mt-4\" type=\"submit\">".$lang_receipt[$_SESSION['language']][14]."</button>
+            <button class=\"btn btn-outline-danger mt-4 mr-2\" type=\"submit\">".$lang_receipt[$_SESSION['language']][14]."</button>
+            <a href=\"order_show.php\" class=\"btn btn-outline-danger mt-4\" >".$lang_receipt[$_SESSION['language']][15]."</a>
             
         </form>
         
@@ -388,15 +389,15 @@ if($result){
         <input type=\"hidden\" name=\"month\" value=\"".$month."\">
         <input type=\"hidden\" name=\"year\" value=\"".$year."\">
         <br><br>
-        <a type=\"button\" class=\"btn btn-success\" href=\"../../pdf".DIRECTORY_SEPARATOR.$pdfName."\">".$lang_receipt[$_SESSION['language']][13]."</a>
+        <a type=\"button\" class=\"btn btn-primary\" href=\"../../pdf".DIRECTORY_SEPARATOR.$pdfName."\" target=\"_blank\">".$lang_receipt[$_SESSION['language']][13]."</a>
         <br>
-        <button class=\"btn btn-success mt-4\" type=\"submit\">".$lang_receipt[$_SESSION['language']][14]."</button>
+        <button class=\"btn btn-outline-danger mrr-2 mt-4\" type=\"submit\">".$lang_receipt[$_SESSION['language']][14]."</button>
+        <a href=\"order_show.php\" class=\"btn btn-outline-danger mt-4\" >".$lang_receipt[$_SESSION['language']][15]."</a>
         
     </form>";
     unset($_POST['bill']);
 }
 else {
     echo "Error, data not saved.";
-
 }
 ?>

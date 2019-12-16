@@ -26,24 +26,17 @@ session_start();
 
 <div class="container">
 
-  <div class="alert alert-danger mt-3" role="alert">
+  <div class="alert alert-warning mt-3" role="alert">
     <?php echo $lang_adminedit[$_SESSION['language']][0];?>
   </div>
 
 <?php
 
-
-include ('../../backend/admin/admin_update.php');
 include ('../../backend/admin/admin_pw_reset.php');
+
 
 // Datenbankverbindung herstellen
 $pdo;
-
-// Refresh für Abbrechen-Button
-
-if (isset($_SESSION['cancel'])){
-  echo "<meta http-equiv=\"refresh\" content=\"0;url=admin_show.php\">";
-}
 
 // Wenn keine ID übermittelt, zeige alle an
 if (empty($_POST['id_a'])) {
@@ -100,9 +93,10 @@ echo "<div class=\"row\">\n";
             // Abfrage, ob angemeldeter Admin sein Passwort zurücksetzen möchte
             if($_SESSION['user_id'] == $_POST['id_a']) {
               echo $lang_adminedit[$_SESSION['language']][7];
+              $_POST['a_blocked'] = "0";
             }
             else {
-              echo "<button type=\"submit\" class=\"btn btn-outline-warning mb-2 mr-2\" name=\"pw\">".$lang_adminedit[$_SESSION['language']][3]."</button>";
+              echo "<button type=\"submit\" class=\"btn btn-primary mb-2 mt-2\" name=\"pw\">".$lang_adminedit[$_SESSION['language']][3]."</button>";
             }
             // Ist der Vorgang gestartet, schalte Button für E-Mail-Versand frei
             if (isset($_POST['pw'])) {
@@ -114,8 +108,9 @@ echo "<div class=\"row\">\n";
           echo "</ul>\n";
    
           echo "<div class=\"card-body\">\n";
-            echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">".$lang_adminedit[$_SESSION['language']][5]."</button>";
-            echo "<button type=\"submit\" class=\"btn btn-outline-danger\" name=\"cancel\">".$lang_adminedit[$_SESSION['language']][6]."</button>";
+            echo "<button type=\"submit\" class=\"btn btn-outline-success mb-2 mt-2 mr-2\" name=\"update\">".$lang_adminedit[$_SESSION['language']][5]."</button>";
+            echo "<input type=\"reset\" class=\"btn btn-outline-warning mb-2 mt-2 mr-2\" value=".$lang_adminedit[$_SESSION['language']][11]." formnovalidate>";
+            echo "<a type=\"button\" href=\"../../backend/sites/admin_show.php\" class=\"btn btn-outline-danger mb-2 mt-2 mr-2 float-left\">".$lang_adminedit[$_SESSION['language']][6]."</a>";
             echo "<input type=\"hidden\" name=\"id_a\" value=\"".$row['id_a']."\">";
             echo "<input type=\"hidden\" name=\"a_saved\" value=\"".time()."\">";
           echo "</div>\n";
@@ -127,14 +122,17 @@ echo "<div class=\"row\">\n";
     echo "</div>\n";
   }
 echo "</div>";
+
+include ('../../backend/admin/admin_update.php');
+
 ?>
 
 </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../js/jquery-3.4.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../../js/jquery-3.4.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
     <?php include ("../../control/control.php");?>
   </body>
 

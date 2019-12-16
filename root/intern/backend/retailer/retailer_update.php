@@ -77,11 +77,11 @@ if(isset($_POST['update']))
     // Abfrage, ob Datenänderung erfolgreich war                                    
     if($pdoExec)
     {
-        echo 'Data Updated';
+        echo "<div class=\"alert alert-success m-3\">".$lang_retaileredit[$_SESSION['language']][10]."</div>";
         echo "<meta http-equiv=\"refresh\" content=\"1;url=retailer_show.php\">";
 
     }else{
-        echo 'ERROR Data Not Updated';
+        echo "<div class=\"alert alert-danger m-3\">".$lang_retaileredit[$_SESSION['language']][11]."</div>";
         echo "<meta http-equiv=\"refresh\" content=\"1;url=retailer_show.php\">";
     }
 

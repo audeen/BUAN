@@ -63,8 +63,8 @@ if (empty($_POST['id_p'])) {
   echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name\" value=\"".$row['p_name']."\">";
   echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin\" value=\"".$row['p_origin']."\">";
   echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_desc\" value=\"".$row['p_desc']."\">";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_price\" value=\"".$row['p_price']."\">";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_amount\" value=\"".$row['p_amount']."\">";
+  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" type=\"number\" name=\"p_price\" value=\"".$row['p_price']."\">";
+  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" type=\"number\" name=\"p_amount\" value=\"".$row['p_amount']."\">";
 
   echo "  </div>\n";
 
@@ -106,7 +106,8 @@ if (empty($_POST['id_p'])) {
  
   echo "  <div class=\"card-body\">\n";
   echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">".$lang_productedit[$_SESSION['language']][4]."</button>";
-  echo "<button type=\"submit\" class=\"btn btn-outline-danger\" name=\"cancel\">".$lang_productedit[$_SESSION['language']][5]."</button>";
+  echo "<input type=\"reset\" class=\"btn btn-outline-warning mr-2\" value=".$lang_productedit[$_SESSION['language']][7]." formnovalidate>";
+  echo "<a href=\"product_show.php\" class=\"btn btn-outline-danger\" formnovalidate>".$lang_productedit[$_SESSION['language']][5]."</a>";
   echo "<input type=\"hidden\" name=\"id_p\" value=\"".$row['id_p']."\">";
   echo "<input type=\"hidden\" name=\"p_saved\" value=\"".time()."\">";
   echo "</form>";
@@ -125,9 +126,9 @@ echo "</div>";
 </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../js/jquery-3.4.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="../../js/jquery-3.4.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
     <?php include ("../../control/control.php");?>
   </body>
 </html>
