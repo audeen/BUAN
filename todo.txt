@@ -14,3 +14,29 @@ Frontend:
 
 Dokumentation:
    - Testing - Bildupload hat nicht funktioniert
+
+
+   - Deutsch englisch button ist weg
+   - Straßenname in Datenbank mit &auml;
+   - ganzes jahr nach oben
+   - Email-Bestätigung bei Händler anlegen
+   - mindestlänge password
+   - passwort verifikation
+   - abbrechen zurück zu händlerüberischt
+   - Data updated hervorheben
+   - zahlenfeld preis / menge input field type number
+   - nach hinzufügen zurück zur übersicht
+   - maximale feldlänge
+   - textarea bei produktbeschreibung
+   - htmlentities
+   - admin hinzufügen
+   - admin bearbeiten nichts machen anwendn = error wegen status bei angemeldetem
+   - Input type mail
+   - PDF bei rechnungsnummer : 
+   - 23 stüüück
+   - Grundgehalt: WERT
+   - BONUS: WERT
+   - PROZENTWERTE 
+   - PDF im target blank
+   - Zurück & Zurück zu bestellungen
+   - Sprach/Styleswitches schicken zu index

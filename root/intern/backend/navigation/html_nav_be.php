@@ -21,8 +21,8 @@ include($lang_nav_be);
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="navbar-collapse collapse justify-content-center" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
+  <div class="navbar-collapse collapse" id="navbarColor02">
+    <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="product_show.php"><?php echo $lang_navbe[$_SESSION['language']][1]?></a>
       </li>
@@ -43,24 +43,24 @@ include($lang_nav_be);
         }
       ?>
       </li>
-<!--       <li>
+      <li>
         <?php
-/*           echo "<form action=\"#\" method=\"post\">";
+          echo "<form action=\"#\" method=\"post\">";
           echo "<button type=\"submit\" name=\"language\" value=\"0\">";
             echo "deutsch";
           echo "</button>";
           echo "<form action=\"#\" method=\"post\">";
           echo "<button type=\"submit\" name=\"language\" value=\"1\">";
             echo "english";
-          echo "</button>"; */
+          echo "</button>";
         ?>
-      </li> -->
+      </li>
       <li class="nav-item active">
         <form action="#">
           <a class="nav-link" href="logout.php"
             >Logout <span class="sr-only">(current)</span></a>
         </form>
-        </li>
+      </li>
     </ul>
   </div>
 </nav>
