@@ -11,7 +11,7 @@
 //////////////////////////////////////////////////
 session_start();
 //Config-Datei einbinden
-include ('../config.php');
+include ('../../../config/config.php');
 // Datenbankverbindung herstellen
 $pdo;
 
@@ -55,7 +55,7 @@ else {
 //Die Anfrage ist gültig, der Nutzer bekommt eine ID zugewiesen, die abgefragt werden kann
 $_SESSION['user_id_reset_pass'] = $userId;
 
-echo "<meta http-equiv=\"refresh\" content=\"0;url=../../intern/backend/sites/admin_pw_create.php\">";
+echo "<meta http-equiv=\"refresh\" content=\"0;url=../../backend/sites/admin_pw_create.php\">";
 
 exit;
 }

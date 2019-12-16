@@ -10,7 +10,7 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
-include ('../../config/config.php');
+
 
 // Spracharrays lokal 
 $lang_apwcreate = array();

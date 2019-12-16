@@ -224,7 +224,7 @@ imagepng ($flaeche, "diagramm.png");
 imagedestroy($flaeche);
 
 
-$html .= nl2br($rechnungs_footer);
+
  
  
  

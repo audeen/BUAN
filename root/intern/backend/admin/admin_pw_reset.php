@@ -16,7 +16,7 @@
 
 if (isset($_POST['pw'])){
 
-include('../../config/config.php');
+
 //Datenbankverbindung herstellen
 $pdo;
 // Mail-Adresse aus Eingabe beziehen
@@ -69,7 +69,7 @@ $statement->execute(array(
 $passwordRequestId = $pdo->lastInsertId();
  
 //Erstellen des Links zum Überprüfen der Anfrage und Weiterleitung an Password-Create-Seite  
-$verifyScript = 'https://localhost/BUAN/root/config/admin/admin_pw_auth.php';
+$verifyScript = 'https://localhost/BUAN/root/intern/backend/admin/admin_pw_auth.php';
  
 $linkToSend = $verifyScript . '?uid=' . $userId . '&id=' . $passwordRequestId . '&t=' . $token;
  
