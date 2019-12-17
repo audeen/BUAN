@@ -40,3 +40,5 @@ Dokumentation:
    - PDF im target blank // sicherheitsrisiko? bevormundung?
    - Zurück & Zurück zu bestellungen
    - Sprach/Styleswitches schicken zu index
+
+   autofocus bei login
