@@ -60,7 +60,7 @@ CREATE TABLE `retailer`
       `r_country`   varchar(20)    NOT NULL     default '',
       `r_saved`     int(12)        NOT NULL     default 0,
       `r_img`       varchar(80)    NOT NULL,
-      `basic_pay`   int(10)        NOT NULL     default 3000
+      `basic_pay`   float          NOT NULL     default 3000.00
 
    );
 
@@ -82,7 +82,7 @@ INSERT INTO `retailer` VALUES
       'Denmark',
       1570450112,
       '13438.jpg',
-      3000),
+      3000.5),
    (2,
       0,
       'Jarkko',
@@ -158,7 +158,7 @@ CREATE TABLE `products`
       `p_origin`  varchar(30)    NOT NULL     default '',
       `p_desc`     varchar(256)   NOT NULL     default '',
       `p_img`       varchar(100)   NOT NULL     default '',
-      `p_price`     int(10)        NOT NULL     default 50,
+      `p_price`     float(10)        NOT NULL     default 50,
       `p_amount`     int(10)        NOT NULL     default 0,
       `p_saved`     int(12)        NOT NULL     default 0
    );
@@ -174,7 +174,7 @@ INSERT INTO `products` VALUES
       'Liechtenstein',
       'XLR (male) => XLR (male)',
       '966008.jpg',
-      50,
+      50.00,
       100,
       1546300801
       ),
@@ -185,7 +185,7 @@ INSERT INTO `products` VALUES
       'Liechtenstein',
       'XLR (female) => XLR (female)',
       '684783.jpg',
-      100,
+      100.00,
       100,
       1546300801
       ),
@@ -196,7 +196,7 @@ INSERT INTO `products` VALUES
       'Liechtenstein',
       'XLR (female 5p) => XLR (male 3p)',
       '92513.jpg',
-      150,
+      150.00,
       100,
       1546300801
       ),
@@ -207,7 +207,7 @@ INSERT INTO `products` VALUES
       'Liechtenstein',
       'XLR (male 5p) => XLR (female 3p)',
       '818510.jpg',
-      200,
+      200.00,
       100,
       1546300801
       ),
@@ -218,7 +218,7 @@ INSERT INTO `products` VALUES
       'Liechtenstein',
       'XLR (male) => Cinch (RCA)',
       '939825.jpg',
-      250,
+      250.00,
       100,
       1546300801
       );
@@ -252,7 +252,7 @@ CREATE TABLE `orders` (
    `p_id`               int(10)        NOT NULL,
    `order_date`         datetime       NOT NULL,
    `qty`                int(10)        NOT NULL,
-   `total`              int(10)        NOT NULL
+   `total`              float(10)        NOT NULL
     );
 
    

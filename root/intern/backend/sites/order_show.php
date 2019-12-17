@@ -43,7 +43,7 @@ include ('../../backend/functions/authentification.php');
             <?php
             // Query für Dropdown-Menü mit selected, falls ein Händler ausgewählt wurde
               $sql = "SELECT * FROM retailer";
-              echo "<select class=\"form-control\" name=\"retailer\">";
+              echo "<select class=\"form-control mt-2\" name=\"retailer\">";
                 foreach ($pdo->query($sql) as $row) {
                   echo "<option value=\"".$row['id_r']."\"".((($_POST['retailer']) == $row['id_r'])? 'selected="selected"' : "").">".$row['r_surname'].", ".$row['r_prename']."</option>";
                 }
@@ -61,7 +61,7 @@ include ('../../backend/functions/authentification.php');
             // Dropdown für Monat + Jahr
             ?>
                          
-             <select class="form-control" name="month">
+             <select class="form-control mt-2" name="month">
                 <option value="all" <?php if (($_POST['month']) == "all" ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][13];?></option>
                 <option value=1 <?php if (($_POST['month']) == 1 ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][1];?></option>
                 <option value=2 <?php if (($_POST['month']) == 2 ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][2];?></option>
@@ -77,7 +77,7 @@ include ('../../backend/functions/authentification.php');
                 <option value=12 <?php if (($_POST['month']) == 12 ) echo 'selected';?>><?php echo $lang_ordershowcalendar[$_SESSION['language']][12];?></option>
                 
               <select>
-              <select class="form-control" name="year">
+              <select class="form-control mt-2" name="year">
                 <option value="2019" <?php if (($_POST['year']) == 2019 ) echo 'selected';?>>2019</option>
                 <option value="2020" <?php if (($_POST['year']) == 2020 ) echo 'selected';?>>2020</option>
                 <option value="2021" <?php if (($_POST['year']) == 2021 ) echo 'selected';?>>2021</option>

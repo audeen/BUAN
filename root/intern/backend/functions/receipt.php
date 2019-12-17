@@ -72,8 +72,8 @@ $html = '
  <tr>
  <td>'.nl2br(trim($rechnungs_header)).'</td>
     <td style="text-align: right">'
-    .$lang_receipt[$_SESSION['language']][1].": ".$rechnungs_nummer.'<br>'
-    .$lang_receipt[$_SESSION['language']][2].": ".$rechnungs_datum.'<br>
+    .$lang_receipt[$_SESSION['language']][1].$rechnungs_nummer.'<br>'
+    .$lang_receipt[$_SESSION['language']][2].$rechnungs_datum.'<br>
 
  </td>
  </tr>
@@ -308,6 +308,7 @@ $basicpay = !empty($_POST['basicpay']) ? trim($_POST['basicpay']) : null;
 $revenue =  !empty($_POST['total']) ? trim($_POST['total']) : 0;
 $bonus =  !empty($_POST['bonus']) ? trim($_POST['bonus']) : 0; 
 $pay =  !empty($_POST['pay']) ? trim($_POST['pay']) : null;
+$pdfName =  !empty($pdfName) ? trim($pdfName) : null;
 
 
 //Generierte Invoice_Nummer mit der Datenbank prüfen

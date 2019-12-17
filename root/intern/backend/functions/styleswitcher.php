@@ -7,6 +7,6 @@ if(isset($_REQUEST["SETSTYLE"])){
 } 
 
 
-// Seite neu laden - Vllt tauschen gegen meta-refresh
+// Seite neu laden 
 echo "<meta http-equiv=\"refresh\" content=\"0;url=../sites/index.php\">";
 ?> 

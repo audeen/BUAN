@@ -39,20 +39,20 @@ include($lang_nav_be);
       <?php
       //Css-Switcher
         while(list($key, $val) = each($styleSheets)){
-          echo "<button type=\"button\" class=\"btn btn-primary mr-2 \" href='../../backend/functions/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</button>";
+          echo "<a type=\"button\" class=\"btn btn-primary mr-2 \" href='../functions/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a>";
         }
       ?>
       </li>
       <li>
         <?php
           echo "<form action=\"index.php\" method=\"post\">";
-          echo "<button type=\"submit\" class=\"btn btn-primary mr-2 name=\"language\" value=\"0\">";
-            echo "deutsch";
-          echo "</button>";
-          echo "<form action=\"index.php\" method=\"post\">";
-          echo "<button type=\"submit\" class=\"btn btn-primary mr-2 name=\"language\" value=\"1\">";
-            echo "english";
-          echo "</button>";
+            echo "<button type=\"submit\" class=\"btn btn-primary mr-2 \" name=\"language\" value=\"0\">";
+              echo "deutsch";
+            echo "</button>";
+            echo "<button type=\"submit\" class=\"btn btn-primary mr-2 \" name=\"language\" value=\"1\">";
+              echo "english";
+            echo "</button>";
+          echo "</form>";
         ?>
       </li>
       <li class="nav-item active">
