@@ -20,8 +20,15 @@ if(isset($_POST['update']))
         exit();
     }
     
+    // Editiert ein User sein Profil, wird bei der Übergabe r_blocked 0 gesetzt
+    if (isset($_SESSION['user_id_r'])){
+        $r_blocked = 0;
+    }
+    else {
+        $r_blocked = $_POST['r_blocked'];
+    }
+
     //Werte aus Form in Variablen schreiben
-    
     $r_prename = !empty($_POST['r_prename']) ? trim($_POST['r_prename']) : null;
     $r_surname = !empty($_POST['r_surname']) ? trim($_POST['r_surname']) : null;
     $r_alias = !empty($_POST['r_alias']) ? trim($_POST['r_alias']) : null;
@@ -40,7 +47,7 @@ if(isset($_POST['update']))
 
     $id_r = $_POST['id_r'];
     $r_saved = $_POST['r_saved'];
-    $r_blocked = $_POST['r_blocked'];
+    
     
     // Den Attributen die eingegebenen Werte zuweisen
     $query =    "UPDATE `retailer` 

@@ -2,21 +2,21 @@
 
 //////////////////////////////////////////////////
 //  BUAN-Projekt                                //
-//  Dateiname:   authentification.php           //
+//  Dateiname:   logout.php                     //
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
-//  Beschreibung : Login/Blocked-Abfrage        //
+//  Beschreibung : Logout_page mit redirect     //
 //  Ersteller    : Jannik Sievert               //
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
+session_start();
+?>
 
- 
-//Prüfen, ob der User eingeloggt ist
 
-if(!isset($_SESSION['user_id_a']) || !isset($_SESSION['logged_in'])){
-  //Nicht eingeloggt? Dann weiterleiten zur Startseite
-  echo "<meta http-equiv=\"refresh\" content=\"0;url=../../../sites/index.php\">";
-  exit;
-}
-
+<?php
+    unset($_SESSION);
+    session_destroy();
+    session_write_close();
+    echo "<meta http-equiv=\"refresh\" content=\"0;url=../../../sites/index.php\">";
+    die;
 ?>

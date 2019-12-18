@@ -12,6 +12,7 @@ $lang_retaileredit [0][8] = "Bild w&auml;hlen";
 $lang_retaileredit [0][9] = "Zur&uuml;cksetzen";
 $lang_retaileredit [0][10] = "&Auml;nderung erfolgreich!";
 $lang_retaileredit [0][11] = "&Auml;nderung nicht erfolgreich!";
+$lang_retaileredit [0][12] = "Profil bearbeiten";
 
 $lang_retaileredit [1][0] = "Edit Retailer";
 $lang_retaileredit [1][1] = "Active";
@@ -24,6 +25,7 @@ $lang_retaileredit [1][7] = "Send Link";
 $lang_retaileredit [1][8] = "Choose Picture";
 $lang_retaileredit [1][9] = "Clear changes";
 $lang_retaileredit[1][10] = "Edit successful!";
-$lang_retaileredit[1][11] = "Edit not successful!";1
+$lang_retaileredit[1][11] = "Edit not successful!";
+$lang_retaileredit[1][12] = "Edit profile";
 
 ?>

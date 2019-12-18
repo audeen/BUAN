@@ -11,8 +11,8 @@ $lang_ordershow[0][7] = "St&uuml;ck";
 $lang_ordershow[0][8] = "Anzeigen";
 $lang_ordershow[0][9] = "Alle H&auml;ndler";
 $lang_ordershow[0][10] = "Zur Abrechnung";
-$lang_ordershow[0][7] = "St&uuml;ck";
-$lang_ordershow[0][7] = "St&uuml;ck";
+$lang_ordershow[0][11] = "Gehaltsabrechnung als PDF anzeigen";
+$lang_ordershow[0][12] = "Gehaltsabrechnung-";
 
 
 
@@ -28,7 +28,8 @@ $lang_ordershow[1][7] = "Pieces";
 $lang_ordershow[1][8] = "Show";
 $lang_ordershow[1][9] = "All Retailers";
 $lang_ordershow[1][10] = "Go to billing";
-$lang_ordershow[1][7] = "Pieces";
+$lang_ordershow[1][11] = "Show Payslip as PDF";
+$lang_ordershow[1][12] = "Payslip-";
 
 
 

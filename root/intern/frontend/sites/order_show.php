@@ -25,15 +25,15 @@ else {
   }
 
 //Include Security-File
-include ('../../backend/functions/authentification.php'); 
+include ('../../frontend/functions/authentification.php'); 
 ?>
 
 <html lang="de">
   <!-- html-head einbinden -->
-  <?php include ('../../backend/navigation/html_head.php'); ?>
+  <?php include ('../../frontend/navigation/html_head.php'); ?>
   <body>
-    <!-- backend-navigation einbinden -->
-    <?php include ('../../backend/navigation/html_nav_be.php'); ?>
+    <!-- frontend-navigation einbinden -->
+    <?php include ('../../frontend/navigation/html_nav_fe.php'); ?>
     
     <div class="container">
       <div class="container-fluid">
@@ -41,14 +41,17 @@ include ('../../backend/functions/authentification.php');
           <div class="alert alert-primary mt-3 col-12" role="alert"><h2 class="text-center"><?php echo $lang_ordershow[$_SESSION['language']][0];?></h2>
             <form action="#" method="POST">
             <?php
-            // Query für Dropdown-Menü mit selected, falls ein Händler ausgewählt wurde
-              $sql = "SELECT * FROM retailer";
+            
+              // Query für Dropdown-Menü mit selected, falls ein Händler ausgewählt wurde
+              // Nur den angemeldeten Händler zeigen
+
+                  $id = $_SESSION['user_id_r'];
+                  $sql = "SELECT * FROM retailer WHERE `id_r` = $id";
+                
               echo "<select class=\"form-control mt-2\" name=\"retailer\">";
                 foreach ($pdo->query($sql) as $row) {
                   echo "<option value=\"".$row['id_r']."\"".((($_POST['retailer']) == $row['id_r'])? 'selected="selected"' : "").">".$row['r_surname'].", ".$row['r_prename']."</option>";
                 }
-            // Ohne Auswahl werden alle Händler angezeigt
-                echo "<option value=\"all\"".((!isset($_POST['retailer']) OR (($_POST['retailer']) == "all" ))? 'selected="selected"' : "").">".$lang_ordershow[$_SESSION['language']][9]."</option>";
               echo "</select>";
             // Vorbelegung für Erstaufruf      
               if (!isset($_POST['month'])){
@@ -87,10 +90,13 @@ include ('../../backend/functions/authentification.php');
               <?php
 
                 // Ist ein Händler und ein Monat gewählt, erscheint ein Button zur Abrechnung mit hidden-inputs zur Weitergabe über POST + Rechnungen in der Zukunft nicht möglich
-                if(isset($_POST['year']) and ($_POST['month']) != "all" and ($_POST['retailer']) != "all" and strtotime($datum) < time()){
+                if(isset($_POST['year']) and ($_POST['month']) != "all" and strtotime($datum) < time()){
                     $retailer = $_POST['retailer'];
                     $year = $_POST['year'];
                     $month1 = $_POST['month'];
+                    //Rechnungsnummer in Variable schreiben für Abgleich mit Datenbank
+                    
+                    
                     echo "<form action=\"billing.php\" method=\"POST\">";
                       echo "<input type=\"hidden\" name=\"retailer\" value=\"".$retailer."\"></input>";
                       echo "<input type=\"hidden\" name=\"year\" value=\"".$year."\"></input>";
@@ -98,9 +104,20 @@ include ('../../backend/functions/authentification.php');
                       echo "<button type=\"submit\" class=\"btn btn-success btn-lg float-left mb-2 mt-2\" role=\"button\">".$lang_ordershow[$_SESSION['language']][10]."</button>";
                     echo "</form>";
                 }
+
+                //Frage nach pdf auf englisch oder deutsch
+                $pdf_name = $lang_ordershow[$_SESSION['language']][12].$_POST['year']."-".$_POST['month']."-".$_SESSION['user_id_r'].".pdf";
+                $pdo;
+                $sql = "SELECT * FROM bills WHERE `r_id` = $id AND `pdf` = '$pdf_name'";
                 
+                foreach ($pdo->query($sql) as $row) {
+                  echo "<div class=\"text-center\">";
+                    echo "<a type=\"button\" class=\"text-decoration-none btn btn-info btn-lg mb-2 mt-2\" href=\"../../pdf/".$row['pdf']."\" target=\"_blank\">".$lang_ordershow[$_SESSION['language']][11]."</a>";
+                  echo "</div>";
+                }
+              
               ?>
-            
+            </form>  
           </div>
         </div>
       </div>

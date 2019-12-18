@@ -26,10 +26,12 @@ if(isset($_POST['retailer'])) {
    $year = $_POST['year'];
    $month1 = $_POST['month'];
    $month2 = $_POST['month'];
+   // Ganzes Jahr gewählt? 
    if ($month1 == "all") {
       $month1 = "01";
       $month2 = "12";
    }
+   // Alle Händler gewählt?
    if ($retailer == "=all") {
       $retailer = "LIKE '%'";
    }
@@ -41,8 +43,16 @@ if(isset($_POST['retailer'])) {
             AND
             `order_date` BETWEEN '$year-$month1-01' AND '$year-$month2-31'";
 }
-else {
+// Schaut ein Händler diese Seite an?
+elseif (isset($_SESSION['user_id_r'])){
 
+   $id = $_SESSION['user_id_r'];
+   $sql = "SELECT * FROM products, retailer, orders WHERE $id = id_r AND r_id = id_r AND id_p = p_id ORDER BY $attribute $sort";
+}
+
+//Erstaufruf
+else{
+   
    $sql = "SELECT * FROM products, retailer, orders WHERE id_r = r_id AND id_p = p_id ORDER BY $attribute $sort";
 }
 

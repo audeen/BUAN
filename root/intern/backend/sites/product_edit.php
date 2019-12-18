@@ -26,7 +26,7 @@ include($lang_product_edit);
 
 <div class="container">
 
-  <div class="alert alert-danger mt-3" role="alert">
+  <div class="alert alert-warning mt-3" role="alert">
     <?php echo $lang_productedit[$_SESSION['language']][0]?>
   </div>
 

@@ -15,6 +15,7 @@
 
 
 <?php include ('../intern/backend/functions/php_login_be.php'); ?>
+<?php include ('../intern/frontend/functions/php_login_fe.php'); ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">BUAN</a>
@@ -60,7 +61,30 @@
               <input type="text" id="username" name="username" />
               Passwort<br />
               <input type="password" id="password" name="password" />
-              <input type="submit" name="login" />
+              <input type="submit" name="login_be" />
+            </form>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdownMenuLink"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Login Frontend
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <div class="dropdown-item">
+            <form action="#" method="post">
+              Name<br />
+              <input type="text" id="username" name="username" />
+              Passwort<br />
+              <input type="password" id="password" name="password" />
+              <input type="submit" name="login_fe" />
             </form>
           </div>
         </div>

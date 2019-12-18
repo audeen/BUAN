@@ -20,7 +20,7 @@
   <body>
 
     <!-- frontend-navigation einbinden -->
-    <?php include ('html_nav_fe.php'); ?>
+    <?php include ('html_nav.php'); ?>
     <div class="container"><?php include ("../control/control.php");?></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

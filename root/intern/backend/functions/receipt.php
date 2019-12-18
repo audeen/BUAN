@@ -301,7 +301,7 @@ $pdf->Output(realpath('./../..').DIRECTORY_SEPARATOR."pdf".DIRECTORY_SEPARATOR.$
 
 
 //Daten beziehen
-$billnumber =   !empty($_POST['billnumber']) ? trim($_POST['billnumber']) : null;
+$billnumber =   !empty($_POST['billnumber']) ? trim($_SESSION['language']."-".$_POST['billnumber']) : null;
 $retailer = !empty($_POST['retailer']) ? trim($_POST['retailer']) : null;
 $billdate =  date("Y-m-t H:i:s");
 $basicpay = !empty($_POST['basicpay']) ? trim($_POST['basicpay']) : null;
@@ -323,7 +323,7 @@ $stmt->execute();
 //Fetch the row.
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Rechnung existiert schon? Beenden!
+// Rechnung existiert schon? Beenden & anzeigen!
 if($row['num'] > 0){
     
     die("

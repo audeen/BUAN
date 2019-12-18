@@ -15,11 +15,6 @@ Frontend:
 Dokumentation:
    - Testing - Bildupload hat nicht funktioniert
 
-
-
-
-
-
    - mindestlänge password
    - passwort verifikation
    - abbrechen zurück zu händlerüberischt
@@ -40,5 +35,21 @@ Dokumentation:
    - PDF im target blank // sicherheitsrisiko? bevormundung?
    - Zurück & Zurück zu bestellungen
    - Sprach/Styleswitches schicken zu index
+____
+   - autofocus bei login
+   - Warenkorb
+   - Kaufoption bei Händler hinzufügen
+   - Edit/Add raus
+   - Add als Add to cart - button
 
-   autofocus bei login
+
+   ____
+   Startseiten
+    - Überflüssiges raus
+    - Login in Maincontainer
+    - Kacheln mit Funktionen?
+
+
+
+    ___
+    - Schriftarten einbinden

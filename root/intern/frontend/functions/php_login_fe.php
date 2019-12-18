@@ -11,7 +11,7 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 
-session_start();
+
 //Config-Datei einbinden
 include ('../config/config.php');
 
@@ -34,14 +34,14 @@ $lang_phploginbe[1][3] = "Wrong password!";
 $errorMessage = $lang_phploginbe[$_SESSION['language']][0];  
 
 // Login gedrückt?
-if(isset($_POST['login_be'])){
+if(isset($_POST['login_fe'])){
     
     //Werte übertragen
     $username = !empty($_POST['username']) ? trim($_POST['username']) : null;
     $passwordAttempt = !empty($_POST['password']) ? trim($_POST['password']) : null;
     
     //Nutzerdaten beziehen
-    $sql = "SELECT id_a, a_name, a_pw, a_blocked FROM admins WHERE a_name = :username";
+    $sql = "SELECT id_r, r_alias, r_pw, r_blocked FROM retailer WHERE r_alias = :username";
     $stmt = $pdo->prepare($sql);
     
     //Werte an Parameter binden
@@ -56,7 +56,7 @@ if(isset($_POST['login_be'])){
         die($lang_phploginbe[$_SESSION['language']][1]); // Übersetzen
     } 
     //Blockierung prüfen
-    elseif ($user['a_blocked']!=0){
+    elseif ($user['r_blocked']!=0){
         
         die($lang_phploginbe[$_SESSION['language']][2]); // Übersetzen
         exit; 
@@ -67,14 +67,14 @@ if(isset($_POST['login_be'])){
         $validPassword = md5($passwordAttempt);
         
         //Gleiches Passwort?
-        if($validPassword === $user['a_pw']){
+        if($validPassword === $user['r_pw']){
             
             //Session-Variablen setzen
-            $_SESSION['user_id_a'] = "Admin ID: ".$user['id_a'];
+            $_SESSION['user_id_r'] = $user['id_r'];
             $_SESSION['logged_in'] = time();
             
             //Weiterleiten zur Backend-Startseite
-            echo "<meta http-equiv=\"refresh\" content=\"0;url=../../root/intern/backend/sites/index.php\">";
+            echo "<meta http-equiv=\"refresh\" content=\"0;url=../../root/intern/frontend/sites/index.php\">";
             exit;
             
         } else{

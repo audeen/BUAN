@@ -13,8 +13,14 @@
 include($lang_retailer_query);
 //Datenbankverbindung herstellen
 $pdo;
-//Alle Händler auswählen
+//Admin angemeldet? Alle Admins zeigen. Händler angemeldet? Nur den Händler zeigen
+if (isset($_SESSION['user_id_a'])){
 $sql = "SELECT * FROM retailer";
+}
+else {
+  $id = $_SESSION['user_id_r'];
+  $sql = "SELECT * FROM retailer WHERE `id_r` = $id";
+}
 
 echo "<div class=\"row\">\n";
   // Für jeden Händler Attribute darstellen
@@ -34,9 +40,12 @@ echo "<div class=\"row\">\n";
         echo "<h3 class=\"card-header\">".$row['r_surname'].", ".$row['r_prename']."</h3>\n";
         echo "<div class=\"card-body\">\n";
           echo "<h5 class=\"card-title\">".$row['r_mail']."</h5>\n";
+          //Nur Admins anzeigen
+          if (isset($_SESSION['user_id_a'])){
           echo "<h6 class=\"card-subtitle text-muted\">ID: ".$row['id_r']."</h6>\n";
           echo "<h6 class=\"card-subtitle text-muted\">Alias: ".$row['r_alias']."</h6>\n";
           echo "<h6 class=\"card-subtitle mb-2 text-muted\">Status: ".$blocked."</h6>\n";
+          }
         echo "</div>\n";   
         echo "<div class=\"card-body\">";
           echo "<img class=\"img-fluid\" src=\"../../../images/retailer/".$row['r_img']."\" alt=\"H&auml;ndlerfoto " .$row['r_surname']." \">\n";
