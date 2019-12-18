@@ -12,6 +12,7 @@
 session_start();
 
 include('../../../config/config.php');
+
 include($lang_product_show);
 
 ?>
@@ -27,13 +28,14 @@ include($lang_product_show);
   <!-- html-head einbinden -->
   <?php include ('../../frontend/navigation/html_head.php'); ?>
   <body>
-    <!-- backend-navigation einbinden -->
+    <!-- frontend-navigation einbinden -->
     <?php include ('../../frontend/navigation/html_nav_fe.php'); ?>
     <div class="container">
       <div class="container-fluid">
         <div class="row">
           <div class="alert alert-primary mt-3 col-12" role="alert">
             <h2 class="text-center"><?php echo $lang_productshow[$_SESSION['language']][9];?></h2>
+            <?php include('../functions/cart.php');?>
           </div>
         </div>
       </div>

@@ -11,6 +11,7 @@
 //////////////////////////////////////////////////
 //Config-Datei einbinden
 include ('../../../config/config.php');
+
 //Sprachdatei einbinden
 include($lang_product_show);
 //Datenbankverbindung herstellen
@@ -51,6 +52,11 @@ echo "<div class=\"row\">\n";
           echo "<li class=\"list-group-item\">".$lang_productshow[$_SESSION['language']][3].$row['p_origin']."</li>\n";
           echo "<li class=\"list-group-item\">".$lang_productshow[$_SESSION['language']][4]."<br>".htmlentities($row['p_price'])." &euro;</li>\n";
           echo "<li class=\"list-group-item\">".$lang_productshow[$_SESSION['language']][5]."<br>".$row['p_amount'].$lang_productshow[$_SESSION['language']][8]."</li>\n";
+          echo "<form action=\"#\" method=\"post\">";
+            echo "<input type=\"number\" name=\"quantity\" value=\"1\" min=\"1\" max=".$row['p_amount']." placeholder\"=Quantity\" required>";
+            echo "<input type=\"hidden\" name=\"product\" value=".$row['id_p'].">";
+            echo "<input type=\"submit\" value=\"Add To Cart\">";
+          echo "</form>";
         echo "</ul>";
         //Nur für Admins anzeigen
         if (isset($_SESSION['user_id_a'])){

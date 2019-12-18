@@ -53,3 +53,4 @@ ____
 
     ___
     - Schriftarten einbinden
+    - geblockte produkte ausblenden
