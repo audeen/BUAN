@@ -1,0 +1,1 @@
+https://www.allphptricks.com/create-a-simple-captcha-script-using-php/

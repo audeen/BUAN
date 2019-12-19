@@ -25,7 +25,7 @@ $month = $_POST['month'];
 
 
 // Gesamtsumme Bestellungen/Monat errechnen & in Variable schreiben
-$sql =   $pdo->prepare("SELECT SUM(total)
+$sql =   $pdo->prepare("SELECT *
       FROM products, retailer, orders 
       WHERE id_r = $retailer
       AND r_id = id_r
@@ -34,7 +34,7 @@ $sql =   $pdo->prepare("SELECT SUM(total)
 
 $sql->execute();
 $row = $sql->fetch();
-$total = $row['SUM(total)'];
+$total = $row['p_price'] * $row['qty'];
 
 if (empty($total)){
    $total = 0;

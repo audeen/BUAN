@@ -12,6 +12,10 @@ $lang_cart[0][7] = "Abbrechen";
 $lang_cart[0][8] = "Bestellung aufgeben";
 $lang_cart[0][9] = "Zwischensumme";
 $lang_cart[0][10] = "Sie haben keine Produkte im Warenkorb";
+$lang_cart[0][11] = "Bestellen";
+$lang_cart[0][12] = "Bestell&uuml;bersicht";
+$lang_cart[0][13] = "Lieferadresse:";
+
 
 $lang_cart[1][0] = "Shopping Cart";
 $lang_cart[1][1] = "Product";
@@ -24,4 +28,8 @@ $lang_cart[1][7] = "Cancel";
 $lang_cart[1][8] = "Place Order";
 $lang_cart[1][9] = "Subtotal";
 $lang_cart[1][10] = "You have no products added in your Shopping Cart";
+$lang_cart[1][11] = "Order";
+$lang_cart[1][12] = "Order Overview";
+$lang_cart[1][13] = "Shipping Address";
+
 ?>

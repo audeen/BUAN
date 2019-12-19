@@ -5,6 +5,7 @@
 //Config-Datei einbinden
 include ('../../../config/config.php');
 include($lang_cart);
+
 // https://codeshack.io/shopping-cart-system-php-mysql/
 // If the user clicked the add to cart button on the product page we can check for the form data
 if (isset($_POST['product'], $_POST['quantity']) && is_numeric($_POST['product']) && is_numeric($_POST['quantity'])) {
@@ -16,11 +17,12 @@ if (isset($_POST['product'], $_POST['quantity']) && is_numeric($_POST['product']
     $stmt->execute([$_POST['product']]);
     // Fetch the product from the database and return the result as an Array
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
+    print_r($product);
     // Check if the product exists (array is not empty)
-    if ($product && $quantity > 0) {
+    if ($product && $quantity > 0)  {
         // Product exists in database, now we can create/update the session variable for the cart
         if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
-            if (array_key_exists($product_id, $_SESSION['cart'])) {
+            if (array_key_exists($product_id, $_SESSION['cart']))  {
                 // Product exists in cart so just update the quanity
                 $_SESSION['cart'][$product_id] += $quantity;
             } else {
@@ -68,7 +70,7 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
 // Check the session variable for products in cart
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 $products = array();
-$subtotal = 0.00;
+$subtotal = 0;
 // If there are products in cart
 if ($products_in_cart) {
     // There are products in the cart so we need to select those products from the database
@@ -81,7 +83,7 @@ if ($products_in_cart) {
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // Calculate the subtotal
     foreach ($products as $product) {
-        $subtotal += (float)$product['p_price'] * (int)$products_in_cart[$product['id_p']];
+        $subtotal += (int)$product['p_price'] * (int)$products_in_cart[$product['id_p']];
     }
 }
 
@@ -90,7 +92,6 @@ if ($products_in_cart) {
 <div class="cart content-wrapper">
     <h1><?php echo $lang_cart[$_SESSION['language']][0];?></h1>
     <form action="#" method="post">
-    <?php print_r($_SESSION['cart']);?>
         <table class="table">
             <thead>
                 <tr>
@@ -129,9 +130,10 @@ if ($products_in_cart) {
 
         <div class="buttons">
             <input type="submit" value="<?php echo $lang_cart[$_SESSION['language']][6];?>" name="update">
-            </form>
-            <form action="../functions/checkout.php" method="post">
-                <input type="submit" value="<?php echo $lang_cart[$_SESSION['language']][8];?>" name="placeorder">
+                
+            
+                <input type="submit" formaction="../functions/checkout.php">
+            
             </form>
         </div>
     
