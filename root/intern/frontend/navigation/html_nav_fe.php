@@ -30,9 +30,6 @@ include($lang_nav_fe);
         <a class="nav-link" href="retailer_show.php"><?php echo $lang_navfe[$_SESSION['language']][2]?></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="admin_show.php"><?php echo $lang_navfe[$_SESSION['language']][3]?></a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="order_show.php"><?php echo $lang_navfe[$_SESSION['language']][4]?></a>
       </li>
       <li>

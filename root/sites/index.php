@@ -12,6 +12,8 @@
 //////////////////////////////////////////////////
 session_start();
 include('../config/config.php');
+include('captcha.php');
+
 
 $lang= array();
 
@@ -83,6 +85,7 @@ echo "</div>\n";
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+    
 
     
   </body>
