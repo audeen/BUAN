@@ -55,7 +55,7 @@ echo "<div class=\"row\">\n";
           //Nur für Händler anzeigen
           if (isset($_SESSION['user_id_r'])){
             // Wenn Artikel auf Lager
-            if ($row['p_amount'] > 0){
+            if ($row['p_amount'] > 0 && $row['p_blocked'] == 0){
           
             echo "<form action=\"#\" method=\"post\">";
             echo "<li class=\"list-group-item\">";
@@ -68,6 +68,11 @@ echo "<div class=\"row\">\n";
             echo "</form>";
           }
           // Ausverkauft?
+          elseif ($row['p_blocked'] == 1){
+            echo "<div class=\"btn btn-danger\">";
+            echo $lang_productshow[$_SESSION['language']][13];
+          echo "</div>";
+          }
           else {
             echo "<div class=\"btn btn-danger\">";
               echo $lang_productshow[$_SESSION['language']][12];

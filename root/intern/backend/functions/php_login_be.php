@@ -11,7 +11,7 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 
-session_start();
+
 //Config-Datei einbinden
 include ('../config/config.php');
 
@@ -24,11 +24,13 @@ $lang_phploginbe[0][0] = "Bitte einloggen!";
 $lang_phploginbe[0][1] = "Account konnte nicht gefunden werden";
 $lang_phploginbe[0][2] = "Nutzer blockiert";
 $lang_phploginbe[0][3] = "Passwort falsch!";
+$lang_phploginbe[0][4] = "Zur&uuml;ck";
 
 $lang_phploginbe[1][0] = "Please Log in";
 $lang_phploginbe[1][1] = "Account not found";
 $lang_phploginbe[1][2] = "User blocked";
 $lang_phploginbe[1][3] = "Wrong password!";
+$lang_phploginbe[1][4] = "Back";
 
 
 $errorMessage = $lang_phploginbe[$_SESSION['language']][0];  
@@ -53,12 +55,11 @@ if(isset($_POST['login_be'])){
 
     if($user === false){
         //Nutzer konnte nicht gefunden werden
-        die($lang_phploginbe[$_SESSION['language']][1]); // Übersetzen
-    } 
+
+        die($lang_phploginbe[$_SESSION['language']][1]."<br><a href=\"index.php\" class=\"btn btn-danger btn-lg\" role=\"button\">".$lang_phploginbe[$_SESSION['language']][4]."</a>");}
     //Blockierung prüfen
     elseif ($user['a_blocked']!=0){
-        
-        die($lang_phploginbe[$_SESSION['language']][2]); // Übersetzen
+        die($lang_phploginbe[$_SESSION['language']][2]."<br><a href=\"index.php\" class=\"btn btn-danger btn-lg\" role=\"button\">".$lang_phploginbe[$_SESSION['language']][4]."</a>");
         exit; 
     }
     else{
@@ -75,12 +76,12 @@ if(isset($_POST['login_be'])){
             $_SESSION['user_name'] = $user['a_name'];
             
             //Weiterleiten zur Backend-Startseite
-            echo "<meta http-equiv=\"refresh\" content=\"0;url=../../root/intern/backend/sites/index.php\">";
+            echo "<meta http-equiv=\"refresh\" content=\"0;url=../intern/backend/sites/index.php\">";
             exit;
             
         } else{
             //Passwörter stimmen nicht überein, Fehlermeldung ausgeben
-            die($lang_phploginbe[$_SESSION['language']][3]);  
+            die($lang_phploginbe[$_SESSION['language']][3]."<br><a href=\"index.php\" class=\"btn btn-danger btn-lg\" role=\"button\">".$lang_phploginbe[$_SESSION['language']][4]."</a>");  
         }
     }
     

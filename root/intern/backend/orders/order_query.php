@@ -63,7 +63,7 @@ echo "<table class=\"table\">";
       echo "<tr>";
       //Sortierfunktion im Tabellenkopf
          echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=id_o&sort=".$sort."\">ID</a></th>";
-         echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=order_numbersort=".$sort."\">".$lang_ordershow[$_SESSION['language']][1]."</th>";
+         echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=order_number&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][1]."</th>";
          echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=r_surname&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][2]."</th>";
          echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=p_name&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][3]."</th>";
          echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=order_date&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][4]."</th>";

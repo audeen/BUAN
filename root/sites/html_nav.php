@@ -12,96 +12,42 @@
 
 ?>
 
-
-
-<?php include ('../intern/backend/functions/php_login_be.php'); ?>
-<?php include ('../intern/frontend/functions/php_login_fe.php'); ?>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">BUAN</a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNavDropdown"
-    aria-controls="navbarNavDropdown"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+  <a class="navbar-brand" href="index.php">BUAN</a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+  <div class="navbar-collapse collapse" id="navbarColor02">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"
-          >Home <span class="sr-only">(current)</span></a
-        >
+      <li>
+      <?php
+      //Css-Switcher
+        while(list($key, $val) = each($styleSheets)){
+          echo "<a type=\"button\" class=\"btn btn-primary mr-2 \" href='styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a>";
+        }
+      ?>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+      <li>
+        <?php
+          echo "<form action=\"index.php\" method=\"post\">";
+            echo "<button type=\"submit\" class=\"btn btn-primary mr-2 \" name=\"language\" value=\"0\">";
+              echo "deutsch";
+            echo "</button>";
+            echo "<button type=\"submit\" class=\"btn btn-primary mr-2 \" name=\"language\" value=\"1\">";
+              echo "english";
+            echo "</button>";
+          echo "</form>";
+        ?>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdownMenuLink"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Login Backend
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <div class="dropdown-item">
-            <form action="#" method="post">
-              Name<br />
-              <input type="text" id="username" name="username" />
-              Passwort<br />
-              <input type="password" id="password" name="password" />
-              <input type="submit" name="login_be" />
-            </form>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdownMenuLink"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Login Frontend
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <div class="dropdown-item">
-            <form action="#" method="post">
-              Name<br />
-              <input type="text" id="username" name="username" />
-              Passwort<br />
-              <input type="password" id="password" name="password" />
-              <input type="submit" name="login_fe" />
-            </form>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item"></li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#"
-          >Logout <span class="sr-only">(current)</span></a
-        >
+      <li class="nav-item float-right">
+        <form action="#" method="post">
+          <button type="submit" name="admin_login" class="btn btn-outline-warning" href="#" value="Admin">
+            Admin
+          </button>
+        </form>
       </li>
     </ul>
-    <?php
-      // SWITCHER LINK
-        while(list($key, $val) = each($styleSheets)){
-          echo "<button type=\"button\" class=\"btn btn-primary m-2 \"><a href='../intern/backend/functions/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a></button>";
-        }
-    ?> 
-
   </div>
 </nav>
+
