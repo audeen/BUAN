@@ -13,6 +13,14 @@
 
 
 include('../../../config/config.php');
+
+// Spracharray lokal 
+$lang_pwchange = array();
+
+$lang_pwchange[0][0] = "Passw&ouml;rter stimmen nicht &uuml;berein!";
+
+$lang_pwchange[1][0] = "Passwords don't match!";
+
 // Wenn $_POST save gesetzt, prüfe, ob Password und Verify-Password übereinstimmen
 
 if (isset($_POST['save']) && ($_POST['r_pw'] == $_POST['r_pw_verify'])) {
@@ -24,7 +32,7 @@ if (isset($_POST['save']) && ($_POST['r_pw'] == $_POST['r_pw_verify'])) {
         exit();
     }
     
-    // get values form input text and number
+    // Daten beziehen
     
     $id_r      = $_SESSION['user_id_reset_pass'];
     $r_pw      = $_POST['r_pw'];
@@ -55,8 +63,7 @@ elseif (!isset($_POST['save'])) {
 // Wenn die Passwörter nicht übereinstimmen
 else {
     echo "<div class=\"alert alert-danger mt-3\" role=\"alert\">";
-        /* echo $lang_adminedit[$_SESSION['language']][0]; */
-        echo "Passwörter stimmen nicht überein!";
+        echo $lang_pwchange[$_SESSION['language']][0];
     echo "</div>";
 }
 ?> 

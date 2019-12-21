@@ -9,7 +9,13 @@ $lang_productedit[0][5] = "Abbrechen";
 $lang_productedit[0][6] = "Zuletzt bearbeitet:";
 $lang_productedit[0][7] = "Zur&uuml;cksetzen";
 $lang_productedit[0][8] = "&Auml;nderung erfolgreich!";
-$lang_productedit[0][9] = "&Auml;nderung nicht erfolgreich!";
+$lang_productedit[0][9] = "Produktname:";
+$lang_productedit[0][10] = "Herkunft:";
+$lang_productedit[0][11] = "Beschreibungstext";
+$lang_productedit[0][12] = "Preis in &euro;";
+$lang_productedit[0][13] = "Menge auf Lager";
+
+
 
 
 
@@ -23,6 +29,11 @@ $lang_productedit[1][6] = "Last edited: ";
 $lang_productedit[1][7] = "Clear changes";
 $lang_productedit[1][8] = "Edit successful!";
 $lang_productedit[1][9] = "Edit not successful!";
+$lang_productedit[1][10] = "Productname:";
+$lang_productedit[1][11] = "Origin:";
+$lang_productedit[1][12] = "Price in &euro;";
+$lang_productedit[1][13] = "In Stock:";
+
 
 
 

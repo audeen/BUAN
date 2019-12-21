@@ -60,11 +60,11 @@ if (empty($_POST['id_p'])) {
   echo "    <h6 class=\"card-subtitle text-muted\">ID: ".$row['id_p']."</h6>\n";
   echo "  </div>\n";
   echo "  <div class=\"card-body\">\n";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name\" value=\"".$row['p_name']."\">";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin\" value=\"".$row['p_origin']."\">";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_desc\" value=\"".$row['p_desc']."\">";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" type=\"number\" name=\"p_price\" value=\"".$row['p_price']."\">";
-  echo "    <input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" type=\"number\" name=\"p_amount\" value=\"".$row['p_amount']."\">";
+  echo "    <p>".$lang_productedit[$_SESSION['language']][9]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name\" value=\"".$row['p_name']."\">";
+  echo "    <p>".$lang_productedit[$_SESSION['language']][10]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin\" value=\"".$row['p_origin']."\">";
+  echo "    <p>".$lang_productedit[$_SESSION['language']][11]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_desc\" value=\"".$row['p_desc']."\">";
+  echo "    <p>".$lang_productedit[$_SESSION['language']][12]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" type=\"number\" name=\"p_price\" value=\"".$row['p_price']."\">";
+  echo "    <p>".$lang_productedit[$_SESSION['language']][13]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" type=\"number\" name=\"p_amount\" value=\"".$row['p_amount']."\">";
 
   echo "  </div>\n";
 

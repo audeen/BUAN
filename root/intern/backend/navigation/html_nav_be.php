@@ -40,8 +40,10 @@ include($lang_nav_be);
       //Css-Switcher
         while(list($key, $val) = each($styleSheets)){
           echo "<a type=\"button\" class=\"btn btn-primary mr-2 \" href='../functions/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a>";
-        }
+          
+          };
       ?>
+
       </li>
       <li>
         <?php

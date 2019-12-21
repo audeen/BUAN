@@ -47,6 +47,12 @@
           </button>
         </form>
       </li>
+                <!-- Button trigger modal -->
+          <li class="ml-2">
+            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">
+            <?php echo $lang[$_SESSION['language']][5];?>
+            </button>
+          </li>
     </ul>
   </div>
 </nav>

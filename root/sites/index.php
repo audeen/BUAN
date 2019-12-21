@@ -12,6 +12,7 @@
 //////////////////////////////////////////////////
 session_start();
 include('../config/config.php');
+include($lang_index);
 
 // CAPTCHA-Funktion aus Semester IV
 function anzeige()
@@ -28,19 +29,7 @@ if (!isset($_POST['captcha_erg'])){
   anzeige();
 }
 
-$lang= array();
 
-$lang[0][0] = "Bitte geben Sie ihren Alias an";
-$lang[0][1] = "Passwort";
-$lang[0][2] = "Einloggen";
-$lang[0][3] = "Einloggen als H&auml;ndler";
-$lang[0][4] = "Bitte geben Sie das Berechnungsergebnis ein!";
-
-$lang[1][0] = "Please enter your Alias";
-$lang[1][1] = "Password";
-$lang[1][2] = "Log in";
-$lang[1][3] = "Log in as retailer";
-$lang[1][4] = "Please insert the calculation result";
 
 if (isset($_POST['retailer_login'])) {
   unset($_POST['admin_login']);
@@ -76,7 +65,7 @@ if (isset($_POST['retailer_login'])) {
       echo "<div class=\"captcha_field\">";
         echo "<p>".$lang[$_SESSION['language']][4]."</p>";
         echo "<div class=\"equation\" >".$_SESSION['wert1']." + ".$_SESSION['wert2']." = </div>";
-        echo "<input class=\"textfield mt-2 mb-2\" name=\"captcha_erg\" type=\"text\" size=\"10\" maxlength=\"10\" placeholder=\"CAPTCHA\" >";
+        echo "<input class=\"text mt-2 mb-2\" name=\"captcha_erg\" type=\"text\" size=\"10\" maxlength=\"10\" placeholder=\"CAPTCHA\" >";
       echo "</div>";
       echo "<button type=\"submit\" name=\"login_be\" class=\"btn btn-primary\">".$lang[$_SESSION['language']][2]."</button>\n";
       echo "<button type=\"submit\" name=\"retailer_login\" class=\"btn btn-primary float-right\">".$lang[$_SESSION['language']][3]."</button>\n";
@@ -96,7 +85,7 @@ if (isset($_POST['retailer_login'])) {
     echo "<div class=\"captcha_field\">";
        echo "<p>".$lang[$_SESSION['language']][4]."</p>";
        echo "<div class=\"equation\" >".$_SESSION['wert1']." + ".$_SESSION['wert2']." = </div>";
-       echo "<input class=\"textfield mt-2 mb-2\" name=\"captcha_erg\" type=\"text\" size=\"10\" maxlength=\"10\" placeholder=\"CAPTCHA\" required>";
+       echo "<input class=\"text mt-2 mb-2\" name=\"captcha_erg\" type=\"text\" size=\"10\" maxlength=\"10\" placeholder=\"CAPTCHA\" required>";
     echo "</div>";
     echo "<button type=\"submit\" name=\"login_fe\"  class=\"btn btn-primary\">".$lang[$_SESSION['language']][2]."</button>\n";
     
@@ -104,8 +93,54 @@ if (isset($_POST['retailer_login'])) {
 echo "</div>\n";
     }
     
+    if (isset($_POST['r_mail'])) {
+
+      include("retailer_pw_reset.php");
+      $linkToSend = urlencode($linkToSend);
+      echo "<a class=\"btn btn-outline-danger\" href=\"mailto:".$_POST['r_mail']."?subject=".$lang[$_SESSION['language']][7]."&body=".$linkToSend."\">".$lang[$_SESSION['language']][10]."</a>";
+      
+      unset($_POST['r_mail']);
+  };
+  
+    
 ?>
 </form>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"><?php echo $lang[$_SESSION['language']][2];?></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="#" method="post">
+                  <div class="modal-body">
+                    <input type="text" name="r_mail" placeholder="E-Mail">
+                    <br>
+                    <br>
+                    <p>
+                      <?php echo $lang[$_SESSION['language']][8];?>
+                    </p>
+                    <?php 
+                      if (isset($_POST['r_mail'])) {
+
+                        include("retailer_pw_reset.php");
+                        $button = "<a class=\"btn btn-outline-success\" href=\"mailto:".$_POST['r_mail']."?subject=".$lang_retaileredit[$_SESSION['language']][6]."&body=".$linkToSend."\">".$lang_retaileredit[$_SESSION['language']][7]."</a>";
+                        
+                        unset($_POST['r_mail']);
+                    };
+                    ?>
+                  </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo $lang[$_SESSION['language']][9];?></button>
+                  <button type="submit" class="btn btn-warning"><?php echo $lang[$_SESSION['language']][7];?></button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
 </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

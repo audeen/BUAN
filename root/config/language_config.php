@@ -40,4 +40,5 @@ $lang_product_edit = '../../../language/product_edit.php';
 $lang_retailer_create = '../../../language/retailer_create.php';
 $lang_admin_create = '../../../language/admin_create.php';
 $lang_cart = '../../../language/cart.php';
+$lang_index = '../language/index.php';
 ?>

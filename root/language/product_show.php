@@ -2,7 +2,7 @@
 
 
 $lang_productshow[0][0] = "Aktiv";
-$lang_productshow[0][1] = "Inaktiv";
+$lang_productshow[0][1] = "Blockiert";
 $lang_productshow[0][2] = "Beschreibung";
 $lang_productshow[0][3] = "Herkunft:";
 $lang_productshow[0][4] = "Preis:";
@@ -17,7 +17,7 @@ $lang_productshow[0][12] = "Ausverkauft";
 $lang_productshow[0][13] = "Produkt blockiert";
 
 $lang_productshow[1][0] = "Active";
-$lang_productshow[1][1] = "Inactive";
+$lang_productshow[1][1] = "Blocked";
 $lang_productshow[1][2] = "Description";
 $lang_productshow[1][3] = "Origin: ";
 $lang_productshow[1][4] = "Price: ";

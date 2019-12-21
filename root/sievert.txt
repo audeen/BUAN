@@ -60,7 +60,7 @@ CREATE TABLE `retailer`
       `r_country`   varchar(20)    NOT NULL     default '',
       `r_saved`     int(12)        NOT NULL     default 0,
       `r_img`       varchar(80)    NOT NULL,
-      `basic_pay`   float          NOT NULL     default 3000.00
+      `basic_pay`   DECIMAL(10,2)        NOT NULL     default 3000.00
 
    );
 
@@ -82,7 +82,7 @@ INSERT INTO `retailer` VALUES
       'Denmark',
       1570450112,
       '13438.jpg',
-      3000.5),
+      3000.00),
    (2,
       0,
       'Jarkko',
@@ -96,7 +96,7 @@ INSERT INTO `retailer` VALUES
       'Finland',
       1570450112,
       '686622.jpg',
-      3000),
+      3000.00),
    (3,
       0,
       'Thomas',
@@ -110,7 +110,7 @@ INSERT INTO `retailer` VALUES
       'Germany',
       1570450112,
       '437155.jpg',
-      3000),
+      3000.00),
    (4,
       0,
       'Razmus',
@@ -124,7 +124,7 @@ INSERT INTO `retailer` VALUES
       'Sweden',
       1570450112,
       '792789.jpg',
-      3000),
+      3000.00),
    (5,
       0,
       'Mina',
@@ -138,7 +138,7 @@ INSERT INTO `retailer` VALUES
       'Norway',
       1570450112,
       '345260.jpg',
-      3000);
+      3000.00);
 
 
 ################################################################
@@ -158,7 +158,7 @@ CREATE TABLE `products`
       `p_origin`  varchar(30)    NOT NULL     default '',
       `p_desc`     varchar(256)   NOT NULL     default '',
       `p_img`       varchar(100)   NOT NULL     default '',
-      `p_price`     float(10)        NOT NULL     default 50,
+      `p_price`     DECIMAL(10,2)        NOT NULL     default 50,
       `p_amount`     int(10)        NOT NULL     default 0,
       `p_saved`     int(12)        NOT NULL     default 0
    );
@@ -308,10 +308,10 @@ CREATE TABLE `bills` (
    `invoice_number`     varchar(32)    NOT NULL,
    `r_id`               int(10)        NOT NULL,
    `invoice_date`       datetime       NOT NULL,
-   `basic_pay`          int(10)        NOT NULL,
-   `revenue`            int(10)        NOT NULL,
-   `bonus`              int(10)        NOT NULL,
-   `pay`                int(10)        NOT NULL,
+   `basic_pay`          DECIMAL(10,2)        NOT NULL,
+   `revenue`            DECIMAL(10,2)        NOT NULL,
+   `bonus`              DECIMAL(10,2)        NOT NULL,
+   `pay`                DECIMAL(10,2)        NOT NULL,
    `pdf`                varchar(255)   NOT NULL
     );
 
@@ -326,10 +326,10 @@ INSERT INTO `bills` VALUES
    0-2019-11-5,
    5,
    '2019-11-30 12:06:26',
-   3000,
-   1000,
-   500,
-   3500,
+   3000.00,
+   1000.00,
+   500.00,
+   3500.00,
    'Gehaltsabrechnung-2019-11-5.pdf'
 ),
 (
@@ -337,10 +337,10 @@ INSERT INTO `bills` VALUES
    0-2019-11-3,
    3,
    '2019-11-30 12:06:47',
-   3000,
-   50,
-   500,
-   3500,
+   3000.00,
+   50.00,
+   500.00,
+   3500.00,
    'Gehaltsabrechnung-2019-11-3.pdf'
 ),
 (
@@ -348,10 +348,10 @@ INSERT INTO `bills` VALUES
    0-2019-11-4,
    4,
    '2019-11-30 12:07:12',
-   3000,
-   25000,
-   1500,
-   4500,
+   3000.00,
+   2500.000,
+   1500.00,
+   4500.00,
    'Gehaltsabrechnung-2019-11-4.pdf'
 ),
 (
@@ -359,10 +359,10 @@ INSERT INTO `bills` VALUES
    1-2019-11-3,
    3,
    '2019-11-30 12:08:04',
-   3000,
-   50,
-   500,
-   3500,
+   3000.00,
+   50.00,
+   500.00,
+   3500.00,
    'Payslip-2019-11-3.pdf'
 ),
 (
@@ -370,10 +370,10 @@ INSERT INTO `bills` VALUES
    1-2019-11-4,
    4,
    '2019-11-30 12:10:17',
-   3000,
-   25000,
-   1500,
-   4500,
+   3000.00,
+   2500.00,
+   1500.00,
+   4500.00,
    'Payslip-2019-11-4.pdf'
 ),
 (
@@ -381,9 +381,9 @@ INSERT INTO `bills` VALUES
    1-2019-11-5,
    5,
    '2019-11-30 12:10:28',
-   3000,
-   1000,
-   500,
-   3500,
+   3000.00,
+   1000.00,
+   500.00,
+   3500.00,
    'Payslip-2019-11-5.pdf'
 );

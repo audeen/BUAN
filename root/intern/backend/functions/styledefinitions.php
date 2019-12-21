@@ -7,7 +7,15 @@ $styleSheets[0]["sheet"]='<link href="../../css/dark.css" rel="stylesheet" type=
 
 $styleSheets[1]["text"]='light';
 $styleSheets[1]["title"]='select light page design';
-$styleSheets[1]["sheet"]='<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />';
+$styleSheets[1]["sheet"]='<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" /><style> 
+@font-face{
+   font-family:               "InriaSerif";
+   font-size:                 1rem;
+   font-display:              swap;
+   src:                       local(InriaSerif),
+                              local(InriaSerif-Regular),
+                              url("../fonts/InriaSerif/InriaSerif-Regular.ttf") format("truetype");
+                              body {font-family: "InriaSerif", serif; font-size: 16px;}</style>';
 
 // Default
 $defaultStyleSheet=0;

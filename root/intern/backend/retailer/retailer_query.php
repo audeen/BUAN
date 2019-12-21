@@ -42,9 +42,9 @@ echo "<div class=\"row\">\n";
           echo "<h5 class=\"card-title\">".$row['r_mail']."</h5>\n";
           //Nur Admins anzeigen
           if (isset($_SESSION['user_id_a'])){
-          echo "<h6 class=\"card-subtitle text-muted\">ID: ".$row['id_r']."</h6>\n";
-          echo "<h6 class=\"card-subtitle text-muted\">Alias: ".$row['r_alias']."</h6>\n";
-          echo "<h6 class=\"card-subtitle mb-2 text-muted\">Status: ".$blocked."</h6>\n";
+          echo "<p class=\"card-subtitle text-muted\">ID: ".$row['id_r']."</p>\n";
+          echo "<p class=\"card-subtitle text-muted\">Alias: ".$row['r_alias']."</p>\n";
+          echo "<p class=\"card-subtitle mb-2 text-muted\">Status: ".$blocked."</p>\n";
           }
         echo "</div>\n";   
         echo "<div class=\"card-body\">";

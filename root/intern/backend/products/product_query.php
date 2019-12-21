@@ -38,8 +38,8 @@ echo "<div class=\"row\">\n";
         //Nur für Admins anzeigen
         if (isset($_SESSION['user_id_a'])){
           echo "<div class=\"card-body\">\n";
-            echo "<h6 class=\"card-subtitle text-muted\">ID: ".$row['id_p']."</h6>\n";
-            echo "<h6 class=\"card-subtitle mb-2 text-muted\">Status: ".$blocked."</h6>\n";
+            echo "<p class=\"card-subtitle text-muted\">ID: ".$row['id_p']."</p>\n";
+            echo "<p class=\"card-subtitle mb-2 text-muted\">Status: ".$blocked."</p>\n";
         echo "</div>\n";
         }
         echo "<div class=\"card-body\">";
