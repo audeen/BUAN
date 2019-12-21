@@ -27,7 +27,7 @@ INSERT INTO `admins` VALUES
       0,
       'Sievert, Jannik',
       'JS@mail.mail',
-      '21232f297a57a5a743894a0e4a801fc3',
+      'c4a606a2260b007bdda3e53e3cd4815d',
       1570450112),
    (2,
       0,
