@@ -48,7 +48,7 @@ if (isset($_POST['retailer_login'])) {
   <?php include ('../intern/backend/functions/php_login_be.php'); ?>
   <?php include ('../intern/frontend/functions/php_login_fe.php'); ?>
 <div class="container">
-  <div class="m-2 w-75">
+  <div class="mt-2">
     <form action="#" method="post">
     <?php
     if (!isset($_POST['r_mail'])){
@@ -99,9 +99,10 @@ if (isset($_POST['retailer_login'])) {
 
       include("retailer_pw_reset.php");
       $linkToSend = urlencode($linkToSend);
-      echo "<a class=\"btn btn-success m-2\" href=\"mailto:".$_POST['r_mail']."?subject=".$lang[$_SESSION['language']][7]."&body=".$linkToSend."\">".$lang[$_SESSION['language']][10]."</a>";
-      echo "<a class=\"btn btn-danger m-2\" href=\"index.php\">".$lang[$_SESSION['language']][11]."</a>";
-      
+      echo "<div class=\"m-4\">";
+        echo "<a class=\"btn btn-success m-2\" href=\"mailto:".$_POST['r_mail']."?subject=".$lang[$_SESSION['language']][7]."&body=".$linkToSend."\">".$lang[$_SESSION['language']][10]."</a>";
+        echo "<a class=\"btn btn-danger m-2\" href=\"index.php\">".$lang[$_SESSION['language']][11]."</a>";
+      echo "</div>";
       unset($_POST['r_mail']);
   };
   

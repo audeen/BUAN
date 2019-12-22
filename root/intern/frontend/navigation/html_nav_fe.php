@@ -22,7 +22,7 @@ include($lang_nav_fe);
   </button>
 
   <div class="navbar-collapse collapse" id="navbarColor02">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav ml-auto mx-auto">
       <li class="nav-item">
         <a class="nav-link" href="product_show.php"><?php echo $lang_navfe[$_SESSION['language']][1]?></a>
       </li>
@@ -36,17 +36,17 @@ include($lang_nav_fe);
       <?php
       //Css-Switcher
         while(list($key, $val) = each($styleSheets)){
-          echo "<a type=\"button\" class=\"btn btn-primary mr-2 \" href='../functions/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a>";
+          echo "<a type=\"button\" class=\"btn btn-secondary mr-2 \" href='../functions/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a>";
         }
       ?>
       </li>
       <li>
         <?php
           echo "<form action=\"index.php\" method=\"post\">";
-            echo "<button type=\"submit\" class=\"btn btn-primary mr-2 \" name=\"language\" value=\"0\">";
+            echo "<button type=\"submit\" class=\"btn btn-secondary mr-2 \" name=\"language\" value=\"0\">";
               echo "deutsch";
             echo "</button>";
-            echo "<button type=\"submit\" class=\"btn btn-primary mr-2 \" name=\"language\" value=\"1\">";
+            echo "<button type=\"submit\" class=\"btn btn-secondary mr-2 \" name=\"language\" value=\"1\">";
               echo "english";
             echo "</button>";
           echo "</form>";

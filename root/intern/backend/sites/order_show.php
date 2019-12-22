@@ -84,6 +84,7 @@ include ('../../backend/functions/authentification.php');
               <select>
               <button type="submit" name="show" href="#" class="btn btn-success btn-lg float-right mb-2 mt-4" role="button"><?php echo $lang_ordershow[$_SESSION['language']][8]?></button>
               </form>
+              
               <?php
 
                 // Ist ein Händler und ein Monat gewählt, erscheint ein Button zur Abrechnung mit hidden-inputs zur Weitergabe über POST + Rechnungen in der Zukunft nicht möglich
@@ -100,7 +101,7 @@ include ('../../backend/functions/authentification.php');
                 }
                 
               ?>
-            
+            </div>
           </div>
         </div>
       </div>
