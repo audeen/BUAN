@@ -13,6 +13,7 @@ $lang[0][7] = "Passwort zur&uuml;cksetzen!";
 $lang[0][8] = "Nach Eingabe bekommen Sie einen Link per Mail zugeschickt, &uuml;ber den Sie ihr Passwort zur&uuml;cksetzen k&ouml;nnen.";
 $lang[0][9] = "Schließen";
 $lang[0][10] = "Mail verschicken";
+$lang[0][11] = "Zur&uuml;ck";
 
 $lang[1][0] = "Please enter your Alias";
 $lang[1][1] = "Password";
@@ -25,5 +26,6 @@ $lang[1][7] = "Reset Password";
 $lang[1][8] = "After submission, you will be sent a mail from which you can reset your password.";
 $lang[1][9] = "Close";
 $lang[1][10] = "Send Mail";
+$lang[1][11] = "Back";
 
 ?>

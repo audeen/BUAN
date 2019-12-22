@@ -51,53 +51,56 @@ if (isset($_POST['retailer_login'])) {
   <div class="m-2 w-75">
     <form action="#" method="post">
     <?php
-    if (isset($_POST['admin_login'])){
-      unset($_POST['retailer_login']);
-      echo "<div class=\"form-group \">\n";
-        echo "<label >Admin-Alias</label>\n";
-        echo "<input type=\"text\" name=\"username\"class=\"form-control\" aria-describedby=\"emailHelp\" placeholder=\"".$lang[$_SESSION['language']][0]."\" autofocus>\n";
+    if (!isset($_POST['r_mail'])){
+
+      if (isset($_POST['admin_login'])){
+        unset($_POST['retailer_login']);
+        echo "<div class=\"form-group \">\n";
+          echo "<label >Admin-Alias</label>\n";
+          echo "<input type=\"text\" name=\"username\"class=\"form-control\" aria-describedby=\"emailHelp\" placeholder=\"".$lang[$_SESSION['language']][0]."\" autofocus>\n";
+        echo "</div>\n";
+        echo "<div class=\"form-group \">\n";
+          echo "<label>".$lang[$_SESSION['language']][1]."</label>\n";
+          echo "<input type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"".$lang[$_SESSION['language']][1]."\">\n";
+        echo "</div>\n";
+        echo "<div class=\"captcha\">";
+        echo "<div class=\"captcha_field\">";
+          echo "<p>".$lang[$_SESSION['language']][4]."</p>";
+          echo "<div class=\"equation\" >".$_SESSION['wert1']." + ".$_SESSION['wert2']." = </div>";
+          echo "<input class=\"text mt-2 mb-2\" name=\"captcha_erg\" type=\"text\" size=\"10\" maxlength=\"10\" placeholder=\"CAPTCHA\" >";
+        echo "</div>";
+        echo "<button type=\"submit\" name=\"login_be\" class=\"btn btn-primary\">".$lang[$_SESSION['language']][2]."</button>\n";
+        echo "<button type=\"submit\" name=\"retailer_login\" class=\"btn btn-primary float-right\">".$lang[$_SESSION['language']][3]."</button>\n";
+      
+    echo "</div>\n";
+          }
+      else {
+        echo "<div class=\"form-group \">\n";
+        echo "<label >Alias</label>\n";
+        echo "<input type=\"text\" name=\"username\"class=\"form-control\" aria-describedby=\"emailHelp\" placeholder=\"".$lang[$_SESSION['language']][0]."\"autofocus required>\n";
       echo "</div>\n";
       echo "<div class=\"form-group \">\n";
         echo "<label>".$lang[$_SESSION['language']][1]."</label>\n";
-        echo "<input type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"".$lang[$_SESSION['language']][1]."\">\n";
+        echo "<input type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"".$lang[$_SESSION['language']][1]."\" required>\n";
       echo "</div>\n";
       echo "<div class=\"captcha\">";
       echo "<div class=\"captcha_field\">";
         echo "<p>".$lang[$_SESSION['language']][4]."</p>";
         echo "<div class=\"equation\" >".$_SESSION['wert1']." + ".$_SESSION['wert2']." = </div>";
-        echo "<input class=\"text mt-2 mb-2\" name=\"captcha_erg\" type=\"text\" size=\"10\" maxlength=\"10\" placeholder=\"CAPTCHA\" >";
+        echo "<input class=\"text mt-2 mb-2\" name=\"captcha_erg\" type=\"text\" size=\"10\" maxlength=\"10\" placeholder=\"CAPTCHA\" required>";
       echo "</div>";
-      echo "<button type=\"submit\" name=\"login_be\" class=\"btn btn-primary\">".$lang[$_SESSION['language']][2]."</button>\n";
-      echo "<button type=\"submit\" name=\"retailer_login\" class=\"btn btn-primary float-right\">".$lang[$_SESSION['language']][3]."</button>\n";
-    
-  echo "</div>\n";
-        }
-    else {
-      echo "<div class=\"form-group \">\n";
-      echo "<label >Alias</label>\n";
-      echo "<input type=\"text\" name=\"username\"class=\"form-control\" aria-describedby=\"emailHelp\" placeholder=\"".$lang[$_SESSION['language']][0]."\"autofocus required>\n";
-    echo "</div>\n";
-    echo "<div class=\"form-group \">\n";
-      echo "<label>".$lang[$_SESSION['language']][1]."</label>\n";
-      echo "<input type=\"password\" name=\"password\" class=\"form-control\" placeholder=\"".$lang[$_SESSION['language']][1]."\" required>\n";
-    echo "</div>\n";
-    echo "<div class=\"captcha\">";
-    echo "<div class=\"captcha_field\">";
-       echo "<p>".$lang[$_SESSION['language']][4]."</p>";
-       echo "<div class=\"equation\" >".$_SESSION['wert1']." + ".$_SESSION['wert2']." = </div>";
-       echo "<input class=\"text mt-2 mb-2\" name=\"captcha_erg\" type=\"text\" size=\"10\" maxlength=\"10\" placeholder=\"CAPTCHA\" required>";
-    echo "</div>";
-    echo "<button type=\"submit\" name=\"login_fe\"  class=\"btn btn-primary\">".$lang[$_SESSION['language']][2]."</button>\n";
-    
+      echo "<button type=\"submit\" name=\"login_fe\"  class=\"btn btn-primary\">".$lang[$_SESSION['language']][2]."</button>\n";
+      
 
-echo "</div>\n";
-    }
+  echo "</div>\n";
+      }}
     
-    if (isset($_POST['r_mail'])) {
+    elseif (isset($_POST['r_mail'])) {
 
       include("retailer_pw_reset.php");
       $linkToSend = urlencode($linkToSend);
-      echo "<a class=\"btn btn-outline-danger\" href=\"mailto:".$_POST['r_mail']."?subject=".$lang[$_SESSION['language']][7]."&body=".$linkToSend."\">".$lang[$_SESSION['language']][10]."</a>";
+      echo "<a class=\"btn btn-success m-2\" href=\"mailto:".$_POST['r_mail']."?subject=".$lang[$_SESSION['language']][7]."&body=".$linkToSend."\">".$lang[$_SESSION['language']][10]."</a>";
+      echo "<a class=\"btn btn-danger m-2\" href=\"index.php\">".$lang[$_SESSION['language']][11]."</a>";
       
       unset($_POST['r_mail']);
   };

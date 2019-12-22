@@ -202,7 +202,7 @@ INSERT INTO `products` VALUES
       ),
 
    (4,
-      0,
+      1,
       'Neutrik NA3 F5M',
       'Liechtenstein',
       'XLR (male 5p) => XLR (female 3p)',
@@ -292,6 +292,14 @@ INSERT INTO `orders` VALUES
    5,
    '2019-11-21 12:05:53',
    100
+),
+(
+   5,
+   581623,
+   3,
+   2,
+   2019-12-21 20:56:02,
+   18
 );
 
 
