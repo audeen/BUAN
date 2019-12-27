@@ -1,86 +1,96 @@
 <?php 
 
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   cart.php                       //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Shopping-Cart-Skript         //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        :                              //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
 
+//Orientiert an:
+// https://codeshack.io/shopping-cart-system-php-mysql/
 
 //Config-Datei einbinden
 include ('../../../config/config.php');
+//Sprachdatei einbinden
 include($lang_cart);
 
-// https://codeshack.io/shopping-cart-system-php-mysql/
-// If the user clicked the add to cart button on the product page we can check for the form data
+// Produkt dem Warenkorb hinzufügen
 if (isset($_POST['product'], $_POST['quantity']) && is_numeric($_POST['product']) && is_numeric($_POST['quantity'])) {
-    // Set the post variables so we easily identify them, also make sure they are integer
+    // Post-Variablen setzen, Prüfen auf integer
     $product_id = (int)$_POST['product'];
     $quantity = (int)$_POST['quantity'];
-    // Prepare the SQL statement, we basically are checking if the product exists in our databaser
+    // Statement vorbereiten
     $stmt = $pdo->prepare('SELECT * FROM products WHERE id_p = ?');
     $stmt->execute([$_POST['product']]);
-    // Fetch the product from the database and return the result as an Array
+    // Ergebnis des fetch als Assoziatives Array speichern
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
-    // Check if the product exists (array is not empty)
+    // Existiert das Produkt?
     if ($product && $quantity > 0)  {
-        // Product exists in database, now we can create/update the session variable for the cart
+        // Sessionvariablen für den Warenkorb setzen
         if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
             if (array_key_exists($product_id, $_SESSION['cart']))  {
-                // Product exists in cart so just update the quanity
+                // Wenn Produkt schon im Warenkorb, erhöhe die Menge
                 $_SESSION['cart'][$product_id] += $quantity;
             } else {
-                // Product is not in cart so add it
+                // Produkt noch nicht im Warenkorb, Session-Variable initialisieren
                 $_SESSION['cart'][$product_id] = $quantity;
             }
         } else {
-            // There are no products in cart, this will add the first product to cart
+            //Kein Produkt im Warenkorb, initialisiere das Array
             $_SESSION['cart'] = array($product_id => $quantity);
         }
     }
-    // Prevent form resubmission...
+    // Seite neuladen, um erneute Datenübertragung zu verhindern
     echo "<meta http-equiv=\"refresh\" content=\"0;url=../sites/product_show.php\">";
     exit;
 }
-// Remove product from cart, check for the URL param "remove", this is the product id, make sure it's a number and check if it's in the cart
+// Produkt entfernen
 if (!isset($_POST['update']) && isset($_POST['remove']) && is_numeric($_POST['remove']) && isset($_SESSION['cart']) && isset($_SESSION['cart'][$_POST['remove']])) {
-    // Remove the product from the shopping cart
+    // Session-Variable mit gewähltem Produkt deaktivieren
     unset($_SESSION['cart'][$_POST['remove']]);
 }
 
-// Update product quantities in cart if the user clicks the "Update" button on the shopping cart page
+// Update-Funktion bei Datenänderung im Warenkorb
 if (isset($_POST['update']) && isset($_SESSION['cart'])) {
-    // Loop through the post data so we can update the quantities for every product in cart
+    // Durch die Produkte im Warenkorb loopen, um sie nacheinander zu aktualisieren
     foreach ($_POST as $k => $v) {
         if (strpos($k, 'quantity') !== false && is_numeric($v)) {
             $id = str_replace('quantity-', '', $k);
             $quantity = (int)$v;
-            // Always do checks and validation
+            // Checkein, ob die ID eine Zahl und die Session-Variable gesetzt ist
             if (is_numeric($id) && isset($_SESSION['cart'][$id]) && $quantity > 0) {
-                // Update new quantity
+                // Menge aktualisieren
                 $_SESSION['cart'][$id] = $quantity;
             }
         }
     }
-    // Prevent form resubmission...
+    // Seite neuladen, um erneute Datenübertragung zu verhindern
     echo "<meta http-equiv=\"refresh\" content=\"0;url=../sites/product_show.php\">";
     exit;
 }
-// Send the user to the place order page if they click the Place Order button, also the cart should not be empty
+// Warenkorb nicht leer, dann weiterleiten zu place_order, wenn der entsprechende Button gedrückt wurde
 if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
     echo "<meta http-equiv=\"refresh\" content=\"1;url=place_order.php\">";
     exit;
 }
-// Check the session variable for products in cart
+// Anzeige der Waren im Warenkorb / Summenberechnung
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 $products = array();
 $subtotal = 0;
-// If there are products in cart
+// Produkte vorhanden?
 if ($products_in_cart) {
-    // There are products in the cart so we need to select those products from the database
-    // Products in cart array to question mark string array, we need the SQL statement to include IN (?,?,?,...etc)
+    // Produkte im Warenkorb in ?-String-Array umwandeln, um für die SQL-Abfrage WHERE id_P IN ? zu ermöglichen
     $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
     $stmt = $pdo->prepare('SELECT * FROM products WHERE id_p IN (' . $array_to_question_marks . ')');
-    // We only need the array keys, not the values, the keys are the id's of the products
+    // Die IDs der Produkte sind die array-keys
     $stmt->execute(array_keys($products_in_cart));
-    // Fetch the products from the database and return the result as an Array
+    // Produkte fetchen und als Assoziatives Array speichern
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // Calculate the subtotal
+    // Preise berechnen
     foreach ($products as $product) {
         $subtotal += (int)$product['p_price'] * (int)$products_in_cart[$product['id_p']];
     }

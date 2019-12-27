@@ -51,6 +51,7 @@ if (isset($_POST['retailer_login'])) {
   <div class="mt-2">
     <form action="#" method="post">
     <?php
+    //Admin-Login?
     if (!isset($_POST['r_mail'])){
 
       if (isset($_POST['admin_login'])){
@@ -75,6 +76,7 @@ if (isset($_POST['retailer_login'])) {
     echo "</div>\n";
           }
       else {
+        //Händler-Login
         echo "<div class=\"form-group \">\n";
         echo "<label >Alias</label>\n";
         echo "<input type=\"text\" name=\"username\"class=\"form-control\" aria-describedby=\"emailHelp\" placeholder=\"".$lang[$_SESSION['language']][0]."\"autofocus required>\n";
@@ -96,7 +98,7 @@ if (isset($_POST['retailer_login'])) {
       }}
     
     elseif (isset($_POST['r_mail'])) {
-
+      //Passwort-Reset gedrückt?
       include("retailer_pw_reset.php");
       $linkToSend = urlencode($linkToSend);
       echo "<div class=\"m-4\">";

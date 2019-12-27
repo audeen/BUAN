@@ -1,8 +1,25 @@
 <?php
 
-include ('../../../config/config.php');
-include($lang_cart);
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   checkout.php                   //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Bestellungen in DB schreiben //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        :                              //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
 
+// Config-Datei einbinden
+include ('../../../config/config.php');
+// Sprachdatei einbinden
+include($lang_cart);
+//Spracharray lokal
+
+$lang_checkout[0][0] = "Fehler, Daten nicht gespeichert";
+$lang_checkout[1][0] = "Error, Data not saved";
+
+// Bestellen gedrückt?
 if (isset($_POST['order'])) {
     foreach($_SESSION['cart'] as $key => $value){
         //Daten beziehen
@@ -56,29 +73,26 @@ if (isset($_POST['order'])) {
         unset($_SESSION['cart']);
     }
     else {
-        echo "Error, data not saved.";
+        echo $lang_checkout[$_SESSION['language']][0];
 
     }
-        
-        
 }
 
 
-// Check the session variable for products in cart
+// Anzeige der Waren im Warenkorb / Summenberechnung
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 $products = array();
 $subtotal = 0;
-// If there are products in cart
+// Produkte vorhanden?
 if ($products_in_cart) {
-    // There are products in the cart so we need to select those products from the database
-    // Products in cart array to question mark string array, we need the SQL statement to include IN (?,?,?,...etc)
+    // Produkte im Warenkorb in ?-String-Array umwandeln, um für die SQL-Abfrage WHERE id_P IN ? zu ermöglichen
     $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
     $stmt = $pdo->prepare('SELECT * FROM products WHERE id_p IN (' . $array_to_question_marks . ')');
-    // We only need the array keys, not the values, the keys are the id's of the products
+    // Die IDs der Produkte sind die array-keys
     $stmt->execute(array_keys($products_in_cart));
-    // Fetch the products from the database and return the result as an Array
+    // Produkte fetchen und als Assoziatives Array speichern
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // Calculate the subtotal
+    // Preise berechnen
     foreach ($products as $product) {
         $subtotal += (int)$product['p_price'] * (int)$products_in_cart[$product['id_p']];
     }

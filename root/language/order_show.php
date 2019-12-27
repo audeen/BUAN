@@ -1,4 +1,13 @@
 <?php
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   xxx_xxx.php                    //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Array für Sprachwechsel      //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        : 27.12.20198                  //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
 
 $lang_ordershow[0][0] = "Bestellungen";
 $lang_ordershow[0][1] = "Bestellnummer";
@@ -13,6 +22,8 @@ $lang_ordershow[0][9] = "Alle H&auml;ndler";
 $lang_ordershow[0][10] = "Zur Abrechnung";
 $lang_ordershow[0][11] = "Gehaltsabrechnung als PDF anzeigen";
 $lang_ordershow[0][12] = "Gehaltsabrechnung-";
+$lang_ordershow[0][13] = "Um Monatsabrechungen zu betrachten, bitte Monat und Jahr w&auml;hlen.";
+$lang_ordershow[0][14] = "Um Monatsabrechungen zu betrachten, bitte H&auml;ndler, Monat und Jahr w&auml;hlen.<br>Abrechnungen k&ouml;nnen nur für Monate in der Vergangenheit erstellt werden.";
 
 
 
@@ -30,6 +41,8 @@ $lang_ordershow[1][9] = "All Retailers";
 $lang_ordershow[1][10] = "Go to billing";
 $lang_ordershow[1][11] = "Show Payslip as PDF";
 $lang_ordershow[1][12] = "Payslip-";
+$lang_ordershow[1][13] = "To view monthly payslips, please select a month and a year.";
+$lang_ordershow[1][14] = "To view monthly payslips, please select a retailer, a month and a year.<br>Payslips can only be accounted if the month is in the past.";
 
 
 

@@ -1,6 +1,4 @@
 <?php
-
-
 //////////////////////////////////////////////////
 //  BUAN-Projekt                                //
 //  Dateiname:   retailer_pw_change.php         //
@@ -11,15 +9,20 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 
+//Jegliche Passwort-ändern-Skripte sind orientiert an:
+//https://thisinterestsme.com/php-reset-password-form/
 
 include('../../../config/config.php');
 
-// Spracharray lokal 
-$lang_pwchange = array();
+//Spracharray lokal
+$lang_data = array();
+$lang_data[0][0] = "Passwort erfolgreich zur&uuml;ckgesetzt";
+$lang_data[0][1] = "Passwort nicht zur&uuml;ckgesetzt";
+$lang_data[0][2] = "Passw&ouml;rter stimmen nicht &uuml;berein ";
 
-$lang_pwchange[0][0] = "Passw&ouml;rter stimmen nicht &uuml;berein!";
-
-$lang_pwchange[1][0] = "Passwords don't match!";
+$lang_data[1][0] = "Password has been reset";
+$lang_data[1][1] = "Password has not been reset";
+$lang_data[1][2] = "Passwords do not match";
 
 // Wenn $_POST save gesetzt, prüfe, ob Password und Verify-Password übereinstimmen
 
@@ -49,10 +52,14 @@ if (isset($_POST['save']) && ($_POST['r_pw'] == $_POST['r_pw_verify'])) {
     ));
     
     if ($pdoExec) {
-        echo 'Data Updated';
+        echo "<div class=\"alert alert-danger mt-3\" role=\"alert\">";
+            echo $lang_data[$_SESSION['language']][0]; 
+        echo "</div>";
         echo "<meta http-equiv=\"refresh\" content=\"1;url=retailer_show.php\">";
     } else {
-        echo 'Data NOT Updated';
+        echo "<div class=\"alert alert-danger mt-3\" role=\"alert\">";
+            echo $lang_data[$_SESSION['language']][1];
+        echo "</div>";
         echo "<meta http-equiv=\"refresh\" content=\"1;url=retailer_show.php\">";
     }
    }
@@ -63,7 +70,7 @@ elseif (!isset($_POST['save'])) {
 // Wenn die Passwörter nicht übereinstimmen
 else {
     echo "<div class=\"alert alert-danger mt-3\" role=\"alert\">";
-        echo $lang_pwchange[$_SESSION['language']][0];
+        echo $lang_data[$_SESSION['language']][2];
     echo "</div>";
 }
 ?> 

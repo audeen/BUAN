@@ -10,7 +10,9 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
+//Config-Datei einbinden
 include('../../../config/config.php');
+//Sprachdatei einbinden
 include($lang_product_edit);
 ?>
 
@@ -31,10 +33,11 @@ include($lang_product_edit);
   </div>
 
 <?php
-
+//Bildupload- und Update-Skripte einbinden
+include ('../../backend/functions/image_upload_p.php');
 include ('../../backend/products/product_update.php');
 
-include ('../../backend/functions/image_upload_p.php');
+
 // Datenbankverbindung herstellen
 $pdo;
 
@@ -52,30 +55,25 @@ if (empty($_POST['id_p'])) {
   echo "<div class=\"ld-center\">\n";
   foreach ($pdo->query($sql) as $row) {
   echo "<div class=\"col-md\">\n";
-  echo "<div class=\"card mb-3\">\n";
-
-  echo "<form action=\"#\" method=\"POST\" enctype=\"multipart/form-data\">";
-  echo "  <h3 class=\"card-header\">".$row['p_name']."</h3>\n";
-  echo "  <div class=\"card-body\">\n";
-  echo "    <h6 class=\"card-subtitle text-muted\">ID: ".$row['id_p']."</h6>\n";
-  echo "  </div>\n";
-  echo "  <div class=\"card-body\">\n";
-  echo "    <p>".$lang_productedit[$_SESSION['language']][9]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name\" value=\"".$row['p_name']."\">";
-  echo "    <p>".$lang_productedit[$_SESSION['language']][10]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin\" value=\"".$row['p_origin']."\">";
-  echo "    <p>".$lang_productedit[$_SESSION['language']][11]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_desc\" value=\"".$row['p_desc']."\">";
-  echo "    <p>".$lang_productedit[$_SESSION['language']][12]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" type=\"number\" name=\"p_price\" value=\"".$row['p_price']."\">";
-  echo "    <p>".$lang_productedit[$_SESSION['language']][13]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" type=\"number\" name=\"p_amount\" value=\"".$row['p_amount']."\">";
-
-  echo "  </div>\n";
-
-  echo "<div class=\"card-body\">";
-  echo "<label class=\"control-label\"><h5>".$lang_productedit[$_SESSION['language']][1]."</h5></label></td>";
-  echo "<td><input class=\"input-group\" type=\"file\" name=\"image\" accept=\"image/*\" />";
-  
-  echo "</div>";
-  echo "  <ul class=\"list-group list-group-flush\">\n";
-  echo "    <li class=\"list-group-item\">";
-  
+    echo "<div class=\"card mb-3\">\n";
+    echo "<form action=\"#\" method=\"POST\" enctype=\"multipart/form-data\">";
+      echo "<h3 class=\"card-header\">".$row['p_name']."</h3>\n";
+      echo "<div class=\"card-body\">\n";
+        echo "<h6 class=\"card-subtitle text-muted\">ID: ".$row['id_p']."</h6>\n";
+        echo "</div>\n";
+      echo "<div class=\"card-body\">\n";
+        echo "<p>".$lang_productedit[$_SESSION['language']][9]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_name\" value=\"".$row['p_name']."\">";
+        echo "<p>".$lang_productedit[$_SESSION['language']][10]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_origin\" value=\"".$row['p_origin']."\">";
+        echo "<p>".$lang_productedit[$_SESSION['language']][11]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"p_desc\" value=\"".$row['p_desc']."\">";
+        echo "<p>".$lang_productedit[$_SESSION['language']][12]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" type=\"number\" name=\"p_price\" value=\"".$row['p_price']."\">";
+        echo "<p>".$lang_productedit[$_SESSION['language']][13]."</p><input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" type=\"number\" name=\"p_amount\" value=\"".$row['p_amount']."\">";
+      echo "</div>\n";
+    echo "<div class=\"card-body\">";
+      echo "<label class=\"control-label\"><h5>".$lang_productedit[$_SESSION['language']][1]."</h5></label></td>";
+      echo "<td><input class=\"input-group\" type=\"file\" name=\"image\" accept=\"image/*\" />";
+    echo "</div>";
+    echo "<ul class=\"list-group list-group-flush\">\n";
+      echo "<li class=\"list-group-item\">";
 
         // Radio-Button-Belegung abfragen
         if ($row['p_blocked'] == 0) {
@@ -87,36 +85,34 @@ if (empty($_POST['id_p'])) {
           $active ="";
         }
 
-  echo "<div class=\"form-check mb-2\">\n";
-  echo "    <h5>Status:<br></h5>\n";
-  echo "  <input class=\"form-check-input\" type=\"radio\" name=\"p_blocked\" id=\"exampleRadios1\" value=\"0\"".$active."\n";
-  echo "  <label class=\"form-check-label\" for=\"exampleRadios1\">\n";
-  echo $lang_productedit[$_SESSION['language']][2];
-  echo "  </label>\n";
-  echo "</div>";
-  echo "<div class=\"form-check mb-2\">\n";
-  echo "  <input class=\"form-check-input\" type=\"radio\" name=\"p_blocked\" id=\"exampleRadios1\" value=\"1\"".$blocked."\n";
-  echo "  <label class=\"form-check-label\" for=\"exampleRadios1\">\n";
-  echo $lang_productedit[$_SESSION['language']][3];
-  echo "  </label>\n";
-  echo "</div>";
-
-  echo "    </li>\n";
-  echo "  </ul>\n";
+        echo "<div class=\"form-check mb-2\">\n";
+          echo "<h5>Status:<br></h5>\n";
+          echo "<input class=\"form-check-input\" type=\"radio\" name=\"p_blocked\" id=\"exampleRadios1\" value=\"0\"".$active."\n";
+          echo "<label class=\"form-check-label\" for=\"exampleRadios1\">\n";
+            echo $lang_productedit[$_SESSION['language']][2];
+          echo "</label>\n";
+        echo "</div>";
+        echo "<div class=\"form-check mb-2\">\n";
+          echo "<input class=\"form-check-input\" type=\"radio\" name=\"p_blocked\" id=\"exampleRadios1\" value=\"1\"".$blocked."\n";
+          echo "<label class=\"form-check-label\" for=\"exampleRadios1\">\n";
+            echo $lang_productedit[$_SESSION['language']][3];
+          echo "</label>\n";
+        echo "</div>";
+      echo "</li>\n";
+    echo "</ul>\n";
  
-  echo "  <div class=\"card-body\">\n";
-  echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">".$lang_productedit[$_SESSION['language']][4]."</button>";
-  echo "<input type=\"reset\" class=\"btn btn-outline-warning mr-2\" value=".$lang_productedit[$_SESSION['language']][7]." formnovalidate>";
-  echo "<a href=\"product_show.php\" class=\"btn btn-outline-danger\" formnovalidate>".$lang_productedit[$_SESSION['language']][5]."</a>";
-  echo "<input type=\"hidden\" name=\"id_p\" value=\"".$row['id_p']."\">";
-  echo "<input type=\"hidden\" name=\"p_saved\" value=\"".time()."\">";
-  echo "</form>";
-  echo "  </div>\n";
-  echo "  <div class=\"card-footer text-muted\">\n";
-  echo $lang_productedit[$_SESSION['language']][6]." ".(date("d.m.Y, H:i:s",$row['p_saved']));
-  echo "  </div>\n";
-  echo "</form>";
-  echo "</div>\n";
+      echo "<div class=\"card-body\">\n";
+        echo "<button type=\"submit\" class=\"btn btn-outline-success mr-2\" name=\"update\">".$lang_productedit[$_SESSION['language']][4]."</button>";
+        echo "<input type=\"reset\" class=\"btn btn-outline-warning mr-2\" value=".$lang_productedit[$_SESSION['language']][7]." formnovalidate>";
+        echo "<a href=\"product_show.php\" class=\"btn btn-outline-danger\" formnovalidate>".$lang_productedit[$_SESSION['language']][5]."</a>";
+        echo "<input type=\"hidden\" name=\"id_p\" value=\"".$row['id_p']."\">";
+        echo "<input type=\"hidden\" name=\"p_saved\" value=\"".time()."\">";
+        echo "</form>";
+      echo "</div>\n";
+      echo "<div class=\"card-footer text-muted\">\n";
+        echo $lang_productedit[$_SESSION['language']][6]." ".(date("d.m.Y, H:i:s",$row['p_saved']));
+      echo "</div>\n";
+    echo "</div>\n";
   echo "</div>\n";
 }
 echo "</div>";

@@ -1,5 +1,17 @@
 <?php
+
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   styledefinitions.php           //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Css-Verlinkungen             //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        : 27.11.2019                   //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
+
 //Orientiert an:http://dev.eyedea.eu/samples/styleswitch-php/
+
 $styleSheets = array();
 $styleSheets[0]["text"]='dark';
 $styleSheets[0]["title"]='select dark page design';

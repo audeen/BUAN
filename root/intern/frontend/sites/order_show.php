@@ -10,8 +10,9 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
-
+//Config-Datei einbinden
 include('../../../config/config.php');
+//Sprachdatei einbinden
 include($lang_order_show);
 
 // Wenn POST-Variablen gesetzt sind, 
@@ -38,7 +39,9 @@ include ('../../frontend/functions/authentification.php');
     <div class="container">
       <div class="container-fluid">
         <div class="row">
-          <div class="alert alert-primary mt-3 col-12" role="alert"><h2 class="text-center"><?php echo $lang_ordershow[$_SESSION['language']][0];?></h2>
+          <div class="alert alert-primary mt-3 col-12" role="alert">
+            <h2 class="text-center"><?php echo $lang_ordershow[$_SESSION['language']][0];?></h2>
+            <p class="text-center"><?php echo $lang_ordershow[$_SESSION['language']][13];?></p>
             <form action="#" method="POST">
             <?php
             

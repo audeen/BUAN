@@ -10,7 +10,9 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
+//Config-Datei einbinden
 include('../../../config/config.php');
+//Sprachdatei einbinden
 include($lang_retailer_create);
 ?>
 
@@ -33,17 +35,14 @@ include($lang_retailer_create);
 
 <?php
 
-include ('../../backend/retailer/retailer_insert.php');
+
 include ('../../backend/functions/image_upload_r.php');
+include ('../../backend/retailer/retailer_insert.php');
 
 // Datenbankverbindung herstellen
 $pdo;
 
 // Refresh für Abbrechen-Button
-
-if (isset($_SESSION['cancel'])){
-  echo "<meta http-equiv=\"refresh\" content=\"0;url=product_create.php\">";
-}
 
   echo "<div class=\"ld-center\">\n";
   echo "<div class=\"card mb-3\">\n";

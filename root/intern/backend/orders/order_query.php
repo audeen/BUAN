@@ -58,34 +58,33 @@ else{
 
 
 echo "<div id=\"orders\" class=\"table-responsive table-hover\">\n";
-echo "<table class=\"table\">";
-   echo "<thead>";
-      echo "<tr>";
-      //Sortierfunktion im Tabellenkopf
-         echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=id_o&sort=".$sort."\">ID</a></th>";
-         echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=order_number&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][1]."</th>";
-         echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=r_surname&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][2]."</th>";
-         echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=p_name&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][3]."</th>";
-         echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=order_date&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][4]."</th>";
-         echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=qty&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][5]."</th>";
-         echo "<th scope=\"col\">".$lang_ordershow[$_SESSION['language']][6]."</th>";
-      echo "</tr>";
-   echo "</thead>";
-   echo "<tbody";
-         //Jede Bestellung des Monats ausgeben
-         foreach ($pdo->query($sql) as $row) {
-            echo "<tr>";
-            echo "<th scope=\"row\">".$row['id_o']."</th>";
-            echo "<td>".$row['order_number']."</td>";
-            echo "<td>".$row['r_prename']." ".$row['r_surname']."</td>";
-            echo "<td>".$row['p_name']."</td>";
-            echo "<td>".$row['order_date']."</td>";           
-            echo "<td>".$row['qty']." ".$lang_ordershow[$_SESSION['language']][7]."</td>";
-            echo "<td>".$row['qty']*$row['p_price']." &euro;</td>";
-            echo "</tr>";
-         }
-   echo "</tbody";
-
-echo "</table>";
+   echo "<table class=\"table\">";
+      echo "<thead>";
+         echo "<tr>";
+         //Sortierfunktion im Tabellenkopf
+            echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=id_o&sort=".$sort."\">ID</a></th>";
+            echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=order_number&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][1]."</th>";
+            echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=r_surname&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][2]."</th>";
+            echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=p_name&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][3]."</th>";
+            echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=order_date&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][4]."</th>";
+            echo "<th scope=\"col\"><a href=\"../sites/order_show.php?attribute=qty&sort=".$sort."\">".$lang_ordershow[$_SESSION['language']][5]."</th>";
+            echo "<th scope=\"col\">".$lang_ordershow[$_SESSION['language']][6]."</th>";
+         echo "</tr>";
+      echo "</thead>";
+      echo "<tbody";
+            //Jede Bestellung des Monats ausgeben
+            foreach ($pdo->query($sql) as $row) {
+               echo "<tr>";
+               echo "<th scope=\"row\">".$row['id_o']."</th>";
+               echo "<td>".$row['order_number']."</td>";
+               echo "<td>".$row['r_prename']." ".$row['r_surname']."</td>";
+               echo "<td>".$row['p_name']."</td>";
+               echo "<td>".$row['order_date']."</td>";           
+               echo "<td>".$row['qty']." ".$lang_ordershow[$_SESSION['language']][7]."</td>";
+               echo "<td>".$row['qty']*$row['p_price']." &euro;</td>";
+               echo "</tr>";
+            }
+      echo "</tbody";
+   echo "</table>";
 echo "</div>";
 ?>

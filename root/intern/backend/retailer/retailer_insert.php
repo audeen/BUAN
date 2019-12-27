@@ -24,15 +24,8 @@ if (isset($_POST['update']) && ($_POST['r_pw'] == $_POST['r_pw_verify'])) {
     $city = !empty($_POST['r_city']) ? trim($_POST['r_city']) : null;
     $country = !empty($_POST['r_country']) ? trim($_POST['r_country']) : null;
     $saved = !empty($_POST['r_saved']) ? trim($_POST['r_saved']) : null;
-
-    // Bilddaten beziehen und Erweiterung auslesen, Zufällige Zahl als Namen festlegen, um Dopplungen zu vermeiden
-    $image = $_FILES['image']['name'];
-    $imgExt = strtolower(pathinfo($image,PATHINFO_EXTENSION));
-    $image = rand(1000,1000000).".".$imgExt;
-
     
     //Existiert der Alias bereits?
-    
     //Rows mit gleichem Alias auslesen
     $sql = "SELECT COUNT(r_alias) AS num FROM retailer WHERE r_alias = :r_alias";
     $stmt = $pdo->prepare($sql);

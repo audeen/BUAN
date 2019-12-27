@@ -38,10 +38,7 @@ if(isset($_POST['update']))
     $r_city = !empty($_POST['r_city']) ? trim($_POST['r_city']) : null;
     $r_country = !empty($_POST['r_country']) ? trim($_POST['r_country']) : null;
 
-    // Bilddaten beziehen und Erweiterung auslesen, Zufällige Zahl als Namen festlegen, um Dopplungen zu vermeiden
-    $image = $_FILES['image']['name'];
-    $imgExt = strtolower(pathinfo($image,PATHINFO_EXTENSION));
-    $image = rand(1000,1000000).".".$imgExt;
+
     
     //Werte aus Post in Variablen schreiben, um weitergabe zu ermöglichen
 

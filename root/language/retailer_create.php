@@ -1,4 +1,13 @@
 <?php
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   xxx_xxx.php                    //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Array für Sprachwechsel      //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        : 27.12.20198                  //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
 
 $lang_retailercreate[0][0] = "H&auml;ndler anlegen";
 $lang_retailercreate[0][1] = "Neuer H&auml;ndler";

@@ -20,14 +20,8 @@ $lang_adminshow[1][0] = "All Admins";
 $lang_adminshow[1][1] = "Add Admin";
 
 ?>
-
-
-
-<!-- Include Security-File -->
+<!-- Sicherheitesabfrage einbinden -->
 <?php include ('../../backend/functions/authentification.php'); ?>
-
-
-
   <!-- html-head einbinden -->
   <?php include ('../../backend/navigation/html_head.php'); ?>
   <body>

@@ -12,8 +12,7 @@
 session_start();
 ?>
 
-
-<!-- Include Security-File -->
+<!-- Sicherheitesabfrage einbinden -->
   <?php include ('../../backend/functions/authentification.php'); ?>
 <!-- html-head einbinden -->
   <?php include ('../../backend/navigation/html_head.php'); ?>
@@ -33,7 +32,7 @@ session_start();
 <?php
 
 include ('../../backend/admin/admin_pw_reset.php');
-
+include ('../../backend/admin/admin_update.php');
 
 // Datenbankverbindung herstellen
 $pdo;
@@ -53,8 +52,10 @@ echo "<div class=\"row\">\n";
         echo "<form action=\"#\" method=\"POST\">";
           echo "<h3 class=\"card-header\">ID: ".$row['id_a']."</h3>\n";
           echo "<div class=\"card-body\">\n";
-          echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"a_name\" value=\"".$row['a_name']."\">";
-          echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"a_mail\" value=\"".$row['a_mail']."\">";
+            echo "<p>Name</p>";
+            echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"a_name\" value=\"".$row['a_name']."\">";
+            echo "<p>Mail</p>";
+            echo "<input class=\"form-control mb-2\" id=\"exampleFormControlTextarea1\" rows=\"3\" name=\"a_mail\" value=\"".$row['a_mail']."\">";
         echo "</div>\n";
         echo "<ul class=\"list-group list-group-flush\">\n";
           echo "<li class=\"list-group-item\">";            
@@ -68,7 +69,7 @@ echo "<div class=\"row\">\n";
               $active ="";
             }
             //Abfragen, ob aktiver Admin seinen Status ändern möchte
-            if($_SESSION['user_id'] == $_POST['id_a']) {
+            if($_SESSION['user_id_a'] == $_POST['id_a']) {
               echo $lang_adminedit[$_SESSION['language']][9];
             }
             else {
@@ -91,7 +92,7 @@ echo "<div class=\"row\">\n";
           echo "<ul class=\"list-group list-group-flush\">\n";
           echo "<li class=\"list-group-item\">";
             // Abfrage, ob angemeldeter Admin sein Passwort zurücksetzen möchte
-            if($_SESSION['user_id'] == $_POST['id_a']) {
+            if($_SESSION['user_id_a'] == $_POST['id_a']) {
               echo $lang_adminedit[$_SESSION['language']][7];
               $_POST['a_blocked'] = "0";
             }
@@ -123,7 +124,7 @@ echo "<div class=\"row\">\n";
   }
 echo "</div>";
 
-include ('../../backend/admin/admin_update.php');
+
 
 ?>
 

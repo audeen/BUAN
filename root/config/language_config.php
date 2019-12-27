@@ -23,6 +23,7 @@ else {
 if(isset($_POST['language'])){
    $_SESSION['language'] = $_POST['language'];
 }
+// Verlinkungen
 
 $lang_index_be = '../../../language/index_be.php';
 $lang_nav_be = '../../../language/nav_be.php';

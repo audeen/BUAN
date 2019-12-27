@@ -23,21 +23,20 @@ if (isset($_POST['id_p'])){
 if(isset($_POST['update']))
 {
    $pdo; 
-   $imgFile = $_FILES['image']['name'];
+   $image = $_FILES['image']['name'];
    $tmp_dir = $_FILES['image']['tmp_name'];
    $imgSize = $_FILES['image']['size'];
 
    //Uploadverzeichnis wählen
    $upload_dir = '../../../images/products/'; 
    
-/*    //Dateiendung auslesen und in Variable schreiben
-   $imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); */
+    // Bilddaten beziehen und Erweiterung auslesen, Zufällige Zahl als Namen festlegen, um Dopplungen zu vermeiden
+    
+    $imgExt = strtolower(pathinfo($image,PATHINFO_EXTENSION));
+    $image = rand(1000,1000000).".".$imgExt;
   
    // Zugelassene Dateiendungen wählen
    $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); 
-  
-/*    // Bild umbenennen
-   $image = rand(1000,1000000).".".$imgExt; */
     
    // Prüfe Dateiendung gegen zugelassene Dateiendungen
    if(in_array($imgExt, $valid_extensions)){   

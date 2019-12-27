@@ -6,16 +6,12 @@
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
 //  Beschreibung : stellt DB-Verbindung her     //
 //  Ersteller    : Jannik Sievert               //
-//  Stand        : 07.10.2019                   //
+//  Stand        : 22.12.2019                   //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 
 
-/* // Vorbelegung für den Zugriff auf den Internetserver
-$host  = "localhost";
-$user  = "root";
-$pass  = "";
-$dbase = "sievert"; */
+// Vorbelegung für den Zugriff auf den Internetserver
 
 $db = 'mysql:host=localhost;dbname=sievert;charset=utf8';
 $pdo = new PDO($db, 'root', '');

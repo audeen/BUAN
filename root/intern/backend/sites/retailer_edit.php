@@ -10,7 +10,9 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
+//Config-Datei einbinden
 include('../../../config/config.php');
+//Sprachdatei einbinden
 include($lang_retailer_edit);
 ?>
 
@@ -32,9 +34,9 @@ include($lang_retailer_edit);
 
 <?php
 
-
-include ('../../backend/retailer/retailer_update.php');
 include ('../../backend/functions/image_upload_r.php');
+include ('../../backend/retailer/retailer_update.php');
+
 include ('../../backend/retailer/retailer_pw_reset.php');
 
 // Datenbankverbindung herstellen

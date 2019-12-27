@@ -11,14 +11,11 @@
 //////////////////////////////////////////////////
 //Session starten
 session_start();
-
+//Config-Datei einbinden
 include('../../../config/config.php');
+//Sprachdatei einbinden
 include($lang_bill);
-
-/* if (!isset($_POST['retailer'])){
-   echo "<meta http-equiv=\"refresh\" content=\"0;url=../../backend/sites/order_show.php\">";
-} */
-
+//Variablen initialisieren
 $retailer = $_POST['retailer'];
 $year = $_POST['year'];
 $month = $_POST['month'];

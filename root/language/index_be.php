@@ -1,4 +1,13 @@
 <?php
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   xxx_xxx.php                    //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Array für Sprachwechsel      //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        : 27.12.20198                  //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
 
 $lang[0][0] = "Willkommen ".$_SESSION['user_name'].", bitte w&auml;hlen Sie eine Funktion.";
 $lang[0][1] = "Herzlich Willkommen ".$_SESSION['user_name'].", bitte w&auml;hlen Sie eine Funktion.";

@@ -1,4 +1,13 @@
 <?php
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   xxx_xxx.php                    //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Array für Sprachwechsel      //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        : 27.12.20198                  //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
 
 $lang_productcreate[0][0] = "Produkt anlegen";
 $lang_productcreate[0][1] = "Neues Produkt";
@@ -16,6 +25,7 @@ $lang_productcreate[0][12] = "Produkt erfolgreich hinzugefügt!";
 $lang_productcreate[0][13] = "Produkt existiert bereits!";
 $lang_productcreate[0][14] = "&Auml;nderung erfolgreich!";
 $lang_productcreate[0][15] = "&Auml;nderung nicht erfolgreich!";
+$lang_productcreate[0][16] = "Fehler, Daten nicht gespeichert";
 
 
 $lang_productcreate[1][0] = "Create Product";
@@ -34,4 +44,5 @@ $lang_productcreate[1][12] = "Product added!";
 $lang_productcreate[1][13] = "Product already exists!";
 $lang_productcreate[1][14] = "Edit successful!";
 $lang_productcreate[1][15] = "Edit not successful!";
+$lang_productcreate[1][16] = "Error, Data not saved!";
 ?>

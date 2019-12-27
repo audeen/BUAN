@@ -10,11 +10,13 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
+//Config-Datei einbinden
 include ('../../../config/config.php');
+//Sprachdatei einbinden
 include($lang_product_create);
 
 
-//Include Security-File 
+//Sicherheitesabfrage einbinden
 include ('../../backend/functions/authentification.php');
 
 //html-head einbinden
@@ -31,8 +33,9 @@ include ('../../backend/navigation/html_nav_be.php');
   </div>
 
 <?php
-include ('../../backend/products/product_insert.php');
 include ('../../backend/functions/image_upload_p.php');
+include ('../../backend/products/product_insert.php');
+
 // Datenbankverbindung herstellen
 $pdo;
 

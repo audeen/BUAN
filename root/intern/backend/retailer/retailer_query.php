@@ -9,10 +9,12 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
+
 //Sprachdatei einbinden
 include($lang_retailer_query);
 //Datenbankverbindung herstellen
 $pdo;
+
 //Admin angemeldet? Alle Admins zeigen. Händler angemeldet? Nur den Händler zeigen
 if (isset($_SESSION['user_id_a'])){
 $sql = "SELECT * FROM retailer";

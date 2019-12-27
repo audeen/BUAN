@@ -30,6 +30,10 @@ if (isset($_POST['id_r'])){
 
    //Uploadverzeichnis wählen
    $upload_dir = '../../../images/retailer/'; 
+
+    // Bilddaten beziehen und Erweiterung auslesen, Zufällige Zahl als Namen festlegen, um Dopplungen zu vermeiden
+
+    $image = rand(1000,1000000).".".$imgExt;
     
    // Zugelassene Dateiendungen wählen
    $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions

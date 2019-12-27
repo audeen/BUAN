@@ -1,6 +1,15 @@
 <?php
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   xxx_xxx.php                    //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Array für Sprachwechsel      //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        : 27.12.20198                  //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
 
-$lang_cart = array();
+
 $lang_cart[0][0] = "Warenkorb";
 $lang_cart[0][1] = "Produkt";
 $lang_cart[0][2] = "Preis";

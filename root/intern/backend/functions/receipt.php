@@ -9,6 +9,7 @@
 //  Stand        : 27.11.2019                   //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
+
 // Orientiert an: 
 // https://www.php-einfach.de/experte/php-codebeispiele/pdf-per-php-erstellen-pdf-rechnung/
 
@@ -50,6 +51,7 @@ if (empty($row)) {
 $rechnungs_nummer = $_POST['billnumber'];
 $rechnungs_datum = date("Y-m-t");
 $pdfAuthor = "BUAN";
+
 //Logo-Dummy
 $rechnungs_header = '
 <img src="logo.png">
@@ -274,7 +276,8 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $img = "diagramm.png";
 $pdf->setImageScale(2);
 
-// GET THE IMAGE SETTINGS
+// Bildeinstellungen
+
 $pdf->Image
 ( $img
 , 0               // $x
@@ -317,10 +320,10 @@ $stmt = $pdo->prepare($sql);
 
 $stmt->bindValue(':invoice_number', $billnumber);
 
-//Execute.
+//Ausführen
 $stmt->execute();
     
-//Fetch the row.
+//Zeile fetchen
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Rechnung existiert schon? Beenden & anzeigen!
@@ -399,6 +402,6 @@ if($result){
     unset($_POST['bill']);
 }
 else {
-    echo "Error, data not saved.";
+    echo $lang_receipt[$_SESSION['language']][16];
 }
 ?>

@@ -10,9 +10,10 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
+//Config-Datei einbinden
 include ('../../../config/config.php');
 
-// Spracharrays lokal verwendet, um Dateien zu sparen
+// Spracharrays lokal verwendet
 $lang_retailershow = array();
 $lang_retailershow[0][0] = "Alle H&auml;ndler";
 $lang_retailershow[0][1] = "H&auml;ndler hinzuf&uuml;gen";

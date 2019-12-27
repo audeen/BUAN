@@ -10,14 +10,15 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
-
+//Config-Datei einbinden
 include('../../../config/config.php');
+//Sprachdatei einbinden
 include($lang_product_show);
 
 ?>
 
 
-<!-- Include Security-File -->
+<!-- Sicherheitsabfrage einbinden -->
 <?php include('../../backend/functions/authentification.php'); ?>
 
 <!DOCTYPE html>

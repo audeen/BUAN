@@ -9,6 +9,7 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
+
 // Config-Datei einbinden
 include('../../../config/config.php');
 // Sprach-Datei einbinden
@@ -40,13 +41,12 @@ include($lang_nav_be);
       //Css-Switcher
         while(list($key, $val) = each($styleSheets)){
           echo "<a type=\"button\" class=\"btn btn-secondary mr-2 \" href='../functions/styleswitcher.php?SETSTYLE=".$key."' title='".$val["title"]."'>".$val["text"]."</a>";
-          
           };
       ?>
-
       </li>
       <li>
         <?php
+          //Sprachwahl
           echo "<form action=\"index.php\" method=\"post\">";
             echo "<button type=\"submit\" class=\"btn btn-secondary mr-2 \" name=\"language\" value=\"0\">";
               echo "deutsch";

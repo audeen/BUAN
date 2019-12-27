@@ -24,7 +24,7 @@ else {
   $datum ="";
   }
 
-//Include Security-File
+//Sicherheitesabfrage einbinden
 include ('../../backend/functions/authentification.php'); 
 ?>
 
@@ -38,7 +38,9 @@ include ('../../backend/functions/authentification.php');
     <div class="container">
       <div class="container-fluid">
         <div class="row">
-          <div class="alert alert-primary mt-3 col-12" role="alert"><h2 class="text-center"><?php echo $lang_ordershow[$_SESSION['language']][0];?></h2>
+          <div class="alert alert-primary mt-3 col-12" role="alert">
+            <h2 class="text-center"><?php echo $lang_ordershow[$_SESSION['language']][0];?></h2>
+            <p class="text-center"><?php echo $lang_ordershow[$_SESSION['language']][14];?></p>
             <form action="#" method="POST">
             <?php
             // Query für Dropdown-Menü mit selected, falls ein Händler ausgewählt wurde

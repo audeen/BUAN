@@ -1,5 +1,8 @@
 <?php 
 
+
+//Jegliche Passwort-ändern-Skripte sind orientiert an:
+//https://thisinterestsme.com/php-reset-password-form/
 session_start();
 include ('../../../config/config.php');
 $pdo;
@@ -46,9 +49,6 @@ $_SESSION['user_id_reset_pass'] = $userId;
 
 echo "<meta http-equiv=\"refresh\" content=\"0;url=../../backend/sites/retailer_pw_create.php\">";
 
-/* echo "<form action =\"#\" method=\"POST\">";
-echo    "<input type=\"hidden\" name=\"user_id\" value=\"".$user_id."\">";
-echo "</form>"; */
 exit;
 }
 

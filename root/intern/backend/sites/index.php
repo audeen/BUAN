@@ -10,34 +10,31 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
+//Config-Datei einbinden
 include('../../../config/config.php');
+//Sprachdatei einbinden
 include($lang_index_be);
-
 ?>
 
-<!-- Include Security-File -->
+<!-- Sicherheitesabfrage einbinden -->
 <?php include ('../../../intern/backend/functions/authentification.php'); ?>
-
-
-
-  <!-- html-head einbinden -->
+<!-- html-head einbinden -->
   <?php include ('../../../intern/backend/navigation/html_head.php'); ?>
-  <body>
+<body>
     
-    <!-- backend-navigation einbinden -->
-    <?php include ('../../../intern/backend/navigation/html_nav_be.php'); ?>
+<!-- backend-navigation einbinden -->
+  <?php include ('../../../intern/backend/navigation/html_nav_be.php'); ?>
   <div class="container">
-
-  <div class="alert alert-primary mt-3" role="alert">
-    <?php echo $lang[$_SESSION['language']][0]?>
-  </div>
+    <div class="alert alert-primary mt-3" role="alert">
+      <?php echo $lang[$_SESSION['language']][0]?>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="../../js/jquery-3.4.1.min.js"></script>
-    <script src="../../js/popper.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-<!--     <div class="container"><?php /* include ("../control/control.php"); */?></div> -->
-  </body>
+  </div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="../../js/jquery-3.4.1.min.js"></script>
+<script src="../../js/popper.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+
+</body>
 </html>
 

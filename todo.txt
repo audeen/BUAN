@@ -59,4 +59,7 @@ ____
     edit-forms benennen
 
 
-    
+    ohne logout händler id noch vergeben
+    warenkorb-bug
+    admin abfrage roter balken
+    admin abfrage login

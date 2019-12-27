@@ -9,6 +9,10 @@
 //  Stand        : 18.11.2019                   //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
+
+//Jegliche Passwort-ändern-Skripte sind orientiert an:
+//https://thisinterestsme.com/php-reset-password-form/
+
 session_start();
 //Config-Datei einbinden
 include ('../../../config/config.php');

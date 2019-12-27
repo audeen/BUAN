@@ -9,6 +9,7 @@
 //  Stand        :                              //
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
+
 //Config-Datei einbinden
 include('../../../config/config.php');
 //Sprachdatei einbinden

@@ -24,11 +24,6 @@ if(isset($_POST['update'])){
     $price =  !empty($_POST['p_price']) ? trim($_POST['p_price']) : null;
     $saved =  !empty($_POST['p_saved']) ? trim($_POST['p_saved']) : null;
     
-    //Bilddaten auslesen und in Variablen schreiben
-    $image = $_FILES['image']['name'];
-    $imgExt = strtolower(pathinfo($image,PATHINFO_EXTENSION));
-    $image = rand(1000,1000000).".".$imgExt;
-    
     //Zähle Rows mit identischem Namen
     
     $sql = "SELECT COUNT(p_name) AS num FROM products WHERE p_name = :p_name";
@@ -93,7 +88,7 @@ if(isset($_POST['update'])){
         unset($_POST['register']);
     }
     else {
-        echo "Error, data not saved.";
+        echo $lang_productcreate[$_SESSION['language']][16];
 
     }
     

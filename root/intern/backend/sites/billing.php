@@ -11,8 +11,9 @@
 //////////////////////////////////////////////////
 //Session starten
 session_start();
-
+//Config-Datei einbinden
 include('../../../config/config.php');
+//Sprach-Datei einbinden
 include($lang_bill);
 
 if (!isset($_POST['retailer'])){
@@ -123,7 +124,8 @@ switch ($month){
 $billnumber=$year."-".$month."-".$row['id_r'];
 
 ?>
-<!-- Include Security-File -->
+
+<!-- Sicherheitesabfrage einbinden -->
 <?php include ('../../backend/functions/authentification.php'); ?>
 
 <!DOCTYPE html>
@@ -227,5 +229,5 @@ echo "</form>";
 
 ?>
 
-        </div>
-      </div>
+   </div>
+</div>

@@ -10,9 +10,10 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 session_start();
+// Config-Datei einbinden
 include ('../../../config/config.php');
 
-// Spracharrays lokal verwendet, um Dateien zu sparen
+// Spracharrays lokal verwendet
 $lang_apwcreate = array();
 $lang_apwcreate[0][0] = "Passwort &auml;ndern";
 $lang_apwcreate[0][1] = "Neues Passwort (min. 6 Zeichen)";
@@ -46,8 +47,7 @@ include ('../../backend/navigation/html_head.php');
 <?php
 // Passwort-ändern-Skript einbinden
 include ('../../backend/retailer/retailer_pw_change.php');
-// Datenbankverbindung herstellen
-$pdo;
+
 
 ?>
 

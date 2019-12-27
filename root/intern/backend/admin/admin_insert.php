@@ -2,7 +2,7 @@
 
 //////////////////////////////////////////////////
 //  BUAN-Projekt                                //
-//  Dateiname:   admin_insert.php            //
+//  Dateiname:   admin_insert.php               //
 //  Fachbereich Medien FH-Kiel - 5. Semester    //
 //  Beschreibung : php-skript für INSERT admin  //
 //  Ersteller    : Jannik Sievert               //
@@ -28,7 +28,7 @@ if (isset($_POST['update']) && ($_POST['a_pw'] == $_POST['a_pw_verify'])) {
     //Eingegebenes name an Attribut binden
     $stmt->bindValue(':a_name', $name);
 
-    //Execute.
+    //Ausführen
     $stmt->execute();
     
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -79,6 +79,7 @@ if (isset($_POST['update']) && ($_POST['a_pw'] == $_POST['a_pw_verify'])) {
     }
     
 }
+// Password-Verifikation fehlgeschlagen?
 elseif (isset($_POST['update']) && ($_POST['a_pw'] != $_POST['a_pw_verify'])) {
     echo "<div class=\"alert alert-danger mt-3\" role=\"alert\">";
         echo $lang_admincreate[$_SESSION['language']][10];

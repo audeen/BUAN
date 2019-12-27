@@ -10,10 +10,18 @@
 //  Version      : 1.0                          //
 //////////////////////////////////////////////////
 
-//Orientiert an:
+//Jegliche Passwort-ändern-Skripte sind orientiert an:
 //https://thisinterestsme.com/php-reset-password-form/
 
+//Spracharray lokal
+$lang_data = array();
+$lang_data[0][0] = "Dieser Admin wurde in unserem System nicht gefunden";
 
+$lang_data[1][0] = "That Admin was not found in our system!";
+
+
+
+//Zurücksetzen gedrückt?
 if (isset($_POST['pw'])){
 
 
@@ -37,7 +45,7 @@ $userInfo = $statement->fetch(PDO::FETCH_ASSOC);
  
 // Wenn $userinfo leer ist, gibt es keinen übereinstimmenden Admin, breche Verbindung ab
 if(empty($userInfo)){
-    echo 'That Admin was not found in our system!'; // ÜBERSETZUNG FEHLT
+    echo $lang_data[$_SESSION['language']][0]; // ÜBERSETZUNG FEHLT
     exit;
 }
  

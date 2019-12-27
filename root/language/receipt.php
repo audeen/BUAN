@@ -1,4 +1,13 @@
 <?php
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   xxx_xxx.php                    //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Array für Sprachwechsel      //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        : 27.12.20198                  //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
 
 
 $lang_receipt = array();
@@ -18,6 +27,8 @@ $lang_receipt[0][12] = "Monat bereits abgerechnet!";
 $lang_receipt[0][13] = "Gehaltsabrechnung anzeigen";
 $lang_receipt[0][14] = "Zur&uuml;ck";
 $lang_receipt[0][15] = "Zur&uuml;ck zu Bestellungen";
+$lang_receipt[0][16] = "Fehler, Daten nicht gespeichert";
+
 
 
 
@@ -37,6 +48,6 @@ $lang_receipt[1][12] = "Month already billed!";
 $lang_receipt[1][13] = "Show Payslip";
 $lang_receipt[1][14] = "Back";
 $lang_receipt[1][15] = "Back to orders";
-
+$lang_receipt[1][16] = "Error, Data not saved!";
 
 ?>

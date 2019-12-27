@@ -1,73 +1,88 @@
 <?php
-if (isset($_POST['pw'])){
-    
+//////////////////////////////////////////////////
+//  BUAN-Projekt                                //
+//  Dateiname:   retailer_pw_reset.php          //
+//  Fachbereich Medien FH-Kiel - 5. Semester    //
+//  Beschreibung : Retailer Password Reset      //
+//  Ersteller    : Jannik Sievert               //
+//  Stand        : 18.11.2019                   //
+//  Version      : 1.0                          //
+//////////////////////////////////////////////////
+
+//Jegliche Passwort-ändern-Skripte sind orientiert an:
 //https://thisinterestsme.com/php-reset-password-form/
 
-//Connect to MySQL database using PDO.
+//Spracharray lokal
+$lang_pw[0][0] = "Die eingegebene Mail-Adresse konnte nicht gefunden werden!";
+$lang_pw[0][1] = "That email address could not be found!";
+
+//Config-Datei einbinden
 include ('../../../config/config.php');
+
+if (isset($_POST['pw'])){
+    
+//Datenbankverbindung herstellen
 $pdo;
-//Get the name that is being searched for.
+
+//Eingegebene Mailadresse holen
 $r_mail = isset($_POST['r_mail']) ? trim($_POST['r_mail']) : '';
  
-//The simple SQL query that we will be running.
+//Datenbankabfrage
 $sql = "SELECT `id_r`, `r_mail` FROM `retailer` WHERE `r_mail` = :r_mail";
  
-//Prepare our SELECT statement.
+//Vorbereiten
 $statement = $pdo->prepare($sql);
  
-//Bind the $name variable to our :name parameter.
+//Variablen an Parameter binden
 $statement->bindValue(':r_mail', $r_mail);
  
-//Execute the SQL statement.
+//Ausführen
 $statement->execute();
  
-//Fetch our result as an associative array.
+//Ergebnis als assoziatives Array speichern
 $userInfo = $statement->fetch(PDO::FETCH_ASSOC);
  
-//If $userInfo is empty, it means that the submitted email
-//address has not been found in our users table.
+//Wenn $userinfo leer ist, dann gibt es die Mailadresse nicht
 if(empty($userInfo)){
-    echo 'That email address was not found in our system!';
+    echo $lang_pw[$_SESSION['language']][0];
     exit;
 }
  
-//The user's email address and id.
+//User-Informationen in Variablen schreiben
 $userEmail = $userInfo['r_mail'];
 $userId = $userInfo['id_r'];
  
-//Create a secure token for this forgot password request.
+//Token für Authentifizierung erstellen 
 $token = openssl_random_pseudo_bytes(16);
 $token = bin2hex($token);
  
-//Insert the request information
-//into our password_reset_request table.
+//Request-Informationen in Datenbank schreiben
  
-//The SQL statement.
+//Das SQL-Statement
 $insertSql = "INSERT INTO password_reset_request
               (r_id, date_requested, token)
               VALUES
               (:r_id, :date_requested, :token)";
  
-//Prepare our INSERT SQL statement.
+//Insert vorbereiten
 $statement = $pdo->prepare($insertSql);
  
-//Execute the statement and insert the data.
+//Ausführen und inserten
 $statement->execute(array(
     "r_id" => $userId,
     "date_requested" => date("Y-m-d H:i:s"),
     "token" => $token
 ));
  
-//Get the ID of the row we just inserted.
+//Informationen der letzen eingetragenen ID beziehen
 $passwordRequestId = $pdo->lastInsertId();
  
  
-//Create a link to the URL that will verify the
-//forgot password request and allow the user to change their
-//password.
+//Link erstellen, mit dem der Nutzer das Passwort zurücksetzen kann
+
 $verifyScript = 'https://localhost/BUAN/root/intern/backend/retailer/retailer_pw_auth.php';
  
-//The link that we will send the user via email.
+//Link mit GET-Informationen
 $linkToSend = $verifyScript . '?uid=' . $userId . '&id=' . $passwordRequestId . '&t=' . $token;
  
 }

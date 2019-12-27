@@ -52,26 +52,27 @@ echo "<div class=\"row\">\n";
           echo "<li class=\"list-group-item\">".$lang_productshow[$_SESSION['language']][3].$row['p_origin']."</li>\n";
           echo "<li class=\"list-group-item\">".$lang_productshow[$_SESSION['language']][4]."<br>".htmlentities($row['p_price'])." &euro;</li>\n";
           echo "<li class=\"list-group-item\">".$lang_productshow[$_SESSION['language']][5]."<br>".$row['p_amount'].$lang_productshow[$_SESSION['language']][8]."</li>\n";
+          
           //Nur für Händler anzeigen
           if (isset($_SESSION['user_id_r'])){
             // Wenn Artikel auf Lager
             if ($row['p_amount'] > 0 && $row['p_blocked'] == 0){
           
-            echo "<form action=\"#\" method=\"post\">";
-            echo "<li class=\"list-group-item\">";
-              echo "<input type=\"number\" name=\"quantity\" value=\"1\" min=\"1\" max=".$row['p_amount']." placeholder\"=Quantity\" required>";
-              echo "<input type=\"hidden\" name=\"product\" value=".$row['id_p'].">";
-            echo "</li>";
-            echo "<li class=\"list-group-item\">";
-              echo "<input type=\"submit\" class=\"btn btn-success\"value=\"".$lang_productshow[$_SESSION['language']][11]."\">";
-            echo "</li>";
-            echo "</form>";
-          }
+              echo "<form action=\"#\" method=\"post\">";
+              echo "<li class=\"list-group-item\">";
+                echo "<input type=\"number\" name=\"quantity\" value=\"1\" min=\"1\" max=".$row['p_amount']." placeholder\"=Quantity\" required>";
+                echo "<input type=\"hidden\" name=\"product\" value=".$row['id_p'].">";
+              echo "</li>";
+              echo "<li class=\"list-group-item\">";
+                echo "<input type=\"submit\" class=\"btn btn-success\"value=\"".$lang_productshow[$_SESSION['language']][11]."\">";
+              echo "</li>";
+              echo "</form>";
+            }
           // Ausverkauft?
           elseif ($row['p_blocked'] == 1){
             echo "<div class=\"btn btn-danger\">";
-            echo $lang_productshow[$_SESSION['language']][13];
-          echo "</div>";
+              echo $lang_productshow[$_SESSION['language']][13];
+            echo "</div>";
           }
           else {
             echo "<div class=\"btn btn-danger\">";
